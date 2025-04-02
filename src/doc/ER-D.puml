@@ -1,0 +1,2075 @@
+@startuml erd
+skinparam linetype ortho
+entity "GenTable" as GenTable {
++ tableId [PK] : Int 
+--
+  tableName : String
+  tableComment : String
+  subTableName : String
+  subTableFkName : String
+  className : String
+  tplCategory : String
+  tplWebType : String
+  packageName : String
+  moduleName : String
+  businessName : String
+  functionName : String
+  functionAuthor : String
+  genType : String
+  genPath : String
+  options : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "GenTableColumn" as GenTableColumn {
++ columnId [PK] : Int 
+--
+  # tableId : [FK] GenTable
+  columnName : String
+  columnComment : String
+  columnType : String
+  javaType : String
+  javaField : String
+  isPk : String
+  isIncrement : String
+  isRequired : String
+  isInsert : String
+  isEdit : String
+  isList : String
+  isQuery : String
+  queryType : String
+  htmlType : String
+  dictType : String
+  sort : Int
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+}
+
+entity "SysConfig" as SysConfig {
++ configId [PK] : Int 
+--
+  configName : String
+  configKey : String
+  configValue : String
+  configType : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysDept" as SysDept {
++ deptId [PK] : Int 
+--
+  parentId : Int
+  ancestors : String
+  deptName : String
+  orderNum : Int
+  leader : String
+  phone : String
+  email : String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+}
+
+entity "SysDictData" as SysDictData {
++ dictCode [PK] : Int 
+--
+  dictSort : Int
+  dictLabel : String
+  dictValue : String
+  # dictType : [FK] SysDictType
+  cssClass : String
+  listClass : String
+  isDefault : String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysDictType" as SysDictType {
++ dictId [PK] : Int 
+--
+  dictName : String
+  dictType : [UK] String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysLogininfor" as SysLogininfor {
++ infoId [PK] : Int 
+--
+  userName : String
+  ipaddr : String
+  loginLocation : String
+  browser : String
+  os : String
+  status : String
+  msg : String
+  loginTime : String
+}
+
+entity "SysMenu" as SysMenu {
++ menuId [PK] : Int 
+--
+  * menuName : String
+  parentId : Int
+  orderNum : Int
+  path : String
+  component : String
+  query : String
+  isFrame : Int
+  isCache : Int
+  menuType : String
+  visible : String
+  status : String
+  perms : String
+  icon : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysNotice" as SysNotice {
++ noticeId [PK] : Int 
+--
+  * noticeTitle : String
+  * noticeType : String
+  noticeContent : String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysPost" as SysPost {
++ postId [PK] : Int 
+--
+  * postCode : String
+  * postName : String
+  * postSort : Int
+  * status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysUserPost" as SysUserPost {
+--
+  # userId : [FK] SysUser
+  # postId : [FK] SysPost
+}
+
+entity "SysRoleDept" as SysRoleDept {
+--
+  # roleId : [FK] SysRole
+  # deptId : [FK] SysDept
+}
+
+entity "SysRoleMenu" as SysRoleMenu {
+--
+  # roleId : [FK] SysRole
+  # menuId : [FK] SysMenu
+}
+
+entity "SysUser" as SysUser {
++ userId [PK] : Int 
+--
+  # deptId : [FK] SysDept
+  * userName : String
+  * nickName : String
+  userType : String
+  email : String
+  phonenumber : String
+  sex : String
+  avatar : String
+  password : String
+  status : String
+  loginIp : String
+  loginDate : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysRole" as SysRole {
++ roleId [PK] : Int 
+--
+  * roleName : String
+  * roleKey : String
+  * roleSort : Int
+  dataScope : String
+  menuCheckStrictly : Int
+  deptCheckStrictly : Int
+  * status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysUserRole" as SysUserRole {
+--
+  # userId : [FK] SysUser
+  # roleId : [FK] SysRole
+}
+
+entity "collection" as collection {
++ id [PK] : Int 
+--
+  collection_name : String
+  # ticket_id : [FK] ticket
+  * ticket_type : Int
+  chain_type : Int
+  * casting_uid : Int
+  casting_name : String
+  daop_casting_id : Int
+  daop_casting_address : String
+  # owner_uid : [FK] user
+  owner_name : String
+  daop_user_id : Int
+  daop_user_address : String
+  * license_id : Int
+  shared_uid : Int
+  * price : Int
+  trade_time : DateTime
+  daop_collection_id : Int
+  out_ticket_id : Int
+  token_id : String
+  * collection_hash : String
+  mint_tx_id : String
+  mint_chain_status : Int
+  mint_chain_time : DateTime
+  transfer_tx_id : String
+  transfer_chain_status : Int
+  transfer_chain_time : DateTime
+  checkeIn_tx_id : String
+  checkIn_chain_status : Int
+  checkIn_chain_time : DateTime
+  credential : String
+  last_credential : String
+  sale_status : Int
+  available_status : Int
+  available_time : DateTime
+  available_expire_time : DateTime
+  * check_code : String
+  authorization_id : Int
+  * authorization_code : String
+  modify_time : DateTime
+  create_time : DateTime
+  dar_status : Int
+  old_status : Int
+  certificate_url : String
+  block_number : Int
+}
+
+entity "init_mobile" as init_mobile {
++ id [PK] : Int 
+--
+  mobile : String
+}
+
+entity "platform_token" as platform_token {
++ id [PK] : Int 
+--
+  platform : String
+  mobile : String
+  token : String
+  expire_in : BigInt
+  create_time : DateTime
+}
+
+entity "publisher" as publisher {
++ id [PK] : Int 
+--
+  publisher_name : String
+  industry : String
+  logo : String
+}
+
+entity "ticket" as ticket {
++ id [PK] : Int 
+--
+  * ticket_name : String
+  ticket_type : Int
+  chain_type : Int
+  cover_uri : String
+  content_uri : String
+  td_files : Json
+  creator_uid : Int
+  creator_name : String
+  creator_avatar : String
+  daop_user_id : Int
+  daop_user_address : String
+  publisher_id : Int
+  publisher_name : String
+  publisher_logo : String
+  * amount : Int
+  sold_amount : Int
+  sku_balance : Int
+  * price : Int
+  available_time : DateTime
+  expire_time : DateTime
+  sale_begin_time : DateTime
+  sale_end_time : DateTime
+  description : String
+  usage : String
+  sale_status : Int
+  available_status : Int
+  authorization_id : Int
+  * authorization_code : String
+  did_credential : String
+  copyright_credential : String
+  authorization_credential : String
+  chain_txid : String
+  chain_block_number : Int
+  chain_time : Int
+  chain_status : Int
+  is_sale : Int
+  modify_time : DateTime
+  create_time : DateTime
+  registration_id : Int
+  send_status : Int
+}
+
+entity "tr_order" as tr_order {
++ order_id [PK] : Int 
+--
+  * order_no : [UK] String
+  # ticket_id : [FK] ticket
+  ticket_did_credential : String
+  ticket_copyright_credential : String
+  ticket_authorization_credential : String
+  # collection_id : [FK] collection
+  collection_name : String
+  * collection_hash : String
+  collection_credential : String
+  collection_last_credential : String
+  collection_token_id : String
+  daop_collection_id : Int
+  * seller_uid : Int
+  seller_daop_user_id : Int
+  seller_daop_user_address : String
+  seller_mobile : String
+  * buyer_uid : Int
+  buyer_realname : String
+  buyer_mobile : String
+  buyer_nickname : String
+  buyer_daop_user_id : Int
+  buyer_daop_user_address : String
+  shared_uid : Int
+  * price : Int
+  amount : Int
+  check_in : Int
+  pay_channel : String
+  pay_scene : String
+  pay_trade_no : String
+  pay_time : DateTime
+  pay_status : Int
+  pay_failed_reason : String
+  * transfer_status : Int
+  expire_time : DateTime
+  expire_time_at : BigInt
+  * status : Int
+  deleted_at : Int
+  * modify_time : DateTime
+  create_time : DateTime
+}
+
+entity "tr_pay_notification" as tr_pay_notification {
++ id [PK] : Int 
+--
+  pay_channel : String
+  order_no : String
+  data : Json
+  modify_time : DateTime
+  create_time : DateTime
+}
+
+entity "tr_transfer" as tr_transfer {
++ id [PK] : Int 
+--
+  # collection_id : [FK] collection
+  collection_credential : String
+  collection_last_credential : String
+  * token_id : String
+  # order_id : [FK] tr_order
+  * transfer_uid : Int
+  transfer_name : String
+  * receiver_uid : Int
+  receiver_name : String
+  receiver_mobile : String
+  tx_id : String
+  chain_status : Int
+  chain_time : DateTime
+  transfer_type : Int
+  modify_time : DateTime
+  create_time : DateTime
+  block_number : Int
+}
+
+entity "user" as user {
++ id [PK] : Int 
+--
+  wx_mini_openid : String
+  union_id : String
+  mobile : String
+  country_code : String
+  full_mobile : String
+  nick_name : String
+  avatar : String
+  description : String
+  gendar : Int
+  user_type : Int
+  is_publisher : Int
+  id_card_no : String
+  realname : String
+  realname_state : Int
+  realname_time : DateTime
+  daop_account_id : Int
+  daop_user_id : Int
+  daop_user_address : String
+  tags : String
+  available_status : Int
+  create_time : DateTime
+  modify_time : DateTime
+}
+
+entity "declarex" as declarex {
++ id [PK] : Int 
+--
+  name : String
+  content : String
+  types : Int
+  create_by : String
+  create_time : String
+  update_by : String
+  update_time : String
+  status : Int
+  remark : String
+}
+
+entity "resource" as resource {
++ id [PK] : Int 
+--
+  # ticket_id : [FK] ticket
+  name : String
+  resource_url : String
+  order : Int
+  create_by : String
+  create_time : String
+  update_by : String
+  update_time : String
+  status : Int
+  remark : String
+}
+
+' Relations
+GenTableColumn }o--o| GenTable: tableId
+SysDictData }o--o| SysDictType: dictType
+SysUserPost }o--|| SysUser: userId
+SysUserPost }o--|| SysPost: postId
+SysRoleDept }o--|| SysRole: roleId
+SysRoleDept }o--|| SysDept: deptId
+SysRoleMenu }o--|| SysMenu: menuId
+SysRoleMenu }o--|| SysRole: roleId
+SysUser }o--o| SysDept: deptId
+SysUserRole }o--|| SysUser: userId
+SysUserRole }o--|| SysRole: roleId
+collection }o--o| ticket: ticket_id
+collection }o--|| user: owner_uid
+tr_order }o--|| collection: collection_id
+tr_order }o--|| ticket: ticket_id
+tr_transfer }o--|| collection: collection_id
+tr_transfer }o--|| tr_order: order_id
+resource }o--|| ticket: ticket_id
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml GenTable
+skinparam linetype ortho
+entity "GenTable" as GenTable {
++ tableId [PK] : Int 
+--
+  tableName : String
+  tableComment : String
+  subTableName : String
+  subTableFkName : String
+  className : String
+  tplCategory : String
+  tplWebType : String
+  packageName : String
+  moduleName : String
+  businessName : String
+  functionName : String
+  functionAuthor : String
+  genType : String
+  genPath : String
+  options : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "GenTableColumn" as GenTableColumn {
++ columnId [PK] : Int 
+--
+  # tableId : [FK] GenTable
+  columnName : String
+  columnComment : String
+  columnType : String
+  javaType : String
+  javaField : String
+  isPk : String
+  isIncrement : String
+  isRequired : String
+  isInsert : String
+  isEdit : String
+  isList : String
+  isQuery : String
+  queryType : String
+  htmlType : String
+  dictType : String
+  sort : Int
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+}
+
+' Relations
+GenTableColumn }o--o| GenTable: tableId
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml GenTableColumn
+skinparam linetype ortho
+entity "GenTable" as GenTable {
++ tableId [PK] : Int 
+--
+  tableName : String
+  tableComment : String
+  subTableName : String
+  subTableFkName : String
+  className : String
+  tplCategory : String
+  tplWebType : String
+  packageName : String
+  moduleName : String
+  businessName : String
+  functionName : String
+  functionAuthor : String
+  genType : String
+  genPath : String
+  options : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "GenTableColumn" as GenTableColumn {
++ columnId [PK] : Int 
+--
+  # tableId : [FK] GenTable
+  columnName : String
+  columnComment : String
+  columnType : String
+  javaType : String
+  javaField : String
+  isPk : String
+  isIncrement : String
+  isRequired : String
+  isInsert : String
+  isEdit : String
+  isList : String
+  isQuery : String
+  queryType : String
+  htmlType : String
+  dictType : String
+  sort : Int
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+}
+
+' Relations
+GenTableColumn }o--o| GenTable: tableId
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysConfig
+skinparam linetype ortho
+entity "SysConfig" as SysConfig {
++ configId [PK] : Int 
+--
+  configName : String
+  configKey : String
+  configValue : String
+  configType : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysDept
+skinparam linetype ortho
+entity "SysDept" as SysDept {
++ deptId [PK] : Int 
+--
+  parentId : Int
+  ancestors : String
+  deptName : String
+  orderNum : Int
+  leader : String
+  phone : String
+  email : String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+}
+
+entity "SysRoleDept" as SysRoleDept {
+--
+  # roleId : [FK] SysRole
+  # deptId : [FK] SysDept
+}
+
+entity "SysUser" as SysUser {
++ userId [PK] : Int 
+--
+  # deptId : [FK] SysDept
+  * userName : String
+  * nickName : String
+  userType : String
+  email : String
+  phonenumber : String
+  sex : String
+  avatar : String
+  password : String
+  status : String
+  loginIp : String
+  loginDate : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+' Relations
+SysRoleDept }o--|| SysDept: deptId
+SysUser }o--o| SysDept: deptId
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysDictData
+skinparam linetype ortho
+entity "SysDictData" as SysDictData {
++ dictCode [PK] : Int 
+--
+  dictSort : Int
+  dictLabel : String
+  dictValue : String
+  # dictType : [FK] SysDictType
+  cssClass : String
+  listClass : String
+  isDefault : String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysDictType" as SysDictType {
++ dictId [PK] : Int 
+--
+  dictName : String
+  dictType : [UK] String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+' Relations
+SysDictData }o--o| SysDictType: dictType
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysDictType
+skinparam linetype ortho
+entity "SysDictData" as SysDictData {
++ dictCode [PK] : Int 
+--
+  dictSort : Int
+  dictLabel : String
+  dictValue : String
+  # dictType : [FK] SysDictType
+  cssClass : String
+  listClass : String
+  isDefault : String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysDictType" as SysDictType {
++ dictId [PK] : Int 
+--
+  dictName : String
+  dictType : [UK] String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+' Relations
+SysDictData }o--o| SysDictType: dictType
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysLogininfor
+skinparam linetype ortho
+entity "SysLogininfor" as SysLogininfor {
++ infoId [PK] : Int 
+--
+  userName : String
+  ipaddr : String
+  loginLocation : String
+  browser : String
+  os : String
+  status : String
+  msg : String
+  loginTime : String
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysMenu
+skinparam linetype ortho
+entity "SysMenu" as SysMenu {
++ menuId [PK] : Int 
+--
+  * menuName : String
+  parentId : Int
+  orderNum : Int
+  path : String
+  component : String
+  query : String
+  isFrame : Int
+  isCache : Int
+  menuType : String
+  visible : String
+  status : String
+  perms : String
+  icon : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysRoleMenu" as SysRoleMenu {
+--
+  # roleId : [FK] SysRole
+  # menuId : [FK] SysMenu
+}
+
+' Relations
+SysRoleMenu }o--|| SysMenu: menuId
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysNotice
+skinparam linetype ortho
+entity "SysNotice" as SysNotice {
++ noticeId [PK] : Int 
+--
+  * noticeTitle : String
+  * noticeType : String
+  noticeContent : String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysPost
+skinparam linetype ortho
+entity "SysPost" as SysPost {
++ postId [PK] : Int 
+--
+  * postCode : String
+  * postName : String
+  * postSort : Int
+  * status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysUserPost" as SysUserPost {
+--
+  # userId : [FK] SysUser
+  # postId : [FK] SysPost
+}
+
+' Relations
+SysUserPost }o--|| SysPost: postId
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysUserPost
+skinparam linetype ortho
+entity "SysPost" as SysPost {
++ postId [PK] : Int 
+--
+  * postCode : String
+  * postName : String
+  * postSort : Int
+  * status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysUserPost" as SysUserPost {
+--
+  # userId : [FK] SysUser
+  # postId : [FK] SysPost
+}
+
+entity "SysUser" as SysUser {
++ userId [PK] : Int 
+--
+  # deptId : [FK] SysDept
+  * userName : String
+  * nickName : String
+  userType : String
+  email : String
+  phonenumber : String
+  sex : String
+  avatar : String
+  password : String
+  status : String
+  loginIp : String
+  loginDate : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+' Relations
+SysUserPost }o--|| SysUser: userId
+SysUserPost }o--|| SysPost: postId
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysRoleDept
+skinparam linetype ortho
+entity "SysDept" as SysDept {
++ deptId [PK] : Int 
+--
+  parentId : Int
+  ancestors : String
+  deptName : String
+  orderNum : Int
+  leader : String
+  phone : String
+  email : String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+}
+
+entity "SysRoleDept" as SysRoleDept {
+--
+  # roleId : [FK] SysRole
+  # deptId : [FK] SysDept
+}
+
+entity "SysRole" as SysRole {
++ roleId [PK] : Int 
+--
+  * roleName : String
+  * roleKey : String
+  * roleSort : Int
+  dataScope : String
+  menuCheckStrictly : Int
+  deptCheckStrictly : Int
+  * status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+' Relations
+SysRoleDept }o--|| SysRole: roleId
+SysRoleDept }o--|| SysDept: deptId
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysRoleMenu
+skinparam linetype ortho
+entity "SysMenu" as SysMenu {
++ menuId [PK] : Int 
+--
+  * menuName : String
+  parentId : Int
+  orderNum : Int
+  path : String
+  component : String
+  query : String
+  isFrame : Int
+  isCache : Int
+  menuType : String
+  visible : String
+  status : String
+  perms : String
+  icon : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysRoleMenu" as SysRoleMenu {
+--
+  # roleId : [FK] SysRole
+  # menuId : [FK] SysMenu
+}
+
+entity "SysRole" as SysRole {
++ roleId [PK] : Int 
+--
+  * roleName : String
+  * roleKey : String
+  * roleSort : Int
+  dataScope : String
+  menuCheckStrictly : Int
+  deptCheckStrictly : Int
+  * status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+' Relations
+SysRoleMenu }o--|| SysMenu: menuId
+SysRoleMenu }o--|| SysRole: roleId
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysUser
+skinparam linetype ortho
+entity "SysDept" as SysDept {
++ deptId [PK] : Int 
+--
+  parentId : Int
+  ancestors : String
+  deptName : String
+  orderNum : Int
+  leader : String
+  phone : String
+  email : String
+  status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+}
+
+entity "SysUserPost" as SysUserPost {
+--
+  # userId : [FK] SysUser
+  # postId : [FK] SysPost
+}
+
+entity "SysUser" as SysUser {
++ userId [PK] : Int 
+--
+  # deptId : [FK] SysDept
+  * userName : String
+  * nickName : String
+  userType : String
+  email : String
+  phonenumber : String
+  sex : String
+  avatar : String
+  password : String
+  status : String
+  loginIp : String
+  loginDate : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysUserRole" as SysUserRole {
+--
+  # userId : [FK] SysUser
+  # roleId : [FK] SysRole
+}
+
+' Relations
+SysUserPost }o--|| SysUser: userId
+SysUser }o--o| SysDept: deptId
+SysUserRole }o--|| SysUser: userId
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysRole
+skinparam linetype ortho
+entity "SysRoleDept" as SysRoleDept {
+--
+  # roleId : [FK] SysRole
+  # deptId : [FK] SysDept
+}
+
+entity "SysRoleMenu" as SysRoleMenu {
+--
+  # roleId : [FK] SysRole
+  # menuId : [FK] SysMenu
+}
+
+entity "SysRole" as SysRole {
++ roleId [PK] : Int 
+--
+  * roleName : String
+  * roleKey : String
+  * roleSort : Int
+  dataScope : String
+  menuCheckStrictly : Int
+  deptCheckStrictly : Int
+  * status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysUserRole" as SysUserRole {
+--
+  # userId : [FK] SysUser
+  # roleId : [FK] SysRole
+}
+
+' Relations
+SysRoleDept }o--|| SysRole: roleId
+SysRoleMenu }o--|| SysRole: roleId
+SysUserRole }o--|| SysRole: roleId
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml SysUserRole
+skinparam linetype ortho
+entity "SysUser" as SysUser {
++ userId [PK] : Int 
+--
+  # deptId : [FK] SysDept
+  * userName : String
+  * nickName : String
+  userType : String
+  email : String
+  phonenumber : String
+  sex : String
+  avatar : String
+  password : String
+  status : String
+  loginIp : String
+  loginDate : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysRole" as SysRole {
++ roleId [PK] : Int 
+--
+  * roleName : String
+  * roleKey : String
+  * roleSort : Int
+  dataScope : String
+  menuCheckStrictly : Int
+  deptCheckStrictly : Int
+  * status : String
+  createBy : String
+  createTime : String
+  updateBy : String
+  updateTime : String
+  remark : String
+}
+
+entity "SysUserRole" as SysUserRole {
+--
+  # userId : [FK] SysUser
+  # roleId : [FK] SysRole
+}
+
+' Relations
+SysUserRole }o--|| SysUser: userId
+SysUserRole }o--|| SysRole: roleId
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml collection
+skinparam linetype ortho
+entity "collection" as collection {
++ id [PK] : Int 
+--
+  collection_name : String
+  # ticket_id : [FK] ticket
+  * ticket_type : Int
+  chain_type : Int
+  * casting_uid : Int
+  casting_name : String
+  daop_casting_id : Int
+  daop_casting_address : String
+  # owner_uid : [FK] user
+  owner_name : String
+  daop_user_id : Int
+  daop_user_address : String
+  * license_id : Int
+  shared_uid : Int
+  * price : Int
+  trade_time : DateTime
+  daop_collection_id : Int
+  out_ticket_id : Int
+  token_id : String
+  * collection_hash : String
+  mint_tx_id : String
+  mint_chain_status : Int
+  mint_chain_time : DateTime
+  transfer_tx_id : String
+  transfer_chain_status : Int
+  transfer_chain_time : DateTime
+  checkeIn_tx_id : String
+  checkIn_chain_status : Int
+  checkIn_chain_time : DateTime
+  credential : String
+  last_credential : String
+  sale_status : Int
+  available_status : Int
+  available_time : DateTime
+  available_expire_time : DateTime
+  * check_code : String
+  authorization_id : Int
+  * authorization_code : String
+  modify_time : DateTime
+  create_time : DateTime
+  dar_status : Int
+  old_status : Int
+  certificate_url : String
+  block_number : Int
+}
+
+entity "ticket" as ticket {
++ id [PK] : Int 
+--
+  * ticket_name : String
+  ticket_type : Int
+  chain_type : Int
+  cover_uri : String
+  content_uri : String
+  td_files : Json
+  creator_uid : Int
+  creator_name : String
+  creator_avatar : String
+  daop_user_id : Int
+  daop_user_address : String
+  publisher_id : Int
+  publisher_name : String
+  publisher_logo : String
+  * amount : Int
+  sold_amount : Int
+  sku_balance : Int
+  * price : Int
+  available_time : DateTime
+  expire_time : DateTime
+  sale_begin_time : DateTime
+  sale_end_time : DateTime
+  description : String
+  usage : String
+  sale_status : Int
+  available_status : Int
+  authorization_id : Int
+  * authorization_code : String
+  did_credential : String
+  copyright_credential : String
+  authorization_credential : String
+  chain_txid : String
+  chain_block_number : Int
+  chain_time : Int
+  chain_status : Int
+  is_sale : Int
+  modify_time : DateTime
+  create_time : DateTime
+  registration_id : Int
+  send_status : Int
+}
+
+entity "tr_order" as tr_order {
++ order_id [PK] : Int 
+--
+  * order_no : [UK] String
+  # ticket_id : [FK] ticket
+  ticket_did_credential : String
+  ticket_copyright_credential : String
+  ticket_authorization_credential : String
+  # collection_id : [FK] collection
+  collection_name : String
+  * collection_hash : String
+  collection_credential : String
+  collection_last_credential : String
+  collection_token_id : String
+  daop_collection_id : Int
+  * seller_uid : Int
+  seller_daop_user_id : Int
+  seller_daop_user_address : String
+  seller_mobile : String
+  * buyer_uid : Int
+  buyer_realname : String
+  buyer_mobile : String
+  buyer_nickname : String
+  buyer_daop_user_id : Int
+  buyer_daop_user_address : String
+  shared_uid : Int
+  * price : Int
+  amount : Int
+  check_in : Int
+  pay_channel : String
+  pay_scene : String
+  pay_trade_no : String
+  pay_time : DateTime
+  pay_status : Int
+  pay_failed_reason : String
+  * transfer_status : Int
+  expire_time : DateTime
+  expire_time_at : BigInt
+  * status : Int
+  deleted_at : Int
+  * modify_time : DateTime
+  create_time : DateTime
+}
+
+entity "tr_transfer" as tr_transfer {
++ id [PK] : Int 
+--
+  # collection_id : [FK] collection
+  collection_credential : String
+  collection_last_credential : String
+  * token_id : String
+  # order_id : [FK] tr_order
+  * transfer_uid : Int
+  transfer_name : String
+  * receiver_uid : Int
+  receiver_name : String
+  receiver_mobile : String
+  tx_id : String
+  chain_status : Int
+  chain_time : DateTime
+  transfer_type : Int
+  modify_time : DateTime
+  create_time : DateTime
+  block_number : Int
+}
+
+entity "user" as user {
++ id [PK] : Int 
+--
+  wx_mini_openid : String
+  union_id : String
+  mobile : String
+  country_code : String
+  full_mobile : String
+  nick_name : String
+  avatar : String
+  description : String
+  gendar : Int
+  user_type : Int
+  is_publisher : Int
+  id_card_no : String
+  realname : String
+  realname_state : Int
+  realname_time : DateTime
+  daop_account_id : Int
+  daop_user_id : Int
+  daop_user_address : String
+  tags : String
+  available_status : Int
+  create_time : DateTime
+  modify_time : DateTime
+}
+
+' Relations
+collection }o--o| ticket: ticket_id
+collection }o--|| user: owner_uid
+tr_order }o--|| collection: collection_id
+tr_order }o--|| ticket: ticket_id
+tr_transfer }o--|| collection: collection_id
+tr_transfer }o--|| tr_order: order_id
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml init_mobile
+skinparam linetype ortho
+entity "init_mobile" as init_mobile {
++ id [PK] : Int 
+--
+  mobile : String
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml platform_token
+skinparam linetype ortho
+entity "platform_token" as platform_token {
++ id [PK] : Int 
+--
+  platform : String
+  mobile : String
+  token : String
+  expire_in : BigInt
+  create_time : DateTime
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml publisher
+skinparam linetype ortho
+entity "publisher" as publisher {
++ id [PK] : Int 
+--
+  publisher_name : String
+  industry : String
+  logo : String
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml ticket
+skinparam linetype ortho
+entity "collection" as collection {
++ id [PK] : Int 
+--
+  collection_name : String
+  # ticket_id : [FK] ticket
+  * ticket_type : Int
+  chain_type : Int
+  * casting_uid : Int
+  casting_name : String
+  daop_casting_id : Int
+  daop_casting_address : String
+  # owner_uid : [FK] user
+  owner_name : String
+  daop_user_id : Int
+  daop_user_address : String
+  * license_id : Int
+  shared_uid : Int
+  * price : Int
+  trade_time : DateTime
+  daop_collection_id : Int
+  out_ticket_id : Int
+  token_id : String
+  * collection_hash : String
+  mint_tx_id : String
+  mint_chain_status : Int
+  mint_chain_time : DateTime
+  transfer_tx_id : String
+  transfer_chain_status : Int
+  transfer_chain_time : DateTime
+  checkeIn_tx_id : String
+  checkIn_chain_status : Int
+  checkIn_chain_time : DateTime
+  credential : String
+  last_credential : String
+  sale_status : Int
+  available_status : Int
+  available_time : DateTime
+  available_expire_time : DateTime
+  * check_code : String
+  authorization_id : Int
+  * authorization_code : String
+  modify_time : DateTime
+  create_time : DateTime
+  dar_status : Int
+  old_status : Int
+  certificate_url : String
+  block_number : Int
+}
+
+entity "ticket" as ticket {
++ id [PK] : Int 
+--
+  * ticket_name : String
+  ticket_type : Int
+  chain_type : Int
+  cover_uri : String
+  content_uri : String
+  td_files : Json
+  creator_uid : Int
+  creator_name : String
+  creator_avatar : String
+  daop_user_id : Int
+  daop_user_address : String
+  publisher_id : Int
+  publisher_name : String
+  publisher_logo : String
+  * amount : Int
+  sold_amount : Int
+  sku_balance : Int
+  * price : Int
+  available_time : DateTime
+  expire_time : DateTime
+  sale_begin_time : DateTime
+  sale_end_time : DateTime
+  description : String
+  usage : String
+  sale_status : Int
+  available_status : Int
+  authorization_id : Int
+  * authorization_code : String
+  did_credential : String
+  copyright_credential : String
+  authorization_credential : String
+  chain_txid : String
+  chain_block_number : Int
+  chain_time : Int
+  chain_status : Int
+  is_sale : Int
+  modify_time : DateTime
+  create_time : DateTime
+  registration_id : Int
+  send_status : Int
+}
+
+entity "tr_order" as tr_order {
++ order_id [PK] : Int 
+--
+  * order_no : [UK] String
+  # ticket_id : [FK] ticket
+  ticket_did_credential : String
+  ticket_copyright_credential : String
+  ticket_authorization_credential : String
+  # collection_id : [FK] collection
+  collection_name : String
+  * collection_hash : String
+  collection_credential : String
+  collection_last_credential : String
+  collection_token_id : String
+  daop_collection_id : Int
+  * seller_uid : Int
+  seller_daop_user_id : Int
+  seller_daop_user_address : String
+  seller_mobile : String
+  * buyer_uid : Int
+  buyer_realname : String
+  buyer_mobile : String
+  buyer_nickname : String
+  buyer_daop_user_id : Int
+  buyer_daop_user_address : String
+  shared_uid : Int
+  * price : Int
+  amount : Int
+  check_in : Int
+  pay_channel : String
+  pay_scene : String
+  pay_trade_no : String
+  pay_time : DateTime
+  pay_status : Int
+  pay_failed_reason : String
+  * transfer_status : Int
+  expire_time : DateTime
+  expire_time_at : BigInt
+  * status : Int
+  deleted_at : Int
+  * modify_time : DateTime
+  create_time : DateTime
+}
+
+entity "resource" as resource {
++ id [PK] : Int 
+--
+  # ticket_id : [FK] ticket
+  name : String
+  resource_url : String
+  order : Int
+  create_by : String
+  create_time : String
+  update_by : String
+  update_time : String
+  status : Int
+  remark : String
+}
+
+' Relations
+collection }o--o| ticket: ticket_id
+tr_order }o--|| collection: collection_id
+tr_order }o--|| ticket: ticket_id
+resource }o--|| ticket: ticket_id
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml tr_order
+skinparam linetype ortho
+entity "collection" as collection {
++ id [PK] : Int 
+--
+  collection_name : String
+  # ticket_id : [FK] ticket
+  * ticket_type : Int
+  chain_type : Int
+  * casting_uid : Int
+  casting_name : String
+  daop_casting_id : Int
+  daop_casting_address : String
+  # owner_uid : [FK] user
+  owner_name : String
+  daop_user_id : Int
+  daop_user_address : String
+  * license_id : Int
+  shared_uid : Int
+  * price : Int
+  trade_time : DateTime
+  daop_collection_id : Int
+  out_ticket_id : Int
+  token_id : String
+  * collection_hash : String
+  mint_tx_id : String
+  mint_chain_status : Int
+  mint_chain_time : DateTime
+  transfer_tx_id : String
+  transfer_chain_status : Int
+  transfer_chain_time : DateTime
+  checkeIn_tx_id : String
+  checkIn_chain_status : Int
+  checkIn_chain_time : DateTime
+  credential : String
+  last_credential : String
+  sale_status : Int
+  available_status : Int
+  available_time : DateTime
+  available_expire_time : DateTime
+  * check_code : String
+  authorization_id : Int
+  * authorization_code : String
+  modify_time : DateTime
+  create_time : DateTime
+  dar_status : Int
+  old_status : Int
+  certificate_url : String
+  block_number : Int
+}
+
+entity "ticket" as ticket {
++ id [PK] : Int 
+--
+  * ticket_name : String
+  ticket_type : Int
+  chain_type : Int
+  cover_uri : String
+  content_uri : String
+  td_files : Json
+  creator_uid : Int
+  creator_name : String
+  creator_avatar : String
+  daop_user_id : Int
+  daop_user_address : String
+  publisher_id : Int
+  publisher_name : String
+  publisher_logo : String
+  * amount : Int
+  sold_amount : Int
+  sku_balance : Int
+  * price : Int
+  available_time : DateTime
+  expire_time : DateTime
+  sale_begin_time : DateTime
+  sale_end_time : DateTime
+  description : String
+  usage : String
+  sale_status : Int
+  available_status : Int
+  authorization_id : Int
+  * authorization_code : String
+  did_credential : String
+  copyright_credential : String
+  authorization_credential : String
+  chain_txid : String
+  chain_block_number : Int
+  chain_time : Int
+  chain_status : Int
+  is_sale : Int
+  modify_time : DateTime
+  create_time : DateTime
+  registration_id : Int
+  send_status : Int
+}
+
+entity "tr_order" as tr_order {
++ order_id [PK] : Int 
+--
+  * order_no : [UK] String
+  # ticket_id : [FK] ticket
+  ticket_did_credential : String
+  ticket_copyright_credential : String
+  ticket_authorization_credential : String
+  # collection_id : [FK] collection
+  collection_name : String
+  * collection_hash : String
+  collection_credential : String
+  collection_last_credential : String
+  collection_token_id : String
+  daop_collection_id : Int
+  * seller_uid : Int
+  seller_daop_user_id : Int
+  seller_daop_user_address : String
+  seller_mobile : String
+  * buyer_uid : Int
+  buyer_realname : String
+  buyer_mobile : String
+  buyer_nickname : String
+  buyer_daop_user_id : Int
+  buyer_daop_user_address : String
+  shared_uid : Int
+  * price : Int
+  amount : Int
+  check_in : Int
+  pay_channel : String
+  pay_scene : String
+  pay_trade_no : String
+  pay_time : DateTime
+  pay_status : Int
+  pay_failed_reason : String
+  * transfer_status : Int
+  expire_time : DateTime
+  expire_time_at : BigInt
+  * status : Int
+  deleted_at : Int
+  * modify_time : DateTime
+  create_time : DateTime
+}
+
+entity "tr_transfer" as tr_transfer {
++ id [PK] : Int 
+--
+  # collection_id : [FK] collection
+  collection_credential : String
+  collection_last_credential : String
+  * token_id : String
+  # order_id : [FK] tr_order
+  * transfer_uid : Int
+  transfer_name : String
+  * receiver_uid : Int
+  receiver_name : String
+  receiver_mobile : String
+  tx_id : String
+  chain_status : Int
+  chain_time : DateTime
+  transfer_type : Int
+  modify_time : DateTime
+  create_time : DateTime
+  block_number : Int
+}
+
+' Relations
+collection }o--o| ticket: ticket_id
+tr_order }o--|| collection: collection_id
+tr_order }o--|| ticket: ticket_id
+tr_transfer }o--|| collection: collection_id
+tr_transfer }o--|| tr_order: order_id
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml tr_pay_notification
+skinparam linetype ortho
+entity "tr_pay_notification" as tr_pay_notification {
++ id [PK] : Int 
+--
+  pay_channel : String
+  order_no : String
+  data : Json
+  modify_time : DateTime
+  create_time : DateTime
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml tr_transfer
+skinparam linetype ortho
+entity "collection" as collection {
++ id [PK] : Int 
+--
+  collection_name : String
+  # ticket_id : [FK] ticket
+  * ticket_type : Int
+  chain_type : Int
+  * casting_uid : Int
+  casting_name : String
+  daop_casting_id : Int
+  daop_casting_address : String
+  # owner_uid : [FK] user
+  owner_name : String
+  daop_user_id : Int
+  daop_user_address : String
+  * license_id : Int
+  shared_uid : Int
+  * price : Int
+  trade_time : DateTime
+  daop_collection_id : Int
+  out_ticket_id : Int
+  token_id : String
+  * collection_hash : String
+  mint_tx_id : String
+  mint_chain_status : Int
+  mint_chain_time : DateTime
+  transfer_tx_id : String
+  transfer_chain_status : Int
+  transfer_chain_time : DateTime
+  checkeIn_tx_id : String
+  checkIn_chain_status : Int
+  checkIn_chain_time : DateTime
+  credential : String
+  last_credential : String
+  sale_status : Int
+  available_status : Int
+  available_time : DateTime
+  available_expire_time : DateTime
+  * check_code : String
+  authorization_id : Int
+  * authorization_code : String
+  modify_time : DateTime
+  create_time : DateTime
+  dar_status : Int
+  old_status : Int
+  certificate_url : String
+  block_number : Int
+}
+
+entity "tr_order" as tr_order {
++ order_id [PK] : Int 
+--
+  * order_no : [UK] String
+  # ticket_id : [FK] ticket
+  ticket_did_credential : String
+  ticket_copyright_credential : String
+  ticket_authorization_credential : String
+  # collection_id : [FK] collection
+  collection_name : String
+  * collection_hash : String
+  collection_credential : String
+  collection_last_credential : String
+  collection_token_id : String
+  daop_collection_id : Int
+  * seller_uid : Int
+  seller_daop_user_id : Int
+  seller_daop_user_address : String
+  seller_mobile : String
+  * buyer_uid : Int
+  buyer_realname : String
+  buyer_mobile : String
+  buyer_nickname : String
+  buyer_daop_user_id : Int
+  buyer_daop_user_address : String
+  shared_uid : Int
+  * price : Int
+  amount : Int
+  check_in : Int
+  pay_channel : String
+  pay_scene : String
+  pay_trade_no : String
+  pay_time : DateTime
+  pay_status : Int
+  pay_failed_reason : String
+  * transfer_status : Int
+  expire_time : DateTime
+  expire_time_at : BigInt
+  * status : Int
+  deleted_at : Int
+  * modify_time : DateTime
+  create_time : DateTime
+}
+
+entity "tr_transfer" as tr_transfer {
++ id [PK] : Int 
+--
+  # collection_id : [FK] collection
+  collection_credential : String
+  collection_last_credential : String
+  * token_id : String
+  # order_id : [FK] tr_order
+  * transfer_uid : Int
+  transfer_name : String
+  * receiver_uid : Int
+  receiver_name : String
+  receiver_mobile : String
+  tx_id : String
+  chain_status : Int
+  chain_time : DateTime
+  transfer_type : Int
+  modify_time : DateTime
+  create_time : DateTime
+  block_number : Int
+}
+
+' Relations
+tr_order }o--|| collection: collection_id
+tr_transfer }o--|| collection: collection_id
+tr_transfer }o--|| tr_order: order_id
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml user
+skinparam linetype ortho
+entity "collection" as collection {
++ id [PK] : Int 
+--
+  collection_name : String
+  # ticket_id : [FK] ticket
+  * ticket_type : Int
+  chain_type : Int
+  * casting_uid : Int
+  casting_name : String
+  daop_casting_id : Int
+  daop_casting_address : String
+  # owner_uid : [FK] user
+  owner_name : String
+  daop_user_id : Int
+  daop_user_address : String
+  * license_id : Int
+  shared_uid : Int
+  * price : Int
+  trade_time : DateTime
+  daop_collection_id : Int
+  out_ticket_id : Int
+  token_id : String
+  * collection_hash : String
+  mint_tx_id : String
+  mint_chain_status : Int
+  mint_chain_time : DateTime
+  transfer_tx_id : String
+  transfer_chain_status : Int
+  transfer_chain_time : DateTime
+  checkeIn_tx_id : String
+  checkIn_chain_status : Int
+  checkIn_chain_time : DateTime
+  credential : String
+  last_credential : String
+  sale_status : Int
+  available_status : Int
+  available_time : DateTime
+  available_expire_time : DateTime
+  * check_code : String
+  authorization_id : Int
+  * authorization_code : String
+  modify_time : DateTime
+  create_time : DateTime
+  dar_status : Int
+  old_status : Int
+  certificate_url : String
+  block_number : Int
+}
+
+entity "user" as user {
++ id [PK] : Int 
+--
+  wx_mini_openid : String
+  union_id : String
+  mobile : String
+  country_code : String
+  full_mobile : String
+  nick_name : String
+  avatar : String
+  description : String
+  gendar : Int
+  user_type : Int
+  is_publisher : Int
+  id_card_no : String
+  realname : String
+  realname_state : Int
+  realname_time : DateTime
+  daop_account_id : Int
+  daop_user_id : Int
+  daop_user_address : String
+  tags : String
+  available_status : Int
+  create_time : DateTime
+  modify_time : DateTime
+}
+
+' Relations
+collection }o--|| user: owner_uid
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml declarex
+skinparam linetype ortho
+entity "declarex" as declarex {
++ id [PK] : Int 
+--
+  name : String
+  content : String
+  types : Int
+  create_by : String
+  create_time : String
+  update_by : String
+  update_time : String
+  status : Int
+  remark : String
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml resource
+skinparam linetype ortho
+entity "ticket" as ticket {
++ id [PK] : Int 
+--
+  * ticket_name : String
+  ticket_type : Int
+  chain_type : Int
+  cover_uri : String
+  content_uri : String
+  td_files : Json
+  creator_uid : Int
+  creator_name : String
+  creator_avatar : String
+  daop_user_id : Int
+  daop_user_address : String
+  publisher_id : Int
+  publisher_name : String
+  publisher_logo : String
+  * amount : Int
+  sold_amount : Int
+  sku_balance : Int
+  * price : Int
+  available_time : DateTime
+  expire_time : DateTime
+  sale_begin_time : DateTime
+  sale_end_time : DateTime
+  description : String
+  usage : String
+  sale_status : Int
+  available_status : Int
+  authorization_id : Int
+  * authorization_code : String
+  did_credential : String
+  copyright_credential : String
+  authorization_credential : String
+  chain_txid : String
+  chain_block_number : Int
+  chain_time : Int
+  chain_status : Int
+  is_sale : Int
+  modify_time : DateTime
+  create_time : DateTime
+  registration_id : Int
+  send_status : Int
+}
+
+entity "resource" as resource {
++ id [PK] : Int 
+--
+  # ticket_id : [FK] ticket
+  name : String
+  resource_url : String
+  order : Int
+  create_by : String
+  create_time : String
+  update_by : String
+  update_time : String
+  status : Int
+  remark : String
+}
+
+' Relations
+resource }o--|| ticket: ticket_id
+' ManyToMany Relations
+' enum relations
+@enduml

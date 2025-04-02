@@ -1,14 +1,34 @@
 generator client {
   provider        = "prisma-client-js"
-  output          = "./common/prisma-client"
+  output          = "../common/prisma-client"
   previewFeatures = ["views", "relationJoins", "prismaSchemaFolder", "omitApi"]
-  //这里可以指定平台引擎，native就是当前系统， 如果需要其他系统的自行添加，或者到目标系统执行npx prisma generate
-  binaryTargets   = ["native"]
-  // binaryTargets   = ["native", "windows", "linux-musl","debian-openssl-3.0.x","darwin","darwin-arm64"]
+  binaryTargets   = ["native", "linux-musl"]
 }
 
 datasource db {
   provider     = "mysql"
   url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  // url          = "mysql://root:123456@172.22.135.106:3306/carole-admin?charset=utf8mb4"
+  relationMode = "foreignKeys"  // 从数据库中提取表关联关系并生成到prisma文件
+// relationMode = "prisma"  // 不会从数据库中提取表关联关系，需要自己在prisma文件中编写
 }
+
+// 生成ER图
+generator erd_plantuml {
+  provider                   = "prisma-generator-plantuml-erd"
+  output                     = "../doc/ER-D.puml"
+  exportPerTables            = true
+  showUniqueKeyLabel         = true
+  isShowForeignKeyOnRelation = true
+  markdownOutput             = "./doc/ER-D.md"
+  markdownIncludeERD         = true
+  // asciidocOutput       = "./example-tables.adoc"
+  // asciidocIncludeERD      = true
+}
+// 数据库的注释输出到配置文件
+// generator comments {
+//   provider = "prisma-db-comments-generator"
+//   targets  = ["table", "column"]
+//   includeEnumInFieldComment = true
+//   // ignorePattern = "_view$"     // 排除特定的表
+// }

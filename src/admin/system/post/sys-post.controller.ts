@@ -1,34 +1,11 @@
-import {
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  ParseIntPipe,
-  Post,
-  Put,
-  Query,
-  Req,
-  Res,
-} from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query, Req, Res } from '@nestjs/common';
 import { ParseIntArrayPipe } from '@/common/pipe/parse-int-array.pipe';
 import Result from '@/common/result/Result';
-import {
-  ApiBearerAuth,
-  ApiBody,
-  ApiOperation,
-  ApiQuery,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { RequirePermission } from '@/common/decorator/require-premission.decorator';
 import { nowDateTime } from '@/common/utils';
 import { PostService } from './service/sys-post.service';
-import {
-  QuerySysPostDto,
-  CreateSysPostDto,
-  UpdateSysPostDto,
-} from './dto/index';
+import { QuerySysPostDto, CreateSysPostDto, UpdateSysPostDto } from './dto/index';
 import { Response } from 'express';
 import { SysPost } from '@prismaClient';
 import { TableDataInfo } from '@/common/domain/TableDataInfo';
@@ -54,9 +31,7 @@ export class SysPostController {
   @ApiResponse({ type: Result<SysPost> })
   @RequirePermission('system:post:query')
   @Get('/:postId')
-  async getPost(
-    @Param('postId', ParseIntPipe) postId: number,
-  ): Promise<Result<SysPost>> {
+  async getPost(@Param('postId', ParseIntPipe) postId: number): Promise<Result<SysPost>> {
     return Result.ok(await this.postService.selectPostByPostId(postId));
   }
   @ApiOperation({ summary: '新增岗位信息表' })
@@ -64,10 +39,7 @@ export class SysPostController {
   @ApiBody({ type: CreateSysPostDto })
   @RequirePermission('system:post:add')
   @Post('/')
-  async addPost(
-    @Body() sysPost: CreateSysPostDto,
-    @Req() req,
-  ): Promise<Result<SysPost>> {
+  async addPost(@Body() sysPost: CreateSysPostDto, @Req() req): Promise<Result<SysPost>> {
     sysPost = {
       ...sysPost,
       createTime: nowDateTime(),
@@ -82,10 +54,7 @@ export class SysPostController {
   @ApiBody({ type: UpdateSysPostDto })
   @RequirePermission('system:post:edit')
   @Put('/')
-  async updatePost(
-    @Body() sysPost: UpdateSysPostDto,
-    @Req() req,
-  ): Promise<Result<any>> {
+  async updatePost(@Body() sysPost: UpdateSysPostDto, @Req() req): Promise<Result<any>> {
     sysPost = {
       ...sysPost,
       updateTime: nowDateTime(),
@@ -98,9 +67,7 @@ export class SysPostController {
   @ApiResponse({ type: Result<any> })
   @RequirePermission('system:post:remove')
   @Delete('/:ids')
-  async delPost(
-    @Param('ids', ParseIntArrayPipe) postIds: number[],
-  ): Promise<Result<any>> {
+  async delPost(@Param('ids', ParseIntArrayPipe) postIds: number[]): Promise<Result<any>> {
     const { count } = await this.postService.deletePostByPostIds(postIds);
     return Result.toAjax(count);
   }

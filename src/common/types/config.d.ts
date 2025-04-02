@@ -73,4 +73,10 @@ interface config {
       };
     };
   };
+  qiniu: {
+    accessKey: string;
+    secretKey: string;
+    bucket: string;
+    domain: string;
+  };
 }

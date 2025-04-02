@@ -2,11 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/common/service/prisma/prisma.service';
 import { Response } from 'express';
 import { exportTable } from '@/common/utils';
-import {
-  QuerySysConfigDto,
-  CreateSysConfigDto,
-  UpdateSysConfigDto,
-} from '../dto/index';
+import { QuerySysConfigDto, CreateSysConfigDto, UpdateSysConfigDto } from '../dto/index';
 import { Prisma } from '@prismaClient';
 import { isNotEmpty } from 'class-validator';
 import { redisUtils } from '@/common/utils/redisUtils';
@@ -26,10 +22,7 @@ export class ConfigService {
       },
     });
     for (const item of configData) {
-      await redisUtils.set(
-        Constants.SYS_CONFIG_KEY + item.configKey,
-        item.configValue,
-      );
+      await redisUtils.set(Constants.SYS_CONFIG_KEY + item.configKey, item.configValue);
     }
     console.log('系统配置信息初始化完成！');
   }
@@ -70,10 +63,7 @@ export class ConfigService {
         equals: q.createBy,
       };
     }
-    if (
-      isNotEmpty(q.params.beginCreateTime) &&
-      isNotEmpty(q.params.endCreateTime)
-    ) {
+    if (isNotEmpty(q.params.beginCreateTime) && isNotEmpty(q.params.endCreateTime)) {
       queryCondition.createTime = {
         lte: q.params.endCreateTime,
         gte: q.params.beginCreateTime,
@@ -84,10 +74,7 @@ export class ConfigService {
         equals: q.updateBy,
       };
     }
-    if (
-      isNotEmpty(q.params.beginUpdateTime) &&
-      isNotEmpty(q.params.endUpdateTime)
-    ) {
+    if (isNotEmpty(q.params.beginUpdateTime) && isNotEmpty(q.params.endUpdateTime)) {
       queryCondition.updateTime = {
         lte: q.params.endUpdateTime,
         gte: q.params.beginUpdateTime,
@@ -121,10 +108,7 @@ export class ConfigService {
     const d = await this.prisma.sysConfig.create({
       data: sysConfig,
     });
-    await redisUtils.set(
-      Constants.SYS_CONFIG_KEY + sysConfig.configKey,
-      sysConfig.configValue,
-    );
+    await redisUtils.set(Constants.SYS_CONFIG_KEY + sysConfig.configKey, sysConfig.configValue);
     return d;
   }
   /**@description 修改参数配置 */
@@ -139,10 +123,7 @@ export class ConfigService {
       },
       data: sysConfig,
     });
-    await redisUtils.set(
-      Constants.SYS_CONFIG_KEY + sysConfig.configKey,
-      sysConfig.configValue,
-    );
+    await redisUtils.set(Constants.SYS_CONFIG_KEY + sysConfig.configKey, sysConfig.configValue);
     return true;
   }
   /**@description 批量删除参数配置 */
@@ -169,21 +150,8 @@ export class ConfigService {
   }
   /**@description 导出参数配置所有数据为xlsx */
   async exportConfig(res: Response) {
-    const title = [
-      '参数主键',
-      '参数名称',
-      '参数键名',
-      '参数键值',
-      '系统内置',
-      '创建者',
-      '创建时间',
-      '更新者',
-      '更新时间',
-      '备注',
-    ];
-    const data = (await this.prisma.sysConfig.findMany()).map((v) =>
-      Object.values(v),
-    );
+    const title = ['参数主键', '参数名称', '参数键名', '参数键值', '系统内置', '创建者', '创建时间', '更新者', '更新时间', '备注'];
+    const data = (await this.prisma.sysConfig.findMany()).map((v) => Object.values(v));
     data.unshift(title);
     exportTable(data, res);
   }

@@ -14,8 +14,7 @@ dayjs1.tz.setDefault('Asia/Shanghai');
 export const dayjs = dayjs1.tz;
 export const nowDate = () => dayjs().format('YYYY-MM-DD');
 export const nowDateTime = () => dayjs().format('YYYY-MM-DD HH:mm:ss');
-export const formatDate = (date: Date, format = 'YYYY-MM-DD HH:mm:ss') =>
-  date && dayjs(date).format(format);
+export const formatDate = (date: Date, format = 'YYYY-MM-DD HH:mm:ss') => date && dayjs(date).format(format);
 export const localDate = () => new Date(new Date().toLocaleString());
 // 创建文件夹
 export const createFolder = function (folder) {
@@ -33,11 +32,7 @@ export const createFolder = function (folder) {
  * @param iteratorFn - 异步任务的迭代函数，接受一个参数并返回一个Promise。
  * @returns - 返回一个Promise，当所有异步任务完成时解析为一个包含所有结果的数组。
  */
-export function asyncPool(
-  poolLimit: number,
-  iterable: any[],
-  iteratorFn: Function,
-): Promise<any[]> {
+export function asyncPool(poolLimit: number, iterable: any[], iteratorFn: Function): Promise<any[]> {
   let i = 0;
   const ret = [];
   const executing = new Set();
@@ -87,6 +82,7 @@ export function tree(arr = [], id = 'id', pid = 'pid', rootValue = 0) {
 export function toPascalCase(str) {
   return str[0].toUpperCase() + camelCase(str).slice(1);
 }
+
 /** @description 导出表为xlsx文件返回 */
 export async function exportTable(data: any[][], res: Response) {
   const buffer = build([
@@ -96,10 +92,7 @@ export async function exportTable(data: any[][], res: Response) {
       options: {},
     },
   ]);
-  res.setHeader(
-    'Content-Type',
-    'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-  );
+  res.setHeader('Content-Type', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
   res.setHeader('Content-Disposition', 'attachment;filename=sheet.xlsx');
   res.setHeader('Access-Control-Expose-Headers', 'Content-Disposition');
   res.setHeader('X-Content-Type-Options', 'nosniff');

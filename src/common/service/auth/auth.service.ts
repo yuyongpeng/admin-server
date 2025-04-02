@@ -6,7 +6,7 @@ import * as bowser from 'bowser';
 import { HmacSHA256 } from 'crypto-js';
 import { PrismaService } from '@/common/service/prisma/prisma.service';
 import * as libqqwry from 'lib-qqwry';
-import { SysLogininfor, SysRole, SysUser } from '@prismaClient';
+import { SysLogininfor, SysRole, SysUser } from '@/common/prisma-client';
 import * as jwt from 'jsonwebtoken';
 import { Constants } from '@/common/constant/Constants';
 import { Request } from 'express';
@@ -52,16 +52,13 @@ export class AuthService {
       try {
         const d = bowser.parse(agent);
         loginInfo.os = d.os.name + ' ' + d.os.versionName;
-        loginInfo.browser =
-          d.browser.name + ' ' + d.browser?.version?.split('.')?.[0] || '';
+        loginInfo.browser = d.browser.name + ' ' + d.browser?.version?.split('.')?.[0] || '';
       } catch (e) {}
     }
     //登录验证码是否开启
     {
       //是否开启验证码
-      const enable = await redisUtils.get(
-        Constants.SYS_CONFIG_KEY + 'sys.account.captchaEnabled',
-      );
+      const enable = await redisUtils.get(Constants.SYS_CONFIG_KEY + 'sys.account.captchaEnabled');
       const captchaEnabled: boolean = enable == '' ? true : enable === 'true';
       if (captchaEnabled) {
         let code = loginBody.code;
@@ -81,9 +78,7 @@ export class AuthService {
     }
     //ip是否被封禁
     {
-      const ips = (
-        await redisUtils.get(Constants.SYS_CONFIG_KEY + 'sys.login.blackIPList')
-      ).split(',');
+      const ips = (await redisUtils.get(Constants.SYS_CONFIG_KEY + 'sys.login.blackIPList')).split(',');
       if (ips.length) {
         const isBlack = ips.some((v) => v === req.ip);
         if (isBlack) {
@@ -151,11 +146,7 @@ export class AuthService {
       };
       const token = this.createToken(cacheInfo);
       //存储token
-      await redisUtils.set(
-        Constants.LOGIN_TOKEN_KEY + cacheInfo.tokenId,
-        JSON.stringify(cacheInfo),
-        Config.token.expiresIn,
-      );
+      await redisUtils.set(Constants.LOGIN_TOKEN_KEY + cacheInfo.tokenId, JSON.stringify(cacheInfo), Config.token.expiresIn);
       //初始化用户信息存到reids缓存包括权限。。
       await this.refreshUserInfo(user.userId);
       return token;
@@ -165,11 +156,7 @@ export class AuthService {
   //获取用户信息，包括权限和角色
   async getUserInfo(userId: number) {
     //如果redis有用户信息直接返回
-    const userinfo: SysUser & { roles: string[]; permissions: string[] } =
-      JSON.parse(
-        (await redisUtils.get(Constants.LOGIN_CACHE_TOKEN_KEY + userId)) ||
-          null,
-      );
+    const userinfo: SysUser & { roles: string[]; permissions: string[] } = JSON.parse((await redisUtils.get(Constants.LOGIN_CACHE_TOKEN_KEY + userId)) || null);
     if (userinfo !== null) return userinfo;
     const user = await this.prisma.sysUser.findFirst({
       where: {
@@ -194,11 +181,7 @@ export class AuthService {
       permissions,
     };
     //存储到redis缓存，下次直接拿
-    await redisUtils.set(
-      Constants.LOGIN_CACHE_TOKEN_KEY + userId,
-      JSON.stringify(result),
-      Config.token.expiresIn,
-    );
+    await redisUtils.set(Constants.LOGIN_CACHE_TOKEN_KEY + userId, JSON.stringify(result), Config.token.expiresIn);
     return result;
   }
   //强制刷新redis缓存的用户信息
@@ -226,11 +209,7 @@ export class AuthService {
       permissions,
     };
     //存储到redis缓存，下次直接拿
-    await redisUtils.set(
-      Constants.LOGIN_CACHE_TOKEN_KEY + userId,
-      JSON.stringify(result),
-      Config.token.expiresIn,
-    );
+    await redisUtils.set(Constants.LOGIN_CACHE_TOKEN_KEY + userId, JSON.stringify(result), Config.token.expiresIn);
     return true;
   }
 
@@ -275,8 +254,7 @@ export class AuthService {
     if (roles.some((v) => v.dataScope === '1')) return ['*:*:*'];
     const perms: string[] = [];
     for (let i = 0; i < roles.length; i++) {
-      const r: { perms: string }[] = await this.prisma
-        .$queryRaw`select distinct a.perms from sys_menu a 
+      const r: { perms: string }[] = await this.prisma.$queryRaw`select distinct a.perms from sys_menu a 
       left join sys_role_menu b on a.menu_id = b.menu_id
       where a.status = '1' and b.role_id = ${roles[i].roleId}`;
       for (const item of r) {
@@ -301,10 +279,7 @@ export class AuthService {
   async hasPermission(permission: string, userId: number) {
     const AllPermission = '*:*:*';
     const permissions = await this.getUserPermissions(userId);
-    return (
-      permissions.includes(AllPermission) ||
-      permissions.some((v) => v === permission)
-    );
+    return permissions.includes(AllPermission) || permissions.some((v) => v === permission);
   }
 
   //检测用户是否属于某个角色
@@ -315,9 +290,7 @@ export class AuthService {
 
   //检测用户是否管理员
   async isAdmin(userId: number) {
-    return (
-      userId === 1 || (await this.getUserPermissions(userId)).includes('*:*:*')
-    );
+    return userId === 1 || (await this.getUserPermissions(userId)).includes('*:*:*');
   }
 
   /**@desc 菜单树形化 */

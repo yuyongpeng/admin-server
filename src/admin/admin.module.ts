@@ -25,6 +25,17 @@ import { UserService } from './system/user/service/sys-user.service';
 import { SysNoticeController } from './system/notice/sys-notice.controller';
 import { SysLogininforController } from './system/logininfor/sys-logininfor.controller';
 import { monitorController } from './system/monitor/monitor.controller';
+import { TicketService } from './fangcunjiyi/ticket/service/ticket.service';
+import { SysTicketController } from './fangcunjiyi/ticket/ticket.controller';
+
+import {ResourceService} from '@/admin/fangcunjiyi/resource/service/resource.service';
+import {ResourceController} from '@/admin/fangcunjiyi/resource/resource.controller';
+import {DeclareService} from '@/admin/fangcunjiyi/declare/service/declare.service';
+import {DeclareController} from '@/admin/fangcunjiyi/declare/declare.controller';
+
+import {CollectionService} from '@/admin/fangcunjiyi/collection/service/collection.service';
+import {CollectionController} from '@/admin/fangcunjiyi/collection/collection.controller';
+
 @Module({
   imports: [],
   controllers: [
@@ -43,6 +54,10 @@ import { monitorController } from './system/monitor/monitor.controller';
     SysNoticeController,
     SysLogininforController,
     monitorController,
+    SysTicketController,
+    ResourceController,
+    DeclareController,
+    CollectionController,
   ],
   providers: [
     DeptService,
@@ -58,6 +73,10 @@ import { monitorController } from './system/monitor/monitor.controller';
     SysDictTypeService,
     UserService,
     LogininforService,
+    TicketService,
+    ResourceService,
+    DeclareService,
+    CollectionService,
   ],
 })
 export class AdminModule {}

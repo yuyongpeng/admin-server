@@ -8,6 +8,7 @@ import { Constants } from '@/common/constant/Constants';
 let saveDir = Config.upload.path;
 const avatarDir = path.join(saveDir, 'avatar');
 saveDir = path.join(saveDir, 'files');
+
 function createStorage(dir = saveDir) {
   return multer.diskStorage({
     destination: function (req, file, cb) {
@@ -17,12 +18,7 @@ function createStorage(dir = saveDir) {
     },
     filename: function (req, file, cb) {
       // 将保存文件名设置为  uuid + 文件原始名
-      cb(
-        null,
-        +new Date() +
-          randomUUID().replaceAll('-', '') +
-          (path.extname(file.originalname) || '.jpg'),
-      );
+      cb(null, +new Date() + randomUUID().replaceAll('-', '') + (path.extname(file.originalname) || '.jpg'));
     },
   });
 }
@@ -46,31 +42,13 @@ export const uploadAvatarConfig = {
 };
 function checkImgFileType(file, cb) {
   const filetypes = ['jpeg', 'jpg', 'png', 'gif'];
-  const mimetypes = [
-    'image/png',
-    'image/jpeg',
-    'image/jpg',
-    'image/webp',
-    'image/gif',
-  ];
-  const extname = filetypes.includes(
-    file.originalname.split('.').pop().toLowerCase(),
-  );
+  const mimetypes = ['image/png', 'image/jpeg', 'image/jpg', 'image/webp', 'image/gif'];
+  const extname = filetypes.includes(file.originalname.split('.').pop().toLowerCase());
   const mimetype = mimetypes.includes(file.mimetype);
   if (mimetype && extname) {
     return cb(null, true);
   } else {
-    const err = new multer.MulterError(
-      <
-        | 'LIMIT_PART_COUNT'
-        | 'LIMIT_FILE_SIZE'
-        | 'LIMIT_FILE_COUNT'
-        | 'LIMIT_FIELD_KEY'
-        | 'LIMIT_FIELD_VALUE'
-        | 'LIMIT_FIELD_COUNT'
-        | 'LIMIT_UNEXPECTED_FILE'
-      >'TypeError',
-    );
+    const err = new multer.MulterError(<'LIMIT_PART_COUNT' | 'LIMIT_FILE_SIZE' | 'LIMIT_FILE_COUNT' | 'LIMIT_FIELD_KEY' | 'LIMIT_FIELD_VALUE' | 'LIMIT_FIELD_COUNT' | 'LIMIT_UNEXPECTED_FILE'>'TypeError');
     err.message = '只允许上传图片类型！';
     cb(err, false);
   }
@@ -123,24 +101,12 @@ function checkFileType(file, cb) {
     'application/pdf',
     'application/x-zip-compressed',
   ];
-  const extname = fileTypes.includes(
-    file.originalname.split('.').pop().toLowerCase(),
-  );
+  const extname = fileTypes.includes(file.originalname.split('.').pop().toLowerCase());
   const mimetype = mimeTypes.some((v) => file.mimetype.includes(v));
   if (mimetype && extname) {
     return cb(null, true);
   } else {
-    const err = new multer.MulterError(
-      <
-        | 'LIMIT_PART_COUNT'
-        | 'LIMIT_FILE_SIZE'
-        | 'LIMIT_FILE_COUNT'
-        | 'LIMIT_FIELD_KEY'
-        | 'LIMIT_FIELD_VALUE'
-        | 'LIMIT_FIELD_COUNT'
-        | 'LIMIT_UNEXPECTED_FILE'
-      >'error',
-    );
+    const err = new multer.MulterError(<'LIMIT_PART_COUNT' | 'LIMIT_FILE_SIZE' | 'LIMIT_FILE_COUNT' | 'LIMIT_FIELD_KEY' | 'LIMIT_FIELD_VALUE' | 'LIMIT_FIELD_COUNT' | 'LIMIT_UNEXPECTED_FILE'>'error');
     err.message = '不允许上传的文件！';
     cb(err, false);
   }

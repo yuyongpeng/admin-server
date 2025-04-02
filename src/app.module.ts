@@ -1,10 +1,4 @@
-import {
-  MiddlewareConsumer,
-  Module,
-  NestModule,
-  ValidationError,
-  ValidationPipe,
-} from '@nestjs/common';
+import { MiddlewareConsumer, Module, NestModule, ValidationError, ValidationPipe } from '@nestjs/common';
 import { AdminModule } from './admin/admin.module';
 import { CommonModule } from './common/common.module';
 import { AuthMiddleware } from './common/middleware/auth/auth.middleware';
@@ -120,9 +114,7 @@ import { ThrottlerStorageRedisService } from 'nestjs-throttler-storage-redis';
           whitelist: true, // 自动剔除非 DTO 类中的字段
           // forbidNonWhitelisted: true, // 如果存在非 DTO 类中的字段则抛出异常
           exceptionFactory: (errors: ValidationError[]) => {
-            const messages = errors
-              .map((error) => Object.values(error.constraints))
-              .flat();
+            const messages = errors.map((error) => Object.values(error.constraints)).flat();
             return new ValidationException(`参数验证失败: ${messages[0]}`);
             // return new ValidationException(`参数验证失败: ${messages.join(', ')}`);
           },
@@ -137,9 +129,6 @@ import { ThrottlerStorageRedisService } from 'nestjs-throttler-storage-redis';
 })
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(AuthMiddleware)
-      .exclude('/login', '/logout', '/captchaImage')
-      .forRoutes('*');
+    consumer.apply(AuthMiddleware).exclude('/login', '/logout', '/captchaImage').forRoutes('*');
   }
 }

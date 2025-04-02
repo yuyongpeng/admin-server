@@ -39,7 +39,7 @@ export const Config: config = {
   },
   prisma: {
     //是否显示执行的sql指令
-    logEnable: false,
+    logEnable: true,
     //显示那些日志
     log: ['query', 'info', 'warn', 'error'],
   },
@@ -116,10 +116,16 @@ export const Config: config = {
       },
     },
   },
+  qiniu: {
+    accessKey: process.env.qiniuAccessKey,
+    secretKey: process.env.qiniuSecretKey,
+    bucket: process.env.qiniuBucket,
+    domain: process.env.qiniuDomain,
+  },
 };
 import { redisUtils } from './common/utils/redisUtils';
 
 //获取系统参数配置
-export async function getSysConfig(key: string): Promise<string|null>  { 
+export async function getSysConfig(key: string): Promise<string | null> {
   return redisUtils.get(Constants.SYS_CONFIG_KEY + key);
 }

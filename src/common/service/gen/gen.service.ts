@@ -1,6 +1,6 @@
 import { BadRequestException, Injectable } from '@nestjs/common';
 import { PrismaService } from '@/common/service/prisma/prisma.service';
-import { Prisma } from '@prismaClient';
+import { Prisma } from '@/common/prisma-client';
 import { queryGenTableDto } from '@/admin/gen/dto/queryGenTableDto';
 import { isNotEmpty } from 'class-validator';
 import { queryDataBaseDto } from '@/admin/gen/dto/queryDatabaseDto';
@@ -79,18 +79,14 @@ export class GenService {
       limit ${(q.pageNum - 1) * q.pageSize},${q.pageSize}
       	`;
     return {
-      rows: await this.prisma
-        .$queryRawUnsafe<Table[]>(sql, ...params)
-        .then((res) =>
-          res.map((v) => ({
-            ...v,
-            createTime: formatDate(v.createTime),
-            updateTime: formatDate(v.updateTime),
-          })),
-        ),
-      total: Number(
-        (await this.prisma.$queryRawUnsafe(sqlCount, ...params))[0]?.total,
+      rows: await this.prisma.$queryRawUnsafe<Table[]>(sql, ...params).then((res) =>
+        res.map((v) => ({
+          ...v,
+          createTime: formatDate(v.createTime),
+          updateTime: formatDate(v.updateTime),
+        })),
       ),
+      total: Number((await this.prisma.$queryRawUnsafe(sqlCount, ...params))[0]?.total),
     };
   }
 
@@ -151,21 +147,13 @@ export class GenService {
     if (!tableNames?.length) return null;
     return this.prisma.$transaction(async (prisma) => {
       //获取需要插入的表基本信息
-      const tableList: Table[] =
-        await this.selectDbTableListByNames(tableNames);
+      const tableList: Table[] = await this.selectDbTableListByNames(tableNames);
       for (const table of tableList) {
         const tableName = table.tableName;
         //初始化table表信息，并插入数据库
         let tableInfo = {
           ...table,
-          className: Config.gen.autoRemovePre
-            ? toPascalCase(
-                tableName.replace(
-                  new RegExp(Config.gen.tablePrefix.join('|')),
-                  '',
-                ),
-              )
-            : toPascalCase(tableName), //实体类名称
+          className: Config.gen.autoRemovePre ? toPascalCase(tableName.replace(new RegExp(Config.gen.tablePrefix.join('|')), '')) : toPascalCase(tableName), //实体类名称
           packageName: Config.gen.packageName, //生成模块路径
           moduleName: Config.gen.moduleName, //子系统名，模块下的目录
           businessName: tableName.slice(tableName.lastIndexOf('_') + 1), //生成业务名
@@ -240,80 +228,29 @@ export class GenService {
           modelName1: toPascalCase(info.tableName),
           filename: kebabCase(info.tableName),
           entityName: camelCase(info.className),
-          columnNames: JSON.stringify(
-            info.columns?.map((v) => v.columnComment || v.columnName) || [],
-          ),
+          columnNames: JSON.stringify(info.columns?.map((v) => v.columnComment || v.columnName) || []),
           hasCreateTime: info.columnsKey.includes('create_time'),
           hasUpdateTime: info.columnsKey.includes('update_time'),
-          hasBaseDomain:
-            info.columnsKey.includes('create_time') &&
-            info.columnsKey.includes('update_time') &&
-            info.columnsKey.includes('create_by') &&
-            info.columnsKey.includes('update_by'),
+          hasBaseDomain: info.columnsKey.includes('create_time') && info.columnsKey.includes('update_time') && info.columnsKey.includes('create_by') && info.columnsKey.includes('update_by'),
         };
-        const servicePath = join(
-          __dirname,
-          `temp/node/${data.packageName}/${data.moduleName}/${data.businessName}/service/${data.filename}.service.ts`,
-        );
-        const controllerPath = join(
-          __dirname,
-          `temp/node/${data.packageName}/${data.moduleName}/${data.businessName}/${data.filename}.controller.ts`,
-        );
-        const dtoPath = join(
-          __dirname,
-          `temp/node/${data.packageName}/${data.moduleName}/${data.businessName}/dto/index.ts`,
-        );
-        const vuePath = join(
-          __dirname,
-          `temp/vue/views/${data.moduleName}/${data.businessName}/index.vue`,
-        );
-        const apiPath = join(
-          __dirname,
-          `temp/vue/api/${data.moduleName}/${data.businessName}.js`,
-        );
+        const servicePath = join(__dirname, `temp/node/${data.packageName}/${data.moduleName}/${data.businessName}/service/${data.filename}.service.ts`);
+        const controllerPath = join(__dirname, `temp/node/${data.packageName}/${data.moduleName}/${data.businessName}/${data.filename}.controller.ts`);
+        const dtoPath = join(__dirname, `temp/node/${data.packageName}/${data.moduleName}/${data.businessName}/dto/index.ts`);
+        const vuePath = join(__dirname, `temp/vue/views/${data.moduleName}/${data.businessName}/index.vue`);
+        const apiPath = join(__dirname, `temp/vue/api/${data.moduleName}/${data.businessName}.js`);
         const sqlPath = join(__dirname, `temp/${data.businessName}.sql`);
-        const vueTemplateStr = readFileSync(
-          join(__dirname, './gen-template/vue/index.vue.vm'),
-        ).toString();
-        const jsTemplateStr = readFileSync(
-          join(__dirname, './gen-template/js/api.js.vm'),
-        ).toString();
-        const sqlTemplateStr = readFileSync(
-          join(__dirname, './gen-template/sql/sql.vm'),
-        ).toString();
-        const serviceTemplateStr = readFileSync(
-          join(__dirname, './gen-template/node/service.ts.vm'),
-        ).toString();
-        const dtoTemplateStr = readFileSync(
-          join(__dirname, './gen-template/node/dto.ts.vm'),
-        ).toString();
-        const controllerTemplateStr = readFileSync(
-          join(__dirname, './gen-template/node/controller.ts.vm'),
-        ).toString();
-        const vueData = Velocity.render(vueTemplateStr, data).replace(
-          /(\n\s*\n)+/g,
-          '\n',
-        );
-        const apiData = Velocity.render(jsTemplateStr, data).replace(
-          /(\n\s*\n)+/g,
-          '\n',
-        );
-        const sqlData = Velocity.render(sqlTemplateStr, data).replace(
-          /(\n\s*\n)+/g,
-          '\n',
-        );
-        const serviceData = Velocity.render(serviceTemplateStr, data).replace(
-          /(\n\s*\n)+/g,
-          '\n',
-        );
-        const dtoData = Velocity.render(dtoTemplateStr, data).replace(
-          /(\n\s*\n)+/g,
-          '\n',
-        );
-        const controllerData = Velocity.render(
-          controllerTemplateStr,
-          data,
-        ).replace(/(\n\s*\n)+/g, '\n');
+        const vueTemplateStr = readFileSync(join(__dirname, './gen-template/vue/index.vue.vm')).toString();
+        const jsTemplateStr = readFileSync(join(__dirname, './gen-template/js/api.js.vm')).toString();
+        const sqlTemplateStr = readFileSync(join(__dirname, './gen-template/sql/sql.vm')).toString();
+        const serviceTemplateStr = readFileSync(join(__dirname, './gen-template/node/service.ts.vm')).toString();
+        const dtoTemplateStr = readFileSync(join(__dirname, './gen-template/node/dto.ts.vm')).toString();
+        const controllerTemplateStr = readFileSync(join(__dirname, './gen-template/node/controller.ts.vm')).toString();
+        const vueData = Velocity.render(vueTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
+        const apiData = Velocity.render(jsTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
+        const sqlData = Velocity.render(sqlTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
+        const serviceData = Velocity.render(serviceTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
+        const dtoData = Velocity.render(dtoTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
+        const controllerData = Velocity.render(controllerTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
         writeFile(servicePath, serviceData);
         writeFile(controllerPath, controllerData);
         writeFile(dtoPath, dtoData);
@@ -364,59 +301,23 @@ export class GenService {
       modelName1: toPascalCase(info.tableName),
       filename: kebabCase(info.tableName),
       entityName: camelCase(info.className),
-      columnNames: JSON.stringify(
-        info.columns?.map((v) => v.columnComment || v.columnName) || [],
-      ),
+      columnNames: JSON.stringify(info.columns?.map((v) => v.columnComment || v.columnName) || []),
       hasCreateTime: info.columnsKey.includes('create_time'),
       hasUpdateTime: info.columnsKey.includes('update_time'),
-      hasBaseDomain:
-        info.columnsKey.includes('create_time') &&
-        info.columnsKey.includes('update_time') &&
-        info.columnsKey.includes('create_by') &&
-        info.columnsKey.includes('update_by'),
+      hasBaseDomain: info.columnsKey.includes('create_time') && info.columnsKey.includes('update_time') && info.columnsKey.includes('create_by') && info.columnsKey.includes('update_by'),
     };
-    const vueTemplateStr = readFileSync(
-      join(__dirname, './gen-template/vue/index.vue.vm'),
-    ).toString();
-    const jsTemplateStr = readFileSync(
-      join(__dirname, './gen-template/js/api.js.vm'),
-    ).toString();
-    const sqlTemplateStr = readFileSync(
-      join(__dirname, './gen-template/sql/sql.vm'),
-    ).toString();
-    const serviceTemplateStr = readFileSync(
-      join(__dirname, './gen-template/node/service.ts.vm'),
-    ).toString();
-    const dtoTemplateStr = readFileSync(
-      join(__dirname, './gen-template/node/dto.ts.vm'),
-    ).toString();
-    const controllerTemplateStr = readFileSync(
-      join(__dirname, './gen-template/node/controller.ts.vm'),
-    ).toString();
-    const vueData = Velocity.render(vueTemplateStr, data).replace(
-      /(\n\s*\n)+/g,
-      '\n',
-    );
-    const apiData = Velocity.render(jsTemplateStr, data).replace(
-      /(\n\s*\n)+/g,
-      '\n',
-    );
-    const sqlData = Velocity.render(sqlTemplateStr, data).replace(
-      /(\n\s*\n)+/g,
-      '\n',
-    );
-    const serviceData = Velocity.render(serviceTemplateStr, data).replace(
-      /(\n\s*\n)+/g,
-      '\n',
-    );
-    const dtoData = Velocity.render(dtoTemplateStr, data).replace(
-      /(\n\s*\n)+/g,
-      '\n',
-    );
-    const controllerData = Velocity.render(controllerTemplateStr, data).replace(
-      /(\n\s*\n)+/g,
-      '\n',
-    );
+    const vueTemplateStr = readFileSync(join(__dirname, './gen-template/vue/index.vue.vm')).toString();
+    const jsTemplateStr = readFileSync(join(__dirname, './gen-template/js/api.js.vm')).toString();
+    const sqlTemplateStr = readFileSync(join(__dirname, './gen-template/sql/sql.vm')).toString();
+    const serviceTemplateStr = readFileSync(join(__dirname, './gen-template/node/service.ts.vm')).toString();
+    const dtoTemplateStr = readFileSync(join(__dirname, './gen-template/node/dto.ts.vm')).toString();
+    const controllerTemplateStr = readFileSync(join(__dirname, './gen-template/node/controller.ts.vm')).toString();
+    const vueData = Velocity.render(vueTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
+    const apiData = Velocity.render(jsTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
+    const sqlData = Velocity.render(sqlTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
+    const serviceData = Velocity.render(serviceTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
+    const dtoData = Velocity.render(dtoTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
+    const controllerData = Velocity.render(controllerTemplateStr, data).replace(/(\n\s*\n)+/g, '\n');
     return {
       'gen-template/node/service.ts.vm': serviceData,
       'gen-template/node/controller.ts.vm': controllerData,
@@ -430,14 +331,12 @@ export class GenService {
   async synchDb(tableName: string) {
     return this.prisma.$transaction(async (prisma) => {
       const table = await this.getTableInfoByTableName(tableName);
-      if (!table)
-        throw new BadRequestException('同步数据失败，原表结构不存在！');
+      if (!table) throw new BadRequestException('同步数据失败，原表结构不存在！');
       //已在数据库中的表列信息
       const tableColumns = table.tableColumns;
       //更改后的数据库表的列信息
       const columns: any = await this.getTableColumnInfo(tableName);
-      if (!columns || !columns?.length)
-        throw new BadRequestException('同步数据失败，原表结构不存在！');
+      if (!columns || !columns?.length) throw new BadRequestException('同步数据失败，原表结构不存在！');
       //存储之前就存在已生成的列信息
       const tableColumnMap = {};
       for (const v of tableColumns) {
@@ -475,9 +374,7 @@ export class GenService {
       }
       //删除已经不存在表中数据
       if (tableColumns.length > 0) {
-        const delColumns = tableColumns
-          .filter((v) => !columns.some((z) => z.columnName === v.columnName))
-          .map((v) => v.columnId);
+        const delColumns = tableColumns.filter((v) => !columns.some((z) => z.columnName === v.columnName)).map((v) => v.columnId);
         if (delColumns.length > 0) {
           await prisma.genTableColumn.deleteMany({
             where: {
@@ -506,9 +403,7 @@ export class GenService {
   //根据表名获取表的字段信息以及注释
   async getTableColumnInfo(tableName: string) {
     if (!tableName) return null;
-    return this.prisma.$queryRaw<
-      ColumnInfo[]
-    >`select column_name as columnName, (case when (is_nullable = 'no' && column_key != 'PRI')  
+    return this.prisma.$queryRaw<ColumnInfo[]>`select column_name as columnName, (case when (is_nullable = 'no' && column_key != 'PRI')  
     then '1' else '0' end) as isRequired, (case when column_key = 'PRI' then '1' else '0' end) as isPk,
      ordinal_position as sort, column_comment as columnComment, (case when extra = 'auto_increment' then '1' else '0' end) 
     as isIncrement, column_type as columnType from information_schema.columns  
@@ -543,21 +438,15 @@ export class GenService {
             query: Boolean(+v.isQuery),
           };
         });
-        const pkColumn =
-          tableColumns?.find(
-            (v: any) => Boolean(+v.isPk) && Boolean(+v.isIncrement),
-          ) || tableColumns[0];
+        const pkColumn = tableColumns?.find((v: any) => Boolean(+v.isPk) && Boolean(+v.isIncrement)) || tableColumns[0];
         const data = {
           ...tableInfo,
           dicts: dicts.join(','),
           dictsNoSymbol: dicts.join(',').replace(/"|'/g, ''),
           columns: tableColumns,
           tableColumns,
-          columnsKey: JSON.stringify(
-            tableInfo?.tableColumns?.map((v) => v.columnName),
-          ),
-          parentMenuId:
-            +JSON.parse(tableInfo.options || null)?.parentMenuId || 0,
+          columnsKey: JSON.stringify(tableInfo?.tableColumns?.map((v) => v.columnName)),
+          parentMenuId: +JSON.parse(tableInfo.options || null)?.parentMenuId || 0,
           BusinessName: upperFirst(tableInfo.businessName),
           pkColumn,
           pkName: pkColumn.javaField,
@@ -595,21 +484,15 @@ export class GenService {
             query: Boolean(+v.isQuery),
           };
         });
-        const pkColumn =
-          tableColumns?.find(
-            (v: any) => Boolean(+v.isPk) && Boolean(+v.isIncrement),
-          ) || tableColumns[0];
+        const pkColumn = tableColumns?.find((v: any) => Boolean(+v.isPk) && Boolean(+v.isIncrement)) || tableColumns[0];
         const data = {
           ...tableInfo,
           dicts: dicts.join(','),
           dictsNoSymbol: dicts.join(',').replace(/"|'/g, ''),
           columns: tableColumns,
           tableColumns,
-          columnsKey: JSON.stringify(
-            tableInfo?.tableColumns?.map((v) => v.columnName),
-          ),
-          parentMenuId:
-            +JSON.parse(tableInfo.options || null)?.parentMenuId || 0,
+          columnsKey: JSON.stringify(tableInfo?.tableColumns?.map((v) => v.columnName)),
+          parentMenuId: +JSON.parse(tableInfo.options || null)?.parentMenuId || 0,
           BusinessName: upperFirst(tableInfo.businessName),
           pkColumn,
           pkName: pkColumn.javaField,
@@ -636,8 +519,7 @@ export class GenService {
       column.htmlType = GenConstants.HTML_TEXTAREA;
     } else if (arraysContains(GenConstants.COLUMNTYPE_STR, dataType)) {
       const len = getColumnLength(dataType);
-      column.htmlType =
-        len >= 500 ? GenConstants.HTML_TEXTAREA : GenConstants.HTML_INPUT;
+      column.htmlType = len >= 500 ? GenConstants.HTML_TEXTAREA : GenConstants.HTML_INPUT;
     } else if (arraysContains(GenConstants.COLUMNTYPE_TIME, dataType)) {
       column.javaType = GenConstants.TYPE_DATE;
       column.htmlType = GenConstants.HTML_DATETIME;
@@ -650,25 +532,15 @@ export class GenService {
     column.isInsert = GenConstants.REQUIRE;
 
     // 编辑字段
-    if (
-      !arraysContains(GenConstants.COLUMNNAME_NOT_EDIT, columnName) &&
-      column.isPk != 1
-    ) {
+    if (!arraysContains(GenConstants.COLUMNNAME_NOT_EDIT, columnName) && column.isPk != 1) {
       column.isEdit = GenConstants.REQUIRE;
     }
     // 列表字段
-    if (
-      !arraysContains(GenConstants.COLUMNNAME_NOT_LIST, columnName) &&
-      column.isPk != 1
-    ) {
+    if (!arraysContains(GenConstants.COLUMNNAME_NOT_LIST, columnName) && column.isPk != 1) {
       column.isList = GenConstants.REQUIRE;
     }
     // 查询字段
-    if (
-      !arraysContains(GenConstants.COLUMNNAME_NOT_QUERY, columnName) &&
-      column.isPk != 1 &&
-      column.htmlType != GenConstants.HTML_TEXTAREA
-    ) {
+    if (!arraysContains(GenConstants.COLUMNNAME_NOT_QUERY, columnName) && column.isPk != 1 && column.htmlType != GenConstants.HTML_TEXTAREA) {
       column.isQuery = GenConstants.REQUIRE;
     }
     const lowerColumnName = toLower(columnName);
@@ -681,18 +553,11 @@ export class GenService {
       column.htmlType = GenConstants.HTML_RADIO;
     }
     // 类型&性别字段设置下拉框
-    else if (
-      lowerColumnName.includes('type') ||
-      lowerColumnName.includes('sex')
-    ) {
+    else if (lowerColumnName.includes('type') || lowerColumnName.includes('sex')) {
       column.htmlType = GenConstants.HTML_SELECT;
     }
     //日期字段设置日期控件
-    else if (
-      lowerColumnName.includes('time') ||
-      lowerColumnName.includes('_date') ||
-      lowerColumnName.includes('Date')
-    ) {
+    else if (lowerColumnName.includes('time') || lowerColumnName.includes('_date') || lowerColumnName.includes('Date')) {
       column.htmlType = GenConstants.HTML_DATETIME;
       column.queryType = GenConstants.QUERY_BETWEEN;
     }
@@ -716,11 +581,7 @@ export class GenService {
     return this.prisma.$transaction(async (db) => {
       const res = [];
       for (const sql of sqls) {
-        res.push(
-          sql.includes('select')
-            ? await db.$queryRawUnsafe(sql)
-            : await db.$executeRawUnsafe(sql),
-        );
+        res.push(sql.includes('select') ? await db.$queryRawUnsafe(sql) : await db.$executeRawUnsafe(sql));
       }
       return res;
     });

@@ -289,17 +289,321 @@ model SysUserRole {
   @@map("sys_user_role")
 }
 
+model collection {
+  id                    Int           @id @default(autoincrement()) @db.UnsignedInt
+  collection_name       String?       @db.VarChar(256)
+  ticket_id             Int?          @default(0) @db.UnsignedInt
+  ticket_type           Int           @default(1) @db.UnsignedTinyInt
+  chain_type            Int?          @default(1) @db.UnsignedTinyInt
+  casting_uid           Int           @default(0) @db.UnsignedInt
+  casting_name          String?       @db.VarChar(64)
+  daop_casting_id       Int?          @default(0) @db.UnsignedInt
+  daop_casting_address  String?       @db.VarChar(128)
+  owner_uid             Int           @default(0) @db.UnsignedInt
+  owner_name            String?       @db.VarChar(64)
+  daop_user_id          Int?          @default(0) @db.UnsignedInt
+  daop_user_address     String?       @db.VarChar(128)
+  license_id            Int           @default(0)
+  shared_uid            Int?          @default(0) @db.UnsignedInt
+  price                 Int           @default(0) @db.UnsignedInt
+  trade_time            DateTime?     @db.Timestamp(0)
+  daop_collection_id    Int?          @default(0) @db.UnsignedInt
+  out_ticket_id         Int?          @default(0) @db.UnsignedInt
+  token_id              String?       @db.VarChar(128)
+  collection_hash       String        @db.VarChar(128)
+  mint_tx_id            String?       @db.VarChar(128)
+  mint_chain_status     Int?          @default(0) @db.UnsignedTinyInt
+  mint_chain_time       DateTime?     @db.Timestamp(0)
+  transfer_tx_id        String?       @db.VarChar(128)
+  transfer_chain_status Int?          @default(0) @db.UnsignedTinyInt
+  transfer_chain_time   DateTime?     @db.Timestamp(0)
+  checkeIn_tx_id        String?       @db.VarChar(128)
+  checkIn_chain_status  Int?          @default(0) @db.UnsignedTinyInt
+  checkIn_chain_time    DateTime?     @db.Timestamp(0)
+  credential            String?       @db.VarChar(128)
+  last_credential       String?       @db.VarChar(128)
+  sale_status           Int?          @default(0) @db.UnsignedTinyInt
+  available_status      Int?          @default(1) @db.UnsignedTinyInt
+  available_time        DateTime?     @db.Timestamp(0)
+  available_expire_time DateTime?     @db.Timestamp(0)
+  check_code            String        @db.VarChar(128)
+  authorization_id      Int?          @default(0) @db.UnsignedInt
+  authorization_code    String        @db.VarChar(32)
+  modify_time           DateTime?     @default(now()) @db.Timestamp(0)
+  create_time           DateTime?     @default(now()) @db.Timestamp(0)
+  dar_status            Int?          @db.UnsignedTinyInt
+  old_status            Int?          @default(0) @db.UnsignedTinyInt
+  certificate_url       String?       @default("-") @db.VarChar(255)
+  block_number          Int?          @default(0) @db.UnsignedInt
+  ticket                ticket?       @relation(fields: [ticket_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "ref_ticket")
+  user                  user          @relation(fields: [owner_uid], references: [id], onUpdate: Restrict, map: "ref_user")
+  tr_order              tr_order[]
+  tr_transfer           tr_transfer[]
+
+  @@index([license_id], map: "idx_license_id")
+  @@index([mint_tx_id], map: "idx_mint_tx_id")
+  @@index([owner_uid], map: "idx_owner_uid")
+  @@index([shared_uid], map: "idx_share_uid")
+  @@index([ticket_id], map: "idx_ticket_id")
+  @@index([token_id], map: "idx_token_id")
+  @@index([transfer_tx_id], map: "idx_transfer_tx_id")
+}
+
+model init_mobile {
+  id     Int     @id @default(autoincrement()) @db.UnsignedInt
+  mobile String? @db.VarChar(16)
+}
+
+model platform_token {
+  id          Int       @id @default(autoincrement()) @db.UnsignedInt
+  platform    String?   @db.VarChar(32)
+  mobile      String?   @db.VarChar(32)
+  token       String?   @db.VarChar(512)
+  expire_in   BigInt?
+  create_time DateTime? @default(now()) @db.Timestamp(0)
+}
+
+model publisher {
+  id             Int     @id @default(autoincrement()) @db.UnsignedInt
+  publisher_name String? @db.VarChar(512)
+  industry       String? @db.VarChar(512)
+  logo           String? @db.VarChar(512)
+}
+
+model ticket {
+  id                       Int          @id @default(autoincrement()) @db.UnsignedInt
+  ticket_name              String       @db.VarChar(128)
+  ticket_type              Int?         @default(1) @db.UnsignedTinyInt
+  chain_type               Int?         @default(1) @db.UnsignedTinyInt
+  cover_uri                String?      @db.VarChar(512)
+  content_uri              String?      @db.VarChar(512)
+  td_files                 Json?
+  creator_uid              Int?         @default(0) @db.UnsignedInt
+  creator_name             String?      @db.VarChar(128)
+  creator_avatar           String?      @db.VarChar(128)
+  daop_user_id             Int?         @default(0) @db.UnsignedInt
+  daop_user_address        String?      @db.VarChar(128)
+  publisher_id             Int?         @default(0) @db.UnsignedInt
+  publisher_name           String?      @db.VarChar(128)
+  publisher_logo           String?      @db.VarChar(128)
+  amount                   Int          @default(1) @db.UnsignedInt
+  sold_amount              Int?         @default(0) @db.UnsignedInt
+  sku_balance              Int?         @default(0) @db.UnsignedInt
+  price                    Int          @default(0) @db.UnsignedInt
+  available_time           DateTime?    @db.Timestamp(0)
+  expire_time              DateTime?    @db.Timestamp(0)
+  sale_begin_time          DateTime?    @db.Timestamp(0)
+  sale_end_time            DateTime?    @db.Timestamp(0)
+  description              String?      @db.Text
+  usage                    String?      @db.Text
+  sale_status              Int?         @default(1) @db.UnsignedTinyInt
+  available_status         Int?         @default(1) @db.UnsignedTinyInt
+  authorization_id         Int?         @default(0) @db.UnsignedInt
+  authorization_code       String       @db.VarChar(32)
+  did_credential           String?      @default("") @db.VarChar(128)
+  copyright_credential     String?      @db.VarChar(128)
+  authorization_credential String?      @db.VarChar(128)
+  chain_txid               String?      @db.VarChar(128)
+  chain_block_number       Int?         @default(0) @db.UnsignedInt
+  chain_time               Int?         @default(0) @db.UnsignedInt
+  chain_status             Int?         @default(0) @db.UnsignedTinyInt
+  is_sale                  Int?         @default(1) @db.UnsignedTinyInt
+  modify_time              DateTime?    @default(now()) @db.Timestamp(0)
+  create_time              DateTime?    @default(now()) @db.Timestamp(0)
+  registration_id          Int?         @default(0) @db.UnsignedInt
+  send_status              Int?         @default(0) @db.UnsignedTinyInt
+  collection               collection[]
+  tr_order                 tr_order[]
+  resource                 resource[]
+
+  @@index([available_time], map: "idx_begin_time")
+  @@index([creator_uid], map: "idx_creator_uid")
+  @@index([expire_time], map: "idx_expire_time")
+}
+
+model tr_order {
+  order_id                        Int           @id @default(autoincrement()) @db.UnsignedInt
+  order_no                        String        @unique(map: "uniq_key_0") @default("") @db.VarChar(64)
+  ticket_id                       Int           @db.UnsignedInt
+  ticket_did_credential           String?       @default("") @db.VarChar(128)
+  ticket_copyright_credential     String?       @db.VarChar(128)
+  ticket_authorization_credential String?       @db.VarChar(128)
+  collection_id                   Int           @default(0) @db.UnsignedInt
+  collection_name                 String?       @db.VarChar(256)
+  collection_hash                 String        @db.VarChar(128)
+  collection_credential           String?       @db.VarChar(128)
+  collection_last_credential      String?       @db.VarChar(128)
+  collection_token_id             String?       @db.VarChar(128)
+  daop_collection_id              Int?          @default(0) @db.UnsignedInt
+  seller_uid                      Int           @default(0) @db.UnsignedInt
+  seller_daop_user_id             Int?          @default(0) @db.UnsignedInt
+  seller_daop_user_address        String?       @db.VarChar(128)
+  seller_mobile                   String?       @db.VarChar(20)
+  buyer_uid                       Int           @default(0) @db.UnsignedInt
+  buyer_realname                  String?       @db.VarChar(64)
+  buyer_mobile                    String?       @db.VarChar(20)
+  buyer_nickname                  String?       @db.VarChar(60)
+  buyer_daop_user_id              Int?          @default(0) @db.UnsignedInt
+  buyer_daop_user_address         String?       @db.VarChar(128)
+  shared_uid                      Int?          @default(0) @db.UnsignedInt
+  price                           Int           @default(0) @db.UnsignedInt
+  amount                          Int?          @default(1) @db.UnsignedInt
+  check_in                        Int?          @default(0) @db.UnsignedTinyInt
+  pay_channel                     String?       @db.Char(32)
+  pay_scene                       String?       @db.Char(32)
+  pay_trade_no                    String?       @db.VarChar(128)
+  pay_time                        DateTime?     @db.Timestamp(0)
+  pay_status                      Int?          @default(0) @db.UnsignedTinyInt
+  pay_failed_reason               String?       @db.VarChar(512)
+  transfer_status                 Int           @default(0) @db.UnsignedTinyInt
+  expire_time                     DateTime?     @db.Timestamp(0)
+  expire_time_at                  BigInt?       @default(0) @db.UnsignedBigInt
+  status                          Int           @default(1) @db.UnsignedTinyInt
+  deleted_at                      Int?          @default(0) @db.UnsignedInt
+  modify_time                     DateTime      @default(now()) @db.Timestamp(0)
+  create_time                     DateTime?     @default(now()) @db.Timestamp(0)
+  collection                      collection    @relation(fields: [collection_id], references: [id], onUpdate: Restrict, map: "ref_collection_order")
+  ticket                          ticket        @relation(fields: [ticket_id], references: [id], onUpdate: Restrict, map: "ref_ticket_order")
+  tr_transfer                     tr_transfer[]
+
+  @@index([buyer_uid], map: "idx_buyer_uid")
+  @@index([collection_id], map: "idx_collection_id")
+  @@index([seller_uid], map: "idx_seller_uid")
+  @@index([ticket_id], map: "idx_ticket_id")
+}
+
+model tr_pay_notification {
+  id          Int       @id @default(autoincrement()) @db.UnsignedInt
+  pay_channel String?   @db.VarChar(32)
+  order_no    String?   @db.VarChar(64)
+  data        Json?
+  modify_time DateTime? @default(now()) @db.Timestamp(0)
+  create_time DateTime? @default(now()) @db.Timestamp(0)
+
+  @@index([order_no], map: "idx_order_no")
+}
+
+model tr_transfer {
+  id                         Int        @id @default(autoincrement()) @db.UnsignedInt
+  collection_id              Int        @default(0) @db.UnsignedInt
+  collection_credential      String?    @db.VarChar(128)
+  collection_last_credential String?    @db.VarChar(128)
+  token_id                   String     @db.VarChar(128)
+  order_id                   Int        @default(0) @db.UnsignedInt
+  transfer_uid               Int        @default(0) @db.UnsignedInt
+  transfer_name              String?    @db.VarChar(128)
+  receiver_uid               Int        @default(0) @db.UnsignedInt
+  receiver_name              String?    @db.VarChar(128)
+  receiver_mobile            String?    @db.VarChar(11)
+  tx_id                      String?    @db.VarChar(128)
+  chain_status               Int?       @default(0) @db.UnsignedTinyInt
+  chain_time                 DateTime?  @db.Timestamp(0)
+  transfer_type              Int?       @default(1) @db.UnsignedTinyInt
+  modify_time                DateTime?  @default(now()) @db.Timestamp(0)
+  create_time                DateTime?  @default(now()) @db.Timestamp(0)
+  block_number               Int?       @default(0) @db.UnsignedInt
+  collection                 collection @relation(fields: [collection_id], references: [id], onUpdate: Restrict, map: "ref_collection_transfer")
+  tr_order                   tr_order   @relation(fields: [order_id], references: [order_id], onUpdate: Restrict, map: "ref_order_transfer")
+
+  @@index([collection_id], map: "idx_collection_id")
+  @@index([order_id], map: "idx_order_id")
+  @@index([receiver_uid], map: "idx_receiver_uid")
+  @@index([token_id], map: "idx_token_id")
+  @@index([transfer_uid], map: "idx_transfer_uid")
+}
+
+model user {
+  id                Int          @id @default(autoincrement()) @db.UnsignedInt
+  wx_mini_openid    String?      @db.VarChar(128)
+  union_id          String?      @db.VarChar(128)
+  mobile            String?      @db.VarChar(20)
+  country_code      String?      @db.VarChar(16)
+  full_mobile       String?      @db.VarChar(32)
+  nick_name         String?      @db.VarChar(60)
+  avatar            String?      @db.VarChar(500)
+  description       String?      @db.VarChar(1000)
+  gendar            Int?         @default(0) @db.UnsignedTinyInt
+  user_type         Int?         @default(1) @db.UnsignedTinyInt
+  is_publisher      Int?         @default(2) @db.UnsignedTinyInt
+  id_card_no        String?      @db.VarChar(64)
+  realname          String?      @db.VarChar(64)
+  realname_state    Int?         @default(0) @db.UnsignedTinyInt
+  realname_time     DateTime?    @db.Timestamp(0)
+  daop_account_id   Int?         @default(0) @db.UnsignedInt
+  daop_user_id      Int?         @default(0) @db.UnsignedInt
+  daop_user_address String?      @db.VarChar(66)
+  tags              String?      @db.VarChar(255)
+  available_status  Int?         @default(1) @db.UnsignedTinyInt
+  create_time       DateTime?    @default(now()) @db.Timestamp(0)
+  modify_time       DateTime?    @default(now()) @db.Timestamp(0)
+  collection        collection[]
+
+  @@unique([union_id, wx_mini_openid], map: "uni_wx_user")
+  @@index([daop_user_address], map: "idx_address")
+  @@index([mobile], map: "idx_mobile")
+  @@index([wx_mini_openid], map: "idx_wx_gopenid")
+}
+
+model declarex {
+  id          Int     @id @default(autoincrement())
+  name        String? @db.VarChar(255)
+  content     String? @db.VarChar(1000)
+  types       Int?    @db.TinyInt
+  create_by   String? @db.VarChar(255)
+  create_time String? @db.VarChar(64)
+  update_by   String? @db.VarChar(255)
+  update_time String? @db.VarChar(64)
+  status      Int?    @default(0) @db.TinyInt
+  remark      String? @db.VarChar(255)
+}
+
+model resource {
+  id           Int     @id @default(autoincrement()) @db.UnsignedInt
+  ticket_id    Int
+  ticket       ticket? @relation(fields: [ticket_id], references: [id])
+  name         String? @db.VarChar(255)
+  resource_url String? @db.VarChar(255)
+  order        Int?
+  create_by    String? @db.VarChar(25)
+  create_time  String? @db.VarChar(255)
+  update_by    String? @db.VarChar(25)
+  update_time  String? @db.VarChar(255)
+  status       Int?    @default(0) @db.TinyInt
+  remark       String? @db.VarChar(255)
+}
+
 generator client {
   provider        = "prisma-client-js"
-  output          = "./common/prisma-client"
+  output          = "../common/prisma-client"
   previewFeatures = ["views", "relationJoins", "prismaSchemaFolder", "omitApi"]
-  //这里可以指定平台引擎，native就是当前系统， 如果需要其他系统的自行添加，或者到目标系统执行npx prisma generate
-  binaryTargets   = ["native"]
-  // binaryTargets   = ["native", "windows", "linux-musl","debian-openssl-3.0.x","darwin","darwin-arm64"]
+  binaryTargets   = ["native", "linux-musl"]
 }
 
 datasource db {
   provider     = "mysql"
   url          = env("DATABASE_URL")
-  relationMode = "prisma"
+  // url          = "mysql://root:123456@172.22.135.106:3306/carole-admin?charset=utf8mb4"
+  relationMode = "foreignKeys" // 从数据库中提取表关联关系并生成到prisma文件
+  // relationMode = "prisma"  // 不会从数据库中提取表关联关系，需要自己在prisma文件中编写
 }
+
+// 生成ER图
+generator erd_plantuml {
+  provider                   = "prisma-generator-plantuml-erd"
+  output                     = "../doc/ER-D.puml"
+  exportPerTables            = true
+  showUniqueKeyLabel         = true
+  isShowForeignKeyOnRelation = true
+  markdownOutput             = "./doc/ER-D.md"
+  markdownIncludeERD         = true
+  // asciidocOutput       = "./example-tables.adoc"
+  // asciidocIncludeERD      = true
+}
+
+// 数据库的注释输出到配置文件
+// generator comments {
+//   provider = "prisma-db-comments-generator"
+//   targets  = ["table", "column"]
+//   includeEnumInFieldComment = true
+//   // ignorePattern = "_view$"     // 排除特定的表
+// }
