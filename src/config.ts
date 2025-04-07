@@ -4,11 +4,14 @@ import { config } from './common/types/config';
 import { Constants } from './common/constant/Constants';
 
 let envFile = '.env';
+
 switch (process.env.NODE_ENV) {
   case 'production':
     envFile = 'env.production';
+    break;
   case 'test':
     envFile = 'env.test';
+    break;
 }
 dotenv.config({ path: join(__dirname, envFile) });
 export const Config: config = {
