@@ -1,0 +1,27 @@
+{
+  // 使用 IntelliSense 了解相关属性。
+  // 悬停以查看现有属性的描述。
+  // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "debug admin-server",
+      "runtimeExecutable": "npm", // 使用npm来启动程序
+      "args": ["run", "start:dev"], // 传递给npm的参数
+
+      //   "args": ["${workspaceFolder}/src/main.ts"], // 传递给程序的参数，这里我们传递了 main.ts 的路径，这是 NestJS 应用程序的入口文件。
+      //   "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register"], // 传递给 Node.js 的运行时参数，这里我们使用了 ts-node/register 和 tsconfig-paths/register 来支持 TypeScript 和路径别名。
+
+      "skipFiles": ["<node_internals>/**"], // 指定跳过的文件，通常用于跳过Node.js内部模块。
+      "env": {
+        "NODE_ENV": "development" // 环境变量
+      },
+      "sourceMaps": true, // 以便使用源代码映射进行调试。
+      "cwd": "${workspaceRoot}", // 设置当前工作目录为项目根目录。
+      "console": "integratedTerminal", // 调试输出将显示在VSCode的集成终端中。
+      "internalConsoleOptions": "neverOpen" // 设置为 neverOpen，表示不在外部终端中打开控制台。
+    }
+  ]
+}

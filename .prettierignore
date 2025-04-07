@@ -1,0 +1,6 @@
+src/common/prisma-client
+dist
+node_modules
+doc
+devops
+assets

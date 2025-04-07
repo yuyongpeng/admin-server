@@ -5,9 +5,11 @@
   "compilerOptions": {
     "deleteOutDir": true,
     "assets": [
-      { "include": ".env","watchAssets": true },
-      { "include": "common/service/gen/gen-template","watchAssets": true },
-      { "include": "common/prisma-client","watchAssets": true }
+      { "include": ".env", "watchAssets": true },
+      { "include": ".env.production", "watchAssets": true },
+      { "include": ".env.test", "watchAssets": true },
+      { "include": "common/service/gen/gen-template", "watchAssets": true },
+      { "include": "common/prisma-client", "watchAssets": true }
     ]
   }
 }
