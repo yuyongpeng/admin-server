@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger, Res } from '@nestjs/common';
 import { PrismaService } from '@/common/service/prisma/prisma.service';
 import { Response } from 'express';
 import { exportTable, tree } from '@/common/utils';
@@ -9,6 +9,7 @@ import * as assert from 'assert';
 
 @Injectable()
 export class ResourceService {
+  private readonly logger = new Logger(ResourceService.name);
   constructor(private prisma: PrismaService) {}
 
   /**@description 分页查询部门管理列表 */

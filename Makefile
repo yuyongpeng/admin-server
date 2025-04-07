@@ -31,6 +31,12 @@ gen:
 git:
 	@ git pull
 
+pm2:
+	@ git stash
+	@ git pull
+	# @ pm2 delete 
+	@ pm2 restart ecosystem.config.yml
+
 clean:
 	rm -f $(Prisma_DIR)/genAll.prisma
 

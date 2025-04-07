@@ -1,6 +1,6 @@
 import { PrismaService } from '@/common/service/prisma/prisma.service';
 import { QueryTicketDto, CreateTicketDto } from '../dto';
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { exportTable } from '@/common/utils';
 import { query, Response } from 'express';
 import { Prisma } from '@/common/prisma-client';
@@ -9,6 +9,7 @@ import { weightSrvRecords } from 'ioredis/built/cluster/util';
 
 @Injectable()
 export class TicketService {
+  private readonly logger = new Logger(TicketService.name);
   constructor(private prisma: PrismaService) {}
 
   async selectTicketList(q: QueryTicketDto) {

@@ -1,0 +1,16 @@
+apps:
+  script: ./dist/main.js
+  name: admin-server
+  cwd: /data/apps/dstamp/admin-server/dist/
+  namespace: adm
+  log_date_format: YYYY-MM-DD HH:mm:ss
+  merge_logs: false
+  stop_exit_codes: [0]
+  # increment_var: PORT
+  instances: 1
+  env:
+    # PORT: 3000
+    # NODE_ENV: production
+    # ACCESS_TOKEN_SECRET: CqjjlVOMxcfCmDyk
+    # AES_IV: 86TVT7UF
+    # AES_KEY: LY42Yn9tf9
