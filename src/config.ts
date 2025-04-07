@@ -2,7 +2,15 @@ import * as dotenv from 'dotenv';
 import { join } from 'path';
 import { config } from './common/types/config';
 import { Constants } from './common/constant/Constants';
-dotenv.config({ path: join(__dirname, '.env') });
+
+let envFile = '.env';
+switch (process.env.NODE_ENV) {
+  case 'production':
+    envFile = 'env.production';
+  case 'test':
+    envFile = 'env.test';
+}
+dotenv.config({ path: join(__dirname, envFile) });
 export const Config: config = {
   //服务器的HTTP端口，默认为3000
   port: Number(process.env.port),
