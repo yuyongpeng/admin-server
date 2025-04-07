@@ -1,7 +1,7 @@
 apps:
   script: ./dist/main.js
   name: admin-server
-  cwd: /data/apps/dstamp/admin-server/dist/
+  cwd: /data/apps/dstamp/admin-server/
   namespace: adm
   log_date_format: YYYY-MM-DD HH:mm:ss
   merge_logs: false
