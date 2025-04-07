@@ -581,8 +581,8 @@ generator client {
 
 datasource db {
   provider     = "mysql"
-  url          = env("DATABASE_URL")
-  // url          = "mysql://root:123456@172.22.135.106:3306/carole-admin?charset=utf8mb4"
+  // url          = env("DATABASE_URL")
+  url          = "mysql://root:123456@172.22.135.106:3306/carole-admin?charset=utf8mb4"
   relationMode = "foreignKeys" // 从数据库中提取表关联关系并生成到prisma文件
   // relationMode = "prisma"  // 不会从数据库中提取表关联关系，需要自己在prisma文件中编写
 }

@@ -25,8 +25,9 @@ pull:
 
 # 生成 prisma-client
 gen:
-	@ rm -rf ./src/prisma/genAll.prisma
+	@ rm -rf ./prisma/genAll.prisma
 	@ npx prisma generate --schema=./src/prisma/
+	# @ cd src
 	
 git:
 	@ git pull
