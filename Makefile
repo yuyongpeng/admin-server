@@ -31,11 +31,17 @@ gen:
 git:
 	@ git pull
 
-pm2:
+pm2-test:
 	@ git stash
 	@ git pull
-	# @ pm2 delete 
-	@ pm2 restart ecosystem.config.yml
+	@ pm2 delete admin-server 
+	@ pm2 restart ecosystem.config.yml --env test
+
+pm2-prod:
+	@ git stash
+	@ git pull
+	@ pm2 delete admin-server
+	@ pm2 restart ecosystem.config.yml --env production
 
 clean:
 	rm -f $(Prisma_DIR)/genAll.prisma

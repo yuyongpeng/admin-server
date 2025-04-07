@@ -4,13 +4,22 @@ apps:
   cwd: /data/apps/dstamp/admin-server/
   namespace: adm
   log_date_format: YYYY-MM-DD HH:mm:ss
-  merge_logs: false
+
   stop_exit_codes: [0]
-  # increment_var: PORT
   instances: 1
+  merge_logs: true
+  out_file: '/data/apps/dstamp/logs_admin-server/admin-server.log'
+  error_file: '/data/apps/dstamp/logs_admin-server/admin-server-error.log'
+  log_file: '/data/apps/dstamp/logs_admin-server/combined.outerr.log' # 合并输出和错误日志到单个文件
+  # // 使用 PM2 的内置日志轮转功能，例如：
+  pm2-logrotate:
+    rotateDuration: '1d' # // 每天轮转一次日志文件
+    # rotateSize: '10M' # // 或者按文件大小轮转，例如10MB
+    maxRetained: 7, // 保留7天的日志文件。设置为0表示不删除旧日志。也可以设置为'1w'表示每周轮转。
+
   env_test:
     # PORT: 3000
     NODE_ENV: test
   env_product:
     # PORT: 3000
-    NODE_ENV: test
+    NODE_ENV: production
