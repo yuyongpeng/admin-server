@@ -46,13 +46,15 @@ export const Config: config = {
   //redis连接配置
   redis: {
     //主机地址
-    host: '172.22.135.106',
+    host: process.env.redisHost,
+    // host: '172.22.135.106',
     //端口
-    port: 6379,
+    port: Number(process.env.redisPort),
+    // port: 6379,
     //数据库
-    db: 5,
+    db: Number(process.env.redisDb),
     //密码
-    //password:""
+    password: process.env.redisPassword,
   },
   upload: {
     //上传文件存储基目录 请设置一个绝对路径
