@@ -7,12 +7,14 @@ let envFile = '.env';
 
 switch (process.env.NODE_ENV) {
   case 'production':
-    envFile = 'env.production';
+    envFile = '.env.production';
     break;
   case 'test':
-    envFile = 'env.test';
+    envFile = '.env.test';
     break;
 }
+console.log('envFile===' + envFile);
+console.log(join(__dirname, envFile));
 dotenv.config({ path: join(__dirname, envFile) });
 export const Config: config = {
   //服务器的HTTP端口，默认为3000
@@ -139,6 +141,7 @@ export const Config: config = {
   },
 };
 import { redisUtils } from './common/utils/redisUtils';
+import { env } from 'process';
 
 //获取系统参数配置
 export async function getSysConfig(key: string): Promise<string | null> {
