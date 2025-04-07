@@ -8,9 +8,9 @@ apps:
   stop_exit_codes: [0]
   # increment_var: PORT
   instances: 1
-  env:
+  env_test:
     # PORT: 3000
-    # NODE_ENV: production
-    # ACCESS_TOKEN_SECRET: CqjjlVOMxcfCmDyk
-    # AES_IV: 86TVT7UF
-    # AES_KEY: LY42Yn9tf9
+    NODE_ENV: test
+  env_product:
+    # PORT: 3000
+    NODE_ENV: test
