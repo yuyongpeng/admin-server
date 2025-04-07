@@ -20,12 +20,12 @@ export const Config: config = {
     //验证码过期时间
     expiresIn: 60 * 2,
   },
-  //接口限流 2分钟内同一个接口允许60次请求
+  //接口限流 1分钟内同一个接口允许6000次请求
   rateLimit: {
     //数据存储在redis or memory
     storage: 'redis',
-    ttl: 2 * 60 * 1000,
-    limit: 60,
+    ttl: 1 * 60 * 1000,
+    limit: 6000,
   },
   crypto: {
     //密码加密秘钥
@@ -47,14 +47,16 @@ export const Config: config = {
   redis: {
     //主机地址
     host: process.env.redisHost,
-    // host: '172.22.135.106',
+    // host: '127.0.0.1',
     //端口
     port: Number(process.env.redisPort),
     // port: 6379,
     //数据库
     db: Number(process.env.redisDb),
+    // db: 3,
     //密码
     password: process.env.redisPassword,
+    // password: 'BZPwrKLOI*&^%q&^gts^dn@D',
   },
   upload: {
     //上传文件存储基目录 请设置一个绝对路径
