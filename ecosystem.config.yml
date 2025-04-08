@@ -20,6 +20,6 @@ apps:
   env_test:
     # PORT: 3000
     NODE_ENV: test
-  env_product:
+  env_prod:
     # PORT: 3000
     NODE_ENV: production
