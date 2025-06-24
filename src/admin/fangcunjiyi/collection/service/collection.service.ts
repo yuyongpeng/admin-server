@@ -14,6 +14,11 @@ export class CollectionService {
   /**@description 分页查询 collection 列表 */
   async selectCollectionList(q: QueryCollectionDto) {
     const queryCondition: Prisma.collectionWhereInput = {};
+    if (isNotEmpty(q['ticket_id'])) {
+      queryCondition.ticket_id = {
+        equals: q.ticket_id,
+      };
+    }
     if (isNotEmpty(q['mint_chain_status'])) {
       queryCondition.mint_chain_status = {
         equals: q.mint_chain_status,
@@ -34,9 +39,31 @@ export class CollectionService {
         equals: q.sale_status,
       };
     }
-    return await this.prisma.collection.findMany({
-      where: queryCondition,
-    });
+    // return await this.prisma.collection.findMany({
+    //   where: queryCondition,
+    // });
+    return {
+      rows: await this.prisma.collection.findMany({
+        relationLoadStrategy: 'query',
+        skip: (q.pageNum - 1) * q.pageSize,
+        take: q.pageSize,
+        where: queryCondition,
+        orderBy: {
+          create_time: 'desc',
+        },
+        include: {
+          ticket: {
+            select: {
+              id: true,
+              ticket_name: true,
+            },
+          },
+        },
+      }),
+      total: await this.prisma.collection.count({
+        where: queryCondition,
+      }),
+    };
   }
 
   /**@description 查询 collection 详情 */

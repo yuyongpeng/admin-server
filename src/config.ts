@@ -73,7 +73,8 @@ export const Config: config = {
   },
   upload: {
     //上传文件存储基目录 请设置一个绝对路径
-    path: 'd:/uploads',
+    path: 'C:\\Users\\yuyongpeng\\Documents\\',
+    // path: 'd:/uploads',
     config: {
       img: {
         fileSize: 2 * 1024 * 1024,

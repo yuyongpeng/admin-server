@@ -6,6 +6,7 @@ import { query, Response } from 'express';
 import { Prisma } from '@/common/prisma-client';
 import { isNotEmpty } from 'class-validator';
 import { weightSrvRecords } from 'ioredis/built/cluster/util';
+import axios from 'axios';
 
 @Injectable()
 export class TicketService {
@@ -61,6 +62,29 @@ export class TicketService {
   }
 
   async addTicket(ticket: CreateTicketDto) {
+    let url: string = 'https://dstamp2-api.lightcone.cloud/ticket/create';
+    let postData = {
+      ticket_type: 2,
+      landing_uri: 'https://daop-img.stars-mine.com/image/75/65/75659ae0f579c09d85b932b5413e3462f2300861.jpg',
+      origin_uri: 'https://daop-img.stars-mine.com/image/ee/43/ee43b75c86ad8c1b31f3b1c1be21dc5e1858752e.jpg',
+      cover_uri: 'https://daop-img.stars-mine.com/image/52/05/52050a74ffb17006643281cd53838a51dc67e413.png',
+      publisher_logo: 'https://daop-img.stars-mine.com/image/15/6d/156d9408d95dff268717c6f64affe24f3d56c3c4.png',
+      ticket_name: 'test',
+      price: 0,
+      amount: 2,
+      registration_id: 10000,
+      description: 'https://daop-img.stars-mine.com/image/fc/06/fc06c5a95427d9ad22d9d08c74bb29513b8fd1b4.jpg',
+      publisher_name: 'xxxx',
+    };
+    let headers = {
+      'Content-Type': 'application/json',
+      'user-id': 15,
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZiIsIm9wZW5faWQiOiJvRGdpODRuV0szSUVOQ0RTR1ZvOWZXVUpCMnJrIiwidW5pb25faWQiOiJvdndSVDV4XzFOUGQxRGJndVA3ME40bFZKdlpzIiwidGtfdXVpZCI6Ijk2NjZkM2U4LTA1MWUtNDhlZi04YzNkLTMyMmY2MzFmM2U1NiIsImV4cCI6MTc1MDQzMzE1M30.--bJEmYdzhnmtGmvfn4EYhiTWq78RMK4AJaYeqspbNU',
+      'open-id': 'oDgi84nWK3IENCDSGVo9fWUJB2rk',
+    };
+    axios.post(url, postData, { headers: headers, timeout: 50000 });
+
     return await this.prisma.ticket.create({
       data: ticket,
     });

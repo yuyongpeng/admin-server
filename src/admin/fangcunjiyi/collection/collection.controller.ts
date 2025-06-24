@@ -8,23 +8,24 @@ import { CollectionService } from './service/collection.service';
 import { QueryCollectionDto, CreateCollectionDto, UpdateCollectionDto } from './dto/index';
 import { Response } from 'express';
 import { collection } from '@/common/prisma-client';
+import { TableDataInfo } from '@/common/domain/TableDataInfo';
 
 @ApiBearerAuth()
 @ApiTags('collection 管理')
-@Controller('system/collection')
+@Controller('fangcunjiyi/collection')
 export class CollectionController {
   constructor(private collectionService: CollectionService) {}
 
   @ApiOperation({ summary: '查询 collection 管理列表' })
-  @ApiResponse({ type: Result<collection[]> })
-  @RequirePermission('system:dept:query')
+  @ApiResponse({ type: TableDataInfo<collection> })
+  @RequirePermission('fangcunjiyi:collection:query')
   @Get('/list')
-  async listCollection(@Query() q: QueryCollectionDto): Promise<Result<collection[]>> {
-    return Result.ok(await this.collectionService.selectCollectionList(q));
+  async listCollection(@Query() q: QueryCollectionDto): Promise<TableDataInfo<collection>> {
+    return Result.TableData(await this.collectionService.selectCollectionList(q));
   }
 
   @ApiOperation({ summary: '导出 collection 管理xlsx文件' })
-  @RequirePermission('system:collection:export')
+  @RequirePermission('fangcunjiyi:collection:export')
   @Get('/export')
   async export(@Res() res: Response): Promise<void> {
     return this.collectionService.exportCollection(res);
@@ -32,7 +33,7 @@ export class CollectionController {
 
   @ApiOperation({ summary: '查询 collection 管理详细' })
   @ApiResponse({ type: Result<collection> })
-  @RequirePermission('system:collection:query')
+  @RequirePermission('fangcunjiyi:collection:query')
   @Get('/:collectionId')
   async getDept(@Param('collectionId', ParseIntPipe) deptId: number): Promise<Result<collection>> {
     return Result.ok(await this.collectionService.selectCollectionById(deptId));
@@ -41,7 +42,7 @@ export class CollectionController {
   @ApiOperation({ summary: '新增 collection 管理' })
   @ApiResponse({ type: Result<collection> })
   @ApiBody({ type: CreateCollectionDto })
-  @RequirePermission('system:collection:add')
+  @RequirePermission('fangcunjiyi:collection:add')
   @Post('/')
   async addDept(@Body() collectionDto: CreateCollectionDto, @Req() req): Promise<Result<collection>> {
     collectionDto = {
@@ -55,7 +56,7 @@ export class CollectionController {
   @ApiOperation({ summary: '修改 collection' })
   @ApiResponse({ type: Result<any> })
   @ApiBody({ type: UpdateCollectionDto })
-  @RequirePermission('system:collection:edit')
+  @RequirePermission('fangcunjiyi:collection:edit')
   @Put('/')
   async updateDept(@Body() collection: UpdateCollectionDto, @Req() req): Promise<Result<any>> {
     collection = {
@@ -68,7 +69,7 @@ export class CollectionController {
 
   @ApiOperation({ summary: '删除 collection' })
   @ApiResponse({ type: Result<any> })
-  @RequirePermission('system:collection:remove')
+  @RequirePermission('fangcunjiyi:collection:del')
   @Delete('/:ids')
   async delDept(@Param('ids', ParseIntArrayPipe) collectionIds: number[]): Promise<Result<any>> {
     const { count } = await this.collectionService.deleteCollectionByIds(collectionIds);
