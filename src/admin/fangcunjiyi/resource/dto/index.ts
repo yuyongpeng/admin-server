@@ -14,7 +14,7 @@ export class QueryResourceDto extends queryDomain {
 
   @ApiProperty({ description: 'ticket id', required: false })
   @IsOptional()
-  @IsInt({ message: 'status 必须是 int 数据' })
+  @IsInt({ message: 'ticket id 必须是 int 数据' })
   @Transform(({ value }) => Number(value))
   ticket_id?: number | null;
 

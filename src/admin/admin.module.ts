@@ -28,13 +28,16 @@ import { monitorController } from './system/monitor/monitor.controller';
 import { TicketService } from './fangcunjiyi/ticket/service/ticket.service';
 import { SysTicketController } from './fangcunjiyi/ticket/ticket.controller';
 
-import {ResourceService} from '@/admin/fangcunjiyi/resource/service/resource.service';
-import {ResourceController} from '@/admin/fangcunjiyi/resource/resource.controller';
-import {DeclareService} from '@/admin/fangcunjiyi/declare/service/declare.service';
-import {DeclareController} from '@/admin/fangcunjiyi/declare/declare.controller';
+import { ResourceService } from '@/admin/fangcunjiyi/resource/service/resource.service';
+import { ResourceController } from '@/admin/fangcunjiyi/resource/resource.controller';
+import { DeclareService } from '@/admin/fangcunjiyi/declare/service/declare.service';
+import { DeclareController } from '@/admin/fangcunjiyi/declare/declare.controller';
 
-import {CollectionService} from '@/admin/fangcunjiyi/collection/service/collection.service';
-import {CollectionController} from '@/admin/fangcunjiyi/collection/collection.controller';
+import { CollectionService } from '@/admin/fangcunjiyi/collection/service/collection.service';
+import { CollectionController } from '@/admin/fangcunjiyi/collection/collection.controller';
+
+import { TransferService } from '@/admin/fangcunjiyi/transfer/service/transfer.service';
+import { TransferController } from '@/admin/fangcunjiyi/transfer/transfer.controller';
 
 @Module({
   imports: [],
@@ -58,6 +61,7 @@ import {CollectionController} from '@/admin/fangcunjiyi/collection/collection.co
     ResourceController,
     DeclareController,
     CollectionController,
+    TransferController,
   ],
   providers: [
     DeptService,
@@ -77,6 +81,7 @@ import {CollectionController} from '@/admin/fangcunjiyi/collection/collection.co
     ResourceService,
     DeclareService,
     CollectionService,
+    TransferService,
   ],
 })
 export class AdminModule {}
