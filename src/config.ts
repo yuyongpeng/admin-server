@@ -140,6 +140,9 @@ export const Config: config = {
     bucket: process.env.qiniuBucket,
     domain: process.env.qiniuDomain,
   },
+  dstamp: {
+    baseUrl: process.env.dstampBaseUrl,
+  },
 };
 import { redisUtils } from './common/utils/redisUtils';
 import { env } from 'process';

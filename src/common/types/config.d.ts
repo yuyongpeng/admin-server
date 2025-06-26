@@ -79,4 +79,7 @@ interface config {
     bucket: string;
     domain: string;
   };
+  dstamp: {
+    baseUrl: string;
+  };
 }

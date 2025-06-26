@@ -1,5 +1,5 @@
 import { PrismaService } from '@/common/service/prisma/prisma.service';
-import { QueryTicketDto, CreateTicketDto } from '../dto';
+import { QueryTicketDto, CreateTicketDto, CreateTicketDto4Golang, SaleStatusDto } from '../dto';
 import { Injectable, Logger } from '@nestjs/common';
 import { exportTable } from '@/common/utils';
 import { query, Response } from 'express';
@@ -7,6 +7,7 @@ import { Prisma } from '@/common/prisma-client';
 import { isNotEmpty } from 'class-validator';
 import { weightSrvRecords } from 'ioredis/built/cluster/util';
 import axios from 'axios';
+import { Config } from '@/config';
 
 @Injectable()
 export class TicketService {
@@ -35,9 +36,31 @@ export class TicketService {
         equals: q.available_status,
       };
     }
-    return await this.prisma.ticket.findMany({
-      where: queryCondition,
-    });
+    // return await this.prisma.ticket.findMany({
+    //   where: queryCondition,
+    // });
+    return {
+      rows: await this.prisma.ticket.findMany({
+        relationLoadStrategy: 'query',
+        skip: (q.pageNum - 1) * q.pageSize,
+        take: q.pageSize,
+        where: queryCondition,
+        orderBy: {
+          create_time: 'desc',
+        },
+        include: {
+          // ticket: {
+          //   select: {
+          //     id: true,
+          //     ticket_name: true,
+          //   },
+          // },
+        },
+      }),
+      total: await this.prisma.ticket.count({
+        where: queryCondition,
+      }),
+    };
   }
 
   // 给别的页面 列表显示 ticket的数据。
@@ -61,21 +84,22 @@ export class TicketService {
     });
   }
 
-  async addTicket(ticket: CreateTicketDto) {
-    let url: string = 'https://dstamp2-api.lightcone.cloud/ticket/create';
-    let postData = {
-      ticket_type: 2,
-      landing_uri: 'https://daop-img.stars-mine.com/image/75/65/75659ae0f579c09d85b932b5413e3462f2300861.jpg',
-      origin_uri: 'https://daop-img.stars-mine.com/image/ee/43/ee43b75c86ad8c1b31f3b1c1be21dc5e1858752e.jpg',
-      cover_uri: 'https://daop-img.stars-mine.com/image/52/05/52050a74ffb17006643281cd53838a51dc67e413.png',
-      publisher_logo: 'https://daop-img.stars-mine.com/image/15/6d/156d9408d95dff268717c6f64affe24f3d56c3c4.png',
-      ticket_name: 'test',
-      price: 0,
-      amount: 2,
-      registration_id: 10000,
-      description: 'https://daop-img.stars-mine.com/image/fc/06/fc06c5a95427d9ad22d9d08c74bb29513b8fd1b4.jpg',
-      publisher_name: 'xxxx',
-    };
+  async addTicket(ticket: CreateTicketDto4Golang): Promise<any> {
+    let url: string = Config.dstamp.baseUrl + '/ticket/create';
+    let postData = ticket;
+    // let postData = {
+    //   ticket_type: 2,
+    //   landing_uri: 'https://daop-img.stars-mine.com/image/75/65/75659ae0f579c09d85b932b5413e3462f2300861.jpg',
+    //   origin_uri: 'https://daop-img.stars-mine.com/image/ee/43/ee43b75c86ad8c1b31f3b1c1be21dc5e1858752e.jpg',
+    //   cover_uri: 'https://daop-img.stars-mine.com/image/52/05/52050a74ffb17006643281cd53838a51dc67e413.png',
+    //   publisher_logo: 'https://daop-img.stars-mine.com/image/15/6d/156d9408d95dff268717c6f64affe24f3d56c3c4.png',
+    //   ticket_name: 'test',
+    //   price: 0,
+    //   amount: 2,
+    //   registration_id: 10000,
+    //   description: 'https://daop-img.stars-mine.com/image/fc/06/fc06c5a95427d9ad22d9d08c74bb29513b8fd1b4.jpg',
+    //   publisher_name: 'xxxx',
+    // };
     let headers = {
       'Content-Type': 'application/json',
       'user-id': 15,
@@ -83,11 +107,25 @@ export class TicketService {
         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZiIsIm9wZW5faWQiOiJvRGdpODRuV0szSUVOQ0RTR1ZvOWZXVUpCMnJrIiwidW5pb25faWQiOiJvdndSVDV4XzFOUGQxRGJndVA3ME40bFZKdlpzIiwidGtfdXVpZCI6Ijk2NjZkM2U4LTA1MWUtNDhlZi04YzNkLTMyMmY2MzFmM2U1NiIsImV4cCI6MTc1MDQzMzE1M30.--bJEmYdzhnmtGmvfn4EYhiTWq78RMK4AJaYeqspbNU',
       'open-id': 'oDgi84nWK3IENCDSGVo9fWUJB2rk',
     };
-    axios.post(url, postData, { headers: headers, timeout: 50000 });
+    let data = await axios.post(url, postData, { headers: headers, timeout: 50000 });
+    this.logger.log(data);
 
-    return await this.prisma.ticket.create({
-      data: ticket,
-    });
+    return data;
+  }
+
+  /**@description 发售 */
+  async saleStatus(sale: SaleStatusDto): Promise<any> {
+    let url = Config.dstamp.baseUrl + 'ticket/creator/saleStatus';
+    let postData = sale;
+    let headers = {
+      'Content-Type': 'application/json',
+      'user-id': 15,
+      Authorization:
+        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZiIsIm9wZW5faWQiOiJvRGdpODRuV0szSUVOQ0RTR1ZvOWZXVUpCMnJrIiwidW5pb25faWQiOiJvdndSVDV4XzFOUGQxRGJndVA3ME40bFZKdlpzIiwidGtfdXVpZCI6Ijk2NjZkM2U4LTA1MWUtNDhlZi04YzNkLTMyMmY2MzFmM2U1NiIsImV4cCI6MTc1MDQzMzE1M30.--bJEmYdzhnmtGmvfn4EYhiTWq78RMK4AJaYeqspbNU',
+      'open-id': 'oDgi84nWK3IENCDSGVo9fWUJB2rk',
+    };
+    let retData = await axios.post(url, postData, { headers: headers, timeout: 50000 });
+    return retData;
   }
 
   async updateTicket(ticket: CreateTicketDto) {
