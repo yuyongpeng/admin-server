@@ -2,7 +2,7 @@ import { BaseDomain } from '@/common/domain/BaseDomain2';
 import { queryDomain } from '@/common/domain/queryDomain';
 import { ApiProperty, ApiSecurity } from '@nestjs/swagger';
 import { Transform, Type } from 'class-transformer';
-import { IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString, IsUrl } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsNumber, IsOptional, IsString, IsUrl, Min } from 'class-validator';
 import { isString } from 'lodash';
 
 /**@description 查询 ticket 表的 DTO */
@@ -14,7 +14,7 @@ export class QueryTicketDto extends queryDomain {
   @ApiProperty({ description: '门票类型.类型: 1-头像；2-图片；3-视频；4-微博；5-3D', required: false })
   @IsOptional()
   @IsNumber()
-  @Type(() => Number)
+  @Transform((value) => Number(value))
   ticket_type: number | null;
 
   @ApiProperty({ description: '售卖状态，销售状态：1-待售；2-发售中；3-已失效；4-已售磬', required: false, isArray: false, type: 'number', minimum: 1, maximum: 10, default: 5, example: 5 })
@@ -36,12 +36,13 @@ export class CreateTicketDto4Golang {
   @ApiProperty({ description: '型: 1-头像；2-图片；3-视频；4-微博；5-3D', required: true, example: 2 })
   @IsNumber()
   @IsNotEmpty({ message: '类型不能为空' })
+  // @Transform((value) => Number(value))
   ticket_type: number;
 
   @ApiProperty({ description: '扫码着陆页图片URL', required: true, example: 'https://daop-img.stars-mine.com/image/75/65/75659ae0f579c09d85b932b5413e3462f2300861.jpg' })
   @IsString()
   @IsNotEmpty({ message: '扫码着陆页图片URL 不能为空' })
-  landing_url: string;
+  landing_uri: string;
 
   @ApiProperty({ description: '列表页图片', required: true, example: 'https://daop-img.stars-mine.com/image/52/05/52050a74ffb17006643281cd53838a51dc67e413.png' })
   @IsString()
@@ -59,12 +60,15 @@ export class CreateTicketDto4Golang {
   ticket_name: string;
 
   @ApiProperty({ description: '邮票价格，使用0', required: true, example: 0 })
-  @IsString()
+  @IsNumber()
+  @IsNotEmpty({ message: '价格不能为空' })
+  @Min(0)
   price: number;
 
   @ApiProperty({ description: '邮票发行的数量', required: true, example: 100 })
-  @IsString()
+  @IsNumber()
   @IsNotEmpty({ message: '邮票发行数量不能为0' })
+  @Min(1)
   amount: number;
 
   @ApiProperty({ description: 'daop中的登记编号，10000是用于江苏登记', required: true, example: 100 })
@@ -75,7 +79,7 @@ export class CreateTicketDto4Golang {
   @ApiProperty({ description: '详情页图片URL', required: true, example: 'https://daop-img.stars-mine.com/image/fc/06/fc06c5a95427d9ad22d9d08c74bb29513b8fd1b4.jpg' })
   @IsString()
   @IsNotEmpty({ message: '详情页不能为空' })
-  description: string;
+  description: string | null;
 
   @ApiProperty({ description: '邮票发行方', required: true, example: '北京集邮总公司' })
   @IsString()

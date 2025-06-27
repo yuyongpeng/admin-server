@@ -107,10 +107,10 @@ export class TicketService {
         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZiIsIm9wZW5faWQiOiJvRGdpODRuV0szSUVOQ0RTR1ZvOWZXVUpCMnJrIiwidW5pb25faWQiOiJvdndSVDV4XzFOUGQxRGJndVA3ME40bFZKdlpzIiwidGtfdXVpZCI6Ijk2NjZkM2U4LTA1MWUtNDhlZi04YzNkLTMyMmY2MzFmM2U1NiIsImV4cCI6MTc1MDQzMzE1M30.--bJEmYdzhnmtGmvfn4EYhiTWq78RMK4AJaYeqspbNU',
       'open-id': 'oDgi84nWK3IENCDSGVo9fWUJB2rk',
     };
-    let data = await axios.post(url, postData, { headers: headers, timeout: 50000 });
-    this.logger.log(data);
+    let response = await axios.post(url, postData, { headers: headers, timeout: 50000 });
+    this.logger.log(response.data);
 
-    return data;
+    return response.data;
   }
 
   /**@description 发售 */
@@ -124,8 +124,9 @@ export class TicketService {
         'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZiIsIm9wZW5faWQiOiJvRGdpODRuV0szSUVOQ0RTR1ZvOWZXVUpCMnJrIiwidW5pb25faWQiOiJvdndSVDV4XzFOUGQxRGJndVA3ME40bFZKdlpzIiwidGtfdXVpZCI6Ijk2NjZkM2U4LTA1MWUtNDhlZi04YzNkLTMyMmY2MzFmM2U1NiIsImV4cCI6MTc1MDQzMzE1M30.--bJEmYdzhnmtGmvfn4EYhiTWq78RMK4AJaYeqspbNU',
       'open-id': 'oDgi84nWK3IENCDSGVo9fWUJB2rk',
     };
-    let retData = await axios.post(url, postData, { headers: headers, timeout: 50000 });
-    return retData;
+    let response = await axios.post(url, postData, { headers: headers, timeout: 50000 });
+    this.logger.log(response.data);
+    return response.data;
   }
 
   async updateTicket(ticket: CreateTicketDto) {

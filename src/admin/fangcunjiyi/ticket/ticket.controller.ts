@@ -57,14 +57,18 @@ export class SysTicketController {
   //   return Result.ok(await this.ticketService.addTicket(ticket));
   // }
 
-  @ApiOperation({ summary: '调用后端golangg添加ticket(有很多异步和上链的操作)' })
+  @ApiOperation({ summary: '调用后端golang添加ticket(有很多异步和上链的操作)' })
   @ApiResponse({ type: Result<string> })
   @ApiBody({ type: CreateTicketDto4Golang })
   @RequirePermission('fangcunjiyi:ticket:add')
   @Post('/add4Golang')
   async addTicket4Golang(@Body() ticket: CreateTicketDto4Golang, @Req() req): Promise<Result<string>> {
-    this.ticketService.addTicket(ticket);
-    return Result.Ok();
+    let data = await this.ticketService.addTicket(ticket);
+    if (data.code == 0) {
+      return Result.Ok(data.data);
+    } else {
+      return Result.Error(data.msg);
+    }
   }
 
   @ApiOperation({ summary: '调用后端golang,修改ticket的售卖状态为 发售中' })
@@ -73,8 +77,12 @@ export class SysTicketController {
   @RequirePermission('fangcunjiyi:ticket:edit')
   @Post('/saleStatus4Golang')
   async saleStatus4Golang(@Body() sale: SaleStatusDto, @Req() req): Promise<Result<string>> {
-    this.ticketService.saleStatus(sale);
-    return Result.Ok();
+    let data = await this.ticketService.saleStatus(sale);
+    if (data.code == 0) {
+      return Result.Ok(data.data);
+    } else {
+      return Result.Error(data.msg);
+    }
   }
 
   @ApiOperation({ summary: '更新ticket' })
