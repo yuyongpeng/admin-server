@@ -391,7 +391,10 @@ exports.Prisma.CollectionScalarFieldEnum = {
   dar_status: 'dar_status',
   old_status: 'old_status',
   certificate_url: 'certificate_url',
-  block_number: 'block_number'
+  block_number: 'block_number',
+  sjt_status: 'sjt_status',
+  reg_code: 'reg_code',
+  asset_number: 'asset_number'
 };
 
 exports.Prisma.Init_mobileScalarFieldEnum = {
@@ -456,7 +459,12 @@ exports.Prisma.TicketScalarFieldEnum = {
   modify_time: 'modify_time',
   create_time: 'create_time',
   registration_id: 'registration_id',
-  send_status: 'send_status'
+  send_status: 'send_status',
+  landing_uri: 'landing_uri',
+  download_status: 'download_status',
+  origin_uri: 'origin_uri',
+  creation_date: 'creation_date',
+  start_date: 'start_date'
 };
 
 exports.Prisma.Tr_orderScalarFieldEnum = {
@@ -548,6 +556,7 @@ exports.Prisma.UserScalarFieldEnum = {
   id_card_no: 'id_card_no',
   realname: 'realname',
   realname_state: 'realname_state',
+  realname_type: 'realname_type',
   realname_time: 'realname_time',
   daop_account_id: 'daop_account_id',
   daop_user_id: 'daop_user_id',
@@ -793,7 +802,9 @@ exports.Prisma.collectionOrderByRelevanceFieldEnum = {
   last_credential: 'last_credential',
   check_code: 'check_code',
   authorization_code: 'authorization_code',
-  certificate_url: 'certificate_url'
+  certificate_url: 'certificate_url',
+  reg_code: 'reg_code',
+  asset_number: 'asset_number'
 };
 
 exports.Prisma.init_mobileOrderByRelevanceFieldEnum = {
@@ -838,7 +849,9 @@ exports.Prisma.ticketOrderByRelevanceFieldEnum = {
   did_credential: 'did_credential',
   copyright_credential: 'copyright_credential',
   authorization_credential: 'authorization_credential',
-  chain_txid: 'chain_txid'
+  chain_txid: 'chain_txid',
+  landing_uri: 'landing_uri',
+  origin_uri: 'origin_uri'
 };
 
 exports.Prisma.tr_orderOrderByRelevanceFieldEnum = {

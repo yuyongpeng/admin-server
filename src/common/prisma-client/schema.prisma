@@ -331,12 +331,15 @@ model collection {
   authorization_code    String        @db.VarChar(32)
   modify_time           DateTime?     @default(now()) @db.Timestamp(0)
   create_time           DateTime?     @default(now()) @db.Timestamp(0)
-  dar_status            Int?          @db.UnsignedTinyInt
+  dar_status            Int?          @default(0) @db.UnsignedTinyInt
   old_status            Int?          @default(0) @db.UnsignedTinyInt
   certificate_url       String?       @default("-") @db.VarChar(255)
   block_number          Int?          @default(0) @db.UnsignedInt
-  ticket                ticket?       @relation(fields: [ticket_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "ref_ticket")
-  user                  user          @relation(fields: [owner_uid], references: [id], onUpdate: Restrict, map: "ref_user")
+  sjt_status            Int?          @default(0) @db.TinyInt
+  reg_code              String?       @db.VarChar(255)
+  asset_number          String?       @db.VarChar(255)
+  ticket                ticket?       @relation(fields: [ticket_id], references: [id], onDelete: Restrict, onUpdate: Restrict, map: "fk_ticket_idx")
+  user                  user          @relation(fields: [owner_uid], references: [id], onUpdate: Restrict, map: "fk_user_idx")
   tr_order              tr_order[]
   tr_transfer           tr_transfer[]
 
@@ -412,9 +415,14 @@ model ticket {
   create_time              DateTime?    @default(now()) @db.Timestamp(0)
   registration_id          Int?         @default(0) @db.UnsignedInt
   send_status              Int?         @default(0) @db.UnsignedTinyInt
+  landing_uri              String?      @db.VarChar(512)
+  download_status          Int?         @default(0) @db.UnsignedTinyInt
+  origin_uri               String?      @db.VarChar(512)
+  creation_date            DateTime?    @db.Timestamp(0)
+  start_date               DateTime?    @db.Timestamp(0)
   collection               collection[]
-  tr_order                 tr_order[]
   resource                 resource[]
+  tr_order                 tr_order[]
 
   @@index([available_time], map: "idx_begin_time")
   @@index([creator_uid], map: "idx_creator_uid")
@@ -462,8 +470,8 @@ model tr_order {
   deleted_at                      Int?          @default(0) @db.UnsignedInt
   modify_time                     DateTime      @default(now()) @db.Timestamp(0)
   create_time                     DateTime?     @default(now()) @db.Timestamp(0)
-  collection                      collection    @relation(fields: [collection_id], references: [id], onUpdate: Restrict, map: "ref_collection_order")
-  ticket                          ticket        @relation(fields: [ticket_id], references: [id], onUpdate: Restrict, map: "ref_ticket_order")
+  ticket                          ticket        @relation(fields: [ticket_id], references: [id], onUpdate: Restrict, map: "tr_order_ibfk_1")
+  collection                      collection    @relation(fields: [collection_id], references: [id], onUpdate: Restrict, map: "tr_order_ibfk_2")
   tr_transfer                     tr_transfer[]
 
   @@index([buyer_uid], map: "idx_buyer_uid")
@@ -488,7 +496,7 @@ model tr_transfer {
   collection_id              Int        @default(0) @db.UnsignedInt
   collection_credential      String?    @db.VarChar(128)
   collection_last_credential String?    @db.VarChar(128)
-  token_id                   String     @db.VarChar(128)
+  token_id                   String     @db.VarChar(228)
   order_id                   Int        @default(0) @db.UnsignedInt
   transfer_uid               Int        @default(0) @db.UnsignedInt
   transfer_name              String?    @db.VarChar(128)
@@ -502,8 +510,8 @@ model tr_transfer {
   modify_time                DateTime?  @default(now()) @db.Timestamp(0)
   create_time                DateTime?  @default(now()) @db.Timestamp(0)
   block_number               Int?       @default(0) @db.UnsignedInt
-  collection                 collection @relation(fields: [collection_id], references: [id], onUpdate: Restrict, map: "ref_collection_transfer")
-  tr_order                   tr_order   @relation(fields: [order_id], references: [order_id], onUpdate: Restrict, map: "ref_order_transfer")
+  collection                 collection @relation(fields: [collection_id], references: [id], onUpdate: Restrict, map: "tr_transfer_ibfk_1")
+  tr_order                   tr_order   @relation(fields: [order_id], references: [order_id], onUpdate: Restrict, map: "tr_transfer_ibfk_2")
 
   @@index([collection_id], map: "idx_collection_id")
   @@index([order_id], map: "idx_order_id")
@@ -528,6 +536,7 @@ model user {
   id_card_no        String?      @db.VarChar(64)
   realname          String?      @db.VarChar(64)
   realname_state    Int?         @default(0) @db.UnsignedTinyInt
+  realname_type     Int?         @db.UnsignedTinyInt
   realname_time     DateTime?    @db.Timestamp(0)
   daop_account_id   Int?         @default(0) @db.UnsignedInt
   daop_user_id      Int?         @default(0) @db.UnsignedInt

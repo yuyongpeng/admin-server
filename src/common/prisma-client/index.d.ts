@@ -3313,14 +3313,14 @@ export namespace Prisma {
 
   export type TicketCountOutputType = {
     collection: number
-    tr_order: number
     resource: number
+    tr_order: number
   }
 
   export type TicketCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     collection?: boolean | TicketCountOutputTypeCountCollectionArgs
-    tr_order?: boolean | TicketCountOutputTypeCountTr_orderArgs
     resource?: boolean | TicketCountOutputTypeCountResourceArgs
+    tr_order?: boolean | TicketCountOutputTypeCountTr_orderArgs
   }
 
   // Custom InputTypes
@@ -3344,15 +3344,15 @@ export namespace Prisma {
   /**
    * TicketCountOutputType without action
    */
-  export type TicketCountOutputTypeCountTr_orderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: tr_orderWhereInput
+  export type TicketCountOutputTypeCountResourceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: resourceWhereInput
   }
 
   /**
    * TicketCountOutputType without action
    */
-  export type TicketCountOutputTypeCountResourceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: resourceWhereInput
+  export type TicketCountOutputTypeCountTr_orderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tr_orderWhereInput
   }
 
 
@@ -20367,6 +20367,7 @@ export namespace Prisma {
     dar_status: number | null
     old_status: number | null
     block_number: number | null
+    sjt_status: number | null
   }
 
   export type CollectionSumAggregateOutputType = {
@@ -20392,6 +20393,7 @@ export namespace Prisma {
     dar_status: number | null
     old_status: number | null
     block_number: number | null
+    sjt_status: number | null
   }
 
   export type CollectionMinAggregateOutputType = {
@@ -20440,6 +20442,9 @@ export namespace Prisma {
     old_status: number | null
     certificate_url: string | null
     block_number: number | null
+    sjt_status: number | null
+    reg_code: string | null
+    asset_number: string | null
   }
 
   export type CollectionMaxAggregateOutputType = {
@@ -20488,6 +20493,9 @@ export namespace Prisma {
     old_status: number | null
     certificate_url: string | null
     block_number: number | null
+    sjt_status: number | null
+    reg_code: string | null
+    asset_number: string | null
   }
 
   export type CollectionCountAggregateOutputType = {
@@ -20536,6 +20544,9 @@ export namespace Prisma {
     old_status: number
     certificate_url: number
     block_number: number
+    sjt_status: number
+    reg_code: number
+    asset_number: number
     _all: number
   }
 
@@ -20563,6 +20574,7 @@ export namespace Prisma {
     dar_status?: true
     old_status?: true
     block_number?: true
+    sjt_status?: true
   }
 
   export type CollectionSumAggregateInputType = {
@@ -20588,6 +20600,7 @@ export namespace Prisma {
     dar_status?: true
     old_status?: true
     block_number?: true
+    sjt_status?: true
   }
 
   export type CollectionMinAggregateInputType = {
@@ -20636,6 +20649,9 @@ export namespace Prisma {
     old_status?: true
     certificate_url?: true
     block_number?: true
+    sjt_status?: true
+    reg_code?: true
+    asset_number?: true
   }
 
   export type CollectionMaxAggregateInputType = {
@@ -20684,6 +20700,9 @@ export namespace Prisma {
     old_status?: true
     certificate_url?: true
     block_number?: true
+    sjt_status?: true
+    reg_code?: true
+    asset_number?: true
   }
 
   export type CollectionCountAggregateInputType = {
@@ -20732,6 +20751,9 @@ export namespace Prisma {
     old_status?: true
     certificate_url?: true
     block_number?: true
+    sjt_status?: true
+    reg_code?: true
+    asset_number?: true
     _all?: true
   }
 
@@ -20867,6 +20889,9 @@ export namespace Prisma {
     old_status: number | null
     certificate_url: string | null
     block_number: number | null
+    sjt_status: number | null
+    reg_code: string | null
+    asset_number: string | null
     _count: CollectionCountAggregateOutputType | null
     _avg: CollectionAvgAggregateOutputType | null
     _sum: CollectionSumAggregateOutputType | null
@@ -20934,6 +20959,9 @@ export namespace Prisma {
     old_status?: boolean
     certificate_url?: boolean
     block_number?: boolean
+    sjt_status?: boolean
+    reg_code?: boolean
+    asset_number?: boolean
     ticket?: boolean | collection$ticketArgs<ExtArgs>
     user?: boolean | userDefaultArgs<ExtArgs>
     tr_order?: boolean | collection$tr_orderArgs<ExtArgs>
@@ -20989,9 +21017,12 @@ export namespace Prisma {
     old_status?: boolean
     certificate_url?: boolean
     block_number?: boolean
+    sjt_status?: boolean
+    reg_code?: boolean
+    asset_number?: boolean
   }
 
-  export type collectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "collection_name" | "ticket_id" | "ticket_type" | "chain_type" | "casting_uid" | "casting_name" | "daop_casting_id" | "daop_casting_address" | "owner_uid" | "owner_name" | "daop_user_id" | "daop_user_address" | "license_id" | "shared_uid" | "price" | "trade_time" | "daop_collection_id" | "out_ticket_id" | "token_id" | "collection_hash" | "mint_tx_id" | "mint_chain_status" | "mint_chain_time" | "transfer_tx_id" | "transfer_chain_status" | "transfer_chain_time" | "checkeIn_tx_id" | "checkIn_chain_status" | "checkIn_chain_time" | "credential" | "last_credential" | "sale_status" | "available_status" | "available_time" | "available_expire_time" | "check_code" | "authorization_id" | "authorization_code" | "modify_time" | "create_time" | "dar_status" | "old_status" | "certificate_url" | "block_number", ExtArgs["result"]["collection"]>
+  export type collectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "collection_name" | "ticket_id" | "ticket_type" | "chain_type" | "casting_uid" | "casting_name" | "daop_casting_id" | "daop_casting_address" | "owner_uid" | "owner_name" | "daop_user_id" | "daop_user_address" | "license_id" | "shared_uid" | "price" | "trade_time" | "daop_collection_id" | "out_ticket_id" | "token_id" | "collection_hash" | "mint_tx_id" | "mint_chain_status" | "mint_chain_time" | "transfer_tx_id" | "transfer_chain_status" | "transfer_chain_time" | "checkeIn_tx_id" | "checkIn_chain_status" | "checkIn_chain_time" | "credential" | "last_credential" | "sale_status" | "available_status" | "available_time" | "available_expire_time" | "check_code" | "authorization_id" | "authorization_code" | "modify_time" | "create_time" | "dar_status" | "old_status" | "certificate_url" | "block_number" | "sjt_status" | "reg_code" | "asset_number", ExtArgs["result"]["collection"]>
   export type collectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ticket?: boolean | collection$ticketArgs<ExtArgs>
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -21054,6 +21085,9 @@ export namespace Prisma {
       old_status: number | null
       certificate_url: string | null
       block_number: number | null
+      sjt_status: number | null
+      reg_code: string | null
+      asset_number: string | null
     }, ExtArgs["result"]["collection"]>
     composites: {}
   }
@@ -21472,6 +21506,9 @@ export namespace Prisma {
     readonly old_status: FieldRef<"collection", 'Int'>
     readonly certificate_url: FieldRef<"collection", 'String'>
     readonly block_number: FieldRef<"collection", 'Int'>
+    readonly sjt_status: FieldRef<"collection", 'Int'>
+    readonly reg_code: FieldRef<"collection", 'String'>
+    readonly asset_number: FieldRef<"collection", 'String'>
   }
     
 
@@ -24687,6 +24724,7 @@ export namespace Prisma {
     is_sale: number | null
     registration_id: number | null
     send_status: number | null
+    download_status: number | null
   }
 
   export type TicketSumAggregateOutputType = {
@@ -24709,6 +24747,7 @@ export namespace Prisma {
     is_sale: number | null
     registration_id: number | null
     send_status: number | null
+    download_status: number | null
   }
 
   export type TicketMinAggregateOutputType = {
@@ -24752,6 +24791,11 @@ export namespace Prisma {
     create_time: Date | null
     registration_id: number | null
     send_status: number | null
+    landing_uri: string | null
+    download_status: number | null
+    origin_uri: string | null
+    creation_date: Date | null
+    start_date: Date | null
   }
 
   export type TicketMaxAggregateOutputType = {
@@ -24795,6 +24839,11 @@ export namespace Prisma {
     create_time: Date | null
     registration_id: number | null
     send_status: number | null
+    landing_uri: string | null
+    download_status: number | null
+    origin_uri: string | null
+    creation_date: Date | null
+    start_date: Date | null
   }
 
   export type TicketCountAggregateOutputType = {
@@ -24839,6 +24888,11 @@ export namespace Prisma {
     create_time: number
     registration_id: number
     send_status: number
+    landing_uri: number
+    download_status: number
+    origin_uri: number
+    creation_date: number
+    start_date: number
     _all: number
   }
 
@@ -24863,6 +24917,7 @@ export namespace Prisma {
     is_sale?: true
     registration_id?: true
     send_status?: true
+    download_status?: true
   }
 
   export type TicketSumAggregateInputType = {
@@ -24885,6 +24940,7 @@ export namespace Prisma {
     is_sale?: true
     registration_id?: true
     send_status?: true
+    download_status?: true
   }
 
   export type TicketMinAggregateInputType = {
@@ -24928,6 +24984,11 @@ export namespace Prisma {
     create_time?: true
     registration_id?: true
     send_status?: true
+    landing_uri?: true
+    download_status?: true
+    origin_uri?: true
+    creation_date?: true
+    start_date?: true
   }
 
   export type TicketMaxAggregateInputType = {
@@ -24971,6 +25032,11 @@ export namespace Prisma {
     create_time?: true
     registration_id?: true
     send_status?: true
+    landing_uri?: true
+    download_status?: true
+    origin_uri?: true
+    creation_date?: true
+    start_date?: true
   }
 
   export type TicketCountAggregateInputType = {
@@ -25015,6 +25081,11 @@ export namespace Prisma {
     create_time?: true
     registration_id?: true
     send_status?: true
+    landing_uri?: true
+    download_status?: true
+    origin_uri?: true
+    creation_date?: true
+    start_date?: true
     _all?: true
   }
 
@@ -25146,6 +25217,11 @@ export namespace Prisma {
     create_time: Date | null
     registration_id: number | null
     send_status: number | null
+    landing_uri: string | null
+    download_status: number | null
+    origin_uri: string | null
+    creation_date: Date | null
+    start_date: Date | null
     _count: TicketCountAggregateOutputType | null
     _avg: TicketAvgAggregateOutputType | null
     _sum: TicketSumAggregateOutputType | null
@@ -25209,9 +25285,14 @@ export namespace Prisma {
     create_time?: boolean
     registration_id?: boolean
     send_status?: boolean
+    landing_uri?: boolean
+    download_status?: boolean
+    origin_uri?: boolean
+    creation_date?: boolean
+    start_date?: boolean
     collection?: boolean | ticket$collectionArgs<ExtArgs>
-    tr_order?: boolean | ticket$tr_orderArgs<ExtArgs>
     resource?: boolean | ticket$resourceArgs<ExtArgs>
+    tr_order?: boolean | ticket$tr_orderArgs<ExtArgs>
     _count?: boolean | TicketCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["ticket"]>
 
@@ -25259,13 +25340,18 @@ export namespace Prisma {
     create_time?: boolean
     registration_id?: boolean
     send_status?: boolean
+    landing_uri?: boolean
+    download_status?: boolean
+    origin_uri?: boolean
+    creation_date?: boolean
+    start_date?: boolean
   }
 
-  export type ticketOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ticket_name" | "ticket_type" | "chain_type" | "cover_uri" | "content_uri" | "td_files" | "creator_uid" | "creator_name" | "creator_avatar" | "daop_user_id" | "daop_user_address" | "publisher_id" | "publisher_name" | "publisher_logo" | "amount" | "sold_amount" | "sku_balance" | "price" | "available_time" | "expire_time" | "sale_begin_time" | "sale_end_time" | "description" | "usage" | "sale_status" | "available_status" | "authorization_id" | "authorization_code" | "did_credential" | "copyright_credential" | "authorization_credential" | "chain_txid" | "chain_block_number" | "chain_time" | "chain_status" | "is_sale" | "modify_time" | "create_time" | "registration_id" | "send_status", ExtArgs["result"]["ticket"]>
+  export type ticketOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ticket_name" | "ticket_type" | "chain_type" | "cover_uri" | "content_uri" | "td_files" | "creator_uid" | "creator_name" | "creator_avatar" | "daop_user_id" | "daop_user_address" | "publisher_id" | "publisher_name" | "publisher_logo" | "amount" | "sold_amount" | "sku_balance" | "price" | "available_time" | "expire_time" | "sale_begin_time" | "sale_end_time" | "description" | "usage" | "sale_status" | "available_status" | "authorization_id" | "authorization_code" | "did_credential" | "copyright_credential" | "authorization_credential" | "chain_txid" | "chain_block_number" | "chain_time" | "chain_status" | "is_sale" | "modify_time" | "create_time" | "registration_id" | "send_status" | "landing_uri" | "download_status" | "origin_uri" | "creation_date" | "start_date", ExtArgs["result"]["ticket"]>
   export type ticketInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     collection?: boolean | ticket$collectionArgs<ExtArgs>
-    tr_order?: boolean | ticket$tr_orderArgs<ExtArgs>
     resource?: boolean | ticket$resourceArgs<ExtArgs>
+    tr_order?: boolean | ticket$tr_orderArgs<ExtArgs>
     _count?: boolean | TicketCountOutputTypeDefaultArgs<ExtArgs>
   }
 
@@ -25273,8 +25359,8 @@ export namespace Prisma {
     name: "ticket"
     objects: {
       collection: Prisma.$collectionPayload<ExtArgs>[]
-      tr_order: Prisma.$tr_orderPayload<ExtArgs>[]
       resource: Prisma.$resourcePayload<ExtArgs>[]
+      tr_order: Prisma.$tr_orderPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
@@ -25318,6 +25404,11 @@ export namespace Prisma {
       create_time: Date | null
       registration_id: number | null
       send_status: number | null
+      landing_uri: string | null
+      download_status: number | null
+      origin_uri: string | null
+      creation_date: Date | null
+      start_date: Date | null
     }, ExtArgs["result"]["ticket"]>
     composites: {}
   }
@@ -25659,8 +25750,8 @@ export namespace Prisma {
   export interface Prisma__ticketClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     collection<T extends ticket$collectionArgs<ExtArgs> = {}>(args?: Subset<T, ticket$collectionArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$collectionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    tr_order<T extends ticket$tr_orderArgs<ExtArgs> = {}>(args?: Subset<T, ticket$tr_orderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_orderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     resource<T extends ticket$resourceArgs<ExtArgs> = {}>(args?: Subset<T, ticket$resourceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$resourcePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tr_order<T extends ticket$tr_orderArgs<ExtArgs> = {}>(args?: Subset<T, ticket$tr_orderArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_orderPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -25731,6 +25822,11 @@ export namespace Prisma {
     readonly create_time: FieldRef<"ticket", 'DateTime'>
     readonly registration_id: FieldRef<"ticket", 'Int'>
     readonly send_status: FieldRef<"ticket", 'Int'>
+    readonly landing_uri: FieldRef<"ticket", 'String'>
+    readonly download_status: FieldRef<"ticket", 'Int'>
+    readonly origin_uri: FieldRef<"ticket", 'String'>
+    readonly creation_date: FieldRef<"ticket", 'DateTime'>
+    readonly start_date: FieldRef<"ticket", 'DateTime'>
   }
     
 
@@ -26107,30 +26203,6 @@ export namespace Prisma {
   }
 
   /**
-   * ticket.tr_order
-   */
-  export type ticket$tr_orderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_order
-     */
-    select?: tr_orderSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_order
-     */
-    omit?: tr_orderOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_orderInclude<ExtArgs> | null
-    where?: tr_orderWhereInput
-    orderBy?: tr_orderOrderByWithRelationInput | tr_orderOrderByWithRelationInput[]
-    cursor?: tr_orderWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Tr_orderScalarFieldEnum | Tr_orderScalarFieldEnum[]
-  }
-
-  /**
    * ticket.resource
    */
   export type ticket$resourceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -26152,6 +26224,30 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: ResourceScalarFieldEnum | ResourceScalarFieldEnum[]
+  }
+
+  /**
+   * ticket.tr_order
+   */
+  export type ticket$tr_orderArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_order
+     */
+    select?: tr_orderSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_order
+     */
+    omit?: tr_orderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_orderInclude<ExtArgs> | null
+    where?: tr_orderWhereInput
+    orderBy?: tr_orderOrderByWithRelationInput | tr_orderOrderByWithRelationInput[]
+    cursor?: tr_orderWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tr_orderScalarFieldEnum | Tr_orderScalarFieldEnum[]
   }
 
   /**
@@ -26715,8 +26811,8 @@ export namespace Prisma {
     deleted_at?: boolean
     modify_time?: boolean
     create_time?: boolean
-    collection?: boolean | collectionDefaultArgs<ExtArgs>
     ticket?: boolean | ticketDefaultArgs<ExtArgs>
+    collection?: boolean | collectionDefaultArgs<ExtArgs>
     tr_transfer?: boolean | tr_order$tr_transferArgs<ExtArgs>
     _count?: boolean | Tr_orderCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["tr_order"]>
@@ -26768,8 +26864,8 @@ export namespace Prisma {
 
   export type tr_orderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"order_id" | "order_no" | "ticket_id" | "ticket_did_credential" | "ticket_copyright_credential" | "ticket_authorization_credential" | "collection_id" | "collection_name" | "collection_hash" | "collection_credential" | "collection_last_credential" | "collection_token_id" | "daop_collection_id" | "seller_uid" | "seller_daop_user_id" | "seller_daop_user_address" | "seller_mobile" | "buyer_uid" | "buyer_realname" | "buyer_mobile" | "buyer_nickname" | "buyer_daop_user_id" | "buyer_daop_user_address" | "shared_uid" | "price" | "amount" | "check_in" | "pay_channel" | "pay_scene" | "pay_trade_no" | "pay_time" | "pay_status" | "pay_failed_reason" | "transfer_status" | "expire_time" | "expire_time_at" | "status" | "deleted_at" | "modify_time" | "create_time", ExtArgs["result"]["tr_order"]>
   export type tr_orderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    collection?: boolean | collectionDefaultArgs<ExtArgs>
     ticket?: boolean | ticketDefaultArgs<ExtArgs>
+    collection?: boolean | collectionDefaultArgs<ExtArgs>
     tr_transfer?: boolean | tr_order$tr_transferArgs<ExtArgs>
     _count?: boolean | Tr_orderCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -26777,8 +26873,8 @@ export namespace Prisma {
   export type $tr_orderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "tr_order"
     objects: {
-      collection: Prisma.$collectionPayload<ExtArgs>
       ticket: Prisma.$ticketPayload<ExtArgs>
+      collection: Prisma.$collectionPayload<ExtArgs>
       tr_transfer: Prisma.$tr_transferPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -27162,8 +27258,8 @@ export namespace Prisma {
    */
   export interface Prisma__tr_orderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    collection<T extends collectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, collectionDefaultArgs<ExtArgs>>): Prisma__collectionClient<$Result.GetResult<Prisma.$collectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     ticket<T extends ticketDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ticketDefaultArgs<ExtArgs>>): Prisma__ticketClient<$Result.GetResult<Prisma.$ticketPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    collection<T extends collectionDefaultArgs<ExtArgs> = {}>(args?: Subset<T, collectionDefaultArgs<ExtArgs>>): Prisma__collectionClient<$Result.GetResult<Prisma.$collectionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     tr_transfer<T extends tr_order$tr_transferArgs<ExtArgs> = {}>(args?: Subset<T, tr_order$tr_transferArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_transferPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -29725,6 +29821,7 @@ export namespace Prisma {
     user_type: number | null
     is_publisher: number | null
     realname_state: number | null
+    realname_type: number | null
     daop_account_id: number | null
     daop_user_id: number | null
     available_status: number | null
@@ -29736,6 +29833,7 @@ export namespace Prisma {
     user_type: number | null
     is_publisher: number | null
     realname_state: number | null
+    realname_type: number | null
     daop_account_id: number | null
     daop_user_id: number | null
     available_status: number | null
@@ -29757,6 +29855,7 @@ export namespace Prisma {
     id_card_no: string | null
     realname: string | null
     realname_state: number | null
+    realname_type: number | null
     realname_time: Date | null
     daop_account_id: number | null
     daop_user_id: number | null
@@ -29783,6 +29882,7 @@ export namespace Prisma {
     id_card_no: string | null
     realname: string | null
     realname_state: number | null
+    realname_type: number | null
     realname_time: Date | null
     daop_account_id: number | null
     daop_user_id: number | null
@@ -29809,6 +29909,7 @@ export namespace Prisma {
     id_card_no: number
     realname: number
     realname_state: number
+    realname_type: number
     realname_time: number
     daop_account_id: number
     daop_user_id: number
@@ -29827,6 +29928,7 @@ export namespace Prisma {
     user_type?: true
     is_publisher?: true
     realname_state?: true
+    realname_type?: true
     daop_account_id?: true
     daop_user_id?: true
     available_status?: true
@@ -29838,6 +29940,7 @@ export namespace Prisma {
     user_type?: true
     is_publisher?: true
     realname_state?: true
+    realname_type?: true
     daop_account_id?: true
     daop_user_id?: true
     available_status?: true
@@ -29859,6 +29962,7 @@ export namespace Prisma {
     id_card_no?: true
     realname?: true
     realname_state?: true
+    realname_type?: true
     realname_time?: true
     daop_account_id?: true
     daop_user_id?: true
@@ -29885,6 +29989,7 @@ export namespace Prisma {
     id_card_no?: true
     realname?: true
     realname_state?: true
+    realname_type?: true
     realname_time?: true
     daop_account_id?: true
     daop_user_id?: true
@@ -29911,6 +30016,7 @@ export namespace Prisma {
     id_card_no?: true
     realname?: true
     realname_state?: true
+    realname_type?: true
     realname_time?: true
     daop_account_id?: true
     daop_user_id?: true
@@ -30024,6 +30130,7 @@ export namespace Prisma {
     id_card_no: string | null
     realname: string | null
     realname_state: number | null
+    realname_type: number | null
     realname_time: Date | null
     daop_account_id: number | null
     daop_user_id: number | null
@@ -30069,6 +30176,7 @@ export namespace Prisma {
     id_card_no?: boolean
     realname?: boolean
     realname_state?: boolean
+    realname_type?: boolean
     realname_time?: boolean
     daop_account_id?: boolean
     daop_user_id?: boolean
@@ -30099,6 +30207,7 @@ export namespace Prisma {
     id_card_no?: boolean
     realname?: boolean
     realname_state?: boolean
+    realname_type?: boolean
     realname_time?: boolean
     daop_account_id?: boolean
     daop_user_id?: boolean
@@ -30109,7 +30218,7 @@ export namespace Prisma {
     modify_time?: boolean
   }
 
-  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wx_mini_openid" | "union_id" | "mobile" | "country_code" | "full_mobile" | "nick_name" | "avatar" | "description" | "gendar" | "user_type" | "is_publisher" | "id_card_no" | "realname" | "realname_state" | "realname_time" | "daop_account_id" | "daop_user_id" | "daop_user_address" | "tags" | "available_status" | "create_time" | "modify_time", ExtArgs["result"]["user"]>
+  export type userOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "wx_mini_openid" | "union_id" | "mobile" | "country_code" | "full_mobile" | "nick_name" | "avatar" | "description" | "gendar" | "user_type" | "is_publisher" | "id_card_no" | "realname" | "realname_state" | "realname_type" | "realname_time" | "daop_account_id" | "daop_user_id" | "daop_user_address" | "tags" | "available_status" | "create_time" | "modify_time", ExtArgs["result"]["user"]>
   export type userInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     collection?: boolean | user$collectionArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -30136,6 +30245,7 @@ export namespace Prisma {
       id_card_no: string | null
       realname: string | null
       realname_state: number | null
+      realname_type: number | null
       realname_time: Date | null
       daop_account_id: number | null
       daop_user_id: number | null
@@ -30529,6 +30639,7 @@ export namespace Prisma {
     readonly id_card_no: FieldRef<"user", 'String'>
     readonly realname: FieldRef<"user", 'String'>
     readonly realname_state: FieldRef<"user", 'Int'>
+    readonly realname_type: FieldRef<"user", 'Int'>
     readonly realname_time: FieldRef<"user", 'DateTime'>
     readonly daop_account_id: FieldRef<"user", 'Int'>
     readonly daop_user_id: FieldRef<"user", 'Int'>
@@ -33327,7 +33438,10 @@ export namespace Prisma {
     dar_status: 'dar_status',
     old_status: 'old_status',
     certificate_url: 'certificate_url',
-    block_number: 'block_number'
+    block_number: 'block_number',
+    sjt_status: 'sjt_status',
+    reg_code: 'reg_code',
+    asset_number: 'asset_number'
   };
 
   export type CollectionScalarFieldEnum = (typeof CollectionScalarFieldEnum)[keyof typeof CollectionScalarFieldEnum]
@@ -33404,7 +33518,12 @@ export namespace Prisma {
     modify_time: 'modify_time',
     create_time: 'create_time',
     registration_id: 'registration_id',
-    send_status: 'send_status'
+    send_status: 'send_status',
+    landing_uri: 'landing_uri',
+    download_status: 'download_status',
+    origin_uri: 'origin_uri',
+    creation_date: 'creation_date',
+    start_date: 'start_date'
   };
 
   export type TicketScalarFieldEnum = (typeof TicketScalarFieldEnum)[keyof typeof TicketScalarFieldEnum]
@@ -33508,6 +33627,7 @@ export namespace Prisma {
     id_card_no: 'id_card_no',
     realname: 'realname',
     realname_state: 'realname_state',
+    realname_type: 'realname_type',
     realname_time: 'realname_time',
     daop_account_id: 'daop_account_id',
     daop_user_id: 'daop_user_id',
@@ -33807,7 +33927,9 @@ export namespace Prisma {
     last_credential: 'last_credential',
     check_code: 'check_code',
     authorization_code: 'authorization_code',
-    certificate_url: 'certificate_url'
+    certificate_url: 'certificate_url',
+    reg_code: 'reg_code',
+    asset_number: 'asset_number'
   };
 
   export type collectionOrderByRelevanceFieldEnum = (typeof collectionOrderByRelevanceFieldEnum)[keyof typeof collectionOrderByRelevanceFieldEnum]
@@ -33870,7 +33992,9 @@ export namespace Prisma {
     did_credential: 'did_credential',
     copyright_credential: 'copyright_credential',
     authorization_credential: 'authorization_credential',
-    chain_txid: 'chain_txid'
+    chain_txid: 'chain_txid',
+    landing_uri: 'landing_uri',
+    origin_uri: 'origin_uri'
   };
 
   export type ticketOrderByRelevanceFieldEnum = (typeof ticketOrderByRelevanceFieldEnum)[keyof typeof ticketOrderByRelevanceFieldEnum]
@@ -35498,6 +35622,9 @@ export namespace Prisma {
     old_status?: IntNullableFilter<"collection"> | number | null
     certificate_url?: StringNullableFilter<"collection"> | string | null
     block_number?: IntNullableFilter<"collection"> | number | null
+    sjt_status?: IntNullableFilter<"collection"> | number | null
+    reg_code?: StringNullableFilter<"collection"> | string | null
+    asset_number?: StringNullableFilter<"collection"> | string | null
     ticket?: XOR<TicketNullableScalarRelationFilter, ticketWhereInput> | null
     user?: XOR<UserScalarRelationFilter, userWhereInput>
     tr_order?: Tr_orderListRelationFilter
@@ -35550,6 +35677,9 @@ export namespace Prisma {
     old_status?: SortOrderInput | SortOrder
     certificate_url?: SortOrderInput | SortOrder
     block_number?: SortOrderInput | SortOrder
+    sjt_status?: SortOrderInput | SortOrder
+    reg_code?: SortOrderInput | SortOrder
+    asset_number?: SortOrderInput | SortOrder
     ticket?: ticketOrderByWithRelationInput
     user?: userOrderByWithRelationInput
     tr_order?: tr_orderOrderByRelationAggregateInput
@@ -35606,6 +35736,9 @@ export namespace Prisma {
     old_status?: IntNullableFilter<"collection"> | number | null
     certificate_url?: StringNullableFilter<"collection"> | string | null
     block_number?: IntNullableFilter<"collection"> | number | null
+    sjt_status?: IntNullableFilter<"collection"> | number | null
+    reg_code?: StringNullableFilter<"collection"> | string | null
+    asset_number?: StringNullableFilter<"collection"> | string | null
     ticket?: XOR<TicketNullableScalarRelationFilter, ticketWhereInput> | null
     user?: XOR<UserScalarRelationFilter, userWhereInput>
     tr_order?: Tr_orderListRelationFilter
@@ -35658,6 +35791,9 @@ export namespace Prisma {
     old_status?: SortOrderInput | SortOrder
     certificate_url?: SortOrderInput | SortOrder
     block_number?: SortOrderInput | SortOrder
+    sjt_status?: SortOrderInput | SortOrder
+    reg_code?: SortOrderInput | SortOrder
+    asset_number?: SortOrderInput | SortOrder
     _count?: collectionCountOrderByAggregateInput
     _avg?: collectionAvgOrderByAggregateInput
     _max?: collectionMaxOrderByAggregateInput
@@ -35714,6 +35850,9 @@ export namespace Prisma {
     old_status?: IntNullableWithAggregatesFilter<"collection"> | number | null
     certificate_url?: StringNullableWithAggregatesFilter<"collection"> | string | null
     block_number?: IntNullableWithAggregatesFilter<"collection"> | number | null
+    sjt_status?: IntNullableWithAggregatesFilter<"collection"> | number | null
+    reg_code?: StringNullableWithAggregatesFilter<"collection"> | string | null
+    asset_number?: StringNullableWithAggregatesFilter<"collection"> | string | null
   }
 
   export type init_mobileWhereInput = {
@@ -35911,9 +36050,14 @@ export namespace Prisma {
     create_time?: DateTimeNullableFilter<"ticket"> | Date | string | null
     registration_id?: IntNullableFilter<"ticket"> | number | null
     send_status?: IntNullableFilter<"ticket"> | number | null
+    landing_uri?: StringNullableFilter<"ticket"> | string | null
+    download_status?: IntNullableFilter<"ticket"> | number | null
+    origin_uri?: StringNullableFilter<"ticket"> | string | null
+    creation_date?: DateTimeNullableFilter<"ticket"> | Date | string | null
+    start_date?: DateTimeNullableFilter<"ticket"> | Date | string | null
     collection?: CollectionListRelationFilter
-    tr_order?: Tr_orderListRelationFilter
     resource?: ResourceListRelationFilter
+    tr_order?: Tr_orderListRelationFilter
   }
 
   export type ticketOrderByWithRelationInput = {
@@ -35958,9 +36102,14 @@ export namespace Prisma {
     create_time?: SortOrderInput | SortOrder
     registration_id?: SortOrderInput | SortOrder
     send_status?: SortOrderInput | SortOrder
+    landing_uri?: SortOrderInput | SortOrder
+    download_status?: SortOrderInput | SortOrder
+    origin_uri?: SortOrderInput | SortOrder
+    creation_date?: SortOrderInput | SortOrder
+    start_date?: SortOrderInput | SortOrder
     collection?: collectionOrderByRelationAggregateInput
-    tr_order?: tr_orderOrderByRelationAggregateInput
     resource?: resourceOrderByRelationAggregateInput
+    tr_order?: tr_orderOrderByRelationAggregateInput
     _relevance?: ticketOrderByRelevanceInput
   }
 
@@ -36009,9 +36158,14 @@ export namespace Prisma {
     create_time?: DateTimeNullableFilter<"ticket"> | Date | string | null
     registration_id?: IntNullableFilter<"ticket"> | number | null
     send_status?: IntNullableFilter<"ticket"> | number | null
+    landing_uri?: StringNullableFilter<"ticket"> | string | null
+    download_status?: IntNullableFilter<"ticket"> | number | null
+    origin_uri?: StringNullableFilter<"ticket"> | string | null
+    creation_date?: DateTimeNullableFilter<"ticket"> | Date | string | null
+    start_date?: DateTimeNullableFilter<"ticket"> | Date | string | null
     collection?: CollectionListRelationFilter
-    tr_order?: Tr_orderListRelationFilter
     resource?: ResourceListRelationFilter
+    tr_order?: Tr_orderListRelationFilter
   }, "id">
 
   export type ticketOrderByWithAggregationInput = {
@@ -36056,6 +36210,11 @@ export namespace Prisma {
     create_time?: SortOrderInput | SortOrder
     registration_id?: SortOrderInput | SortOrder
     send_status?: SortOrderInput | SortOrder
+    landing_uri?: SortOrderInput | SortOrder
+    download_status?: SortOrderInput | SortOrder
+    origin_uri?: SortOrderInput | SortOrder
+    creation_date?: SortOrderInput | SortOrder
+    start_date?: SortOrderInput | SortOrder
     _count?: ticketCountOrderByAggregateInput
     _avg?: ticketAvgOrderByAggregateInput
     _max?: ticketMaxOrderByAggregateInput
@@ -36108,6 +36267,11 @@ export namespace Prisma {
     create_time?: DateTimeNullableWithAggregatesFilter<"ticket"> | Date | string | null
     registration_id?: IntNullableWithAggregatesFilter<"ticket"> | number | null
     send_status?: IntNullableWithAggregatesFilter<"ticket"> | number | null
+    landing_uri?: StringNullableWithAggregatesFilter<"ticket"> | string | null
+    download_status?: IntNullableWithAggregatesFilter<"ticket"> | number | null
+    origin_uri?: StringNullableWithAggregatesFilter<"ticket"> | string | null
+    creation_date?: DateTimeNullableWithAggregatesFilter<"ticket"> | Date | string | null
+    start_date?: DateTimeNullableWithAggregatesFilter<"ticket"> | Date | string | null
   }
 
   export type tr_orderWhereInput = {
@@ -36154,8 +36318,8 @@ export namespace Prisma {
     deleted_at?: IntNullableFilter<"tr_order"> | number | null
     modify_time?: DateTimeFilter<"tr_order"> | Date | string
     create_time?: DateTimeNullableFilter<"tr_order"> | Date | string | null
-    collection?: XOR<CollectionScalarRelationFilter, collectionWhereInput>
     ticket?: XOR<TicketScalarRelationFilter, ticketWhereInput>
+    collection?: XOR<CollectionScalarRelationFilter, collectionWhereInput>
     tr_transfer?: Tr_transferListRelationFilter
   }
 
@@ -36200,8 +36364,8 @@ export namespace Prisma {
     deleted_at?: SortOrderInput | SortOrder
     modify_time?: SortOrder
     create_time?: SortOrderInput | SortOrder
-    collection?: collectionOrderByWithRelationInput
     ticket?: ticketOrderByWithRelationInput
+    collection?: collectionOrderByWithRelationInput
     tr_transfer?: tr_transferOrderByRelationAggregateInput
     _relevance?: tr_orderOrderByRelevanceInput
   }
@@ -36250,8 +36414,8 @@ export namespace Prisma {
     deleted_at?: IntNullableFilter<"tr_order"> | number | null
     modify_time?: DateTimeFilter<"tr_order"> | Date | string
     create_time?: DateTimeNullableFilter<"tr_order"> | Date | string | null
-    collection?: XOR<CollectionScalarRelationFilter, collectionWhereInput>
     ticket?: XOR<TicketScalarRelationFilter, ticketWhereInput>
+    collection?: XOR<CollectionScalarRelationFilter, collectionWhereInput>
     tr_transfer?: Tr_transferListRelationFilter
   }, "order_id" | "order_no">
 
@@ -36554,6 +36718,7 @@ export namespace Prisma {
     id_card_no?: StringNullableFilter<"user"> | string | null
     realname?: StringNullableFilter<"user"> | string | null
     realname_state?: IntNullableFilter<"user"> | number | null
+    realname_type?: IntNullableFilter<"user"> | number | null
     realname_time?: DateTimeNullableFilter<"user"> | Date | string | null
     daop_account_id?: IntNullableFilter<"user"> | number | null
     daop_user_id?: IntNullableFilter<"user"> | number | null
@@ -36581,6 +36746,7 @@ export namespace Prisma {
     id_card_no?: SortOrderInput | SortOrder
     realname?: SortOrderInput | SortOrder
     realname_state?: SortOrderInput | SortOrder
+    realname_type?: SortOrderInput | SortOrder
     realname_time?: SortOrderInput | SortOrder
     daop_account_id?: SortOrderInput | SortOrder
     daop_user_id?: SortOrderInput | SortOrder
@@ -36613,6 +36779,7 @@ export namespace Prisma {
     id_card_no?: StringNullableFilter<"user"> | string | null
     realname?: StringNullableFilter<"user"> | string | null
     realname_state?: IntNullableFilter<"user"> | number | null
+    realname_type?: IntNullableFilter<"user"> | number | null
     realname_time?: DateTimeNullableFilter<"user"> | Date | string | null
     daop_account_id?: IntNullableFilter<"user"> | number | null
     daop_user_id?: IntNullableFilter<"user"> | number | null
@@ -36640,6 +36807,7 @@ export namespace Prisma {
     id_card_no?: SortOrderInput | SortOrder
     realname?: SortOrderInput | SortOrder
     realname_state?: SortOrderInput | SortOrder
+    realname_type?: SortOrderInput | SortOrder
     realname_time?: SortOrderInput | SortOrder
     daop_account_id?: SortOrderInput | SortOrder
     daop_user_id?: SortOrderInput | SortOrder
@@ -36674,6 +36842,7 @@ export namespace Prisma {
     id_card_no?: StringNullableWithAggregatesFilter<"user"> | string | null
     realname?: StringNullableWithAggregatesFilter<"user"> | string | null
     realname_state?: IntNullableWithAggregatesFilter<"user"> | number | null
+    realname_type?: IntNullableWithAggregatesFilter<"user"> | number | null
     realname_time?: DateTimeNullableWithAggregatesFilter<"user"> | Date | string | null
     daop_account_id?: IntNullableWithAggregatesFilter<"user"> | number | null
     daop_user_id?: IntNullableWithAggregatesFilter<"user"> | number | null
@@ -38464,6 +38633,9 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
     ticket?: ticketCreateNestedOneWithoutCollectionInput
     user?: userCreateNestedOneWithoutCollectionInput
     tr_order?: tr_orderCreateNestedManyWithoutCollectionInput
@@ -38516,6 +38688,9 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutCollectionInput
     tr_transfer?: tr_transferUncheckedCreateNestedManyWithoutCollectionInput
   }
@@ -38563,6 +38738,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
     ticket?: ticketUpdateOneWithoutCollectionNestedInput
     user?: userUpdateOneRequiredWithoutCollectionNestedInput
     tr_order?: tr_orderUpdateManyWithoutCollectionNestedInput
@@ -38615,6 +38793,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
     tr_order?: tr_orderUncheckedUpdateManyWithoutCollectionNestedInput
     tr_transfer?: tr_transferUncheckedUpdateManyWithoutCollectionNestedInput
   }
@@ -38665,6 +38846,9 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
   }
 
   export type collectionUpdateManyMutationInput = {
@@ -38710,6 +38894,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type collectionUncheckedUpdateManyInput = {
@@ -38758,6 +38945,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type init_mobileCreateInput = {
@@ -38939,9 +39129,14 @@ export namespace Prisma {
     create_time?: Date | string | null
     registration_id?: number | null
     send_status?: number | null
+    landing_uri?: string | null
+    download_status?: number | null
+    origin_uri?: string | null
+    creation_date?: Date | string | null
+    start_date?: Date | string | null
     collection?: collectionCreateNestedManyWithoutTicketInput
-    tr_order?: tr_orderCreateNestedManyWithoutTicketInput
     resource?: resourceCreateNestedManyWithoutTicketInput
+    tr_order?: tr_orderCreateNestedManyWithoutTicketInput
   }
 
   export type ticketUncheckedCreateInput = {
@@ -38986,9 +39181,14 @@ export namespace Prisma {
     create_time?: Date | string | null
     registration_id?: number | null
     send_status?: number | null
+    landing_uri?: string | null
+    download_status?: number | null
+    origin_uri?: string | null
+    creation_date?: Date | string | null
+    start_date?: Date | string | null
     collection?: collectionUncheckedCreateNestedManyWithoutTicketInput
-    tr_order?: tr_orderUncheckedCreateNestedManyWithoutTicketInput
     resource?: resourceUncheckedCreateNestedManyWithoutTicketInput
+    tr_order?: tr_orderUncheckedCreateNestedManyWithoutTicketInput
   }
 
   export type ticketUpdateInput = {
@@ -39032,9 +39232,14 @@ export namespace Prisma {
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registration_id?: NullableIntFieldUpdateOperationsInput | number | null
     send_status?: NullableIntFieldUpdateOperationsInput | number | null
+    landing_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    download_status?: NullableIntFieldUpdateOperationsInput | number | null
+    origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     collection?: collectionUpdateManyWithoutTicketNestedInput
-    tr_order?: tr_orderUpdateManyWithoutTicketNestedInput
     resource?: resourceUpdateManyWithoutTicketNestedInput
+    tr_order?: tr_orderUpdateManyWithoutTicketNestedInput
   }
 
   export type ticketUncheckedUpdateInput = {
@@ -39079,9 +39284,14 @@ export namespace Prisma {
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registration_id?: NullableIntFieldUpdateOperationsInput | number | null
     send_status?: NullableIntFieldUpdateOperationsInput | number | null
+    landing_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    download_status?: NullableIntFieldUpdateOperationsInput | number | null
+    origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     collection?: collectionUncheckedUpdateManyWithoutTicketNestedInput
-    tr_order?: tr_orderUncheckedUpdateManyWithoutTicketNestedInput
     resource?: resourceUncheckedUpdateManyWithoutTicketNestedInput
+    tr_order?: tr_orderUncheckedUpdateManyWithoutTicketNestedInput
   }
 
   export type ticketCreateManyInput = {
@@ -39126,6 +39336,11 @@ export namespace Prisma {
     create_time?: Date | string | null
     registration_id?: number | null
     send_status?: number | null
+    landing_uri?: string | null
+    download_status?: number | null
+    origin_uri?: string | null
+    creation_date?: Date | string | null
+    start_date?: Date | string | null
   }
 
   export type ticketUpdateManyMutationInput = {
@@ -39169,6 +39384,11 @@ export namespace Prisma {
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registration_id?: NullableIntFieldUpdateOperationsInput | number | null
     send_status?: NullableIntFieldUpdateOperationsInput | number | null
+    landing_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    download_status?: NullableIntFieldUpdateOperationsInput | number | null
+    origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ticketUncheckedUpdateManyInput = {
@@ -39213,6 +39433,11 @@ export namespace Prisma {
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registration_id?: NullableIntFieldUpdateOperationsInput | number | null
     send_status?: NullableIntFieldUpdateOperationsInput | number | null
+    landing_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    download_status?: NullableIntFieldUpdateOperationsInput | number | null
+    origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tr_orderCreateInput = {
@@ -39253,8 +39478,8 @@ export namespace Prisma {
     deleted_at?: number | null
     modify_time?: Date | string
     create_time?: Date | string | null
-    collection?: collectionCreateNestedOneWithoutTr_orderInput
     ticket: ticketCreateNestedOneWithoutTr_orderInput
+    collection?: collectionCreateNestedOneWithoutTr_orderInput
     tr_transfer?: tr_transferCreateNestedManyWithoutTr_orderInput
   }
 
@@ -39340,8 +39565,8 @@ export namespace Prisma {
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    collection?: collectionUpdateOneRequiredWithoutTr_orderNestedInput
     ticket?: ticketUpdateOneRequiredWithoutTr_orderNestedInput
+    collection?: collectionUpdateOneRequiredWithoutTr_orderNestedInput
     tr_transfer?: tr_transferUpdateManyWithoutTr_orderNestedInput
   }
 
@@ -39732,6 +39957,7 @@ export namespace Prisma {
     id_card_no?: string | null
     realname?: string | null
     realname_state?: number | null
+    realname_type?: number | null
     realname_time?: Date | string | null
     daop_account_id?: number | null
     daop_user_id?: number | null
@@ -39759,6 +39985,7 @@ export namespace Prisma {
     id_card_no?: string | null
     realname?: string | null
     realname_state?: number | null
+    realname_type?: number | null
     realname_time?: Date | string | null
     daop_account_id?: number | null
     daop_user_id?: number | null
@@ -39785,6 +40012,7 @@ export namespace Prisma {
     id_card_no?: NullableStringFieldUpdateOperationsInput | string | null
     realname?: NullableStringFieldUpdateOperationsInput | string | null
     realname_state?: NullableIntFieldUpdateOperationsInput | number | null
+    realname_type?: NullableIntFieldUpdateOperationsInput | number | null
     realname_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     daop_account_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -39812,6 +40040,7 @@ export namespace Prisma {
     id_card_no?: NullableStringFieldUpdateOperationsInput | string | null
     realname?: NullableStringFieldUpdateOperationsInput | string | null
     realname_state?: NullableIntFieldUpdateOperationsInput | number | null
+    realname_type?: NullableIntFieldUpdateOperationsInput | number | null
     realname_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     daop_account_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -39839,6 +40068,7 @@ export namespace Prisma {
     id_card_no?: string | null
     realname?: string | null
     realname_state?: number | null
+    realname_type?: number | null
     realname_time?: Date | string | null
     daop_account_id?: number | null
     daop_user_id?: number | null
@@ -39864,6 +40094,7 @@ export namespace Prisma {
     id_card_no?: NullableStringFieldUpdateOperationsInput | string | null
     realname?: NullableStringFieldUpdateOperationsInput | string | null
     realname_state?: NullableIntFieldUpdateOperationsInput | number | null
+    realname_type?: NullableIntFieldUpdateOperationsInput | number | null
     realname_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     daop_account_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -39890,6 +40121,7 @@ export namespace Prisma {
     id_card_no?: NullableStringFieldUpdateOperationsInput | string | null
     realname?: NullableStringFieldUpdateOperationsInput | string | null
     realname_state?: NullableIntFieldUpdateOperationsInput | number | null
+    realname_type?: NullableIntFieldUpdateOperationsInput | number | null
     realname_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     daop_account_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -41338,6 +41570,9 @@ export namespace Prisma {
     old_status?: SortOrder
     certificate_url?: SortOrder
     block_number?: SortOrder
+    sjt_status?: SortOrder
+    reg_code?: SortOrder
+    asset_number?: SortOrder
   }
 
   export type collectionAvgOrderByAggregateInput = {
@@ -41363,6 +41598,7 @@ export namespace Prisma {
     dar_status?: SortOrder
     old_status?: SortOrder
     block_number?: SortOrder
+    sjt_status?: SortOrder
   }
 
   export type collectionMaxOrderByAggregateInput = {
@@ -41411,6 +41647,9 @@ export namespace Prisma {
     old_status?: SortOrder
     certificate_url?: SortOrder
     block_number?: SortOrder
+    sjt_status?: SortOrder
+    reg_code?: SortOrder
+    asset_number?: SortOrder
   }
 
   export type collectionMinOrderByAggregateInput = {
@@ -41459,6 +41698,9 @@ export namespace Prisma {
     old_status?: SortOrder
     certificate_url?: SortOrder
     block_number?: SortOrder
+    sjt_status?: SortOrder
+    reg_code?: SortOrder
+    asset_number?: SortOrder
   }
 
   export type collectionSumOrderByAggregateInput = {
@@ -41484,6 +41726,7 @@ export namespace Prisma {
     dar_status?: SortOrder
     old_status?: SortOrder
     block_number?: SortOrder
+    sjt_status?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -41725,6 +41968,11 @@ export namespace Prisma {
     create_time?: SortOrder
     registration_id?: SortOrder
     send_status?: SortOrder
+    landing_uri?: SortOrder
+    download_status?: SortOrder
+    origin_uri?: SortOrder
+    creation_date?: SortOrder
+    start_date?: SortOrder
   }
 
   export type ticketAvgOrderByAggregateInput = {
@@ -41747,6 +41995,7 @@ export namespace Prisma {
     is_sale?: SortOrder
     registration_id?: SortOrder
     send_status?: SortOrder
+    download_status?: SortOrder
   }
 
   export type ticketMaxOrderByAggregateInput = {
@@ -41790,6 +42039,11 @@ export namespace Prisma {
     create_time?: SortOrder
     registration_id?: SortOrder
     send_status?: SortOrder
+    landing_uri?: SortOrder
+    download_status?: SortOrder
+    origin_uri?: SortOrder
+    creation_date?: SortOrder
+    start_date?: SortOrder
   }
 
   export type ticketMinOrderByAggregateInput = {
@@ -41833,6 +42087,11 @@ export namespace Prisma {
     create_time?: SortOrder
     registration_id?: SortOrder
     send_status?: SortOrder
+    landing_uri?: SortOrder
+    download_status?: SortOrder
+    origin_uri?: SortOrder
+    creation_date?: SortOrder
+    start_date?: SortOrder
   }
 
   export type ticketSumOrderByAggregateInput = {
@@ -41855,6 +42114,7 @@ export namespace Prisma {
     is_sale?: SortOrder
     registration_id?: SortOrder
     send_status?: SortOrder
+    download_status?: SortOrder
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -41894,14 +42154,14 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type CollectionScalarRelationFilter = {
-    is?: collectionWhereInput
-    isNot?: collectionWhereInput
-  }
-
   export type TicketScalarRelationFilter = {
     is?: ticketWhereInput
     isNot?: ticketWhereInput
+  }
+
+  export type CollectionScalarRelationFilter = {
+    is?: collectionWhereInput
+    isNot?: collectionWhereInput
   }
 
   export type tr_orderOrderByRelevanceInput = {
@@ -42255,6 +42515,7 @@ export namespace Prisma {
     id_card_no?: SortOrder
     realname?: SortOrder
     realname_state?: SortOrder
+    realname_type?: SortOrder
     realname_time?: SortOrder
     daop_account_id?: SortOrder
     daop_user_id?: SortOrder
@@ -42271,6 +42532,7 @@ export namespace Prisma {
     user_type?: SortOrder
     is_publisher?: SortOrder
     realname_state?: SortOrder
+    realname_type?: SortOrder
     daop_account_id?: SortOrder
     daop_user_id?: SortOrder
     available_status?: SortOrder
@@ -42292,6 +42554,7 @@ export namespace Prisma {
     id_card_no?: SortOrder
     realname?: SortOrder
     realname_state?: SortOrder
+    realname_type?: SortOrder
     realname_time?: SortOrder
     daop_account_id?: SortOrder
     daop_user_id?: SortOrder
@@ -42318,6 +42581,7 @@ export namespace Prisma {
     id_card_no?: SortOrder
     realname?: SortOrder
     realname_state?: SortOrder
+    realname_type?: SortOrder
     realname_time?: SortOrder
     daop_account_id?: SortOrder
     daop_user_id?: SortOrder
@@ -42334,6 +42598,7 @@ export namespace Prisma {
     user_type?: SortOrder
     is_publisher?: SortOrder
     realname_state?: SortOrder
+    realname_type?: SortOrder
     daop_account_id?: SortOrder
     daop_user_id?: SortOrder
     available_status?: SortOrder
@@ -43237,18 +43502,18 @@ export namespace Prisma {
     connect?: collectionWhereUniqueInput | collectionWhereUniqueInput[]
   }
 
-  export type tr_orderCreateNestedManyWithoutTicketInput = {
-    create?: XOR<tr_orderCreateWithoutTicketInput, tr_orderUncheckedCreateWithoutTicketInput> | tr_orderCreateWithoutTicketInput[] | tr_orderUncheckedCreateWithoutTicketInput[]
-    connectOrCreate?: tr_orderCreateOrConnectWithoutTicketInput | tr_orderCreateOrConnectWithoutTicketInput[]
-    createMany?: tr_orderCreateManyTicketInputEnvelope
-    connect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
-  }
-
   export type resourceCreateNestedManyWithoutTicketInput = {
     create?: XOR<resourceCreateWithoutTicketInput, resourceUncheckedCreateWithoutTicketInput> | resourceCreateWithoutTicketInput[] | resourceUncheckedCreateWithoutTicketInput[]
     connectOrCreate?: resourceCreateOrConnectWithoutTicketInput | resourceCreateOrConnectWithoutTicketInput[]
     createMany?: resourceCreateManyTicketInputEnvelope
     connect?: resourceWhereUniqueInput | resourceWhereUniqueInput[]
+  }
+
+  export type tr_orderCreateNestedManyWithoutTicketInput = {
+    create?: XOR<tr_orderCreateWithoutTicketInput, tr_orderUncheckedCreateWithoutTicketInput> | tr_orderCreateWithoutTicketInput[] | tr_orderUncheckedCreateWithoutTicketInput[]
+    connectOrCreate?: tr_orderCreateOrConnectWithoutTicketInput | tr_orderCreateOrConnectWithoutTicketInput[]
+    createMany?: tr_orderCreateManyTicketInputEnvelope
+    connect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
   }
 
   export type collectionUncheckedCreateNestedManyWithoutTicketInput = {
@@ -43258,18 +43523,18 @@ export namespace Prisma {
     connect?: collectionWhereUniqueInput | collectionWhereUniqueInput[]
   }
 
-  export type tr_orderUncheckedCreateNestedManyWithoutTicketInput = {
-    create?: XOR<tr_orderCreateWithoutTicketInput, tr_orderUncheckedCreateWithoutTicketInput> | tr_orderCreateWithoutTicketInput[] | tr_orderUncheckedCreateWithoutTicketInput[]
-    connectOrCreate?: tr_orderCreateOrConnectWithoutTicketInput | tr_orderCreateOrConnectWithoutTicketInput[]
-    createMany?: tr_orderCreateManyTicketInputEnvelope
-    connect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
-  }
-
   export type resourceUncheckedCreateNestedManyWithoutTicketInput = {
     create?: XOR<resourceCreateWithoutTicketInput, resourceUncheckedCreateWithoutTicketInput> | resourceCreateWithoutTicketInput[] | resourceUncheckedCreateWithoutTicketInput[]
     connectOrCreate?: resourceCreateOrConnectWithoutTicketInput | resourceCreateOrConnectWithoutTicketInput[]
     createMany?: resourceCreateManyTicketInputEnvelope
     connect?: resourceWhereUniqueInput | resourceWhereUniqueInput[]
+  }
+
+  export type tr_orderUncheckedCreateNestedManyWithoutTicketInput = {
+    create?: XOR<tr_orderCreateWithoutTicketInput, tr_orderUncheckedCreateWithoutTicketInput> | tr_orderCreateWithoutTicketInput[] | tr_orderUncheckedCreateWithoutTicketInput[]
+    connectOrCreate?: tr_orderCreateOrConnectWithoutTicketInput | tr_orderCreateOrConnectWithoutTicketInput[]
+    createMany?: tr_orderCreateManyTicketInputEnvelope
+    connect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
   }
 
   export type collectionUpdateManyWithoutTicketNestedInput = {
@@ -43286,20 +43551,6 @@ export namespace Prisma {
     deleteMany?: collectionScalarWhereInput | collectionScalarWhereInput[]
   }
 
-  export type tr_orderUpdateManyWithoutTicketNestedInput = {
-    create?: XOR<tr_orderCreateWithoutTicketInput, tr_orderUncheckedCreateWithoutTicketInput> | tr_orderCreateWithoutTicketInput[] | tr_orderUncheckedCreateWithoutTicketInput[]
-    connectOrCreate?: tr_orderCreateOrConnectWithoutTicketInput | tr_orderCreateOrConnectWithoutTicketInput[]
-    upsert?: tr_orderUpsertWithWhereUniqueWithoutTicketInput | tr_orderUpsertWithWhereUniqueWithoutTicketInput[]
-    createMany?: tr_orderCreateManyTicketInputEnvelope
-    set?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
-    disconnect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
-    delete?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
-    connect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
-    update?: tr_orderUpdateWithWhereUniqueWithoutTicketInput | tr_orderUpdateWithWhereUniqueWithoutTicketInput[]
-    updateMany?: tr_orderUpdateManyWithWhereWithoutTicketInput | tr_orderUpdateManyWithWhereWithoutTicketInput[]
-    deleteMany?: tr_orderScalarWhereInput | tr_orderScalarWhereInput[]
-  }
-
   export type resourceUpdateManyWithoutTicketNestedInput = {
     create?: XOR<resourceCreateWithoutTicketInput, resourceUncheckedCreateWithoutTicketInput> | resourceCreateWithoutTicketInput[] | resourceUncheckedCreateWithoutTicketInput[]
     connectOrCreate?: resourceCreateOrConnectWithoutTicketInput | resourceCreateOrConnectWithoutTicketInput[]
@@ -43312,6 +43563,20 @@ export namespace Prisma {
     update?: resourceUpdateWithWhereUniqueWithoutTicketInput | resourceUpdateWithWhereUniqueWithoutTicketInput[]
     updateMany?: resourceUpdateManyWithWhereWithoutTicketInput | resourceUpdateManyWithWhereWithoutTicketInput[]
     deleteMany?: resourceScalarWhereInput | resourceScalarWhereInput[]
+  }
+
+  export type tr_orderUpdateManyWithoutTicketNestedInput = {
+    create?: XOR<tr_orderCreateWithoutTicketInput, tr_orderUncheckedCreateWithoutTicketInput> | tr_orderCreateWithoutTicketInput[] | tr_orderUncheckedCreateWithoutTicketInput[]
+    connectOrCreate?: tr_orderCreateOrConnectWithoutTicketInput | tr_orderCreateOrConnectWithoutTicketInput[]
+    upsert?: tr_orderUpsertWithWhereUniqueWithoutTicketInput | tr_orderUpsertWithWhereUniqueWithoutTicketInput[]
+    createMany?: tr_orderCreateManyTicketInputEnvelope
+    set?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
+    disconnect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
+    delete?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
+    connect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
+    update?: tr_orderUpdateWithWhereUniqueWithoutTicketInput | tr_orderUpdateWithWhereUniqueWithoutTicketInput[]
+    updateMany?: tr_orderUpdateManyWithWhereWithoutTicketInput | tr_orderUpdateManyWithWhereWithoutTicketInput[]
+    deleteMany?: tr_orderScalarWhereInput | tr_orderScalarWhereInput[]
   }
 
   export type collectionUncheckedUpdateManyWithoutTicketNestedInput = {
@@ -43328,20 +43593,6 @@ export namespace Prisma {
     deleteMany?: collectionScalarWhereInput | collectionScalarWhereInput[]
   }
 
-  export type tr_orderUncheckedUpdateManyWithoutTicketNestedInput = {
-    create?: XOR<tr_orderCreateWithoutTicketInput, tr_orderUncheckedCreateWithoutTicketInput> | tr_orderCreateWithoutTicketInput[] | tr_orderUncheckedCreateWithoutTicketInput[]
-    connectOrCreate?: tr_orderCreateOrConnectWithoutTicketInput | tr_orderCreateOrConnectWithoutTicketInput[]
-    upsert?: tr_orderUpsertWithWhereUniqueWithoutTicketInput | tr_orderUpsertWithWhereUniqueWithoutTicketInput[]
-    createMany?: tr_orderCreateManyTicketInputEnvelope
-    set?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
-    disconnect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
-    delete?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
-    connect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
-    update?: tr_orderUpdateWithWhereUniqueWithoutTicketInput | tr_orderUpdateWithWhereUniqueWithoutTicketInput[]
-    updateMany?: tr_orderUpdateManyWithWhereWithoutTicketInput | tr_orderUpdateManyWithWhereWithoutTicketInput[]
-    deleteMany?: tr_orderScalarWhereInput | tr_orderScalarWhereInput[]
-  }
-
   export type resourceUncheckedUpdateManyWithoutTicketNestedInput = {
     create?: XOR<resourceCreateWithoutTicketInput, resourceUncheckedCreateWithoutTicketInput> | resourceCreateWithoutTicketInput[] | resourceUncheckedCreateWithoutTicketInput[]
     connectOrCreate?: resourceCreateOrConnectWithoutTicketInput | resourceCreateOrConnectWithoutTicketInput[]
@@ -43356,16 +43607,30 @@ export namespace Prisma {
     deleteMany?: resourceScalarWhereInput | resourceScalarWhereInput[]
   }
 
-  export type collectionCreateNestedOneWithoutTr_orderInput = {
-    create?: XOR<collectionCreateWithoutTr_orderInput, collectionUncheckedCreateWithoutTr_orderInput>
-    connectOrCreate?: collectionCreateOrConnectWithoutTr_orderInput
-    connect?: collectionWhereUniqueInput
+  export type tr_orderUncheckedUpdateManyWithoutTicketNestedInput = {
+    create?: XOR<tr_orderCreateWithoutTicketInput, tr_orderUncheckedCreateWithoutTicketInput> | tr_orderCreateWithoutTicketInput[] | tr_orderUncheckedCreateWithoutTicketInput[]
+    connectOrCreate?: tr_orderCreateOrConnectWithoutTicketInput | tr_orderCreateOrConnectWithoutTicketInput[]
+    upsert?: tr_orderUpsertWithWhereUniqueWithoutTicketInput | tr_orderUpsertWithWhereUniqueWithoutTicketInput[]
+    createMany?: tr_orderCreateManyTicketInputEnvelope
+    set?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
+    disconnect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
+    delete?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
+    connect?: tr_orderWhereUniqueInput | tr_orderWhereUniqueInput[]
+    update?: tr_orderUpdateWithWhereUniqueWithoutTicketInput | tr_orderUpdateWithWhereUniqueWithoutTicketInput[]
+    updateMany?: tr_orderUpdateManyWithWhereWithoutTicketInput | tr_orderUpdateManyWithWhereWithoutTicketInput[]
+    deleteMany?: tr_orderScalarWhereInput | tr_orderScalarWhereInput[]
   }
 
   export type ticketCreateNestedOneWithoutTr_orderInput = {
     create?: XOR<ticketCreateWithoutTr_orderInput, ticketUncheckedCreateWithoutTr_orderInput>
     connectOrCreate?: ticketCreateOrConnectWithoutTr_orderInput
     connect?: ticketWhereUniqueInput
+  }
+
+  export type collectionCreateNestedOneWithoutTr_orderInput = {
+    create?: XOR<collectionCreateWithoutTr_orderInput, collectionUncheckedCreateWithoutTr_orderInput>
+    connectOrCreate?: collectionCreateOrConnectWithoutTr_orderInput
+    connect?: collectionWhereUniqueInput
   }
 
   export type tr_transferCreateNestedManyWithoutTr_orderInput = {
@@ -43386,20 +43651,20 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type collectionUpdateOneRequiredWithoutTr_orderNestedInput = {
-    create?: XOR<collectionCreateWithoutTr_orderInput, collectionUncheckedCreateWithoutTr_orderInput>
-    connectOrCreate?: collectionCreateOrConnectWithoutTr_orderInput
-    upsert?: collectionUpsertWithoutTr_orderInput
-    connect?: collectionWhereUniqueInput
-    update?: XOR<XOR<collectionUpdateToOneWithWhereWithoutTr_orderInput, collectionUpdateWithoutTr_orderInput>, collectionUncheckedUpdateWithoutTr_orderInput>
-  }
-
   export type ticketUpdateOneRequiredWithoutTr_orderNestedInput = {
     create?: XOR<ticketCreateWithoutTr_orderInput, ticketUncheckedCreateWithoutTr_orderInput>
     connectOrCreate?: ticketCreateOrConnectWithoutTr_orderInput
     upsert?: ticketUpsertWithoutTr_orderInput
     connect?: ticketWhereUniqueInput
     update?: XOR<XOR<ticketUpdateToOneWithWhereWithoutTr_orderInput, ticketUpdateWithoutTr_orderInput>, ticketUncheckedUpdateWithoutTr_orderInput>
+  }
+
+  export type collectionUpdateOneRequiredWithoutTr_orderNestedInput = {
+    create?: XOR<collectionCreateWithoutTr_orderInput, collectionUncheckedCreateWithoutTr_orderInput>
+    connectOrCreate?: collectionCreateOrConnectWithoutTr_orderInput
+    upsert?: collectionUpsertWithoutTr_orderInput
+    connect?: collectionWhereUniqueInput
+    update?: XOR<XOR<collectionUpdateToOneWithWhereWithoutTr_orderInput, collectionUpdateWithoutTr_orderInput>, collectionUncheckedUpdateWithoutTr_orderInput>
   }
 
   export type tr_transferUpdateManyWithoutTr_orderNestedInput = {
@@ -45340,8 +45605,13 @@ export namespace Prisma {
     create_time?: Date | string | null
     registration_id?: number | null
     send_status?: number | null
-    tr_order?: tr_orderCreateNestedManyWithoutTicketInput
+    landing_uri?: string | null
+    download_status?: number | null
+    origin_uri?: string | null
+    creation_date?: Date | string | null
+    start_date?: Date | string | null
     resource?: resourceCreateNestedManyWithoutTicketInput
+    tr_order?: tr_orderCreateNestedManyWithoutTicketInput
   }
 
   export type ticketUncheckedCreateWithoutCollectionInput = {
@@ -45386,8 +45656,13 @@ export namespace Prisma {
     create_time?: Date | string | null
     registration_id?: number | null
     send_status?: number | null
-    tr_order?: tr_orderUncheckedCreateNestedManyWithoutTicketInput
+    landing_uri?: string | null
+    download_status?: number | null
+    origin_uri?: string | null
+    creation_date?: Date | string | null
+    start_date?: Date | string | null
     resource?: resourceUncheckedCreateNestedManyWithoutTicketInput
+    tr_order?: tr_orderUncheckedCreateNestedManyWithoutTicketInput
   }
 
   export type ticketCreateOrConnectWithoutCollectionInput = {
@@ -45410,6 +45685,7 @@ export namespace Prisma {
     id_card_no?: string | null
     realname?: string | null
     realname_state?: number | null
+    realname_type?: number | null
     realname_time?: Date | string | null
     daop_account_id?: number | null
     daop_user_id?: number | null
@@ -45436,6 +45712,7 @@ export namespace Prisma {
     id_card_no?: string | null
     realname?: string | null
     realname_state?: number | null
+    realname_type?: number | null
     realname_time?: Date | string | null
     daop_account_id?: number | null
     daop_user_id?: number | null
@@ -45647,8 +45924,13 @@ export namespace Prisma {
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registration_id?: NullableIntFieldUpdateOperationsInput | number | null
     send_status?: NullableIntFieldUpdateOperationsInput | number | null
-    tr_order?: tr_orderUpdateManyWithoutTicketNestedInput
+    landing_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    download_status?: NullableIntFieldUpdateOperationsInput | number | null
+    origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     resource?: resourceUpdateManyWithoutTicketNestedInput
+    tr_order?: tr_orderUpdateManyWithoutTicketNestedInput
   }
 
   export type ticketUncheckedUpdateWithoutCollectionInput = {
@@ -45693,8 +45975,13 @@ export namespace Prisma {
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registration_id?: NullableIntFieldUpdateOperationsInput | number | null
     send_status?: NullableIntFieldUpdateOperationsInput | number | null
-    tr_order?: tr_orderUncheckedUpdateManyWithoutTicketNestedInput
+    landing_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    download_status?: NullableIntFieldUpdateOperationsInput | number | null
+    origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     resource?: resourceUncheckedUpdateManyWithoutTicketNestedInput
+    tr_order?: tr_orderUncheckedUpdateManyWithoutTicketNestedInput
   }
 
   export type userUpsertWithoutCollectionInput = {
@@ -45723,6 +46010,7 @@ export namespace Prisma {
     id_card_no?: NullableStringFieldUpdateOperationsInput | string | null
     realname?: NullableStringFieldUpdateOperationsInput | string | null
     realname_state?: NullableIntFieldUpdateOperationsInput | number | null
+    realname_type?: NullableIntFieldUpdateOperationsInput | number | null
     realname_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     daop_account_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -45749,6 +46037,7 @@ export namespace Prisma {
     id_card_no?: NullableStringFieldUpdateOperationsInput | string | null
     realname?: NullableStringFieldUpdateOperationsInput | string | null
     realname_state?: NullableIntFieldUpdateOperationsInput | number | null
+    realname_type?: NullableIntFieldUpdateOperationsInput | number | null
     realname_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     daop_account_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -45904,6 +46193,9 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
     user?: userCreateNestedOneWithoutCollectionInput
     tr_order?: tr_orderCreateNestedManyWithoutCollectionInput
     tr_transfer?: tr_transferCreateNestedManyWithoutCollectionInput
@@ -45954,6 +46246,9 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutCollectionInput
     tr_transfer?: tr_transferUncheckedCreateNestedManyWithoutCollectionInput
   }
@@ -45965,6 +46260,41 @@ export namespace Prisma {
 
   export type collectionCreateManyTicketInputEnvelope = {
     data: collectionCreateManyTicketInput | collectionCreateManyTicketInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type resourceCreateWithoutTicketInput = {
+    name?: string | null
+    resource_url?: string | null
+    order?: number | null
+    create_by?: string | null
+    create_time?: string | null
+    update_by?: string | null
+    update_time?: string | null
+    status?: number | null
+    remark?: string | null
+  }
+
+  export type resourceUncheckedCreateWithoutTicketInput = {
+    id?: number
+    name?: string | null
+    resource_url?: string | null
+    order?: number | null
+    create_by?: string | null
+    create_time?: string | null
+    update_by?: string | null
+    update_time?: string | null
+    status?: number | null
+    remark?: string | null
+  }
+
+  export type resourceCreateOrConnectWithoutTicketInput = {
+    where: resourceWhereUniqueInput
+    create: XOR<resourceCreateWithoutTicketInput, resourceUncheckedCreateWithoutTicketInput>
+  }
+
+  export type resourceCreateManyTicketInputEnvelope = {
+    data: resourceCreateManyTicketInput | resourceCreateManyTicketInput[]
     skipDuplicates?: boolean
   }
 
@@ -46063,41 +46393,6 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type resourceCreateWithoutTicketInput = {
-    name?: string | null
-    resource_url?: string | null
-    order?: number | null
-    create_by?: string | null
-    create_time?: string | null
-    update_by?: string | null
-    update_time?: string | null
-    status?: number | null
-    remark?: string | null
-  }
-
-  export type resourceUncheckedCreateWithoutTicketInput = {
-    id?: number
-    name?: string | null
-    resource_url?: string | null
-    order?: number | null
-    create_by?: string | null
-    create_time?: string | null
-    update_by?: string | null
-    update_time?: string | null
-    status?: number | null
-    remark?: string | null
-  }
-
-  export type resourceCreateOrConnectWithoutTicketInput = {
-    where: resourceWhereUniqueInput
-    create: XOR<resourceCreateWithoutTicketInput, resourceUncheckedCreateWithoutTicketInput>
-  }
-
-  export type resourceCreateManyTicketInputEnvelope = {
-    data: resourceCreateManyTicketInput | resourceCreateManyTicketInput[]
-    skipDuplicates?: boolean
-  }
-
   export type collectionUpsertWithWhereUniqueWithoutTicketInput = {
     where: collectionWhereUniqueInput
     update: XOR<collectionUpdateWithoutTicketInput, collectionUncheckedUpdateWithoutTicketInput>
@@ -46163,22 +46458,9 @@ export namespace Prisma {
     old_status?: IntNullableFilter<"collection"> | number | null
     certificate_url?: StringNullableFilter<"collection"> | string | null
     block_number?: IntNullableFilter<"collection"> | number | null
-  }
-
-  export type tr_orderUpsertWithWhereUniqueWithoutTicketInput = {
-    where: tr_orderWhereUniqueInput
-    update: XOR<tr_orderUpdateWithoutTicketInput, tr_orderUncheckedUpdateWithoutTicketInput>
-    create: XOR<tr_orderCreateWithoutTicketInput, tr_orderUncheckedCreateWithoutTicketInput>
-  }
-
-  export type tr_orderUpdateWithWhereUniqueWithoutTicketInput = {
-    where: tr_orderWhereUniqueInput
-    data: XOR<tr_orderUpdateWithoutTicketInput, tr_orderUncheckedUpdateWithoutTicketInput>
-  }
-
-  export type tr_orderUpdateManyWithWhereWithoutTicketInput = {
-    where: tr_orderScalarWhereInput
-    data: XOR<tr_orderUpdateManyMutationInput, tr_orderUncheckedUpdateManyWithoutTicketInput>
+    sjt_status?: IntNullableFilter<"collection"> | number | null
+    reg_code?: StringNullableFilter<"collection"> | string | null
+    asset_number?: StringNullableFilter<"collection"> | string | null
   }
 
   export type resourceUpsertWithWhereUniqueWithoutTicketInput = {
@@ -46212,6 +46494,128 @@ export namespace Prisma {
     update_time?: StringNullableFilter<"resource"> | string | null
     status?: IntNullableFilter<"resource"> | number | null
     remark?: StringNullableFilter<"resource"> | string | null
+  }
+
+  export type tr_orderUpsertWithWhereUniqueWithoutTicketInput = {
+    where: tr_orderWhereUniqueInput
+    update: XOR<tr_orderUpdateWithoutTicketInput, tr_orderUncheckedUpdateWithoutTicketInput>
+    create: XOR<tr_orderCreateWithoutTicketInput, tr_orderUncheckedCreateWithoutTicketInput>
+  }
+
+  export type tr_orderUpdateWithWhereUniqueWithoutTicketInput = {
+    where: tr_orderWhereUniqueInput
+    data: XOR<tr_orderUpdateWithoutTicketInput, tr_orderUncheckedUpdateWithoutTicketInput>
+  }
+
+  export type tr_orderUpdateManyWithWhereWithoutTicketInput = {
+    where: tr_orderScalarWhereInput
+    data: XOR<tr_orderUpdateManyMutationInput, tr_orderUncheckedUpdateManyWithoutTicketInput>
+  }
+
+  export type ticketCreateWithoutTr_orderInput = {
+    ticket_name: string
+    ticket_type?: number | null
+    chain_type?: number | null
+    cover_uri?: string | null
+    content_uri?: string | null
+    td_files?: NullableJsonNullValueInput | InputJsonValue
+    creator_uid?: number | null
+    creator_name?: string | null
+    creator_avatar?: string | null
+    daop_user_id?: number | null
+    daop_user_address?: string | null
+    publisher_id?: number | null
+    publisher_name?: string | null
+    publisher_logo?: string | null
+    amount?: number
+    sold_amount?: number | null
+    sku_balance?: number | null
+    price?: number
+    available_time?: Date | string | null
+    expire_time?: Date | string | null
+    sale_begin_time?: Date | string | null
+    sale_end_time?: Date | string | null
+    description?: string | null
+    usage?: string | null
+    sale_status?: number | null
+    available_status?: number | null
+    authorization_id?: number | null
+    authorization_code: string
+    did_credential?: string | null
+    copyright_credential?: string | null
+    authorization_credential?: string | null
+    chain_txid?: string | null
+    chain_block_number?: number | null
+    chain_time?: number | null
+    chain_status?: number | null
+    is_sale?: number | null
+    modify_time?: Date | string | null
+    create_time?: Date | string | null
+    registration_id?: number | null
+    send_status?: number | null
+    landing_uri?: string | null
+    download_status?: number | null
+    origin_uri?: string | null
+    creation_date?: Date | string | null
+    start_date?: Date | string | null
+    collection?: collectionCreateNestedManyWithoutTicketInput
+    resource?: resourceCreateNestedManyWithoutTicketInput
+  }
+
+  export type ticketUncheckedCreateWithoutTr_orderInput = {
+    id?: number
+    ticket_name: string
+    ticket_type?: number | null
+    chain_type?: number | null
+    cover_uri?: string | null
+    content_uri?: string | null
+    td_files?: NullableJsonNullValueInput | InputJsonValue
+    creator_uid?: number | null
+    creator_name?: string | null
+    creator_avatar?: string | null
+    daop_user_id?: number | null
+    daop_user_address?: string | null
+    publisher_id?: number | null
+    publisher_name?: string | null
+    publisher_logo?: string | null
+    amount?: number
+    sold_amount?: number | null
+    sku_balance?: number | null
+    price?: number
+    available_time?: Date | string | null
+    expire_time?: Date | string | null
+    sale_begin_time?: Date | string | null
+    sale_end_time?: Date | string | null
+    description?: string | null
+    usage?: string | null
+    sale_status?: number | null
+    available_status?: number | null
+    authorization_id?: number | null
+    authorization_code: string
+    did_credential?: string | null
+    copyright_credential?: string | null
+    authorization_credential?: string | null
+    chain_txid?: string | null
+    chain_block_number?: number | null
+    chain_time?: number | null
+    chain_status?: number | null
+    is_sale?: number | null
+    modify_time?: Date | string | null
+    create_time?: Date | string | null
+    registration_id?: number | null
+    send_status?: number | null
+    landing_uri?: string | null
+    download_status?: number | null
+    origin_uri?: string | null
+    creation_date?: Date | string | null
+    start_date?: Date | string | null
+    collection?: collectionUncheckedCreateNestedManyWithoutTicketInput
+    resource?: resourceUncheckedCreateNestedManyWithoutTicketInput
+  }
+
+  export type ticketCreateOrConnectWithoutTr_orderInput = {
+    where: ticketWhereUniqueInput
+    create: XOR<ticketCreateWithoutTr_orderInput, ticketUncheckedCreateWithoutTr_orderInput>
   }
 
   export type collectionCreateWithoutTr_orderInput = {
@@ -46257,6 +46661,9 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
     ticket?: ticketCreateNestedOneWithoutCollectionInput
     user?: userCreateNestedOneWithoutCollectionInput
     tr_transfer?: tr_transferCreateNestedManyWithoutCollectionInput
@@ -46308,108 +46715,15 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
     tr_transfer?: tr_transferUncheckedCreateNestedManyWithoutCollectionInput
   }
 
   export type collectionCreateOrConnectWithoutTr_orderInput = {
     where: collectionWhereUniqueInput
     create: XOR<collectionCreateWithoutTr_orderInput, collectionUncheckedCreateWithoutTr_orderInput>
-  }
-
-  export type ticketCreateWithoutTr_orderInput = {
-    ticket_name: string
-    ticket_type?: number | null
-    chain_type?: number | null
-    cover_uri?: string | null
-    content_uri?: string | null
-    td_files?: NullableJsonNullValueInput | InputJsonValue
-    creator_uid?: number | null
-    creator_name?: string | null
-    creator_avatar?: string | null
-    daop_user_id?: number | null
-    daop_user_address?: string | null
-    publisher_id?: number | null
-    publisher_name?: string | null
-    publisher_logo?: string | null
-    amount?: number
-    sold_amount?: number | null
-    sku_balance?: number | null
-    price?: number
-    available_time?: Date | string | null
-    expire_time?: Date | string | null
-    sale_begin_time?: Date | string | null
-    sale_end_time?: Date | string | null
-    description?: string | null
-    usage?: string | null
-    sale_status?: number | null
-    available_status?: number | null
-    authorization_id?: number | null
-    authorization_code: string
-    did_credential?: string | null
-    copyright_credential?: string | null
-    authorization_credential?: string | null
-    chain_txid?: string | null
-    chain_block_number?: number | null
-    chain_time?: number | null
-    chain_status?: number | null
-    is_sale?: number | null
-    modify_time?: Date | string | null
-    create_time?: Date | string | null
-    registration_id?: number | null
-    send_status?: number | null
-    collection?: collectionCreateNestedManyWithoutTicketInput
-    resource?: resourceCreateNestedManyWithoutTicketInput
-  }
-
-  export type ticketUncheckedCreateWithoutTr_orderInput = {
-    id?: number
-    ticket_name: string
-    ticket_type?: number | null
-    chain_type?: number | null
-    cover_uri?: string | null
-    content_uri?: string | null
-    td_files?: NullableJsonNullValueInput | InputJsonValue
-    creator_uid?: number | null
-    creator_name?: string | null
-    creator_avatar?: string | null
-    daop_user_id?: number | null
-    daop_user_address?: string | null
-    publisher_id?: number | null
-    publisher_name?: string | null
-    publisher_logo?: string | null
-    amount?: number
-    sold_amount?: number | null
-    sku_balance?: number | null
-    price?: number
-    available_time?: Date | string | null
-    expire_time?: Date | string | null
-    sale_begin_time?: Date | string | null
-    sale_end_time?: Date | string | null
-    description?: string | null
-    usage?: string | null
-    sale_status?: number | null
-    available_status?: number | null
-    authorization_id?: number | null
-    authorization_code: string
-    did_credential?: string | null
-    copyright_credential?: string | null
-    authorization_credential?: string | null
-    chain_txid?: string | null
-    chain_block_number?: number | null
-    chain_time?: number | null
-    chain_status?: number | null
-    is_sale?: number | null
-    modify_time?: Date | string | null
-    create_time?: Date | string | null
-    registration_id?: number | null
-    send_status?: number | null
-    collection?: collectionUncheckedCreateNestedManyWithoutTicketInput
-    resource?: resourceUncheckedCreateNestedManyWithoutTicketInput
-  }
-
-  export type ticketCreateOrConnectWithoutTr_orderInput = {
-    where: ticketWhereUniqueInput
-    create: XOR<ticketCreateWithoutTr_orderInput, ticketUncheckedCreateWithoutTr_orderInput>
   }
 
   export type tr_transferCreateWithoutTr_orderInput = {
@@ -46459,6 +46773,118 @@ export namespace Prisma {
   export type tr_transferCreateManyTr_orderInputEnvelope = {
     data: tr_transferCreateManyTr_orderInput | tr_transferCreateManyTr_orderInput[]
     skipDuplicates?: boolean
+  }
+
+  export type ticketUpsertWithoutTr_orderInput = {
+    update: XOR<ticketUpdateWithoutTr_orderInput, ticketUncheckedUpdateWithoutTr_orderInput>
+    create: XOR<ticketCreateWithoutTr_orderInput, ticketUncheckedCreateWithoutTr_orderInput>
+    where?: ticketWhereInput
+  }
+
+  export type ticketUpdateToOneWithWhereWithoutTr_orderInput = {
+    where?: ticketWhereInput
+    data: XOR<ticketUpdateWithoutTr_orderInput, ticketUncheckedUpdateWithoutTr_orderInput>
+  }
+
+  export type ticketUpdateWithoutTr_orderInput = {
+    ticket_name?: StringFieldUpdateOperationsInput | string
+    ticket_type?: NullableIntFieldUpdateOperationsInput | number | null
+    chain_type?: NullableIntFieldUpdateOperationsInput | number | null
+    cover_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    content_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    td_files?: NullableJsonNullValueInput | InputJsonValue
+    creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
+    creator_name?: NullableStringFieldUpdateOperationsInput | string | null
+    creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
+    daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
+    publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
+    publisher_name?: NullableStringFieldUpdateOperationsInput | string | null
+    publisher_logo?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    sold_amount?: NullableIntFieldUpdateOperationsInput | number | null
+    sku_balance?: NullableIntFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    available_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    sale_begin_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    sale_end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    usage?: NullableStringFieldUpdateOperationsInput | string | null
+    sale_status?: NullableIntFieldUpdateOperationsInput | number | null
+    available_status?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_id?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_code?: StringFieldUpdateOperationsInput | string
+    did_credential?: NullableStringFieldUpdateOperationsInput | string | null
+    copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
+    authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
+    chain_txid?: NullableStringFieldUpdateOperationsInput | string | null
+    chain_block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    chain_time?: NullableIntFieldUpdateOperationsInput | number | null
+    chain_status?: NullableIntFieldUpdateOperationsInput | number | null
+    is_sale?: NullableIntFieldUpdateOperationsInput | number | null
+    modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registration_id?: NullableIntFieldUpdateOperationsInput | number | null
+    send_status?: NullableIntFieldUpdateOperationsInput | number | null
+    landing_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    download_status?: NullableIntFieldUpdateOperationsInput | number | null
+    origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    collection?: collectionUpdateManyWithoutTicketNestedInput
+    resource?: resourceUpdateManyWithoutTicketNestedInput
+  }
+
+  export type ticketUncheckedUpdateWithoutTr_orderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    ticket_name?: StringFieldUpdateOperationsInput | string
+    ticket_type?: NullableIntFieldUpdateOperationsInput | number | null
+    chain_type?: NullableIntFieldUpdateOperationsInput | number | null
+    cover_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    content_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    td_files?: NullableJsonNullValueInput | InputJsonValue
+    creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
+    creator_name?: NullableStringFieldUpdateOperationsInput | string | null
+    creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
+    daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
+    publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
+    publisher_name?: NullableStringFieldUpdateOperationsInput | string | null
+    publisher_logo?: NullableStringFieldUpdateOperationsInput | string | null
+    amount?: IntFieldUpdateOperationsInput | number
+    sold_amount?: NullableIntFieldUpdateOperationsInput | number | null
+    sku_balance?: NullableIntFieldUpdateOperationsInput | number | null
+    price?: IntFieldUpdateOperationsInput | number
+    available_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    sale_begin_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    sale_end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    usage?: NullableStringFieldUpdateOperationsInput | string | null
+    sale_status?: NullableIntFieldUpdateOperationsInput | number | null
+    available_status?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_id?: NullableIntFieldUpdateOperationsInput | number | null
+    authorization_code?: StringFieldUpdateOperationsInput | string
+    did_credential?: NullableStringFieldUpdateOperationsInput | string | null
+    copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
+    authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
+    chain_txid?: NullableStringFieldUpdateOperationsInput | string | null
+    chain_block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    chain_time?: NullableIntFieldUpdateOperationsInput | number | null
+    chain_status?: NullableIntFieldUpdateOperationsInput | number | null
+    is_sale?: NullableIntFieldUpdateOperationsInput | number | null
+    modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    registration_id?: NullableIntFieldUpdateOperationsInput | number | null
+    send_status?: NullableIntFieldUpdateOperationsInput | number | null
+    landing_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    download_status?: NullableIntFieldUpdateOperationsInput | number | null
+    origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    collection?: collectionUncheckedUpdateManyWithoutTicketNestedInput
+    resource?: resourceUncheckedUpdateManyWithoutTicketNestedInput
   }
 
   export type collectionUpsertWithoutTr_orderInput = {
@@ -46515,6 +46941,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
     ticket?: ticketUpdateOneWithoutCollectionNestedInput
     user?: userUpdateOneRequiredWithoutCollectionNestedInput
     tr_transfer?: tr_transferUpdateManyWithoutCollectionNestedInput
@@ -46566,109 +46995,10 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
     tr_transfer?: tr_transferUncheckedUpdateManyWithoutCollectionNestedInput
-  }
-
-  export type ticketUpsertWithoutTr_orderInput = {
-    update: XOR<ticketUpdateWithoutTr_orderInput, ticketUncheckedUpdateWithoutTr_orderInput>
-    create: XOR<ticketCreateWithoutTr_orderInput, ticketUncheckedCreateWithoutTr_orderInput>
-    where?: ticketWhereInput
-  }
-
-  export type ticketUpdateToOneWithWhereWithoutTr_orderInput = {
-    where?: ticketWhereInput
-    data: XOR<ticketUpdateWithoutTr_orderInput, ticketUncheckedUpdateWithoutTr_orderInput>
-  }
-
-  export type ticketUpdateWithoutTr_orderInput = {
-    ticket_name?: StringFieldUpdateOperationsInput | string
-    ticket_type?: NullableIntFieldUpdateOperationsInput | number | null
-    chain_type?: NullableIntFieldUpdateOperationsInput | number | null
-    cover_uri?: NullableStringFieldUpdateOperationsInput | string | null
-    content_uri?: NullableStringFieldUpdateOperationsInput | string | null
-    td_files?: NullableJsonNullValueInput | InputJsonValue
-    creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
-    creator_name?: NullableStringFieldUpdateOperationsInput | string | null
-    creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
-    daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
-    publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
-    publisher_name?: NullableStringFieldUpdateOperationsInput | string | null
-    publisher_logo?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
-    sold_amount?: NullableIntFieldUpdateOperationsInput | number | null
-    sku_balance?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
-    available_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    sale_begin_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    sale_end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    usage?: NullableStringFieldUpdateOperationsInput | string | null
-    sale_status?: NullableIntFieldUpdateOperationsInput | number | null
-    available_status?: NullableIntFieldUpdateOperationsInput | number | null
-    authorization_id?: NullableIntFieldUpdateOperationsInput | number | null
-    authorization_code?: StringFieldUpdateOperationsInput | string
-    did_credential?: NullableStringFieldUpdateOperationsInput | string | null
-    copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
-    authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
-    chain_txid?: NullableStringFieldUpdateOperationsInput | string | null
-    chain_block_number?: NullableIntFieldUpdateOperationsInput | number | null
-    chain_time?: NullableIntFieldUpdateOperationsInput | number | null
-    chain_status?: NullableIntFieldUpdateOperationsInput | number | null
-    is_sale?: NullableIntFieldUpdateOperationsInput | number | null
-    modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    registration_id?: NullableIntFieldUpdateOperationsInput | number | null
-    send_status?: NullableIntFieldUpdateOperationsInput | number | null
-    collection?: collectionUpdateManyWithoutTicketNestedInput
-    resource?: resourceUpdateManyWithoutTicketNestedInput
-  }
-
-  export type ticketUncheckedUpdateWithoutTr_orderInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    ticket_name?: StringFieldUpdateOperationsInput | string
-    ticket_type?: NullableIntFieldUpdateOperationsInput | number | null
-    chain_type?: NullableIntFieldUpdateOperationsInput | number | null
-    cover_uri?: NullableStringFieldUpdateOperationsInput | string | null
-    content_uri?: NullableStringFieldUpdateOperationsInput | string | null
-    td_files?: NullableJsonNullValueInput | InputJsonValue
-    creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
-    creator_name?: NullableStringFieldUpdateOperationsInput | string | null
-    creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
-    daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
-    daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
-    publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
-    publisher_name?: NullableStringFieldUpdateOperationsInput | string | null
-    publisher_logo?: NullableStringFieldUpdateOperationsInput | string | null
-    amount?: IntFieldUpdateOperationsInput | number
-    sold_amount?: NullableIntFieldUpdateOperationsInput | number | null
-    sku_balance?: NullableIntFieldUpdateOperationsInput | number | null
-    price?: IntFieldUpdateOperationsInput | number
-    available_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    sale_begin_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    sale_end_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    usage?: NullableStringFieldUpdateOperationsInput | string | null
-    sale_status?: NullableIntFieldUpdateOperationsInput | number | null
-    available_status?: NullableIntFieldUpdateOperationsInput | number | null
-    authorization_id?: NullableIntFieldUpdateOperationsInput | number | null
-    authorization_code?: StringFieldUpdateOperationsInput | string
-    did_credential?: NullableStringFieldUpdateOperationsInput | string | null
-    copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
-    authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
-    chain_txid?: NullableStringFieldUpdateOperationsInput | string | null
-    chain_block_number?: NullableIntFieldUpdateOperationsInput | number | null
-    chain_time?: NullableIntFieldUpdateOperationsInput | number | null
-    chain_status?: NullableIntFieldUpdateOperationsInput | number | null
-    is_sale?: NullableIntFieldUpdateOperationsInput | number | null
-    modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    registration_id?: NullableIntFieldUpdateOperationsInput | number | null
-    send_status?: NullableIntFieldUpdateOperationsInput | number | null
-    collection?: collectionUncheckedUpdateManyWithoutTicketNestedInput
-    resource?: resourceUncheckedUpdateManyWithoutTicketNestedInput
   }
 
   export type tr_transferUpsertWithWhereUniqueWithoutTr_orderInput = {
@@ -46730,6 +47060,9 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
     ticket?: ticketCreateNestedOneWithoutCollectionInput
     user?: userCreateNestedOneWithoutCollectionInput
     tr_order?: tr_orderCreateNestedManyWithoutCollectionInput
@@ -46781,6 +47114,9 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutCollectionInput
   }
 
@@ -46827,8 +47163,8 @@ export namespace Prisma {
     deleted_at?: number | null
     modify_time?: Date | string
     create_time?: Date | string | null
-    collection?: collectionCreateNestedOneWithoutTr_orderInput
     ticket: ticketCreateNestedOneWithoutTr_orderInput
+    collection?: collectionCreateNestedOneWithoutTr_orderInput
   }
 
   export type tr_orderUncheckedCreateWithoutTr_transferInput = {
@@ -46933,6 +47269,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
     ticket?: ticketUpdateOneWithoutCollectionNestedInput
     user?: userUpdateOneRequiredWithoutCollectionNestedInput
     tr_order?: tr_orderUpdateManyWithoutCollectionNestedInput
@@ -46984,6 +47323,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
     tr_order?: tr_orderUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
@@ -47036,8 +47378,8 @@ export namespace Prisma {
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    collection?: collectionUpdateOneRequiredWithoutTr_orderNestedInput
     ticket?: ticketUpdateOneRequiredWithoutTr_orderNestedInput
+    collection?: collectionUpdateOneRequiredWithoutTr_orderNestedInput
   }
 
   export type tr_orderUncheckedUpdateWithoutTr_transferInput = {
@@ -47126,6 +47468,9 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
     ticket?: ticketCreateNestedOneWithoutCollectionInput
     tr_order?: tr_orderCreateNestedManyWithoutCollectionInput
     tr_transfer?: tr_transferCreateNestedManyWithoutCollectionInput
@@ -47176,6 +47521,9 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutCollectionInput
     tr_transfer?: tr_transferUncheckedCreateNestedManyWithoutCollectionInput
   }
@@ -47247,6 +47595,11 @@ export namespace Prisma {
     create_time?: Date | string | null
     registration_id?: number | null
     send_status?: number | null
+    landing_uri?: string | null
+    download_status?: number | null
+    origin_uri?: string | null
+    creation_date?: Date | string | null
+    start_date?: Date | string | null
     collection?: collectionCreateNestedManyWithoutTicketInput
     tr_order?: tr_orderCreateNestedManyWithoutTicketInput
   }
@@ -47293,6 +47646,11 @@ export namespace Prisma {
     create_time?: Date | string | null
     registration_id?: number | null
     send_status?: number | null
+    landing_uri?: string | null
+    download_status?: number | null
+    origin_uri?: string | null
+    creation_date?: Date | string | null
+    start_date?: Date | string | null
     collection?: collectionUncheckedCreateNestedManyWithoutTicketInput
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutTicketInput
   }
@@ -47354,6 +47712,11 @@ export namespace Prisma {
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registration_id?: NullableIntFieldUpdateOperationsInput | number | null
     send_status?: NullableIntFieldUpdateOperationsInput | number | null
+    landing_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    download_status?: NullableIntFieldUpdateOperationsInput | number | null
+    origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     collection?: collectionUpdateManyWithoutTicketNestedInput
     tr_order?: tr_orderUpdateManyWithoutTicketNestedInput
   }
@@ -47400,6 +47763,11 @@ export namespace Prisma {
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     registration_id?: NullableIntFieldUpdateOperationsInput | number | null
     send_status?: NullableIntFieldUpdateOperationsInput | number | null
+    landing_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    download_status?: NullableIntFieldUpdateOperationsInput | number | null
+    origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
+    creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     collection?: collectionUncheckedUpdateManyWithoutTicketNestedInput
     tr_order?: tr_orderUncheckedUpdateManyWithoutTicketNestedInput
   }
@@ -48066,6 +48434,22 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
+  }
+
+  export type resourceCreateManyTicketInput = {
+    id?: number
+    name?: string | null
+    resource_url?: string | null
+    order?: number | null
+    create_by?: string | null
+    create_time?: string | null
+    update_by?: string | null
+    update_time?: string | null
+    status?: number | null
+    remark?: string | null
   }
 
   export type tr_orderCreateManyTicketInput = {
@@ -48108,19 +48492,6 @@ export namespace Prisma {
     deleted_at?: number | null
     modify_time?: Date | string
     create_time?: Date | string | null
-  }
-
-  export type resourceCreateManyTicketInput = {
-    id?: number
-    name?: string | null
-    resource_url?: string | null
-    order?: number | null
-    create_by?: string | null
-    create_time?: string | null
-    update_by?: string | null
-    update_time?: string | null
-    status?: number | null
-    remark?: string | null
   }
 
   export type collectionUpdateWithoutTicketInput = {
@@ -48166,6 +48537,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
     user?: userUpdateOneRequiredWithoutCollectionNestedInput
     tr_order?: tr_orderUpdateManyWithoutCollectionNestedInput
     tr_transfer?: tr_transferUpdateManyWithoutCollectionNestedInput
@@ -48216,6 +48590,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
     tr_order?: tr_orderUncheckedUpdateManyWithoutCollectionNestedInput
     tr_transfer?: tr_transferUncheckedUpdateManyWithoutCollectionNestedInput
   }
@@ -48265,6 +48642,47 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type resourceUpdateWithoutTicketInput = {
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    resource_url?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    create_by?: NullableStringFieldUpdateOperationsInput | string | null
+    create_time?: NullableStringFieldUpdateOperationsInput | string | null
+    update_by?: NullableStringFieldUpdateOperationsInput | string | null
+    update_time?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type resourceUncheckedUpdateWithoutTicketInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    resource_url?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    create_by?: NullableStringFieldUpdateOperationsInput | string | null
+    create_time?: NullableStringFieldUpdateOperationsInput | string | null
+    update_by?: NullableStringFieldUpdateOperationsInput | string | null
+    update_time?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type resourceUncheckedUpdateManyWithoutTicketInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    resource_url?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    create_by?: NullableStringFieldUpdateOperationsInput | string | null
+    create_time?: NullableStringFieldUpdateOperationsInput | string | null
+    update_by?: NullableStringFieldUpdateOperationsInput | string | null
+    update_time?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type tr_orderUpdateWithoutTicketInput = {
@@ -48394,44 +48812,6 @@ export namespace Prisma {
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type resourceUpdateWithoutTicketInput = {
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    resource_url?: NullableStringFieldUpdateOperationsInput | string | null
-    order?: NullableIntFieldUpdateOperationsInput | number | null
-    create_by?: NullableStringFieldUpdateOperationsInput | string | null
-    create_time?: NullableStringFieldUpdateOperationsInput | string | null
-    update_by?: NullableStringFieldUpdateOperationsInput | string | null
-    update_time?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableIntFieldUpdateOperationsInput | number | null
-    remark?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type resourceUncheckedUpdateWithoutTicketInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    resource_url?: NullableStringFieldUpdateOperationsInput | string | null
-    order?: NullableIntFieldUpdateOperationsInput | number | null
-    create_by?: NullableStringFieldUpdateOperationsInput | string | null
-    create_time?: NullableStringFieldUpdateOperationsInput | string | null
-    update_by?: NullableStringFieldUpdateOperationsInput | string | null
-    update_time?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableIntFieldUpdateOperationsInput | number | null
-    remark?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type resourceUncheckedUpdateManyWithoutTicketInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    resource_url?: NullableStringFieldUpdateOperationsInput | string | null
-    order?: NullableIntFieldUpdateOperationsInput | number | null
-    create_by?: NullableStringFieldUpdateOperationsInput | string | null
-    create_time?: NullableStringFieldUpdateOperationsInput | string | null
-    update_by?: NullableStringFieldUpdateOperationsInput | string | null
-    update_time?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableIntFieldUpdateOperationsInput | number | null
-    remark?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
   export type tr_transferCreateManyTr_orderInput = {
     id?: number
     collection_id?: number
@@ -48556,6 +48936,9 @@ export namespace Prisma {
     old_status?: number | null
     certificate_url?: string | null
     block_number?: number | null
+    sjt_status?: number | null
+    reg_code?: string | null
+    asset_number?: string | null
   }
 
   export type collectionUpdateWithoutUserInput = {
@@ -48601,6 +48984,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
     ticket?: ticketUpdateOneWithoutCollectionNestedInput
     tr_order?: tr_orderUpdateManyWithoutCollectionNestedInput
     tr_transfer?: tr_transferUpdateManyWithoutCollectionNestedInput
@@ -48651,6 +49037,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
     tr_order?: tr_orderUncheckedUpdateManyWithoutCollectionNestedInput
     tr_transfer?: tr_transferUncheckedUpdateManyWithoutCollectionNestedInput
   }
@@ -48700,6 +49089,9 @@ export namespace Prisma {
     old_status?: NullableIntFieldUpdateOperationsInput | number | null
     certificate_url?: NullableStringFieldUpdateOperationsInput | string | null
     block_number?: NullableIntFieldUpdateOperationsInput | number | null
+    sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
+    reg_code?: NullableStringFieldUpdateOperationsInput | string | null
+    asset_number?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
 

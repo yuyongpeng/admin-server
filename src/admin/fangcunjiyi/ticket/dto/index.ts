@@ -85,9 +85,14 @@ export class CreateTicketDto4Golang {
   @IsString()
   @IsNotEmpty({ message: '邮票发行方 不能为空' })
   publisher_name: string;
+
+  @ApiProperty({ description: '数字藏品原图', required: true, example: 'https://daop-img.stars-mine.com/image/ee/43/ee43b75c86ad8c1b31f3b1c1be21dc5e1858752e.jpg' })
+  @IsString()
+  @IsNotEmpty({ message: '原图不能为空' })
+  origin_uri: string;
 }
 
-/**@description 发售藏品jj*/
+/**@description 发售藏品*/
 export class SaleStatusDto {
   @ApiProperty({ description: 'ticket id', required: true, example: 28 })
   @IsNotEmpty({ message: 'ticket id 不能为空' })
@@ -315,6 +320,11 @@ export class CreateTicketDto extends BaseDomain {
   @IsOptional()
   @IsNumber()
   end_status: number | null;
+
+  @ApiProperty({ description: '数字藏品原图', required: true, example: 'https://daop-img.stars-mine.com/image/ee/43/ee43b75c86ad8c1b31f3b1c1be21dc5e1858752e.jpg' })
+  @IsString()
+  @IsNotEmpty({ message: '原图不能为空' })
+  origin_uri: string | null;
 }
 
 /**@description 更新 ticket 表的 DTO */
@@ -532,4 +542,9 @@ export class UpdateTicketDto extends BaseDomain {
   @IsOptional()
   @IsNumber()
   end_status: number | null;
+
+  @ApiProperty({ description: '数字藏品原图', required: true, example: 'https://daop-img.stars-mine.com/image/ee/43/ee43b75c86ad8c1b31f3b1c1be21dc5e1858752e.jpg' })
+  @IsString()
+  @IsNotEmpty({ message: '原图不能为空' })
+  origin_uri: string | null;
 }

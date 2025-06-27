@@ -318,6 +318,9 @@ entity "collection" as collection {
   old_status : Int
   certificate_url : String
   block_number : Int
+  sjt_status : Int
+  reg_code : String
+  asset_number : String
 }
 
 entity "init_mobile" as init_mobile {
@@ -387,6 +390,11 @@ entity "ticket" as ticket {
   create_time : DateTime
   registration_id : Int
   send_status : Int
+  landing_uri : String
+  download_status : Int
+  origin_uri : String
+  creation_date : DateTime
+  start_date : DateTime
 }
 
 entity "tr_order" as tr_order {
@@ -482,6 +490,7 @@ entity "user" as user {
   id_card_no : String
   realname : String
   realname_state : Int
+  realname_type : Int
   realname_time : DateTime
   daop_account_id : Int
   daop_user_id : Int
@@ -535,8 +544,8 @@ SysUserRole }o--|| SysUser: userId
 SysUserRole }o--|| SysRole: roleId
 collection }o--o| ticket: ticket_id
 collection }o--|| user: owner_uid
-tr_order }o--|| collection: collection_id
 tr_order }o--|| ticket: ticket_id
+tr_order }o--|| collection: collection_id
 tr_transfer }o--|| collection: collection_id
 tr_transfer }o--|| tr_order: order_id
 resource }o--|| ticket: ticket_id
@@ -1674,6 +1683,9 @@ SysUserRole }o--|| SysRole: roleId
 |old_status | Int |  | true | false |  |  | |
 |certificate_url | String | - | true | false |  |  | |
 |block_number | Int |  | true | false |  |  | |
+|sjt_status | Int |  | true | false |  |  | |
+|reg_code | String |  | true | false |  |  | |
+|asset_number | String |  | true | false |  |  | |
 
 ## ER diagram
 
@@ -1727,6 +1739,9 @@ entity "collection" as collection {
   old_status : Int
   certificate_url : String
   block_number : Int
+  sjt_status : Int
+  reg_code : String
+  asset_number : String
 }
 
 entity "ticket" as ticket {
@@ -1772,6 +1787,11 @@ entity "ticket" as ticket {
   create_time : DateTime
   registration_id : Int
   send_status : Int
+  landing_uri : String
+  download_status : Int
+  origin_uri : String
+  creation_date : DateTime
+  start_date : DateTime
 }
 
 entity "tr_order" as tr_order {
@@ -1857,6 +1877,7 @@ entity "user" as user {
   id_card_no : String
   realname : String
   realname_state : Int
+  realname_type : Int
   realname_time : DateTime
   daop_account_id : Int
   daop_user_id : Int
@@ -1870,8 +1891,8 @@ entity "user" as user {
 ' Relations
 collection }o--o| ticket: ticket_id
 collection }o--|| user: owner_uid
-tr_order }o--|| collection: collection_id
 tr_order }o--|| ticket: ticket_id
+tr_order }o--|| collection: collection_id
 tr_transfer }o--|| collection: collection_id
 tr_transfer }o--|| tr_order: order_id
 ' ManyToMany Relations
@@ -2024,6 +2045,11 @@ entity "publisher" as publisher {
 |create_time | DateTime | now | true | false |  |  | |
 |registration_id | Int |  | true | false |  |  | |
 |send_status | Int |  | true | false |  |  | |
+|landing_uri | String |  | true | false |  |  | |
+|download_status | Int |  | true | false |  |  | |
+|origin_uri | String |  | true | false |  |  | |
+|creation_date | DateTime |  | true | false |  |  | |
+|start_date | DateTime |  | true | false |  |  | |
 
 ## ER diagram
 
@@ -2077,6 +2103,9 @@ entity "collection" as collection {
   old_status : Int
   certificate_url : String
   block_number : Int
+  sjt_status : Int
+  reg_code : String
+  asset_number : String
 }
 
 entity "ticket" as ticket {
@@ -2122,6 +2151,11 @@ entity "ticket" as ticket {
   create_time : DateTime
   registration_id : Int
   send_status : Int
+  landing_uri : String
+  download_status : Int
+  origin_uri : String
+  creation_date : DateTime
+  start_date : DateTime
 }
 
 entity "tr_order" as tr_order {
@@ -2185,8 +2219,8 @@ entity "resource" as resource {
 
 ' Relations
 collection }o--o| ticket: ticket_id
-tr_order }o--|| collection: collection_id
 tr_order }o--|| ticket: ticket_id
+tr_order }o--|| collection: collection_id
 resource }o--|| ticket: ticket_id
 ' ManyToMany Relations
 ' enum relations
@@ -2294,6 +2328,9 @@ entity "collection" as collection {
   old_status : Int
   certificate_url : String
   block_number : Int
+  sjt_status : Int
+  reg_code : String
+  asset_number : String
 }
 
 entity "ticket" as ticket {
@@ -2339,6 +2376,11 @@ entity "ticket" as ticket {
   create_time : DateTime
   registration_id : Int
   send_status : Int
+  landing_uri : String
+  download_status : Int
+  origin_uri : String
+  creation_date : DateTime
+  start_date : DateTime
 }
 
 entity "tr_order" as tr_order {
@@ -2409,8 +2451,8 @@ entity "tr_transfer" as tr_transfer {
 
 ' Relations
 collection }o--o| ticket: ticket_id
-tr_order }o--|| collection: collection_id
 tr_order }o--|| ticket: ticket_id
+tr_order }o--|| collection: collection_id
 tr_transfer }o--|| collection: collection_id
 tr_transfer }o--|| tr_order: order_id
 ' ManyToMany Relations
@@ -2533,6 +2575,9 @@ entity "collection" as collection {
   old_status : Int
   certificate_url : String
   block_number : Int
+  sjt_status : Int
+  reg_code : String
+  asset_number : String
 }
 
 entity "tr_order" as tr_order {
@@ -2633,6 +2678,7 @@ tr_transfer }o--|| tr_order: order_id
 |id_card_no | String |  | true | false |  |  | |
 |realname | String |  | true | false |  |  | |
 |realname_state | Int |  | true | false |  |  | |
+|realname_type | Int |  | true | false |  |  | |
 |realname_time | DateTime |  | true | false |  |  | |
 |daop_account_id | Int |  | true | false |  |  | |
 |daop_user_id | Int |  | true | false |  |  | |
@@ -2700,6 +2746,9 @@ entity "collection" as collection {
   old_status : Int
   certificate_url : String
   block_number : Int
+  sjt_status : Int
+  reg_code : String
+  asset_number : String
 }
 
 entity "user" as user {
@@ -2719,6 +2768,7 @@ entity "user" as user {
   id_card_no : String
   realname : String
   realname_state : Int
+  realname_type : Int
   realname_time : DateTime
   daop_account_id : Int
   daop_user_id : Int
@@ -2848,6 +2898,11 @@ entity "ticket" as ticket {
   create_time : DateTime
   registration_id : Int
   send_status : Int
+  landing_uri : String
+  download_status : Int
+  origin_uri : String
+  creation_date : DateTime
+  start_date : DateTime
 }
 
 entity "resource" as resource {
