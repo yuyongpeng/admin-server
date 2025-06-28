@@ -2,14 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '@/common/service/prisma/prisma.service';
 import { Response } from 'express';
 import { exportTable } from '@/common/utils';
-import {
-  QuerySysUserDto,
-  CreateSysUserDto,
-  UpdateSysUserDto,
-  resetPasswordDto,
-  UpdateSysUserStatusDto,
-  updateProfileDto,
-} from '../dto/index';
+import { QuerySysUserDto, CreateSysUserDto, UpdateSysUserDto, resetPasswordDto, UpdateSysUserStatusDto, updateProfileDto } from '../dto/index';
 import { Prisma } from '@prismaClient';
 import { isNotEmpty } from 'class-validator';
 import * as assert from 'assert';
@@ -86,28 +79,19 @@ export class UserService {
         equals: q.loginIp,
       };
     }
-    if (
-      isNotEmpty(q.params.beginLoginDate) &&
-      isNotEmpty(q.params.endLoginDate)
-    ) {
+    if (isNotEmpty(q.params.beginLoginDate) && isNotEmpty(q.params.endLoginDate)) {
       queryCondition.loginDate = {
         lte: q.params.endLoginDate,
         gte: q.params.beginLoginDate,
       };
     }
-    if (
-      isNotEmpty(q.params.beginCreateTime) &&
-      isNotEmpty(q.params.endCreateTime)
-    ) {
+    if (isNotEmpty(q.params.beginCreateTime) && isNotEmpty(q.params.endCreateTime)) {
       queryCondition.createTime = {
         lte: q.params.endCreateTime,
         gte: q.params.beginCreateTime,
       };
     }
-    if (
-      isNotEmpty(q.params.beginUpdateTime) &&
-      isNotEmpty(q.params.endUpdateTime)
-    ) {
+    if (isNotEmpty(q.params.beginUpdateTime) && isNotEmpty(q.params.endUpdateTime)) {
       queryCondition.updateTime = {
         lte: q.params.endUpdateTime,
         gte: q.params.beginUpdateTime,
@@ -435,11 +419,7 @@ export class UserService {
   }
 
   /** 修改密码 */
-  async updateUserPwd(
-    userId: number,
-    oldPassword: string,
-    newPassword: string,
-  ) {
+  async updateUserPwd(userId: number, oldPassword: string, newPassword: string) {
     assert(isNotEmpty(oldPassword) && isNotEmpty(newPassword), '请检查参数！');
     assert(oldPassword.length > 5 && newPassword.length > 5, '请检查参数！');
     const user = await this.prisma.sysUser.findUnique({
@@ -447,10 +427,7 @@ export class UserService {
         userId,
       },
     });
-    assert(
-      this.authService.encrypt(oldPassword) === user.password,
-      '验证失败：旧密码不正确！',
-    );
+    assert(this.authService.encrypt(oldPassword) === user.password, '验证失败：旧密码不正确！');
     const res = await this.prisma.sysUser.update({
       where: {
         userId,
