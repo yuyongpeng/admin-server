@@ -6,6 +6,8 @@ import 'dayjs/locale/zh-cn';
 import { Response } from 'express';
 import { build } from 'node-xlsx';
 import { camelCase } from 'lodash';
+import { customAlphabet } from 'nanoid';
+
 dayjs1.extend(utc);
 dayjs1.extend(timezone);
 dayjs1.locale('zh-cn');
@@ -98,4 +100,21 @@ export async function exportTable(data: any[][], res: Response) {
   res.setHeader('X-Content-Type-Options', 'nosniff');
   // 将 Excel 文件的二进制流数据返回给客户端
   res.end(buffer, 'binary');
+}
+
+/** @description 获得指定长度的随机字符串 */
+export function randomString(len = 10, words?: string): string {
+  if (!words) {
+    words = '123456789abcdefghijklmnpqrstuvwxyz';
+  }
+  const randStr = customAlphabet(words, len);
+  return randStr();
+
+  // // const words = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  // let result = '';
+  // const charactersLength = words.length;
+  // for (let i = 0; i < len; i++) {
+  //   result += words.charAt(Math.floor(Math.random() * charactersLength));
+  // }
+  // return result;
 }

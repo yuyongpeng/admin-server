@@ -9,7 +9,7 @@ import * as url from 'url';
 import * as qiniu from 'qiniu';
 import { randomUUID } from 'crypto';
 import * as path from 'path';
-
+import { randomString } from '@/common/utils';
 import { Config } from '@/config';
 
 @ApiBearerAuth()
@@ -103,8 +103,19 @@ export class UploadController {
         zone: qiniu.zone.Zone_z2,
       }),
     );
-
-    const uploadResult = await formUploader.put(uploadToken, `${Date.now()}-${randomUUID().replaceAll('-', '')}` + (path.extname(file.originalname) || '.jpg'), file.buffer, new qiniu.form_up.PutExtra());
+    let pathMiddle = 'other';
+    // 根据扩展名调整 URL path
+    let fileExt = path.extname(file.originalname).replace(/./i, '');
+    if (['jpg', 'png', 'jpeg', 'gif'].includes(fileExt)) pathMiddle = 'img';
+    if (['mp4'].includes(fileExt)) pathMiddle = 'video';
+    if (['mp3'].includes(fileExt)) pathMiddle = 'audio';
+    // 上传图片到七牛
+    const uploadResult = await formUploader.put(
+      uploadToken,
+      `dstamp/${pathMiddle}/${randomString(2)}/${randomString(2)}/${Date.now()}-${randomString(8)}` + (path.extname(file.originalname) || '.jpg'),
+      file.buffer,
+      new qiniu.form_up.PutExtra(),
+    );
     const uploadResultResp = uploadResult.resp;
     if (uploadResultResp['status'] == 200) {
       const data = {
