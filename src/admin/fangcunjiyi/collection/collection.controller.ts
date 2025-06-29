@@ -28,7 +28,15 @@ export class CollectionController {
   @RequirePermission('fangcunjiyi:collection:export')
   @Get('/export')
   async export(@Res() res: Response): Promise<void> {
+    // return this.collectionService.exportQrcodeUrl(res, 4);
     return this.collectionService.exportCollection(res);
+  }
+
+  @ApiOperation({ summary: '导出 collection 中对应 ticket 的 qrcode码对应的URL xlsx文件' })
+  @RequirePermission('fangcunjiyi:collection:export')
+  @Get('/export/:ticketId')
+  async export4Ticket(@Param('ticketId', ParseIntPipe) ticketId: number, @Res() res: Response): Promise<void> {
+    return this.collectionService.exportQrcodeUrl(res, ticketId);
   }
 
   @ApiOperation({ summary: '查询 collection 管理详细' })

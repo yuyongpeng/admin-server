@@ -82,4 +82,11 @@ interface config {
   dstamp: {
     baseUrl: string;
   };
+  aes: {
+    key: string;
+    iv: string;
+  };
+  qrcode: {
+    urlPrefix: string;
+  };
 }

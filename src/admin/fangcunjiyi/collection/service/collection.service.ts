@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, Logger } from '@nestjs/common';
 import { PrismaService } from '@/common/service/prisma/prisma.service';
 import { Response } from 'express';
 import { exportTable, tree } from '@/common/utils';
@@ -6,6 +6,15 @@ import { QueryCollectionDto, CreateCollectionDto, UpdateCollectionDto } from '..
 import { Prisma } from '@/common/prisma-client';
 import { isNotEmpty } from 'class-validator';
 import * as assert from 'assert';
+import { encrypt, decrypt } from '@/common/utils/crypto';
+import { Config } from '@/config';
+
+interface qr {
+  id: number;
+  collection_name: string;
+  ticket_id: number;
+  qrcode: string;
+}
 
 @Injectable()
 export class CollectionService {
@@ -124,6 +133,32 @@ export class CollectionService {
         },
       })
     ).map((v) => Object.values(v));
+    data.unshift(title);
+    exportTable(data, res);
+  }
+
+  /** @description 导出 对应邮折下的 qrcode 字符串 */
+  async exportQrcodeUrl(res: Response, ticketId: number, count?: number) {
+    if (!count) {
+    }
+    const title = ['id', '邮折ID', '名称', '二维码对应的字符串'];
+    let ts = await this.prisma.collection.findMany({
+      select: {
+        id: true,
+        ticket_id: true,
+        collection_name: true,
+      },
+      where: {
+        sale_status: 1, // 销售状态：0-不可售；1-待售；2-发售中；3-已售出；4-已失效；
+        ticket_id: ticketId,
+      },
+    });
+
+    let data = ts.map((val, index, arr) => {
+      let qrcode = Config.qrcode.urlPrefix + 'id=' + val.ticket_id + '#cid=' + encrypt(Config.aes.key, Config.aes.iv, val.id.toString());
+      let rx: [number, number, string, string] = [val.id, val.ticket_id, val.collection_name, qrcode];
+      return [val.id, val.ticket_id, val.collection_name, qrcode];
+    });
     data.unshift(title);
     exportTable(data, res);
   }

@@ -143,6 +143,13 @@ export const Config: config = {
   dstamp: {
     baseUrl: process.env.dstampBaseUrl,
   },
+  aes: {
+    key: process.env.aesKey,
+    iv: process.env.aesIv,
+  },
+  qrcode: {
+    urlPrefix: process.env.qrcodeUrlPrefix,
+  },
 };
 import { redisUtils } from './common/utils/redisUtils';
 import { env } from 'process';
