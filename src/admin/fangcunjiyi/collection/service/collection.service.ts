@@ -155,7 +155,29 @@ export class CollectionService {
     });
 
     let data = ts.map((val, index, arr) => {
-      let qrcode = Config.qrcode.urlPrefix + 'id=' + val.ticket_id + '#cid=' + encrypt(Config.aes.key, Config.aes.iv, val.id.toString());
+      let pre = Config.qrcode.urlPrefix;
+      switch (ticketId) {
+        case 9:
+          pre = 'https://dstamp2-api.lightcone.cloud/dahu?';
+          break;
+        case 12:
+          pre = 'https://dstamp2-api.lightcone.cloud/taiyang?';
+          break;
+        case 15:
+          pre = 'https://dstamp2-api.lightcone.cloud/long?';
+        case 17:
+          pre = 'https://dstamp2-api.lightcone.cloud/snake?';
+        case 18:
+          pre = 'https://dstamp2-api.lightcone.cloud/peony?';
+        case 19:
+          pre = 'https://dstamp2-api.lightcone.cloud/yanan?';
+        case 20:
+          pre = 'https://dstamp2-api.lightcone.cloud/snake2?';
+        case 21:
+          pre = 'https://dstamp2-api.lightcone.cloud/yanan2';
+      }
+
+      let qrcode = pre + 'id=' + val.ticket_id + '#cid=' + encrypt(Config.aes.key, Config.aes.iv, val.id.toString());
       let rx: [number, number, string, string] = [val.id, val.ticket_id, val.collection_name, qrcode];
       return [val.id, val.ticket_id, val.collection_name, qrcode];
     });
