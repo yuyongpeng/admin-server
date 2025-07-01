@@ -16,6 +16,10 @@ export class TicketService {
 
   async selectTicketList(q: QueryTicketDto) {
     const queryCondition: Prisma.ticketWhereInput = {};
+    // 只显示正常的数据
+    queryCondition.available_status = {
+      equals: 1,
+    };
     if (isNotEmpty(q['ticket_name'])) {
       queryCondition.ticket_name = {
         equals: q.ticket_name,
