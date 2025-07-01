@@ -139,12 +139,21 @@ export class TicketService {
   }
 
   async deleteTicketByIds(ids: number[]) {
-    // collection 存在就不能删除数据
-    return this.prisma.ticket.deleteMany({
+    // return this.prisma.ticket.deleteMany({
+    //   where: {
+    //     id: {
+    //       in: ids,
+    //     },
+    //   },
+    // });
+    return this.prisma.ticket.updateMany({
       where: {
         id: {
           in: ids,
         },
+      },
+      data: {
+        available_status: 2,
       },
     });
   }
