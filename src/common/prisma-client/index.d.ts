@@ -34598,6 +34598,7 @@ export namespace Prisma {
 
   export type Collection_day_ticket_countMinAggregateOutputType = {
     id: string | null
+    ticket_name: string | null
     ticket_id: number | null
     t_day: string | null
     sum: number | null
@@ -34605,6 +34606,7 @@ export namespace Prisma {
 
   export type Collection_day_ticket_countMaxAggregateOutputType = {
     id: string | null
+    ticket_name: string | null
     ticket_id: number | null
     t_day: string | null
     sum: number | null
@@ -34612,6 +34614,7 @@ export namespace Prisma {
 
   export type Collection_day_ticket_countCountAggregateOutputType = {
     id: number
+    ticket_name: number
     ticket_id: number
     t_day: number
     sum: number
@@ -34631,6 +34634,7 @@ export namespace Prisma {
 
   export type Collection_day_ticket_countMinAggregateInputType = {
     id?: true
+    ticket_name?: true
     ticket_id?: true
     t_day?: true
     sum?: true
@@ -34638,6 +34642,7 @@ export namespace Prisma {
 
   export type Collection_day_ticket_countMaxAggregateInputType = {
     id?: true
+    ticket_name?: true
     ticket_id?: true
     t_day?: true
     sum?: true
@@ -34645,6 +34650,7 @@ export namespace Prisma {
 
   export type Collection_day_ticket_countCountAggregateInputType = {
     id?: true
+    ticket_name?: true
     ticket_id?: true
     t_day?: true
     sum?: true
@@ -34739,6 +34745,7 @@ export namespace Prisma {
 
   export type Collection_day_ticket_countGroupByOutputType = {
     id: string
+    ticket_name: string
     ticket_id: number | null
     t_day: string | null
     sum: number
@@ -34765,6 +34772,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    ticket_name?: boolean
     ticket_id?: boolean
     t_day?: boolean
     sum?: boolean
@@ -34774,18 +34782,20 @@ export namespace Prisma {
 
   export type collection_day_ticket_countSelectScalar = {
     id?: boolean
+    ticket_name?: boolean
     ticket_id?: boolean
     t_day?: boolean
     sum?: boolean
   }
 
-  export type collection_day_ticket_countOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ticket_id" | "t_day" | "sum", ExtArgs["result"]["collection_day_ticket_count"]>
+  export type collection_day_ticket_countOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ticket_name" | "ticket_id" | "t_day" | "sum", ExtArgs["result"]["collection_day_ticket_count"]>
 
   export type $collection_day_ticket_countPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "collection_day_ticket_count"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      ticket_name: string
       ticket_id: number | null
       t_day: string | null
       sum: number
@@ -35159,6 +35169,7 @@ export namespace Prisma {
    */ 
   interface collection_day_ticket_countFieldRefs {
     readonly id: FieldRef<"collection_day_ticket_count", 'String'>
+    readonly ticket_name: FieldRef<"collection_day_ticket_count", 'String'>
     readonly ticket_id: FieldRef<"collection_day_ticket_count", 'Int'>
     readonly t_day: FieldRef<"collection_day_ticket_count", 'String'>
     readonly sum: FieldRef<"collection_day_ticket_count", 'Int'>
@@ -39118,6 +39129,7 @@ export namespace Prisma {
 
   export type Transfer_day_ticket_countMinAggregateOutputType = {
     id: string | null
+    ticket_name: string | null
     ticket_id: number | null
     t_day: string | null
     sum: number | null
@@ -39125,6 +39137,7 @@ export namespace Prisma {
 
   export type Transfer_day_ticket_countMaxAggregateOutputType = {
     id: string | null
+    ticket_name: string | null
     ticket_id: number | null
     t_day: string | null
     sum: number | null
@@ -39132,6 +39145,7 @@ export namespace Prisma {
 
   export type Transfer_day_ticket_countCountAggregateOutputType = {
     id: number
+    ticket_name: number
     ticket_id: number
     t_day: number
     sum: number
@@ -39151,6 +39165,7 @@ export namespace Prisma {
 
   export type Transfer_day_ticket_countMinAggregateInputType = {
     id?: true
+    ticket_name?: true
     ticket_id?: true
     t_day?: true
     sum?: true
@@ -39158,6 +39173,7 @@ export namespace Prisma {
 
   export type Transfer_day_ticket_countMaxAggregateInputType = {
     id?: true
+    ticket_name?: true
     ticket_id?: true
     t_day?: true
     sum?: true
@@ -39165,6 +39181,7 @@ export namespace Prisma {
 
   export type Transfer_day_ticket_countCountAggregateInputType = {
     id?: true
+    ticket_name?: true
     ticket_id?: true
     t_day?: true
     sum?: true
@@ -39259,6 +39276,7 @@ export namespace Prisma {
 
   export type Transfer_day_ticket_countGroupByOutputType = {
     id: string
+    ticket_name: string
     ticket_id: number | null
     t_day: string | null
     sum: number
@@ -39285,6 +39303,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    ticket_name?: boolean
     ticket_id?: boolean
     t_day?: boolean
     sum?: boolean
@@ -39294,18 +39313,20 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countSelectScalar = {
     id?: boolean
+    ticket_name?: boolean
     ticket_id?: boolean
     t_day?: boolean
     sum?: boolean
   }
 
-  export type transfer_day_ticket_countOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ticket_id" | "t_day" | "sum", ExtArgs["result"]["transfer_day_ticket_count"]>
+  export type transfer_day_ticket_countOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ticket_name" | "ticket_id" | "t_day" | "sum", ExtArgs["result"]["transfer_day_ticket_count"]>
 
   export type $transfer_day_ticket_countPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "transfer_day_ticket_count"
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      ticket_name: string
       ticket_id: number | null
       t_day: string | null
       sum: number
@@ -39679,6 +39700,7 @@ export namespace Prisma {
    */ 
   interface transfer_day_ticket_countFieldRefs {
     readonly id: FieldRef<"transfer_day_ticket_count", 'String'>
+    readonly ticket_name: FieldRef<"transfer_day_ticket_count", 'String'>
     readonly ticket_id: FieldRef<"transfer_day_ticket_count", 'Int'>
     readonly t_day: FieldRef<"transfer_day_ticket_count", 'String'>
     readonly sum: FieldRef<"transfer_day_ticket_count", 'Int'>
@@ -40597,6 +40619,7 @@ export namespace Prisma {
 
   export const Collection_day_ticket_countScalarFieldEnum: {
     id: 'id',
+    ticket_name: 'ticket_name',
     ticket_id: 'ticket_id',
     t_day: 't_day',
     sum: 'sum'
@@ -40641,6 +40664,7 @@ export namespace Prisma {
 
   export const Transfer_day_ticket_countScalarFieldEnum: {
     id: 'id',
+    ticket_name: 'ticket_name',
     ticket_id: 'ticket_id',
     t_day: 't_day',
     sum: 'sum'
@@ -41074,6 +41098,7 @@ export namespace Prisma {
 
   export const collection_day_ticket_countOrderByRelevanceFieldEnum: {
     id: 'id',
+    ticket_name: 'ticket_name',
     t_day: 't_day'
   };
 
@@ -41103,6 +41128,7 @@ export namespace Prisma {
 
   export const transfer_day_ticket_countOrderByRelevanceFieldEnum: {
     id: 'id',
+    ticket_name: 'ticket_name',
     t_day: 't_day'
   };
 
@@ -44085,6 +44111,7 @@ export namespace Prisma {
     OR?: collection_day_ticket_countWhereInput[]
     NOT?: collection_day_ticket_countWhereInput | collection_day_ticket_countWhereInput[]
     id?: StringFilter<"collection_day_ticket_count"> | string
+    ticket_name?: StringFilter<"collection_day_ticket_count"> | string
     ticket_id?: IntNullableFilter<"collection_day_ticket_count"> | number | null
     t_day?: StringNullableFilter<"collection_day_ticket_count"> | string | null
     sum?: IntFilter<"collection_day_ticket_count"> | number
@@ -44092,6 +44119,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countOrderByWithRelationInput = {
     id?: SortOrder
+    ticket_name?: SortOrder
     ticket_id?: SortOrderInput | SortOrder
     t_day?: SortOrderInput | SortOrder
     sum?: SortOrder
@@ -44103,6 +44131,7 @@ export namespace Prisma {
     AND?: collection_day_ticket_countWhereInput | collection_day_ticket_countWhereInput[]
     OR?: collection_day_ticket_countWhereInput[]
     NOT?: collection_day_ticket_countWhereInput | collection_day_ticket_countWhereInput[]
+    ticket_name?: StringFilter<"collection_day_ticket_count"> | string
     ticket_id?: IntNullableFilter<"collection_day_ticket_count"> | number | null
     t_day?: StringNullableFilter<"collection_day_ticket_count"> | string | null
     sum?: IntFilter<"collection_day_ticket_count"> | number
@@ -44110,6 +44139,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countOrderByWithAggregationInput = {
     id?: SortOrder
+    ticket_name?: SortOrder
     ticket_id?: SortOrderInput | SortOrder
     t_day?: SortOrderInput | SortOrder
     sum?: SortOrder
@@ -44125,6 +44155,7 @@ export namespace Prisma {
     OR?: collection_day_ticket_countScalarWhereWithAggregatesInput[]
     NOT?: collection_day_ticket_countScalarWhereWithAggregatesInput | collection_day_ticket_countScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"collection_day_ticket_count"> | string
+    ticket_name?: StringWithAggregatesFilter<"collection_day_ticket_count"> | string
     ticket_id?: IntNullableWithAggregatesFilter<"collection_day_ticket_count"> | number | null
     t_day?: StringNullableWithAggregatesFilter<"collection_day_ticket_count"> | string | null
     sum?: IntWithAggregatesFilter<"collection_day_ticket_count"> | number
@@ -44304,6 +44335,7 @@ export namespace Prisma {
     OR?: transfer_day_ticket_countWhereInput[]
     NOT?: transfer_day_ticket_countWhereInput | transfer_day_ticket_countWhereInput[]
     id?: StringFilter<"transfer_day_ticket_count"> | string
+    ticket_name?: StringFilter<"transfer_day_ticket_count"> | string
     ticket_id?: IntNullableFilter<"transfer_day_ticket_count"> | number | null
     t_day?: StringNullableFilter<"transfer_day_ticket_count"> | string | null
     sum?: IntFilter<"transfer_day_ticket_count"> | number
@@ -44311,6 +44343,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countOrderByWithRelationInput = {
     id?: SortOrder
+    ticket_name?: SortOrder
     ticket_id?: SortOrderInput | SortOrder
     t_day?: SortOrderInput | SortOrder
     sum?: SortOrder
@@ -44322,6 +44355,7 @@ export namespace Prisma {
     AND?: transfer_day_ticket_countWhereInput | transfer_day_ticket_countWhereInput[]
     OR?: transfer_day_ticket_countWhereInput[]
     NOT?: transfer_day_ticket_countWhereInput | transfer_day_ticket_countWhereInput[]
+    ticket_name?: StringFilter<"transfer_day_ticket_count"> | string
     ticket_id?: IntNullableFilter<"transfer_day_ticket_count"> | number | null
     t_day?: StringNullableFilter<"transfer_day_ticket_count"> | string | null
     sum?: IntFilter<"transfer_day_ticket_count"> | number
@@ -44329,6 +44363,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countOrderByWithAggregationInput = {
     id?: SortOrder
+    ticket_name?: SortOrder
     ticket_id?: SortOrderInput | SortOrder
     t_day?: SortOrderInput | SortOrder
     sum?: SortOrder
@@ -44344,6 +44379,7 @@ export namespace Prisma {
     OR?: transfer_day_ticket_countScalarWhereWithAggregatesInput[]
     NOT?: transfer_day_ticket_countScalarWhereWithAggregatesInput | transfer_day_ticket_countScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"transfer_day_ticket_count"> | string
+    ticket_name?: StringWithAggregatesFilter<"transfer_day_ticket_count"> | string
     ticket_id?: IntNullableWithAggregatesFilter<"transfer_day_ticket_count"> | number | null
     t_day?: StringNullableWithAggregatesFilter<"transfer_day_ticket_count"> | string | null
     sum?: IntWithAggregatesFilter<"transfer_day_ticket_count"> | number
@@ -47679,6 +47715,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countCreateInput = {
     id: string
+    ticket_name: string
     ticket_id?: number | null
     t_day?: string | null
     sum?: number
@@ -47686,6 +47723,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countUncheckedCreateInput = {
     id: string
+    ticket_name: string
     ticket_id?: number | null
     t_day?: string | null
     sum?: number
@@ -47693,6 +47731,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    ticket_name?: StringFieldUpdateOperationsInput | string
     ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
     t_day?: NullableStringFieldUpdateOperationsInput | string | null
     sum?: IntFieldUpdateOperationsInput | number
@@ -47700,6 +47739,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    ticket_name?: StringFieldUpdateOperationsInput | string
     ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
     t_day?: NullableStringFieldUpdateOperationsInput | string | null
     sum?: IntFieldUpdateOperationsInput | number
@@ -47707,6 +47747,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countCreateManyInput = {
     id: string
+    ticket_name: string
     ticket_id?: number | null
     t_day?: string | null
     sum?: number
@@ -47714,6 +47755,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    ticket_name?: StringFieldUpdateOperationsInput | string
     ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
     t_day?: NullableStringFieldUpdateOperationsInput | string | null
     sum?: IntFieldUpdateOperationsInput | number
@@ -47721,6 +47763,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    ticket_name?: StringFieldUpdateOperationsInput | string
     ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
     t_day?: NullableStringFieldUpdateOperationsInput | string | null
     sum?: IntFieldUpdateOperationsInput | number
@@ -47882,6 +47925,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countCreateInput = {
     id: string
+    ticket_name: string
     ticket_id?: number | null
     t_day?: string | null
     sum?: number
@@ -47889,6 +47933,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countUncheckedCreateInput = {
     id: string
+    ticket_name: string
     ticket_id?: number | null
     t_day?: string | null
     sum?: number
@@ -47896,6 +47941,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    ticket_name?: StringFieldUpdateOperationsInput | string
     ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
     t_day?: NullableStringFieldUpdateOperationsInput | string | null
     sum?: IntFieldUpdateOperationsInput | number
@@ -47903,6 +47949,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
+    ticket_name?: StringFieldUpdateOperationsInput | string
     ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
     t_day?: NullableStringFieldUpdateOperationsInput | string | null
     sum?: IntFieldUpdateOperationsInput | number
@@ -47910,6 +47957,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countCreateManyInput = {
     id: string
+    ticket_name: string
     ticket_id?: number | null
     t_day?: string | null
     sum?: number
@@ -47917,6 +47965,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
+    ticket_name?: StringFieldUpdateOperationsInput | string
     ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
     t_day?: NullableStringFieldUpdateOperationsInput | string | null
     sum?: IntFieldUpdateOperationsInput | number
@@ -47924,6 +47973,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
+    ticket_name?: StringFieldUpdateOperationsInput | string
     ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
     t_day?: NullableStringFieldUpdateOperationsInput | string | null
     sum?: IntFieldUpdateOperationsInput | number
@@ -50375,6 +50425,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countCountOrderByAggregateInput = {
     id?: SortOrder
+    ticket_name?: SortOrder
     ticket_id?: SortOrder
     t_day?: SortOrder
     sum?: SortOrder
@@ -50387,6 +50438,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countMaxOrderByAggregateInput = {
     id?: SortOrder
+    ticket_name?: SortOrder
     ticket_id?: SortOrder
     t_day?: SortOrder
     sum?: SortOrder
@@ -50394,6 +50446,7 @@ export namespace Prisma {
 
   export type collection_day_ticket_countMinOrderByAggregateInput = {
     id?: SortOrder
+    ticket_name?: SortOrder
     ticket_id?: SortOrder
     t_day?: SortOrder
     sum?: SortOrder
@@ -50534,6 +50587,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countCountOrderByAggregateInput = {
     id?: SortOrder
+    ticket_name?: SortOrder
     ticket_id?: SortOrder
     t_day?: SortOrder
     sum?: SortOrder
@@ -50546,6 +50600,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countMaxOrderByAggregateInput = {
     id?: SortOrder
+    ticket_name?: SortOrder
     ticket_id?: SortOrder
     t_day?: SortOrder
     sum?: SortOrder
@@ -50553,6 +50608,7 @@ export namespace Prisma {
 
   export type transfer_day_ticket_countMinOrderByAggregateInput = {
     id?: SortOrder
+    ticket_name?: SortOrder
     ticket_id?: SortOrder
     t_day?: SortOrder
     sum?: SortOrder

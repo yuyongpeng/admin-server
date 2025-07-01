@@ -556,6 +556,7 @@ entity "collection_day_ticket_count\nThe underlying view does not contain a vali
 This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as collection_day_ticket_count {
 --
   * id : [UK] String
+  * ticket_name : String
   ticket_id : Int
   t_day : String
   * sum : Int
@@ -591,6 +592,7 @@ entity "transfer_day_ticket_count\nThe underlying view does not contain a valid 
 This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as transfer_day_ticket_count {
 --
   * id : [UK] String
+  * ticket_name : String
   ticket_id : Int
   t_day : String
   * sum : Int
@@ -3031,6 +3033,7 @@ This view or at least one of its fields has comments in the database, and requir
 |Name | Type | Default | Nullable | Unique | Children | Parent | Comment|
 |--- | --- | --- | --- | --- | --- | --- | ---|
 |id | String |  | false | true |  |  | |
+|ticket_name | String |  | false | false |  |  | |
 |ticket_id | Int |  | true | false |  |  | |
 |t_day | String |  | true | false |  |  | |
 |sum | Int |  | false | false |  |  | |
@@ -3044,6 +3047,7 @@ entity "collection_day_ticket_count\nThe underlying view does not contain a vali
 This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as collection_day_ticket_count {
 --
   * id : [UK] String
+  * ticket_name : String
   ticket_id : Int
   t_day : String
   * sum : Int
@@ -3181,6 +3185,7 @@ This view or at least one of its fields has comments in the database, and requir
 |Name | Type | Default | Nullable | Unique | Children | Parent | Comment|
 |--- | --- | --- | --- | --- | --- | --- | ---|
 |id | String |  | false | true |  |  | |
+|ticket_name | String |  | false | false |  |  | |
 |ticket_id | Int |  | true | false |  |  | |
 |t_day | String |  | true | false |  |  | |
 |sum | Int |  | false | false |  |  | |
@@ -3194,6 +3199,7 @@ entity "transfer_day_ticket_count\nThe underlying view does not contain a valid 
 This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as transfer_day_ticket_count {
 --
   * id : [UK] String
+  * ticket_name : String
   ticket_id : Int
   t_day : String
   * sum : Int

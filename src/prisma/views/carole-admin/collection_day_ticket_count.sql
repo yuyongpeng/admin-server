@@ -1,25 +1,21 @@
 SELECT
   concat(
-    `carole-admin`.`collection`.`ticket_id`,
-    date_format(
-      `carole-admin`.`collection`.`trade_time`,
-      '%Y-%m-%d'
-    )
+    `a`.`ticket_id`,
+    date_format(`a`.`trade_time`, '%Y-%m-%d')
   ) AS `id`,
-  `carole-admin`.`collection`.`ticket_id` AS `ticket_id`,
-  date_format(
-    `carole-admin`.`collection`.`trade_time`,
-    '%Y-%m-%d'
-  ) AS `t_day`,
+  `b`.`ticket_name` AS `ticket_name`,
+  `a`.`ticket_id` AS `ticket_id`,
+  date_format(`a`.`trade_time`, '%Y-%m-%d') AS `t_day`,
   count(0) AS `sum`
 FROM
-  `carole-admin`.`collection`
-WHERE
   (
-    `carole-admin`.`collection`.`trade_time` IS NOT NULL
+    `carole-admin`.`collection` `a`
+    LEFT JOIN `carole-admin`.`ticket` `b` ON((`a`.`ticket_id` = `b`.`id`))
   )
+WHERE
+  (`a`.`trade_time` IS NOT NULL)
 GROUP BY
   `t_day`,
-  `carole-admin`.`collection`.`ticket_id`
+  `a`.`ticket_id`
 ORDER BY
-  `carole-admin`.`collection`.`trade_time`
+  `a`.`trade_time`

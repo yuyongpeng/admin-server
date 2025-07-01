@@ -548,3 +548,17 @@ export class UpdateCollectionDto {
   @IsNumber()
   block_number: number | null;
 }
+
+export class queryDateDto {
+  @ApiProperty({ description: '开始时间' })
+  @IsNotEmpty({ message: '开始时间  不能为空' })
+  @Type(() => String)
+  @IsString()
+  start_date?: string;
+
+  @ApiProperty({ description: '结束时间' })
+  @IsNotEmpty({ message: '结束时间  不能为空' })
+  @Type(() => String)
+  @IsString()
+  end_date?: string;
+}

@@ -590,10 +590,12 @@ view collection_day_count {
 /// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 /// This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 view collection_day_ticket_count {
-  id        String  @unique @db.VarChar(20)
-  ticket_id Int?    @default(0) @db.UnsignedInt
-  t_day     String? @db.VarChar(10)
-  sum       Int     @default(0)
+  id          String  @unique @db.VarChar(20)
+  ticket_name String  @db.VarChar(50)
+  ticket_id   Int?    @default(0) @db.UnsignedInt
+  // t_day     DateTime? @db.Date
+  t_day       String? @db.VarChar(10)
+  sum         Int     @default(0)
 }
 
 /// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
@@ -625,10 +627,11 @@ view transfer_day_count {
 /// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
 /// This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 view transfer_day_ticket_count {
-  id        String  @unique @db.VarChar(20)
-  ticket_id Int?    @default(0) @db.UnsignedInt
-  t_day     String? @db.VarChar(10)
-  sum       Int     @default(0)
+  id          String  @unique @db.VarChar(20)
+  ticket_name String  @db.VarChar(50)
+  ticket_id   Int?    @default(0) @db.UnsignedInt
+  t_day       String? @db.VarChar(10)
+  sum         Int     @default(0)
 }
 
 generator client {

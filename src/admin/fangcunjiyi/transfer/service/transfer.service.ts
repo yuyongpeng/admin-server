@@ -2,7 +2,7 @@ import { Injectable, Logger, Res } from '@nestjs/common';
 import { PrismaService } from '@/common/service/prisma/prisma.service';
 import { Response } from 'express';
 import { exportTable, tree } from '@/common/utils';
-import { QueryTransferDto, CreateTransferDto, UpdateTransferDto } from '../dto/index';
+import { QueryTransferDto, CreateTransferDto, UpdateTransferDto, queryDateDto } from '../dto/index';
 import { Prisma } from '@/common/prisma-client';
 import { equals, isNotEmpty } from 'class-validator';
 import * as assert from 'assert';
@@ -171,6 +171,39 @@ export class TransferService {
     return this.prisma.transfer_day_ticket_count.findMany({
       where: {
         ticket_id: ticketId,
+      },
+    });
+  }
+
+  // 查询特定时间范围内，邮折下 藏品 的领取数量统计
+  async queryCollectionTicketCount(q: queryDateDto) {
+    const queryCondition: Prisma.transfer_day_ticket_countWhereInput = {};
+    let arrs = [];
+    if (isNotEmpty(q['start_date'])) {
+      arrs.push({
+        t_day: {
+          // gte: new Date(q.start_date),
+          gte: q.start_date,
+        },
+      });
+    }
+    if (isNotEmpty(q['end_date'])) {
+      arrs.push({
+        t_day: {
+          // lte: new Date(q.end_date),
+          lte: q.end_date,
+        },
+      });
+    }
+    queryCondition.AND = arrs;
+    return this.prisma.transfer_day_ticket_count.groupBy({
+      by: ['ticket_id', 'ticket_name'],
+      where: queryCondition,
+      _sum: {
+        sum: true,
+      },
+      orderBy: {
+        ticket_id: 'desc',
       },
     });
   }

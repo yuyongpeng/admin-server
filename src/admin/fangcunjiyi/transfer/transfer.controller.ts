@@ -5,7 +5,7 @@ import { ApiBearerAuth, ApiBody, ApiOperation, ApiQuery, ApiResponse, ApiTags } 
 import { RequirePermission } from '@/common/decorator/require-premission.decorator';
 import { nowDateTime } from '@/common/utils';
 import { TransferService } from './service/transfer.service';
-import { QueryTransferDto, CreateTransferDto, UpdateTransferDto } from './dto/index';
+import { QueryTransferDto, CreateTransferDto, UpdateTransferDto, queryDateDto } from './dto/index';
 import { Response } from 'express';
 import { tr_transfer, transfer_day_count, transfer_day_ticket_count } from '@/common/prisma-client';
 import { TableDataInfo } from '@/common/domain/TableDataInfo';
@@ -93,5 +93,14 @@ export class TransferController {
   @Get('/daycountticket/:ticketid')
   async queryTransferDayTicketCount(@Param('ticketid', ParseIntPipe) ticketId: number): Promise<Result<transfer_day_ticket_count[]>> {
     return Result.Ok(await this.transferService.queryTransferDayTicketCount(ticketId));
+  }
+
+  @ApiOperation({ summary: '按照时间查询 邮折对应的藏品领取数量' })
+  // @ApiResponse({ type: Result<collection_day_ticket_count[]> })
+  @RequirePermission('fangcunjiyi:transfer:query')
+  @Post('/countticket')
+  async queryCollectionTicketCount(@Body() qdto: queryDateDto, @Req() req) {
+    let ret = await this.transferService.queryCollectionTicketCount(qdto);
+    return Result.Ok(ret);
   }
 }

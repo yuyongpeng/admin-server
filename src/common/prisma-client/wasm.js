@@ -601,6 +601,7 @@ exports.Prisma.Collection_day_countScalarFieldEnum = {
 
 exports.Prisma.Collection_day_ticket_countScalarFieldEnum = {
   id: 'id',
+  ticket_name: 'ticket_name',
   ticket_id: 'ticket_id',
   t_day: 't_day',
   sum: 'sum'
@@ -630,6 +631,7 @@ exports.Prisma.Transfer_day_countScalarFieldEnum = {
 
 exports.Prisma.Transfer_day_ticket_countScalarFieldEnum = {
   id: 'id',
+  ticket_name: 'ticket_name',
   ticket_id: 'ticket_id',
   t_day: 't_day',
   sum: 'sum'
@@ -973,6 +975,7 @@ exports.Prisma.collection_day_countOrderByRelevanceFieldEnum = {
 
 exports.Prisma.collection_day_ticket_countOrderByRelevanceFieldEnum = {
   id: 'id',
+  ticket_name: 'ticket_name',
   t_day: 't_day'
 };
 
@@ -990,6 +993,7 @@ exports.Prisma.transfer_day_countOrderByRelevanceFieldEnum = {
 
 exports.Prisma.transfer_day_ticket_countOrderByRelevanceFieldEnum = {
   id: 'id',
+  ticket_name: 'ticket_name',
   t_day: 't_day'
 };
 

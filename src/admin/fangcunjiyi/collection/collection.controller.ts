@@ -5,10 +5,11 @@ import { ApiBearerAuth, ApiBody, ApiOperation, ApiQuery, ApiResponse, ApiTags } 
 import { RequirePermission } from '@/common/decorator/require-premission.decorator';
 import { nowDateTime } from '@/common/utils';
 import { CollectionService } from './service/collection.service';
-import { QueryCollectionDto, CreateCollectionDto, UpdateCollectionDto } from './dto/index';
+import { QueryCollectionDto, CreateCollectionDto, UpdateCollectionDto, queryDateDto } from './dto/index';
 import { Response } from 'express';
 import { collection, collection_day_count, collection_day_ticket_count } from '@/common/prisma-client';
 import { TableDataInfo } from '@/common/domain/TableDataInfo';
+import { Prisma } from '@/common/prisma-client';
 
 @ApiBearerAuth()
 @ApiTags('collection 管理')
@@ -98,5 +99,14 @@ export class CollectionController {
   @Get('/daycountticket/:ticketid')
   async queryCollectionDayTicketCount(@Param('ticketid', ParseIntPipe) ticketId: number): Promise<Result<collection_day_ticket_count[]>> {
     return Result.Ok(await this.collectionService.queryCollectionDayTicketCount(ticketId));
+  }
+
+  @ApiOperation({ summary: '按照时间查询 邮折对应的藏品领取数量' })
+  // @ApiResponse({ type: Result<collection_day_ticket_count[]> })
+  @RequirePermission('fangcunjiyi:collection:query')
+  @Post('/countticket')
+  async queryCollectionTicketCount(@Body() qdto: queryDateDto, @Req() req) {
+    let ret = await this.collectionService.queryCollectionTicketCount(qdto);
+    return Result.Ok(ret);
   }
 }
