@@ -7,7 +7,7 @@ import { nowDateTime } from '@/common/utils';
 import { CollectionService } from './service/collection.service';
 import { QueryCollectionDto, CreateCollectionDto, UpdateCollectionDto } from './dto/index';
 import { Response } from 'express';
-import { collection } from '@/common/prisma-client';
+import { collection, collection_day_count, collection_day_ticket_count } from '@/common/prisma-client';
 import { TableDataInfo } from '@/common/domain/TableDataInfo';
 
 @ApiBearerAuth()
@@ -82,5 +82,21 @@ export class CollectionController {
   async delDept(@Param('ids', ParseIntArrayPipe) collectionIds: number[]): Promise<Result<any>> {
     const { count } = await this.collectionService.deleteCollectionByIds(collectionIds);
     return Result.toAjax(count);
+  }
+
+  @ApiOperation({ summary: '查询藏品按照 天 统计的数量' })
+  @ApiResponse({ type: Result<collection_day_count[]> })
+  @RequirePermission('fangcunjiyi:collection:query')
+  @Get('/daycount/:ticketid')
+  async queryCollectionDayCount(@Param('ticketid', ParseIntPipe) ticketId: number): Promise<Result<collection_day_count[]>> {
+    return Result.Ok(await this.collectionService.queryCollectionDayCount());
+  }
+
+  @ApiOperation({ summary: '查询藏品按照 天 统计的数量' })
+  @ApiResponse({ type: Result<collection_day_ticket_count[]> })
+  @RequirePermission('fangcunjiyi:collection:query')
+  @Get('/daycountticket/:ticketid')
+  async queryCollectionDayTicketCount(@Param('ticketid', ParseIntPipe) ticketId: number): Promise<Result<collection_day_ticket_count[]>> {
+    return Result.Ok(await this.collectionService.queryCollectionDayTicketCount(ticketId));
   }
 }

@@ -125,4 +125,24 @@ export class FCUserService {
     data.unshift(title);
     exportTable(data, res);
   }
+
+  /**@description 查询 每天新增用户数 */
+  async queryUserDayCount() {
+    return this.prisma.user_day_count.findMany({
+      where: {},
+    });
+  }
+
+  /**@description 查询 每周新增用户数 */
+  async queryUserWeekCount() {
+    return this.prisma.user_week_count.findMany({
+      where: {},
+    });
+  }
+  /**@description 查询 每月新增用户数 */
+  async queryUserMonthCount() {
+    return this.prisma.user_month_count.findMany({
+      where: {},
+    });
+  }
 }

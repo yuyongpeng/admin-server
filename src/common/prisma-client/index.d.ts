@@ -148,6 +148,43 @@ export type declarex = $Result.DefaultSelection<Prisma.$declarexPayload>
  * 
  */
 export type resource = $Result.DefaultSelection<Prisma.$resourcePayload>
+/**
+ * Model collection_day_count
+ * The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+ */
+export type collection_day_count = $Result.DefaultSelection<Prisma.$collection_day_countPayload>
+/**
+ * Model collection_day_ticket_count
+ * The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+ * This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type collection_day_ticket_count = $Result.DefaultSelection<Prisma.$collection_day_ticket_countPayload>
+/**
+ * Model user_day_count
+ * The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+ */
+export type user_day_count = $Result.DefaultSelection<Prisma.$user_day_countPayload>
+/**
+ * Model user_month_count
+ * The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+ */
+export type user_month_count = $Result.DefaultSelection<Prisma.$user_month_countPayload>
+/**
+ * Model user_week_count
+ * The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+ */
+export type user_week_count = $Result.DefaultSelection<Prisma.$user_week_countPayload>
+/**
+ * Model transfer_day_count
+ * The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+ */
+export type transfer_day_count = $Result.DefaultSelection<Prisma.$transfer_day_countPayload>
+/**
+ * Model transfer_day_ticket_count
+ * The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+ * This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type transfer_day_ticket_count = $Result.DefaultSelection<Prisma.$transfer_day_ticket_countPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -543,6 +580,76 @@ export class PrismaClient<
     * ```
     */
   get resource(): Prisma.resourceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.collection_day_count`: Exposes CRUD operations for the **collection_day_count** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Collection_day_counts
+    * const collection_day_counts = await prisma.collection_day_count.findMany()
+    * ```
+    */
+  get collection_day_count(): Prisma.collection_day_countDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.collection_day_ticket_count`: Exposes CRUD operations for the **collection_day_ticket_count** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Collection_day_ticket_counts
+    * const collection_day_ticket_counts = await prisma.collection_day_ticket_count.findMany()
+    * ```
+    */
+  get collection_day_ticket_count(): Prisma.collection_day_ticket_countDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.user_day_count`: Exposes CRUD operations for the **user_day_count** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more User_day_counts
+    * const user_day_counts = await prisma.user_day_count.findMany()
+    * ```
+    */
+  get user_day_count(): Prisma.user_day_countDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.user_month_count`: Exposes CRUD operations for the **user_month_count** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more User_month_counts
+    * const user_month_counts = await prisma.user_month_count.findMany()
+    * ```
+    */
+  get user_month_count(): Prisma.user_month_countDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.user_week_count`: Exposes CRUD operations for the **user_week_count** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more User_week_counts
+    * const user_week_counts = await prisma.user_week_count.findMany()
+    * ```
+    */
+  get user_week_count(): Prisma.user_week_countDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.transfer_day_count`: Exposes CRUD operations for the **transfer_day_count** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Transfer_day_counts
+    * const transfer_day_counts = await prisma.transfer_day_count.findMany()
+    * ```
+    */
+  get transfer_day_count(): Prisma.transfer_day_countDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.transfer_day_ticket_count`: Exposes CRUD operations for the **transfer_day_ticket_count** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Transfer_day_ticket_counts
+    * const transfer_day_ticket_counts = await prisma.transfer_day_ticket_count.findMany()
+    * ```
+    */
+  get transfer_day_ticket_count(): Prisma.transfer_day_ticket_countDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1009,7 +1116,14 @@ export namespace Prisma {
     tr_transfer: 'tr_transfer',
     user: 'user',
     declarex: 'declarex',
-    resource: 'resource'
+    resource: 'resource',
+    collection_day_count: 'collection_day_count',
+    collection_day_ticket_count: 'collection_day_ticket_count',
+    user_day_count: 'user_day_count',
+    user_month_count: 'user_month_count',
+    user_week_count: 'user_week_count',
+    transfer_day_count: 'transfer_day_count',
+    transfer_day_ticket_count: 'transfer_day_ticket_count'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1028,7 +1142,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "genTable" | "genTableColumn" | "sysConfig" | "sysDept" | "sysDictData" | "sysDictType" | "sysLogininfor" | "sysMenu" | "sysNotice" | "sysPost" | "sysUserPost" | "sysRoleDept" | "sysRoleMenu" | "sysUser" | "sysRole" | "sysUserRole" | "collection" | "init_mobile" | "platform_token" | "publisher" | "ticket" | "tr_order" | "tr_pay_notification" | "tr_transfer" | "user" | "declarex" | "resource"
+      modelProps: "genTable" | "genTableColumn" | "sysConfig" | "sysDept" | "sysDictData" | "sysDictType" | "sysLogininfor" | "sysMenu" | "sysNotice" | "sysPost" | "sysUserPost" | "sysRoleDept" | "sysRoleMenu" | "sysUser" | "sysRole" | "sysUserRole" | "collection" | "init_mobile" | "platform_token" | "publisher" | "ticket" | "tr_order" | "tr_pay_notification" | "tr_transfer" | "user" | "declarex" | "resource" | "collection_day_count" | "collection_day_ticket_count" | "user_day_count" | "user_month_count" | "user_week_count" | "transfer_day_count" | "transfer_day_ticket_count"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2814,6 +2928,468 @@ export namespace Prisma {
           }
         }
       }
+      collection_day_count: {
+        payload: Prisma.$collection_day_countPayload<ExtArgs>
+        fields: Prisma.collection_day_countFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.collection_day_countFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_countPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.collection_day_countFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_countPayload>
+          }
+          findFirst: {
+            args: Prisma.collection_day_countFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_countPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.collection_day_countFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_countPayload>
+          }
+          findMany: {
+            args: Prisma.collection_day_countFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_countPayload>[]
+          }
+          create: {
+            args: Prisma.collection_day_countCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_countPayload>
+          }
+          createMany: {
+            args: Prisma.collection_day_countCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.collection_day_countDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_countPayload>
+          }
+          update: {
+            args: Prisma.collection_day_countUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_countPayload>
+          }
+          deleteMany: {
+            args: Prisma.collection_day_countDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.collection_day_countUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.collection_day_countUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_countPayload>
+          }
+          aggregate: {
+            args: Prisma.Collection_day_countAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCollection_day_count>
+          }
+          groupBy: {
+            args: Prisma.collection_day_countGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Collection_day_countGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.collection_day_countCountArgs<ExtArgs>
+            result: $Utils.Optional<Collection_day_countCountAggregateOutputType> | number
+          }
+        }
+      }
+      collection_day_ticket_count: {
+        payload: Prisma.$collection_day_ticket_countPayload<ExtArgs>
+        fields: Prisma.collection_day_ticket_countFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.collection_day_ticket_countFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_ticket_countPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.collection_day_ticket_countFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_ticket_countPayload>
+          }
+          findFirst: {
+            args: Prisma.collection_day_ticket_countFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_ticket_countPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.collection_day_ticket_countFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_ticket_countPayload>
+          }
+          findMany: {
+            args: Prisma.collection_day_ticket_countFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_ticket_countPayload>[]
+          }
+          create: {
+            args: Prisma.collection_day_ticket_countCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_ticket_countPayload>
+          }
+          createMany: {
+            args: Prisma.collection_day_ticket_countCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.collection_day_ticket_countDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_ticket_countPayload>
+          }
+          update: {
+            args: Prisma.collection_day_ticket_countUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_ticket_countPayload>
+          }
+          deleteMany: {
+            args: Prisma.collection_day_ticket_countDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.collection_day_ticket_countUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.collection_day_ticket_countUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$collection_day_ticket_countPayload>
+          }
+          aggregate: {
+            args: Prisma.Collection_day_ticket_countAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateCollection_day_ticket_count>
+          }
+          groupBy: {
+            args: Prisma.collection_day_ticket_countGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Collection_day_ticket_countGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.collection_day_ticket_countCountArgs<ExtArgs>
+            result: $Utils.Optional<Collection_day_ticket_countCountAggregateOutputType> | number
+          }
+        }
+      }
+      user_day_count: {
+        payload: Prisma.$user_day_countPayload<ExtArgs>
+        fields: Prisma.user_day_countFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.user_day_countFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_day_countPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.user_day_countFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_day_countPayload>
+          }
+          findFirst: {
+            args: Prisma.user_day_countFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_day_countPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.user_day_countFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_day_countPayload>
+          }
+          findMany: {
+            args: Prisma.user_day_countFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_day_countPayload>[]
+          }
+          create: {
+            args: Prisma.user_day_countCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_day_countPayload>
+          }
+          createMany: {
+            args: Prisma.user_day_countCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.user_day_countDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_day_countPayload>
+          }
+          update: {
+            args: Prisma.user_day_countUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_day_countPayload>
+          }
+          deleteMany: {
+            args: Prisma.user_day_countDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.user_day_countUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.user_day_countUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_day_countPayload>
+          }
+          aggregate: {
+            args: Prisma.User_day_countAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser_day_count>
+          }
+          groupBy: {
+            args: Prisma.user_day_countGroupByArgs<ExtArgs>
+            result: $Utils.Optional<User_day_countGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.user_day_countCountArgs<ExtArgs>
+            result: $Utils.Optional<User_day_countCountAggregateOutputType> | number
+          }
+        }
+      }
+      user_month_count: {
+        payload: Prisma.$user_month_countPayload<ExtArgs>
+        fields: Prisma.user_month_countFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.user_month_countFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_month_countPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.user_month_countFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_month_countPayload>
+          }
+          findFirst: {
+            args: Prisma.user_month_countFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_month_countPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.user_month_countFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_month_countPayload>
+          }
+          findMany: {
+            args: Prisma.user_month_countFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_month_countPayload>[]
+          }
+          create: {
+            args: Prisma.user_month_countCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_month_countPayload>
+          }
+          createMany: {
+            args: Prisma.user_month_countCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.user_month_countDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_month_countPayload>
+          }
+          update: {
+            args: Prisma.user_month_countUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_month_countPayload>
+          }
+          deleteMany: {
+            args: Prisma.user_month_countDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.user_month_countUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.user_month_countUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_month_countPayload>
+          }
+          aggregate: {
+            args: Prisma.User_month_countAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser_month_count>
+          }
+          groupBy: {
+            args: Prisma.user_month_countGroupByArgs<ExtArgs>
+            result: $Utils.Optional<User_month_countGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.user_month_countCountArgs<ExtArgs>
+            result: $Utils.Optional<User_month_countCountAggregateOutputType> | number
+          }
+        }
+      }
+      user_week_count: {
+        payload: Prisma.$user_week_countPayload<ExtArgs>
+        fields: Prisma.user_week_countFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.user_week_countFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_week_countPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.user_week_countFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_week_countPayload>
+          }
+          findFirst: {
+            args: Prisma.user_week_countFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_week_countPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.user_week_countFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_week_countPayload>
+          }
+          findMany: {
+            args: Prisma.user_week_countFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_week_countPayload>[]
+          }
+          create: {
+            args: Prisma.user_week_countCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_week_countPayload>
+          }
+          createMany: {
+            args: Prisma.user_week_countCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.user_week_countDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_week_countPayload>
+          }
+          update: {
+            args: Prisma.user_week_countUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_week_countPayload>
+          }
+          deleteMany: {
+            args: Prisma.user_week_countDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.user_week_countUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.user_week_countUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$user_week_countPayload>
+          }
+          aggregate: {
+            args: Prisma.User_week_countAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateUser_week_count>
+          }
+          groupBy: {
+            args: Prisma.user_week_countGroupByArgs<ExtArgs>
+            result: $Utils.Optional<User_week_countGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.user_week_countCountArgs<ExtArgs>
+            result: $Utils.Optional<User_week_countCountAggregateOutputType> | number
+          }
+        }
+      }
+      transfer_day_count: {
+        payload: Prisma.$transfer_day_countPayload<ExtArgs>
+        fields: Prisma.transfer_day_countFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.transfer_day_countFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_countPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.transfer_day_countFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_countPayload>
+          }
+          findFirst: {
+            args: Prisma.transfer_day_countFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_countPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.transfer_day_countFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_countPayload>
+          }
+          findMany: {
+            args: Prisma.transfer_day_countFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_countPayload>[]
+          }
+          create: {
+            args: Prisma.transfer_day_countCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_countPayload>
+          }
+          createMany: {
+            args: Prisma.transfer_day_countCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.transfer_day_countDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_countPayload>
+          }
+          update: {
+            args: Prisma.transfer_day_countUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_countPayload>
+          }
+          deleteMany: {
+            args: Prisma.transfer_day_countDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.transfer_day_countUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.transfer_day_countUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_countPayload>
+          }
+          aggregate: {
+            args: Prisma.Transfer_day_countAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTransfer_day_count>
+          }
+          groupBy: {
+            args: Prisma.transfer_day_countGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Transfer_day_countGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.transfer_day_countCountArgs<ExtArgs>
+            result: $Utils.Optional<Transfer_day_countCountAggregateOutputType> | number
+          }
+        }
+      }
+      transfer_day_ticket_count: {
+        payload: Prisma.$transfer_day_ticket_countPayload<ExtArgs>
+        fields: Prisma.transfer_day_ticket_countFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.transfer_day_ticket_countFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_ticket_countPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.transfer_day_ticket_countFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_ticket_countPayload>
+          }
+          findFirst: {
+            args: Prisma.transfer_day_ticket_countFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_ticket_countPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.transfer_day_ticket_countFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_ticket_countPayload>
+          }
+          findMany: {
+            args: Prisma.transfer_day_ticket_countFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_ticket_countPayload>[]
+          }
+          create: {
+            args: Prisma.transfer_day_ticket_countCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_ticket_countPayload>
+          }
+          createMany: {
+            args: Prisma.transfer_day_ticket_countCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.transfer_day_ticket_countDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_ticket_countPayload>
+          }
+          update: {
+            args: Prisma.transfer_day_ticket_countUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_ticket_countPayload>
+          }
+          deleteMany: {
+            args: Prisma.transfer_day_ticket_countDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.transfer_day_ticket_countUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.transfer_day_ticket_countUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$transfer_day_ticket_countPayload>
+          }
+          aggregate: {
+            args: Prisma.Transfer_day_ticket_countAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTransfer_day_ticket_count>
+          }
+          groupBy: {
+            args: Prisma.transfer_day_ticket_countGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Transfer_day_ticket_countGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.transfer_day_ticket_countCountArgs<ExtArgs>
+            result: $Utils.Optional<Transfer_day_ticket_countCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2925,6 +3501,13 @@ export namespace Prisma {
     user?: userOmit
     declarex?: declarexOmit
     resource?: resourceOmit
+    collection_day_count?: collection_day_countOmit
+    collection_day_ticket_count?: collection_day_ticket_countOmit
+    user_day_count?: user_day_countOmit
+    user_month_count?: user_month_countOmit
+    user_week_count?: user_week_countOmit
+    transfer_day_count?: transfer_day_countOmit
+    transfer_day_ticket_count?: transfer_day_ticket_countOmit
   }
 
   /* Types for Logging */
@@ -33100,6 +33683,6336 @@ export namespace Prisma {
 
 
   /**
+   * Model collection_day_count
+   */
+
+  export type AggregateCollection_day_count = {
+    _count: Collection_day_countCountAggregateOutputType | null
+    _avg: Collection_day_countAvgAggregateOutputType | null
+    _sum: Collection_day_countSumAggregateOutputType | null
+    _min: Collection_day_countMinAggregateOutputType | null
+    _max: Collection_day_countMaxAggregateOutputType | null
+  }
+
+  export type Collection_day_countAvgAggregateOutputType = {
+    sum: number | null
+  }
+
+  export type Collection_day_countSumAggregateOutputType = {
+    sum: number | null
+  }
+
+  export type Collection_day_countMinAggregateOutputType = {
+    t_day: string | null
+    sum: number | null
+  }
+
+  export type Collection_day_countMaxAggregateOutputType = {
+    t_day: string | null
+    sum: number | null
+  }
+
+  export type Collection_day_countCountAggregateOutputType = {
+    t_day: number
+    sum: number
+    _all: number
+  }
+
+
+  export type Collection_day_countAvgAggregateInputType = {
+    sum?: true
+  }
+
+  export type Collection_day_countSumAggregateInputType = {
+    sum?: true
+  }
+
+  export type Collection_day_countMinAggregateInputType = {
+    t_day?: true
+    sum?: true
+  }
+
+  export type Collection_day_countMaxAggregateInputType = {
+    t_day?: true
+    sum?: true
+  }
+
+  export type Collection_day_countCountAggregateInputType = {
+    t_day?: true
+    sum?: true
+    _all?: true
+  }
+
+  export type Collection_day_countAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which collection_day_count to aggregate.
+     */
+    where?: collection_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collection_day_counts to fetch.
+     */
+    orderBy?: collection_day_countOrderByWithRelationInput | collection_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: collection_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collection_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collection_day_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned collection_day_counts
+    **/
+    _count?: true | Collection_day_countCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Collection_day_countAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Collection_day_countSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Collection_day_countMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Collection_day_countMaxAggregateInputType
+  }
+
+  export type GetCollection_day_countAggregateType<T extends Collection_day_countAggregateArgs> = {
+        [P in keyof T & keyof AggregateCollection_day_count]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCollection_day_count[P]>
+      : GetScalarType<T[P], AggregateCollection_day_count[P]>
+  }
+
+
+
+
+  export type collection_day_countGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: collection_day_countWhereInput
+    orderBy?: collection_day_countOrderByWithAggregationInput | collection_day_countOrderByWithAggregationInput[]
+    by: Collection_day_countScalarFieldEnum[] | Collection_day_countScalarFieldEnum
+    having?: collection_day_countScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Collection_day_countCountAggregateInputType | true
+    _avg?: Collection_day_countAvgAggregateInputType
+    _sum?: Collection_day_countSumAggregateInputType
+    _min?: Collection_day_countMinAggregateInputType
+    _max?: Collection_day_countMaxAggregateInputType
+  }
+
+  export type Collection_day_countGroupByOutputType = {
+    t_day: string
+    sum: number
+    _count: Collection_day_countCountAggregateOutputType | null
+    _avg: Collection_day_countAvgAggregateOutputType | null
+    _sum: Collection_day_countSumAggregateOutputType | null
+    _min: Collection_day_countMinAggregateOutputType | null
+    _max: Collection_day_countMaxAggregateOutputType | null
+  }
+
+  type GetCollection_day_countGroupByPayload<T extends collection_day_countGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Collection_day_countGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Collection_day_countGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Collection_day_countGroupByOutputType[P]>
+            : GetScalarType<T[P], Collection_day_countGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type collection_day_countSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    t_day?: boolean
+    sum?: boolean
+  }, ExtArgs["result"]["collection_day_count"]>
+
+
+
+  export type collection_day_countSelectScalar = {
+    t_day?: boolean
+    sum?: boolean
+  }
+
+  export type collection_day_countOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"t_day" | "sum", ExtArgs["result"]["collection_day_count"]>
+
+  export type $collection_day_countPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "collection_day_count"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      t_day: string
+      sum: number
+    }, ExtArgs["result"]["collection_day_count"]>
+    composites: {}
+  }
+
+  type collection_day_countGetPayload<S extends boolean | null | undefined | collection_day_countDefaultArgs> = $Result.GetResult<Prisma.$collection_day_countPayload, S>
+
+  type collection_day_countCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<collection_day_countFindManyArgs, 'select' | 'include' | 'distinct' | 'omit' | 'relationLoadStrategy'> & {
+      select?: Collection_day_countCountAggregateInputType | true
+    }
+
+  export interface collection_day_countDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['collection_day_count'], meta: { name: 'collection_day_count' } }
+    /**
+     * Find zero or one Collection_day_count that matches the filter.
+     * @param {collection_day_countFindUniqueArgs} args - Arguments to find a Collection_day_count
+     * @example
+     * // Get one Collection_day_count
+     * const collection_day_count = await prisma.collection_day_count.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends collection_day_countFindUniqueArgs>(args: SelectSubset<T, collection_day_countFindUniqueArgs<ExtArgs>>): Prisma__collection_day_countClient<$Result.GetResult<Prisma.$collection_day_countPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Collection_day_count that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {collection_day_countFindUniqueOrThrowArgs} args - Arguments to find a Collection_day_count
+     * @example
+     * // Get one Collection_day_count
+     * const collection_day_count = await prisma.collection_day_count.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends collection_day_countFindUniqueOrThrowArgs>(args: SelectSubset<T, collection_day_countFindUniqueOrThrowArgs<ExtArgs>>): Prisma__collection_day_countClient<$Result.GetResult<Prisma.$collection_day_countPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Collection_day_count that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_countFindFirstArgs} args - Arguments to find a Collection_day_count
+     * @example
+     * // Get one Collection_day_count
+     * const collection_day_count = await prisma.collection_day_count.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends collection_day_countFindFirstArgs>(args?: SelectSubset<T, collection_day_countFindFirstArgs<ExtArgs>>): Prisma__collection_day_countClient<$Result.GetResult<Prisma.$collection_day_countPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Collection_day_count that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_countFindFirstOrThrowArgs} args - Arguments to find a Collection_day_count
+     * @example
+     * // Get one Collection_day_count
+     * const collection_day_count = await prisma.collection_day_count.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends collection_day_countFindFirstOrThrowArgs>(args?: SelectSubset<T, collection_day_countFindFirstOrThrowArgs<ExtArgs>>): Prisma__collection_day_countClient<$Result.GetResult<Prisma.$collection_day_countPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Collection_day_counts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_countFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Collection_day_counts
+     * const collection_day_counts = await prisma.collection_day_count.findMany()
+     * 
+     * // Get first 10 Collection_day_counts
+     * const collection_day_counts = await prisma.collection_day_count.findMany({ take: 10 })
+     * 
+     * // Only select the `t_day`
+     * const collection_day_countWithT_dayOnly = await prisma.collection_day_count.findMany({ select: { t_day: true } })
+     * 
+     */
+    findMany<T extends collection_day_countFindManyArgs>(args?: SelectSubset<T, collection_day_countFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$collection_day_countPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Collection_day_count.
+     * @param {collection_day_countCreateArgs} args - Arguments to create a Collection_day_count.
+     * @example
+     * // Create one Collection_day_count
+     * const Collection_day_count = await prisma.collection_day_count.create({
+     *   data: {
+     *     // ... data to create a Collection_day_count
+     *   }
+     * })
+     * 
+     */
+    create<T extends collection_day_countCreateArgs>(args: SelectSubset<T, collection_day_countCreateArgs<ExtArgs>>): Prisma__collection_day_countClient<$Result.GetResult<Prisma.$collection_day_countPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Collection_day_counts.
+     * @param {collection_day_countCreateManyArgs} args - Arguments to create many Collection_day_counts.
+     * @example
+     * // Create many Collection_day_counts
+     * const collection_day_count = await prisma.collection_day_count.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends collection_day_countCreateManyArgs>(args?: SelectSubset<T, collection_day_countCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Collection_day_count.
+     * @param {collection_day_countDeleteArgs} args - Arguments to delete one Collection_day_count.
+     * @example
+     * // Delete one Collection_day_count
+     * const Collection_day_count = await prisma.collection_day_count.delete({
+     *   where: {
+     *     // ... filter to delete one Collection_day_count
+     *   }
+     * })
+     * 
+     */
+    delete<T extends collection_day_countDeleteArgs>(args: SelectSubset<T, collection_day_countDeleteArgs<ExtArgs>>): Prisma__collection_day_countClient<$Result.GetResult<Prisma.$collection_day_countPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Collection_day_count.
+     * @param {collection_day_countUpdateArgs} args - Arguments to update one Collection_day_count.
+     * @example
+     * // Update one Collection_day_count
+     * const collection_day_count = await prisma.collection_day_count.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends collection_day_countUpdateArgs>(args: SelectSubset<T, collection_day_countUpdateArgs<ExtArgs>>): Prisma__collection_day_countClient<$Result.GetResult<Prisma.$collection_day_countPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Collection_day_counts.
+     * @param {collection_day_countDeleteManyArgs} args - Arguments to filter Collection_day_counts to delete.
+     * @example
+     * // Delete a few Collection_day_counts
+     * const { count } = await prisma.collection_day_count.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends collection_day_countDeleteManyArgs>(args?: SelectSubset<T, collection_day_countDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Collection_day_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_countUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Collection_day_counts
+     * const collection_day_count = await prisma.collection_day_count.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends collection_day_countUpdateManyArgs>(args: SelectSubset<T, collection_day_countUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Collection_day_count.
+     * @param {collection_day_countUpsertArgs} args - Arguments to update or create a Collection_day_count.
+     * @example
+     * // Update or create a Collection_day_count
+     * const collection_day_count = await prisma.collection_day_count.upsert({
+     *   create: {
+     *     // ... data to create a Collection_day_count
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Collection_day_count we want to update
+     *   }
+     * })
+     */
+    upsert<T extends collection_day_countUpsertArgs>(args: SelectSubset<T, collection_day_countUpsertArgs<ExtArgs>>): Prisma__collection_day_countClient<$Result.GetResult<Prisma.$collection_day_countPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Collection_day_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_countCountArgs} args - Arguments to filter Collection_day_counts to count.
+     * @example
+     * // Count the number of Collection_day_counts
+     * const count = await prisma.collection_day_count.count({
+     *   where: {
+     *     // ... the filter for the Collection_day_counts we want to count
+     *   }
+     * })
+    **/
+    count<T extends collection_day_countCountArgs>(
+      args?: Subset<T, collection_day_countCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Collection_day_countCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Collection_day_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Collection_day_countAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Collection_day_countAggregateArgs>(args: Subset<T, Collection_day_countAggregateArgs>): Prisma.PrismaPromise<GetCollection_day_countAggregateType<T>>
+
+    /**
+     * Group by Collection_day_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_countGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends collection_day_countGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: collection_day_countGroupByArgs['orderBy'] }
+        : { orderBy?: collection_day_countGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, collection_day_countGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCollection_day_countGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the collection_day_count model
+   */
+  readonly fields: collection_day_countFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for collection_day_count.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__collection_day_countClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the collection_day_count model
+   */ 
+  interface collection_day_countFieldRefs {
+    readonly t_day: FieldRef<"collection_day_count", 'String'>
+    readonly sum: FieldRef<"collection_day_count", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * collection_day_count findUnique
+   */
+  export type collection_day_countFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_count
+     */
+    select?: collection_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_count
+     */
+    omit?: collection_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which collection_day_count to fetch.
+     */
+    where: collection_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_count findUniqueOrThrow
+   */
+  export type collection_day_countFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_count
+     */
+    select?: collection_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_count
+     */
+    omit?: collection_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which collection_day_count to fetch.
+     */
+    where: collection_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_count findFirst
+   */
+  export type collection_day_countFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_count
+     */
+    select?: collection_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_count
+     */
+    omit?: collection_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which collection_day_count to fetch.
+     */
+    where?: collection_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collection_day_counts to fetch.
+     */
+    orderBy?: collection_day_countOrderByWithRelationInput | collection_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for collection_day_counts.
+     */
+    cursor?: collection_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collection_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collection_day_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of collection_day_counts.
+     */
+    distinct?: Collection_day_countScalarFieldEnum | Collection_day_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_count findFirstOrThrow
+   */
+  export type collection_day_countFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_count
+     */
+    select?: collection_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_count
+     */
+    omit?: collection_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which collection_day_count to fetch.
+     */
+    where?: collection_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collection_day_counts to fetch.
+     */
+    orderBy?: collection_day_countOrderByWithRelationInput | collection_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for collection_day_counts.
+     */
+    cursor?: collection_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collection_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collection_day_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of collection_day_counts.
+     */
+    distinct?: Collection_day_countScalarFieldEnum | Collection_day_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_count findMany
+   */
+  export type collection_day_countFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_count
+     */
+    select?: collection_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_count
+     */
+    omit?: collection_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which collection_day_counts to fetch.
+     */
+    where?: collection_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collection_day_counts to fetch.
+     */
+    orderBy?: collection_day_countOrderByWithRelationInput | collection_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing collection_day_counts.
+     */
+    cursor?: collection_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collection_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collection_day_counts.
+     */
+    skip?: number
+    distinct?: Collection_day_countScalarFieldEnum | Collection_day_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_count create
+   */
+  export type collection_day_countCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_count
+     */
+    select?: collection_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_count
+     */
+    omit?: collection_day_countOmit<ExtArgs> | null
+    /**
+     * The data needed to create a collection_day_count.
+     */
+    data: XOR<collection_day_countCreateInput, collection_day_countUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_count createMany
+   */
+  export type collection_day_countCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many collection_day_counts.
+     */
+    data: collection_day_countCreateManyInput | collection_day_countCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * collection_day_count update
+   */
+  export type collection_day_countUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_count
+     */
+    select?: collection_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_count
+     */
+    omit?: collection_day_countOmit<ExtArgs> | null
+    /**
+     * The data needed to update a collection_day_count.
+     */
+    data: XOR<collection_day_countUpdateInput, collection_day_countUncheckedUpdateInput>
+    /**
+     * Choose, which collection_day_count to update.
+     */
+    where: collection_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_count updateMany
+   */
+  export type collection_day_countUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update collection_day_counts.
+     */
+    data: XOR<collection_day_countUpdateManyMutationInput, collection_day_countUncheckedUpdateManyInput>
+    /**
+     * Filter which collection_day_counts to update
+     */
+    where?: collection_day_countWhereInput
+    /**
+     * Limit how many collection_day_counts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * collection_day_count upsert
+   */
+  export type collection_day_countUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_count
+     */
+    select?: collection_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_count
+     */
+    omit?: collection_day_countOmit<ExtArgs> | null
+    /**
+     * The filter to search for the collection_day_count to update in case it exists.
+     */
+    where: collection_day_countWhereUniqueInput
+    /**
+     * In case the collection_day_count found by the `where` argument doesn't exist, create a new collection_day_count with this data.
+     */
+    create: XOR<collection_day_countCreateInput, collection_day_countUncheckedCreateInput>
+    /**
+     * In case the collection_day_count was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<collection_day_countUpdateInput, collection_day_countUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_count delete
+   */
+  export type collection_day_countDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_count
+     */
+    select?: collection_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_count
+     */
+    omit?: collection_day_countOmit<ExtArgs> | null
+    /**
+     * Filter which collection_day_count to delete.
+     */
+    where: collection_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_count deleteMany
+   */
+  export type collection_day_countDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which collection_day_counts to delete
+     */
+    where?: collection_day_countWhereInput
+    /**
+     * Limit how many collection_day_counts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * collection_day_count without action
+   */
+  export type collection_day_countDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_count
+     */
+    select?: collection_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_count
+     */
+    omit?: collection_day_countOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model collection_day_ticket_count
+   */
+
+  export type AggregateCollection_day_ticket_count = {
+    _count: Collection_day_ticket_countCountAggregateOutputType | null
+    _avg: Collection_day_ticket_countAvgAggregateOutputType | null
+    _sum: Collection_day_ticket_countSumAggregateOutputType | null
+    _min: Collection_day_ticket_countMinAggregateOutputType | null
+    _max: Collection_day_ticket_countMaxAggregateOutputType | null
+  }
+
+  export type Collection_day_ticket_countAvgAggregateOutputType = {
+    ticket_id: number | null
+    sum: number | null
+  }
+
+  export type Collection_day_ticket_countSumAggregateOutputType = {
+    ticket_id: number | null
+    sum: number | null
+  }
+
+  export type Collection_day_ticket_countMinAggregateOutputType = {
+    id: string | null
+    ticket_id: number | null
+    t_day: string | null
+    sum: number | null
+  }
+
+  export type Collection_day_ticket_countMaxAggregateOutputType = {
+    id: string | null
+    ticket_id: number | null
+    t_day: string | null
+    sum: number | null
+  }
+
+  export type Collection_day_ticket_countCountAggregateOutputType = {
+    id: number
+    ticket_id: number
+    t_day: number
+    sum: number
+    _all: number
+  }
+
+
+  export type Collection_day_ticket_countAvgAggregateInputType = {
+    ticket_id?: true
+    sum?: true
+  }
+
+  export type Collection_day_ticket_countSumAggregateInputType = {
+    ticket_id?: true
+    sum?: true
+  }
+
+  export type Collection_day_ticket_countMinAggregateInputType = {
+    id?: true
+    ticket_id?: true
+    t_day?: true
+    sum?: true
+  }
+
+  export type Collection_day_ticket_countMaxAggregateInputType = {
+    id?: true
+    ticket_id?: true
+    t_day?: true
+    sum?: true
+  }
+
+  export type Collection_day_ticket_countCountAggregateInputType = {
+    id?: true
+    ticket_id?: true
+    t_day?: true
+    sum?: true
+    _all?: true
+  }
+
+  export type Collection_day_ticket_countAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which collection_day_ticket_count to aggregate.
+     */
+    where?: collection_day_ticket_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collection_day_ticket_counts to fetch.
+     */
+    orderBy?: collection_day_ticket_countOrderByWithRelationInput | collection_day_ticket_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: collection_day_ticket_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collection_day_ticket_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collection_day_ticket_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned collection_day_ticket_counts
+    **/
+    _count?: true | Collection_day_ticket_countCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Collection_day_ticket_countAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Collection_day_ticket_countSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Collection_day_ticket_countMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Collection_day_ticket_countMaxAggregateInputType
+  }
+
+  export type GetCollection_day_ticket_countAggregateType<T extends Collection_day_ticket_countAggregateArgs> = {
+        [P in keyof T & keyof AggregateCollection_day_ticket_count]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateCollection_day_ticket_count[P]>
+      : GetScalarType<T[P], AggregateCollection_day_ticket_count[P]>
+  }
+
+
+
+
+  export type collection_day_ticket_countGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: collection_day_ticket_countWhereInput
+    orderBy?: collection_day_ticket_countOrderByWithAggregationInput | collection_day_ticket_countOrderByWithAggregationInput[]
+    by: Collection_day_ticket_countScalarFieldEnum[] | Collection_day_ticket_countScalarFieldEnum
+    having?: collection_day_ticket_countScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Collection_day_ticket_countCountAggregateInputType | true
+    _avg?: Collection_day_ticket_countAvgAggregateInputType
+    _sum?: Collection_day_ticket_countSumAggregateInputType
+    _min?: Collection_day_ticket_countMinAggregateInputType
+    _max?: Collection_day_ticket_countMaxAggregateInputType
+  }
+
+  export type Collection_day_ticket_countGroupByOutputType = {
+    id: string
+    ticket_id: number | null
+    t_day: string | null
+    sum: number
+    _count: Collection_day_ticket_countCountAggregateOutputType | null
+    _avg: Collection_day_ticket_countAvgAggregateOutputType | null
+    _sum: Collection_day_ticket_countSumAggregateOutputType | null
+    _min: Collection_day_ticket_countMinAggregateOutputType | null
+    _max: Collection_day_ticket_countMaxAggregateOutputType | null
+  }
+
+  type GetCollection_day_ticket_countGroupByPayload<T extends collection_day_ticket_countGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Collection_day_ticket_countGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Collection_day_ticket_countGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Collection_day_ticket_countGroupByOutputType[P]>
+            : GetScalarType<T[P], Collection_day_ticket_countGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type collection_day_ticket_countSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ticket_id?: boolean
+    t_day?: boolean
+    sum?: boolean
+  }, ExtArgs["result"]["collection_day_ticket_count"]>
+
+
+
+  export type collection_day_ticket_countSelectScalar = {
+    id?: boolean
+    ticket_id?: boolean
+    t_day?: boolean
+    sum?: boolean
+  }
+
+  export type collection_day_ticket_countOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ticket_id" | "t_day" | "sum", ExtArgs["result"]["collection_day_ticket_count"]>
+
+  export type $collection_day_ticket_countPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "collection_day_ticket_count"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      ticket_id: number | null
+      t_day: string | null
+      sum: number
+    }, ExtArgs["result"]["collection_day_ticket_count"]>
+    composites: {}
+  }
+
+  type collection_day_ticket_countGetPayload<S extends boolean | null | undefined | collection_day_ticket_countDefaultArgs> = $Result.GetResult<Prisma.$collection_day_ticket_countPayload, S>
+
+  type collection_day_ticket_countCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<collection_day_ticket_countFindManyArgs, 'select' | 'include' | 'distinct' | 'omit' | 'relationLoadStrategy'> & {
+      select?: Collection_day_ticket_countCountAggregateInputType | true
+    }
+
+  export interface collection_day_ticket_countDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['collection_day_ticket_count'], meta: { name: 'collection_day_ticket_count' } }
+    /**
+     * Find zero or one Collection_day_ticket_count that matches the filter.
+     * @param {collection_day_ticket_countFindUniqueArgs} args - Arguments to find a Collection_day_ticket_count
+     * @example
+     * // Get one Collection_day_ticket_count
+     * const collection_day_ticket_count = await prisma.collection_day_ticket_count.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends collection_day_ticket_countFindUniqueArgs>(args: SelectSubset<T, collection_day_ticket_countFindUniqueArgs<ExtArgs>>): Prisma__collection_day_ticket_countClient<$Result.GetResult<Prisma.$collection_day_ticket_countPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Collection_day_ticket_count that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {collection_day_ticket_countFindUniqueOrThrowArgs} args - Arguments to find a Collection_day_ticket_count
+     * @example
+     * // Get one Collection_day_ticket_count
+     * const collection_day_ticket_count = await prisma.collection_day_ticket_count.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends collection_day_ticket_countFindUniqueOrThrowArgs>(args: SelectSubset<T, collection_day_ticket_countFindUniqueOrThrowArgs<ExtArgs>>): Prisma__collection_day_ticket_countClient<$Result.GetResult<Prisma.$collection_day_ticket_countPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Collection_day_ticket_count that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_ticket_countFindFirstArgs} args - Arguments to find a Collection_day_ticket_count
+     * @example
+     * // Get one Collection_day_ticket_count
+     * const collection_day_ticket_count = await prisma.collection_day_ticket_count.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends collection_day_ticket_countFindFirstArgs>(args?: SelectSubset<T, collection_day_ticket_countFindFirstArgs<ExtArgs>>): Prisma__collection_day_ticket_countClient<$Result.GetResult<Prisma.$collection_day_ticket_countPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Collection_day_ticket_count that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_ticket_countFindFirstOrThrowArgs} args - Arguments to find a Collection_day_ticket_count
+     * @example
+     * // Get one Collection_day_ticket_count
+     * const collection_day_ticket_count = await prisma.collection_day_ticket_count.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends collection_day_ticket_countFindFirstOrThrowArgs>(args?: SelectSubset<T, collection_day_ticket_countFindFirstOrThrowArgs<ExtArgs>>): Prisma__collection_day_ticket_countClient<$Result.GetResult<Prisma.$collection_day_ticket_countPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Collection_day_ticket_counts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_ticket_countFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Collection_day_ticket_counts
+     * const collection_day_ticket_counts = await prisma.collection_day_ticket_count.findMany()
+     * 
+     * // Get first 10 Collection_day_ticket_counts
+     * const collection_day_ticket_counts = await prisma.collection_day_ticket_count.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const collection_day_ticket_countWithIdOnly = await prisma.collection_day_ticket_count.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends collection_day_ticket_countFindManyArgs>(args?: SelectSubset<T, collection_day_ticket_countFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$collection_day_ticket_countPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Collection_day_ticket_count.
+     * @param {collection_day_ticket_countCreateArgs} args - Arguments to create a Collection_day_ticket_count.
+     * @example
+     * // Create one Collection_day_ticket_count
+     * const Collection_day_ticket_count = await prisma.collection_day_ticket_count.create({
+     *   data: {
+     *     // ... data to create a Collection_day_ticket_count
+     *   }
+     * })
+     * 
+     */
+    create<T extends collection_day_ticket_countCreateArgs>(args: SelectSubset<T, collection_day_ticket_countCreateArgs<ExtArgs>>): Prisma__collection_day_ticket_countClient<$Result.GetResult<Prisma.$collection_day_ticket_countPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Collection_day_ticket_counts.
+     * @param {collection_day_ticket_countCreateManyArgs} args - Arguments to create many Collection_day_ticket_counts.
+     * @example
+     * // Create many Collection_day_ticket_counts
+     * const collection_day_ticket_count = await prisma.collection_day_ticket_count.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends collection_day_ticket_countCreateManyArgs>(args?: SelectSubset<T, collection_day_ticket_countCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Collection_day_ticket_count.
+     * @param {collection_day_ticket_countDeleteArgs} args - Arguments to delete one Collection_day_ticket_count.
+     * @example
+     * // Delete one Collection_day_ticket_count
+     * const Collection_day_ticket_count = await prisma.collection_day_ticket_count.delete({
+     *   where: {
+     *     // ... filter to delete one Collection_day_ticket_count
+     *   }
+     * })
+     * 
+     */
+    delete<T extends collection_day_ticket_countDeleteArgs>(args: SelectSubset<T, collection_day_ticket_countDeleteArgs<ExtArgs>>): Prisma__collection_day_ticket_countClient<$Result.GetResult<Prisma.$collection_day_ticket_countPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Collection_day_ticket_count.
+     * @param {collection_day_ticket_countUpdateArgs} args - Arguments to update one Collection_day_ticket_count.
+     * @example
+     * // Update one Collection_day_ticket_count
+     * const collection_day_ticket_count = await prisma.collection_day_ticket_count.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends collection_day_ticket_countUpdateArgs>(args: SelectSubset<T, collection_day_ticket_countUpdateArgs<ExtArgs>>): Prisma__collection_day_ticket_countClient<$Result.GetResult<Prisma.$collection_day_ticket_countPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Collection_day_ticket_counts.
+     * @param {collection_day_ticket_countDeleteManyArgs} args - Arguments to filter Collection_day_ticket_counts to delete.
+     * @example
+     * // Delete a few Collection_day_ticket_counts
+     * const { count } = await prisma.collection_day_ticket_count.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends collection_day_ticket_countDeleteManyArgs>(args?: SelectSubset<T, collection_day_ticket_countDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Collection_day_ticket_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_ticket_countUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Collection_day_ticket_counts
+     * const collection_day_ticket_count = await prisma.collection_day_ticket_count.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends collection_day_ticket_countUpdateManyArgs>(args: SelectSubset<T, collection_day_ticket_countUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Collection_day_ticket_count.
+     * @param {collection_day_ticket_countUpsertArgs} args - Arguments to update or create a Collection_day_ticket_count.
+     * @example
+     * // Update or create a Collection_day_ticket_count
+     * const collection_day_ticket_count = await prisma.collection_day_ticket_count.upsert({
+     *   create: {
+     *     // ... data to create a Collection_day_ticket_count
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Collection_day_ticket_count we want to update
+     *   }
+     * })
+     */
+    upsert<T extends collection_day_ticket_countUpsertArgs>(args: SelectSubset<T, collection_day_ticket_countUpsertArgs<ExtArgs>>): Prisma__collection_day_ticket_countClient<$Result.GetResult<Prisma.$collection_day_ticket_countPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Collection_day_ticket_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_ticket_countCountArgs} args - Arguments to filter Collection_day_ticket_counts to count.
+     * @example
+     * // Count the number of Collection_day_ticket_counts
+     * const count = await prisma.collection_day_ticket_count.count({
+     *   where: {
+     *     // ... the filter for the Collection_day_ticket_counts we want to count
+     *   }
+     * })
+    **/
+    count<T extends collection_day_ticket_countCountArgs>(
+      args?: Subset<T, collection_day_ticket_countCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Collection_day_ticket_countCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Collection_day_ticket_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Collection_day_ticket_countAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Collection_day_ticket_countAggregateArgs>(args: Subset<T, Collection_day_ticket_countAggregateArgs>): Prisma.PrismaPromise<GetCollection_day_ticket_countAggregateType<T>>
+
+    /**
+     * Group by Collection_day_ticket_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {collection_day_ticket_countGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends collection_day_ticket_countGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: collection_day_ticket_countGroupByArgs['orderBy'] }
+        : { orderBy?: collection_day_ticket_countGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, collection_day_ticket_countGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetCollection_day_ticket_countGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the collection_day_ticket_count model
+   */
+  readonly fields: collection_day_ticket_countFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for collection_day_ticket_count.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__collection_day_ticket_countClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the collection_day_ticket_count model
+   */ 
+  interface collection_day_ticket_countFieldRefs {
+    readonly id: FieldRef<"collection_day_ticket_count", 'String'>
+    readonly ticket_id: FieldRef<"collection_day_ticket_count", 'Int'>
+    readonly t_day: FieldRef<"collection_day_ticket_count", 'String'>
+    readonly sum: FieldRef<"collection_day_ticket_count", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * collection_day_ticket_count findUnique
+   */
+  export type collection_day_ticket_countFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_ticket_count
+     */
+    select?: collection_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_ticket_count
+     */
+    omit?: collection_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter, which collection_day_ticket_count to fetch.
+     */
+    where: collection_day_ticket_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_ticket_count findUniqueOrThrow
+   */
+  export type collection_day_ticket_countFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_ticket_count
+     */
+    select?: collection_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_ticket_count
+     */
+    omit?: collection_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter, which collection_day_ticket_count to fetch.
+     */
+    where: collection_day_ticket_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_ticket_count findFirst
+   */
+  export type collection_day_ticket_countFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_ticket_count
+     */
+    select?: collection_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_ticket_count
+     */
+    omit?: collection_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter, which collection_day_ticket_count to fetch.
+     */
+    where?: collection_day_ticket_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collection_day_ticket_counts to fetch.
+     */
+    orderBy?: collection_day_ticket_countOrderByWithRelationInput | collection_day_ticket_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for collection_day_ticket_counts.
+     */
+    cursor?: collection_day_ticket_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collection_day_ticket_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collection_day_ticket_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of collection_day_ticket_counts.
+     */
+    distinct?: Collection_day_ticket_countScalarFieldEnum | Collection_day_ticket_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_ticket_count findFirstOrThrow
+   */
+  export type collection_day_ticket_countFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_ticket_count
+     */
+    select?: collection_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_ticket_count
+     */
+    omit?: collection_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter, which collection_day_ticket_count to fetch.
+     */
+    where?: collection_day_ticket_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collection_day_ticket_counts to fetch.
+     */
+    orderBy?: collection_day_ticket_countOrderByWithRelationInput | collection_day_ticket_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for collection_day_ticket_counts.
+     */
+    cursor?: collection_day_ticket_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collection_day_ticket_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collection_day_ticket_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of collection_day_ticket_counts.
+     */
+    distinct?: Collection_day_ticket_countScalarFieldEnum | Collection_day_ticket_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_ticket_count findMany
+   */
+  export type collection_day_ticket_countFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_ticket_count
+     */
+    select?: collection_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_ticket_count
+     */
+    omit?: collection_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter, which collection_day_ticket_counts to fetch.
+     */
+    where?: collection_day_ticket_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of collection_day_ticket_counts to fetch.
+     */
+    orderBy?: collection_day_ticket_countOrderByWithRelationInput | collection_day_ticket_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing collection_day_ticket_counts.
+     */
+    cursor?: collection_day_ticket_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` collection_day_ticket_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` collection_day_ticket_counts.
+     */
+    skip?: number
+    distinct?: Collection_day_ticket_countScalarFieldEnum | Collection_day_ticket_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_ticket_count create
+   */
+  export type collection_day_ticket_countCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_ticket_count
+     */
+    select?: collection_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_ticket_count
+     */
+    omit?: collection_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * The data needed to create a collection_day_ticket_count.
+     */
+    data: XOR<collection_day_ticket_countCreateInput, collection_day_ticket_countUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_ticket_count createMany
+   */
+  export type collection_day_ticket_countCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many collection_day_ticket_counts.
+     */
+    data: collection_day_ticket_countCreateManyInput | collection_day_ticket_countCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * collection_day_ticket_count update
+   */
+  export type collection_day_ticket_countUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_ticket_count
+     */
+    select?: collection_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_ticket_count
+     */
+    omit?: collection_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * The data needed to update a collection_day_ticket_count.
+     */
+    data: XOR<collection_day_ticket_countUpdateInput, collection_day_ticket_countUncheckedUpdateInput>
+    /**
+     * Choose, which collection_day_ticket_count to update.
+     */
+    where: collection_day_ticket_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_ticket_count updateMany
+   */
+  export type collection_day_ticket_countUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update collection_day_ticket_counts.
+     */
+    data: XOR<collection_day_ticket_countUpdateManyMutationInput, collection_day_ticket_countUncheckedUpdateManyInput>
+    /**
+     * Filter which collection_day_ticket_counts to update
+     */
+    where?: collection_day_ticket_countWhereInput
+    /**
+     * Limit how many collection_day_ticket_counts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * collection_day_ticket_count upsert
+   */
+  export type collection_day_ticket_countUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_ticket_count
+     */
+    select?: collection_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_ticket_count
+     */
+    omit?: collection_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * The filter to search for the collection_day_ticket_count to update in case it exists.
+     */
+    where: collection_day_ticket_countWhereUniqueInput
+    /**
+     * In case the collection_day_ticket_count found by the `where` argument doesn't exist, create a new collection_day_ticket_count with this data.
+     */
+    create: XOR<collection_day_ticket_countCreateInput, collection_day_ticket_countUncheckedCreateInput>
+    /**
+     * In case the collection_day_ticket_count was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<collection_day_ticket_countUpdateInput, collection_day_ticket_countUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_ticket_count delete
+   */
+  export type collection_day_ticket_countDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_ticket_count
+     */
+    select?: collection_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_ticket_count
+     */
+    omit?: collection_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter which collection_day_ticket_count to delete.
+     */
+    where: collection_day_ticket_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * collection_day_ticket_count deleteMany
+   */
+  export type collection_day_ticket_countDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which collection_day_ticket_counts to delete
+     */
+    where?: collection_day_ticket_countWhereInput
+    /**
+     * Limit how many collection_day_ticket_counts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * collection_day_ticket_count without action
+   */
+  export type collection_day_ticket_countDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the collection_day_ticket_count
+     */
+    select?: collection_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the collection_day_ticket_count
+     */
+    omit?: collection_day_ticket_countOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model user_day_count
+   */
+
+  export type AggregateUser_day_count = {
+    _count: User_day_countCountAggregateOutputType | null
+    _avg: User_day_countAvgAggregateOutputType | null
+    _sum: User_day_countSumAggregateOutputType | null
+    _min: User_day_countMinAggregateOutputType | null
+    _max: User_day_countMaxAggregateOutputType | null
+  }
+
+  export type User_day_countAvgAggregateOutputType = {
+    sum: number | null
+  }
+
+  export type User_day_countSumAggregateOutputType = {
+    sum: number | null
+  }
+
+  export type User_day_countMinAggregateOutputType = {
+    c_day: string | null
+    sum: number | null
+  }
+
+  export type User_day_countMaxAggregateOutputType = {
+    c_day: string | null
+    sum: number | null
+  }
+
+  export type User_day_countCountAggregateOutputType = {
+    c_day: number
+    sum: number
+    _all: number
+  }
+
+
+  export type User_day_countAvgAggregateInputType = {
+    sum?: true
+  }
+
+  export type User_day_countSumAggregateInputType = {
+    sum?: true
+  }
+
+  export type User_day_countMinAggregateInputType = {
+    c_day?: true
+    sum?: true
+  }
+
+  export type User_day_countMaxAggregateInputType = {
+    c_day?: true
+    sum?: true
+  }
+
+  export type User_day_countCountAggregateInputType = {
+    c_day?: true
+    sum?: true
+    _all?: true
+  }
+
+  export type User_day_countAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_day_count to aggregate.
+     */
+    where?: user_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_day_counts to fetch.
+     */
+    orderBy?: user_day_countOrderByWithRelationInput | user_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: user_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_day_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned user_day_counts
+    **/
+    _count?: true | User_day_countCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: User_day_countAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: User_day_countSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: User_day_countMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: User_day_countMaxAggregateInputType
+  }
+
+  export type GetUser_day_countAggregateType<T extends User_day_countAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser_day_count]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser_day_count[P]>
+      : GetScalarType<T[P], AggregateUser_day_count[P]>
+  }
+
+
+
+
+  export type user_day_countGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_day_countWhereInput
+    orderBy?: user_day_countOrderByWithAggregationInput | user_day_countOrderByWithAggregationInput[]
+    by: User_day_countScalarFieldEnum[] | User_day_countScalarFieldEnum
+    having?: user_day_countScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: User_day_countCountAggregateInputType | true
+    _avg?: User_day_countAvgAggregateInputType
+    _sum?: User_day_countSumAggregateInputType
+    _min?: User_day_countMinAggregateInputType
+    _max?: User_day_countMaxAggregateInputType
+  }
+
+  export type User_day_countGroupByOutputType = {
+    c_day: string
+    sum: number
+    _count: User_day_countCountAggregateOutputType | null
+    _avg: User_day_countAvgAggregateOutputType | null
+    _sum: User_day_countSumAggregateOutputType | null
+    _min: User_day_countMinAggregateOutputType | null
+    _max: User_day_countMaxAggregateOutputType | null
+  }
+
+  type GetUser_day_countGroupByPayload<T extends user_day_countGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<User_day_countGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof User_day_countGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], User_day_countGroupByOutputType[P]>
+            : GetScalarType<T[P], User_day_countGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type user_day_countSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    c_day?: boolean
+    sum?: boolean
+  }, ExtArgs["result"]["user_day_count"]>
+
+
+
+  export type user_day_countSelectScalar = {
+    c_day?: boolean
+    sum?: boolean
+  }
+
+  export type user_day_countOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"c_day" | "sum", ExtArgs["result"]["user_day_count"]>
+
+  export type $user_day_countPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "user_day_count"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      c_day: string
+      sum: number
+    }, ExtArgs["result"]["user_day_count"]>
+    composites: {}
+  }
+
+  type user_day_countGetPayload<S extends boolean | null | undefined | user_day_countDefaultArgs> = $Result.GetResult<Prisma.$user_day_countPayload, S>
+
+  type user_day_countCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<user_day_countFindManyArgs, 'select' | 'include' | 'distinct' | 'omit' | 'relationLoadStrategy'> & {
+      select?: User_day_countCountAggregateInputType | true
+    }
+
+  export interface user_day_countDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['user_day_count'], meta: { name: 'user_day_count' } }
+    /**
+     * Find zero or one User_day_count that matches the filter.
+     * @param {user_day_countFindUniqueArgs} args - Arguments to find a User_day_count
+     * @example
+     * // Get one User_day_count
+     * const user_day_count = await prisma.user_day_count.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends user_day_countFindUniqueArgs>(args: SelectSubset<T, user_day_countFindUniqueArgs<ExtArgs>>): Prisma__user_day_countClient<$Result.GetResult<Prisma.$user_day_countPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one User_day_count that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {user_day_countFindUniqueOrThrowArgs} args - Arguments to find a User_day_count
+     * @example
+     * // Get one User_day_count
+     * const user_day_count = await prisma.user_day_count.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends user_day_countFindUniqueOrThrowArgs>(args: SelectSubset<T, user_day_countFindUniqueOrThrowArgs<ExtArgs>>): Prisma__user_day_countClient<$Result.GetResult<Prisma.$user_day_countPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_day_count that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_day_countFindFirstArgs} args - Arguments to find a User_day_count
+     * @example
+     * // Get one User_day_count
+     * const user_day_count = await prisma.user_day_count.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends user_day_countFindFirstArgs>(args?: SelectSubset<T, user_day_countFindFirstArgs<ExtArgs>>): Prisma__user_day_countClient<$Result.GetResult<Prisma.$user_day_countPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_day_count that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_day_countFindFirstOrThrowArgs} args - Arguments to find a User_day_count
+     * @example
+     * // Get one User_day_count
+     * const user_day_count = await prisma.user_day_count.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends user_day_countFindFirstOrThrowArgs>(args?: SelectSubset<T, user_day_countFindFirstOrThrowArgs<ExtArgs>>): Prisma__user_day_countClient<$Result.GetResult<Prisma.$user_day_countPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more User_day_counts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_day_countFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all User_day_counts
+     * const user_day_counts = await prisma.user_day_count.findMany()
+     * 
+     * // Get first 10 User_day_counts
+     * const user_day_counts = await prisma.user_day_count.findMany({ take: 10 })
+     * 
+     * // Only select the `c_day`
+     * const user_day_countWithC_dayOnly = await prisma.user_day_count.findMany({ select: { c_day: true } })
+     * 
+     */
+    findMany<T extends user_day_countFindManyArgs>(args?: SelectSubset<T, user_day_countFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_day_countPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a User_day_count.
+     * @param {user_day_countCreateArgs} args - Arguments to create a User_day_count.
+     * @example
+     * // Create one User_day_count
+     * const User_day_count = await prisma.user_day_count.create({
+     *   data: {
+     *     // ... data to create a User_day_count
+     *   }
+     * })
+     * 
+     */
+    create<T extends user_day_countCreateArgs>(args: SelectSubset<T, user_day_countCreateArgs<ExtArgs>>): Prisma__user_day_countClient<$Result.GetResult<Prisma.$user_day_countPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many User_day_counts.
+     * @param {user_day_countCreateManyArgs} args - Arguments to create many User_day_counts.
+     * @example
+     * // Create many User_day_counts
+     * const user_day_count = await prisma.user_day_count.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends user_day_countCreateManyArgs>(args?: SelectSubset<T, user_day_countCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a User_day_count.
+     * @param {user_day_countDeleteArgs} args - Arguments to delete one User_day_count.
+     * @example
+     * // Delete one User_day_count
+     * const User_day_count = await prisma.user_day_count.delete({
+     *   where: {
+     *     // ... filter to delete one User_day_count
+     *   }
+     * })
+     * 
+     */
+    delete<T extends user_day_countDeleteArgs>(args: SelectSubset<T, user_day_countDeleteArgs<ExtArgs>>): Prisma__user_day_countClient<$Result.GetResult<Prisma.$user_day_countPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one User_day_count.
+     * @param {user_day_countUpdateArgs} args - Arguments to update one User_day_count.
+     * @example
+     * // Update one User_day_count
+     * const user_day_count = await prisma.user_day_count.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends user_day_countUpdateArgs>(args: SelectSubset<T, user_day_countUpdateArgs<ExtArgs>>): Prisma__user_day_countClient<$Result.GetResult<Prisma.$user_day_countPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more User_day_counts.
+     * @param {user_day_countDeleteManyArgs} args - Arguments to filter User_day_counts to delete.
+     * @example
+     * // Delete a few User_day_counts
+     * const { count } = await prisma.user_day_count.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends user_day_countDeleteManyArgs>(args?: SelectSubset<T, user_day_countDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_day_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_day_countUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many User_day_counts
+     * const user_day_count = await prisma.user_day_count.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends user_day_countUpdateManyArgs>(args: SelectSubset<T, user_day_countUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one User_day_count.
+     * @param {user_day_countUpsertArgs} args - Arguments to update or create a User_day_count.
+     * @example
+     * // Update or create a User_day_count
+     * const user_day_count = await prisma.user_day_count.upsert({
+     *   create: {
+     *     // ... data to create a User_day_count
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User_day_count we want to update
+     *   }
+     * })
+     */
+    upsert<T extends user_day_countUpsertArgs>(args: SelectSubset<T, user_day_countUpsertArgs<ExtArgs>>): Prisma__user_day_countClient<$Result.GetResult<Prisma.$user_day_countPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of User_day_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_day_countCountArgs} args - Arguments to filter User_day_counts to count.
+     * @example
+     * // Count the number of User_day_counts
+     * const count = await prisma.user_day_count.count({
+     *   where: {
+     *     // ... the filter for the User_day_counts we want to count
+     *   }
+     * })
+    **/
+    count<T extends user_day_countCountArgs>(
+      args?: Subset<T, user_day_countCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], User_day_countCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User_day_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_day_countAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends User_day_countAggregateArgs>(args: Subset<T, User_day_countAggregateArgs>): Prisma.PrismaPromise<GetUser_day_countAggregateType<T>>
+
+    /**
+     * Group by User_day_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_day_countGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends user_day_countGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: user_day_countGroupByArgs['orderBy'] }
+        : { orderBy?: user_day_countGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, user_day_countGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUser_day_countGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the user_day_count model
+   */
+  readonly fields: user_day_countFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for user_day_count.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__user_day_countClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the user_day_count model
+   */ 
+  interface user_day_countFieldRefs {
+    readonly c_day: FieldRef<"user_day_count", 'String'>
+    readonly sum: FieldRef<"user_day_count", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * user_day_count findUnique
+   */
+  export type user_day_countFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_day_count
+     */
+    select?: user_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_day_count
+     */
+    omit?: user_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_day_count to fetch.
+     */
+    where: user_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_day_count findUniqueOrThrow
+   */
+  export type user_day_countFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_day_count
+     */
+    select?: user_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_day_count
+     */
+    omit?: user_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_day_count to fetch.
+     */
+    where: user_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_day_count findFirst
+   */
+  export type user_day_countFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_day_count
+     */
+    select?: user_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_day_count
+     */
+    omit?: user_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_day_count to fetch.
+     */
+    where?: user_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_day_counts to fetch.
+     */
+    orderBy?: user_day_countOrderByWithRelationInput | user_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_day_counts.
+     */
+    cursor?: user_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_day_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_day_counts.
+     */
+    distinct?: User_day_countScalarFieldEnum | User_day_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_day_count findFirstOrThrow
+   */
+  export type user_day_countFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_day_count
+     */
+    select?: user_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_day_count
+     */
+    omit?: user_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_day_count to fetch.
+     */
+    where?: user_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_day_counts to fetch.
+     */
+    orderBy?: user_day_countOrderByWithRelationInput | user_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_day_counts.
+     */
+    cursor?: user_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_day_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_day_counts.
+     */
+    distinct?: User_day_countScalarFieldEnum | User_day_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_day_count findMany
+   */
+  export type user_day_countFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_day_count
+     */
+    select?: user_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_day_count
+     */
+    omit?: user_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_day_counts to fetch.
+     */
+    where?: user_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_day_counts to fetch.
+     */
+    orderBy?: user_day_countOrderByWithRelationInput | user_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing user_day_counts.
+     */
+    cursor?: user_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_day_counts.
+     */
+    skip?: number
+    distinct?: User_day_countScalarFieldEnum | User_day_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_day_count create
+   */
+  export type user_day_countCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_day_count
+     */
+    select?: user_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_day_count
+     */
+    omit?: user_day_countOmit<ExtArgs> | null
+    /**
+     * The data needed to create a user_day_count.
+     */
+    data: XOR<user_day_countCreateInput, user_day_countUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_day_count createMany
+   */
+  export type user_day_countCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many user_day_counts.
+     */
+    data: user_day_countCreateManyInput | user_day_countCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * user_day_count update
+   */
+  export type user_day_countUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_day_count
+     */
+    select?: user_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_day_count
+     */
+    omit?: user_day_countOmit<ExtArgs> | null
+    /**
+     * The data needed to update a user_day_count.
+     */
+    data: XOR<user_day_countUpdateInput, user_day_countUncheckedUpdateInput>
+    /**
+     * Choose, which user_day_count to update.
+     */
+    where: user_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_day_count updateMany
+   */
+  export type user_day_countUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update user_day_counts.
+     */
+    data: XOR<user_day_countUpdateManyMutationInput, user_day_countUncheckedUpdateManyInput>
+    /**
+     * Filter which user_day_counts to update
+     */
+    where?: user_day_countWhereInput
+    /**
+     * Limit how many user_day_counts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_day_count upsert
+   */
+  export type user_day_countUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_day_count
+     */
+    select?: user_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_day_count
+     */
+    omit?: user_day_countOmit<ExtArgs> | null
+    /**
+     * The filter to search for the user_day_count to update in case it exists.
+     */
+    where: user_day_countWhereUniqueInput
+    /**
+     * In case the user_day_count found by the `where` argument doesn't exist, create a new user_day_count with this data.
+     */
+    create: XOR<user_day_countCreateInput, user_day_countUncheckedCreateInput>
+    /**
+     * In case the user_day_count was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<user_day_countUpdateInput, user_day_countUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_day_count delete
+   */
+  export type user_day_countDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_day_count
+     */
+    select?: user_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_day_count
+     */
+    omit?: user_day_countOmit<ExtArgs> | null
+    /**
+     * Filter which user_day_count to delete.
+     */
+    where: user_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_day_count deleteMany
+   */
+  export type user_day_countDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_day_counts to delete
+     */
+    where?: user_day_countWhereInput
+    /**
+     * Limit how many user_day_counts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_day_count without action
+   */
+  export type user_day_countDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_day_count
+     */
+    select?: user_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_day_count
+     */
+    omit?: user_day_countOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model user_month_count
+   */
+
+  export type AggregateUser_month_count = {
+    _count: User_month_countCountAggregateOutputType | null
+    _avg: User_month_countAvgAggregateOutputType | null
+    _sum: User_month_countSumAggregateOutputType | null
+    _min: User_month_countMinAggregateOutputType | null
+    _max: User_month_countMaxAggregateOutputType | null
+  }
+
+  export type User_month_countAvgAggregateOutputType = {
+    c_year: number | null
+    c_month: number | null
+    sum: number | null
+  }
+
+  export type User_month_countSumAggregateOutputType = {
+    c_year: number | null
+    c_month: number | null
+    sum: number | null
+  }
+
+  export type User_month_countMinAggregateOutputType = {
+    id: string | null
+    c_year: number | null
+    c_month: number | null
+    sum: number | null
+  }
+
+  export type User_month_countMaxAggregateOutputType = {
+    id: string | null
+    c_year: number | null
+    c_month: number | null
+    sum: number | null
+  }
+
+  export type User_month_countCountAggregateOutputType = {
+    id: number
+    c_year: number
+    c_month: number
+    sum: number
+    _all: number
+  }
+
+
+  export type User_month_countAvgAggregateInputType = {
+    c_year?: true
+    c_month?: true
+    sum?: true
+  }
+
+  export type User_month_countSumAggregateInputType = {
+    c_year?: true
+    c_month?: true
+    sum?: true
+  }
+
+  export type User_month_countMinAggregateInputType = {
+    id?: true
+    c_year?: true
+    c_month?: true
+    sum?: true
+  }
+
+  export type User_month_countMaxAggregateInputType = {
+    id?: true
+    c_year?: true
+    c_month?: true
+    sum?: true
+  }
+
+  export type User_month_countCountAggregateInputType = {
+    id?: true
+    c_year?: true
+    c_month?: true
+    sum?: true
+    _all?: true
+  }
+
+  export type User_month_countAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_month_count to aggregate.
+     */
+    where?: user_month_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_month_counts to fetch.
+     */
+    orderBy?: user_month_countOrderByWithRelationInput | user_month_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: user_month_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_month_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_month_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned user_month_counts
+    **/
+    _count?: true | User_month_countCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: User_month_countAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: User_month_countSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: User_month_countMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: User_month_countMaxAggregateInputType
+  }
+
+  export type GetUser_month_countAggregateType<T extends User_month_countAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser_month_count]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser_month_count[P]>
+      : GetScalarType<T[P], AggregateUser_month_count[P]>
+  }
+
+
+
+
+  export type user_month_countGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_month_countWhereInput
+    orderBy?: user_month_countOrderByWithAggregationInput | user_month_countOrderByWithAggregationInput[]
+    by: User_month_countScalarFieldEnum[] | User_month_countScalarFieldEnum
+    having?: user_month_countScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: User_month_countCountAggregateInputType | true
+    _avg?: User_month_countAvgAggregateInputType
+    _sum?: User_month_countSumAggregateInputType
+    _min?: User_month_countMinAggregateInputType
+    _max?: User_month_countMaxAggregateInputType
+  }
+
+  export type User_month_countGroupByOutputType = {
+    id: string
+    c_year: number | null
+    c_month: number | null
+    sum: number
+    _count: User_month_countCountAggregateOutputType | null
+    _avg: User_month_countAvgAggregateOutputType | null
+    _sum: User_month_countSumAggregateOutputType | null
+    _min: User_month_countMinAggregateOutputType | null
+    _max: User_month_countMaxAggregateOutputType | null
+  }
+
+  type GetUser_month_countGroupByPayload<T extends user_month_countGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<User_month_countGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof User_month_countGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], User_month_countGroupByOutputType[P]>
+            : GetScalarType<T[P], User_month_countGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type user_month_countSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    c_year?: boolean
+    c_month?: boolean
+    sum?: boolean
+  }, ExtArgs["result"]["user_month_count"]>
+
+
+
+  export type user_month_countSelectScalar = {
+    id?: boolean
+    c_year?: boolean
+    c_month?: boolean
+    sum?: boolean
+  }
+
+  export type user_month_countOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "c_year" | "c_month" | "sum", ExtArgs["result"]["user_month_count"]>
+
+  export type $user_month_countPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "user_month_count"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      c_year: number | null
+      c_month: number | null
+      sum: number
+    }, ExtArgs["result"]["user_month_count"]>
+    composites: {}
+  }
+
+  type user_month_countGetPayload<S extends boolean | null | undefined | user_month_countDefaultArgs> = $Result.GetResult<Prisma.$user_month_countPayload, S>
+
+  type user_month_countCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<user_month_countFindManyArgs, 'select' | 'include' | 'distinct' | 'omit' | 'relationLoadStrategy'> & {
+      select?: User_month_countCountAggregateInputType | true
+    }
+
+  export interface user_month_countDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['user_month_count'], meta: { name: 'user_month_count' } }
+    /**
+     * Find zero or one User_month_count that matches the filter.
+     * @param {user_month_countFindUniqueArgs} args - Arguments to find a User_month_count
+     * @example
+     * // Get one User_month_count
+     * const user_month_count = await prisma.user_month_count.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends user_month_countFindUniqueArgs>(args: SelectSubset<T, user_month_countFindUniqueArgs<ExtArgs>>): Prisma__user_month_countClient<$Result.GetResult<Prisma.$user_month_countPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one User_month_count that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {user_month_countFindUniqueOrThrowArgs} args - Arguments to find a User_month_count
+     * @example
+     * // Get one User_month_count
+     * const user_month_count = await prisma.user_month_count.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends user_month_countFindUniqueOrThrowArgs>(args: SelectSubset<T, user_month_countFindUniqueOrThrowArgs<ExtArgs>>): Prisma__user_month_countClient<$Result.GetResult<Prisma.$user_month_countPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_month_count that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_month_countFindFirstArgs} args - Arguments to find a User_month_count
+     * @example
+     * // Get one User_month_count
+     * const user_month_count = await prisma.user_month_count.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends user_month_countFindFirstArgs>(args?: SelectSubset<T, user_month_countFindFirstArgs<ExtArgs>>): Prisma__user_month_countClient<$Result.GetResult<Prisma.$user_month_countPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_month_count that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_month_countFindFirstOrThrowArgs} args - Arguments to find a User_month_count
+     * @example
+     * // Get one User_month_count
+     * const user_month_count = await prisma.user_month_count.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends user_month_countFindFirstOrThrowArgs>(args?: SelectSubset<T, user_month_countFindFirstOrThrowArgs<ExtArgs>>): Prisma__user_month_countClient<$Result.GetResult<Prisma.$user_month_countPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more User_month_counts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_month_countFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all User_month_counts
+     * const user_month_counts = await prisma.user_month_count.findMany()
+     * 
+     * // Get first 10 User_month_counts
+     * const user_month_counts = await prisma.user_month_count.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const user_month_countWithIdOnly = await prisma.user_month_count.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends user_month_countFindManyArgs>(args?: SelectSubset<T, user_month_countFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_month_countPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a User_month_count.
+     * @param {user_month_countCreateArgs} args - Arguments to create a User_month_count.
+     * @example
+     * // Create one User_month_count
+     * const User_month_count = await prisma.user_month_count.create({
+     *   data: {
+     *     // ... data to create a User_month_count
+     *   }
+     * })
+     * 
+     */
+    create<T extends user_month_countCreateArgs>(args: SelectSubset<T, user_month_countCreateArgs<ExtArgs>>): Prisma__user_month_countClient<$Result.GetResult<Prisma.$user_month_countPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many User_month_counts.
+     * @param {user_month_countCreateManyArgs} args - Arguments to create many User_month_counts.
+     * @example
+     * // Create many User_month_counts
+     * const user_month_count = await prisma.user_month_count.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends user_month_countCreateManyArgs>(args?: SelectSubset<T, user_month_countCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a User_month_count.
+     * @param {user_month_countDeleteArgs} args - Arguments to delete one User_month_count.
+     * @example
+     * // Delete one User_month_count
+     * const User_month_count = await prisma.user_month_count.delete({
+     *   where: {
+     *     // ... filter to delete one User_month_count
+     *   }
+     * })
+     * 
+     */
+    delete<T extends user_month_countDeleteArgs>(args: SelectSubset<T, user_month_countDeleteArgs<ExtArgs>>): Prisma__user_month_countClient<$Result.GetResult<Prisma.$user_month_countPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one User_month_count.
+     * @param {user_month_countUpdateArgs} args - Arguments to update one User_month_count.
+     * @example
+     * // Update one User_month_count
+     * const user_month_count = await prisma.user_month_count.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends user_month_countUpdateArgs>(args: SelectSubset<T, user_month_countUpdateArgs<ExtArgs>>): Prisma__user_month_countClient<$Result.GetResult<Prisma.$user_month_countPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more User_month_counts.
+     * @param {user_month_countDeleteManyArgs} args - Arguments to filter User_month_counts to delete.
+     * @example
+     * // Delete a few User_month_counts
+     * const { count } = await prisma.user_month_count.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends user_month_countDeleteManyArgs>(args?: SelectSubset<T, user_month_countDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_month_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_month_countUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many User_month_counts
+     * const user_month_count = await prisma.user_month_count.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends user_month_countUpdateManyArgs>(args: SelectSubset<T, user_month_countUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one User_month_count.
+     * @param {user_month_countUpsertArgs} args - Arguments to update or create a User_month_count.
+     * @example
+     * // Update or create a User_month_count
+     * const user_month_count = await prisma.user_month_count.upsert({
+     *   create: {
+     *     // ... data to create a User_month_count
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User_month_count we want to update
+     *   }
+     * })
+     */
+    upsert<T extends user_month_countUpsertArgs>(args: SelectSubset<T, user_month_countUpsertArgs<ExtArgs>>): Prisma__user_month_countClient<$Result.GetResult<Prisma.$user_month_countPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of User_month_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_month_countCountArgs} args - Arguments to filter User_month_counts to count.
+     * @example
+     * // Count the number of User_month_counts
+     * const count = await prisma.user_month_count.count({
+     *   where: {
+     *     // ... the filter for the User_month_counts we want to count
+     *   }
+     * })
+    **/
+    count<T extends user_month_countCountArgs>(
+      args?: Subset<T, user_month_countCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], User_month_countCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User_month_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_month_countAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends User_month_countAggregateArgs>(args: Subset<T, User_month_countAggregateArgs>): Prisma.PrismaPromise<GetUser_month_countAggregateType<T>>
+
+    /**
+     * Group by User_month_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_month_countGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends user_month_countGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: user_month_countGroupByArgs['orderBy'] }
+        : { orderBy?: user_month_countGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, user_month_countGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUser_month_countGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the user_month_count model
+   */
+  readonly fields: user_month_countFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for user_month_count.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__user_month_countClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the user_month_count model
+   */ 
+  interface user_month_countFieldRefs {
+    readonly id: FieldRef<"user_month_count", 'String'>
+    readonly c_year: FieldRef<"user_month_count", 'Int'>
+    readonly c_month: FieldRef<"user_month_count", 'Int'>
+    readonly sum: FieldRef<"user_month_count", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * user_month_count findUnique
+   */
+  export type user_month_countFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_month_count
+     */
+    select?: user_month_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_month_count
+     */
+    omit?: user_month_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_month_count to fetch.
+     */
+    where: user_month_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_month_count findUniqueOrThrow
+   */
+  export type user_month_countFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_month_count
+     */
+    select?: user_month_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_month_count
+     */
+    omit?: user_month_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_month_count to fetch.
+     */
+    where: user_month_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_month_count findFirst
+   */
+  export type user_month_countFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_month_count
+     */
+    select?: user_month_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_month_count
+     */
+    omit?: user_month_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_month_count to fetch.
+     */
+    where?: user_month_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_month_counts to fetch.
+     */
+    orderBy?: user_month_countOrderByWithRelationInput | user_month_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_month_counts.
+     */
+    cursor?: user_month_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_month_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_month_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_month_counts.
+     */
+    distinct?: User_month_countScalarFieldEnum | User_month_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_month_count findFirstOrThrow
+   */
+  export type user_month_countFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_month_count
+     */
+    select?: user_month_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_month_count
+     */
+    omit?: user_month_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_month_count to fetch.
+     */
+    where?: user_month_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_month_counts to fetch.
+     */
+    orderBy?: user_month_countOrderByWithRelationInput | user_month_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_month_counts.
+     */
+    cursor?: user_month_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_month_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_month_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_month_counts.
+     */
+    distinct?: User_month_countScalarFieldEnum | User_month_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_month_count findMany
+   */
+  export type user_month_countFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_month_count
+     */
+    select?: user_month_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_month_count
+     */
+    omit?: user_month_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_month_counts to fetch.
+     */
+    where?: user_month_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_month_counts to fetch.
+     */
+    orderBy?: user_month_countOrderByWithRelationInput | user_month_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing user_month_counts.
+     */
+    cursor?: user_month_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_month_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_month_counts.
+     */
+    skip?: number
+    distinct?: User_month_countScalarFieldEnum | User_month_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_month_count create
+   */
+  export type user_month_countCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_month_count
+     */
+    select?: user_month_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_month_count
+     */
+    omit?: user_month_countOmit<ExtArgs> | null
+    /**
+     * The data needed to create a user_month_count.
+     */
+    data: XOR<user_month_countCreateInput, user_month_countUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_month_count createMany
+   */
+  export type user_month_countCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many user_month_counts.
+     */
+    data: user_month_countCreateManyInput | user_month_countCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * user_month_count update
+   */
+  export type user_month_countUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_month_count
+     */
+    select?: user_month_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_month_count
+     */
+    omit?: user_month_countOmit<ExtArgs> | null
+    /**
+     * The data needed to update a user_month_count.
+     */
+    data: XOR<user_month_countUpdateInput, user_month_countUncheckedUpdateInput>
+    /**
+     * Choose, which user_month_count to update.
+     */
+    where: user_month_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_month_count updateMany
+   */
+  export type user_month_countUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update user_month_counts.
+     */
+    data: XOR<user_month_countUpdateManyMutationInput, user_month_countUncheckedUpdateManyInput>
+    /**
+     * Filter which user_month_counts to update
+     */
+    where?: user_month_countWhereInput
+    /**
+     * Limit how many user_month_counts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_month_count upsert
+   */
+  export type user_month_countUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_month_count
+     */
+    select?: user_month_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_month_count
+     */
+    omit?: user_month_countOmit<ExtArgs> | null
+    /**
+     * The filter to search for the user_month_count to update in case it exists.
+     */
+    where: user_month_countWhereUniqueInput
+    /**
+     * In case the user_month_count found by the `where` argument doesn't exist, create a new user_month_count with this data.
+     */
+    create: XOR<user_month_countCreateInput, user_month_countUncheckedCreateInput>
+    /**
+     * In case the user_month_count was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<user_month_countUpdateInput, user_month_countUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_month_count delete
+   */
+  export type user_month_countDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_month_count
+     */
+    select?: user_month_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_month_count
+     */
+    omit?: user_month_countOmit<ExtArgs> | null
+    /**
+     * Filter which user_month_count to delete.
+     */
+    where: user_month_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_month_count deleteMany
+   */
+  export type user_month_countDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_month_counts to delete
+     */
+    where?: user_month_countWhereInput
+    /**
+     * Limit how many user_month_counts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_month_count without action
+   */
+  export type user_month_countDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_month_count
+     */
+    select?: user_month_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_month_count
+     */
+    omit?: user_month_countOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model user_week_count
+   */
+
+  export type AggregateUser_week_count = {
+    _count: User_week_countCountAggregateOutputType | null
+    _avg: User_week_countAvgAggregateOutputType | null
+    _sum: User_week_countSumAggregateOutputType | null
+    _min: User_week_countMinAggregateOutputType | null
+    _max: User_week_countMaxAggregateOutputType | null
+  }
+
+  export type User_week_countAvgAggregateOutputType = {
+    c_week: number | null
+    sum: number | null
+  }
+
+  export type User_week_countSumAggregateOutputType = {
+    c_week: number | null
+    sum: number | null
+  }
+
+  export type User_week_countMinAggregateOutputType = {
+    c_week: number | null
+    sum: number | null
+  }
+
+  export type User_week_countMaxAggregateOutputType = {
+    c_week: number | null
+    sum: number | null
+  }
+
+  export type User_week_countCountAggregateOutputType = {
+    c_week: number
+    sum: number
+    _all: number
+  }
+
+
+  export type User_week_countAvgAggregateInputType = {
+    c_week?: true
+    sum?: true
+  }
+
+  export type User_week_countSumAggregateInputType = {
+    c_week?: true
+    sum?: true
+  }
+
+  export type User_week_countMinAggregateInputType = {
+    c_week?: true
+    sum?: true
+  }
+
+  export type User_week_countMaxAggregateInputType = {
+    c_week?: true
+    sum?: true
+  }
+
+  export type User_week_countCountAggregateInputType = {
+    c_week?: true
+    sum?: true
+    _all?: true
+  }
+
+  export type User_week_countAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_week_count to aggregate.
+     */
+    where?: user_week_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_week_counts to fetch.
+     */
+    orderBy?: user_week_countOrderByWithRelationInput | user_week_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: user_week_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_week_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_week_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned user_week_counts
+    **/
+    _count?: true | User_week_countCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: User_week_countAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: User_week_countSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: User_week_countMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: User_week_countMaxAggregateInputType
+  }
+
+  export type GetUser_week_countAggregateType<T extends User_week_countAggregateArgs> = {
+        [P in keyof T & keyof AggregateUser_week_count]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateUser_week_count[P]>
+      : GetScalarType<T[P], AggregateUser_week_count[P]>
+  }
+
+
+
+
+  export type user_week_countGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: user_week_countWhereInput
+    orderBy?: user_week_countOrderByWithAggregationInput | user_week_countOrderByWithAggregationInput[]
+    by: User_week_countScalarFieldEnum[] | User_week_countScalarFieldEnum
+    having?: user_week_countScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: User_week_countCountAggregateInputType | true
+    _avg?: User_week_countAvgAggregateInputType
+    _sum?: User_week_countSumAggregateInputType
+    _min?: User_week_countMinAggregateInputType
+    _max?: User_week_countMaxAggregateInputType
+  }
+
+  export type User_week_countGroupByOutputType = {
+    c_week: number
+    sum: number
+    _count: User_week_countCountAggregateOutputType | null
+    _avg: User_week_countAvgAggregateOutputType | null
+    _sum: User_week_countSumAggregateOutputType | null
+    _min: User_week_countMinAggregateOutputType | null
+    _max: User_week_countMaxAggregateOutputType | null
+  }
+
+  type GetUser_week_countGroupByPayload<T extends user_week_countGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<User_week_countGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof User_week_countGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], User_week_countGroupByOutputType[P]>
+            : GetScalarType<T[P], User_week_countGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type user_week_countSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    c_week?: boolean
+    sum?: boolean
+  }, ExtArgs["result"]["user_week_count"]>
+
+
+
+  export type user_week_countSelectScalar = {
+    c_week?: boolean
+    sum?: boolean
+  }
+
+  export type user_week_countOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"c_week" | "sum", ExtArgs["result"]["user_week_count"]>
+
+  export type $user_week_countPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "user_week_count"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      c_week: number
+      sum: number
+    }, ExtArgs["result"]["user_week_count"]>
+    composites: {}
+  }
+
+  type user_week_countGetPayload<S extends boolean | null | undefined | user_week_countDefaultArgs> = $Result.GetResult<Prisma.$user_week_countPayload, S>
+
+  type user_week_countCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<user_week_countFindManyArgs, 'select' | 'include' | 'distinct' | 'omit' | 'relationLoadStrategy'> & {
+      select?: User_week_countCountAggregateInputType | true
+    }
+
+  export interface user_week_countDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['user_week_count'], meta: { name: 'user_week_count' } }
+    /**
+     * Find zero or one User_week_count that matches the filter.
+     * @param {user_week_countFindUniqueArgs} args - Arguments to find a User_week_count
+     * @example
+     * // Get one User_week_count
+     * const user_week_count = await prisma.user_week_count.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends user_week_countFindUniqueArgs>(args: SelectSubset<T, user_week_countFindUniqueArgs<ExtArgs>>): Prisma__user_week_countClient<$Result.GetResult<Prisma.$user_week_countPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one User_week_count that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {user_week_countFindUniqueOrThrowArgs} args - Arguments to find a User_week_count
+     * @example
+     * // Get one User_week_count
+     * const user_week_count = await prisma.user_week_count.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends user_week_countFindUniqueOrThrowArgs>(args: SelectSubset<T, user_week_countFindUniqueOrThrowArgs<ExtArgs>>): Prisma__user_week_countClient<$Result.GetResult<Prisma.$user_week_countPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_week_count that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_week_countFindFirstArgs} args - Arguments to find a User_week_count
+     * @example
+     * // Get one User_week_count
+     * const user_week_count = await prisma.user_week_count.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends user_week_countFindFirstArgs>(args?: SelectSubset<T, user_week_countFindFirstArgs<ExtArgs>>): Prisma__user_week_countClient<$Result.GetResult<Prisma.$user_week_countPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first User_week_count that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_week_countFindFirstOrThrowArgs} args - Arguments to find a User_week_count
+     * @example
+     * // Get one User_week_count
+     * const user_week_count = await prisma.user_week_count.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends user_week_countFindFirstOrThrowArgs>(args?: SelectSubset<T, user_week_countFindFirstOrThrowArgs<ExtArgs>>): Prisma__user_week_countClient<$Result.GetResult<Prisma.$user_week_countPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more User_week_counts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_week_countFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all User_week_counts
+     * const user_week_counts = await prisma.user_week_count.findMany()
+     * 
+     * // Get first 10 User_week_counts
+     * const user_week_counts = await prisma.user_week_count.findMany({ take: 10 })
+     * 
+     * // Only select the `c_week`
+     * const user_week_countWithC_weekOnly = await prisma.user_week_count.findMany({ select: { c_week: true } })
+     * 
+     */
+    findMany<T extends user_week_countFindManyArgs>(args?: SelectSubset<T, user_week_countFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$user_week_countPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a User_week_count.
+     * @param {user_week_countCreateArgs} args - Arguments to create a User_week_count.
+     * @example
+     * // Create one User_week_count
+     * const User_week_count = await prisma.user_week_count.create({
+     *   data: {
+     *     // ... data to create a User_week_count
+     *   }
+     * })
+     * 
+     */
+    create<T extends user_week_countCreateArgs>(args: SelectSubset<T, user_week_countCreateArgs<ExtArgs>>): Prisma__user_week_countClient<$Result.GetResult<Prisma.$user_week_countPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many User_week_counts.
+     * @param {user_week_countCreateManyArgs} args - Arguments to create many User_week_counts.
+     * @example
+     * // Create many User_week_counts
+     * const user_week_count = await prisma.user_week_count.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends user_week_countCreateManyArgs>(args?: SelectSubset<T, user_week_countCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a User_week_count.
+     * @param {user_week_countDeleteArgs} args - Arguments to delete one User_week_count.
+     * @example
+     * // Delete one User_week_count
+     * const User_week_count = await prisma.user_week_count.delete({
+     *   where: {
+     *     // ... filter to delete one User_week_count
+     *   }
+     * })
+     * 
+     */
+    delete<T extends user_week_countDeleteArgs>(args: SelectSubset<T, user_week_countDeleteArgs<ExtArgs>>): Prisma__user_week_countClient<$Result.GetResult<Prisma.$user_week_countPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one User_week_count.
+     * @param {user_week_countUpdateArgs} args - Arguments to update one User_week_count.
+     * @example
+     * // Update one User_week_count
+     * const user_week_count = await prisma.user_week_count.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends user_week_countUpdateArgs>(args: SelectSubset<T, user_week_countUpdateArgs<ExtArgs>>): Prisma__user_week_countClient<$Result.GetResult<Prisma.$user_week_countPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more User_week_counts.
+     * @param {user_week_countDeleteManyArgs} args - Arguments to filter User_week_counts to delete.
+     * @example
+     * // Delete a few User_week_counts
+     * const { count } = await prisma.user_week_count.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends user_week_countDeleteManyArgs>(args?: SelectSubset<T, user_week_countDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more User_week_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_week_countUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many User_week_counts
+     * const user_week_count = await prisma.user_week_count.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends user_week_countUpdateManyArgs>(args: SelectSubset<T, user_week_countUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one User_week_count.
+     * @param {user_week_countUpsertArgs} args - Arguments to update or create a User_week_count.
+     * @example
+     * // Update or create a User_week_count
+     * const user_week_count = await prisma.user_week_count.upsert({
+     *   create: {
+     *     // ... data to create a User_week_count
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the User_week_count we want to update
+     *   }
+     * })
+     */
+    upsert<T extends user_week_countUpsertArgs>(args: SelectSubset<T, user_week_countUpsertArgs<ExtArgs>>): Prisma__user_week_countClient<$Result.GetResult<Prisma.$user_week_countPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of User_week_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_week_countCountArgs} args - Arguments to filter User_week_counts to count.
+     * @example
+     * // Count the number of User_week_counts
+     * const count = await prisma.user_week_count.count({
+     *   where: {
+     *     // ... the filter for the User_week_counts we want to count
+     *   }
+     * })
+    **/
+    count<T extends user_week_countCountArgs>(
+      args?: Subset<T, user_week_countCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], User_week_countCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a User_week_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {User_week_countAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends User_week_countAggregateArgs>(args: Subset<T, User_week_countAggregateArgs>): Prisma.PrismaPromise<GetUser_week_countAggregateType<T>>
+
+    /**
+     * Group by User_week_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {user_week_countGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends user_week_countGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: user_week_countGroupByArgs['orderBy'] }
+        : { orderBy?: user_week_countGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, user_week_countGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetUser_week_countGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the user_week_count model
+   */
+  readonly fields: user_week_countFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for user_week_count.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__user_week_countClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the user_week_count model
+   */ 
+  interface user_week_countFieldRefs {
+    readonly c_week: FieldRef<"user_week_count", 'Int'>
+    readonly sum: FieldRef<"user_week_count", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * user_week_count findUnique
+   */
+  export type user_week_countFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_week_count
+     */
+    select?: user_week_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_week_count
+     */
+    omit?: user_week_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_week_count to fetch.
+     */
+    where: user_week_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_week_count findUniqueOrThrow
+   */
+  export type user_week_countFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_week_count
+     */
+    select?: user_week_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_week_count
+     */
+    omit?: user_week_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_week_count to fetch.
+     */
+    where: user_week_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_week_count findFirst
+   */
+  export type user_week_countFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_week_count
+     */
+    select?: user_week_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_week_count
+     */
+    omit?: user_week_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_week_count to fetch.
+     */
+    where?: user_week_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_week_counts to fetch.
+     */
+    orderBy?: user_week_countOrderByWithRelationInput | user_week_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_week_counts.
+     */
+    cursor?: user_week_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_week_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_week_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_week_counts.
+     */
+    distinct?: User_week_countScalarFieldEnum | User_week_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_week_count findFirstOrThrow
+   */
+  export type user_week_countFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_week_count
+     */
+    select?: user_week_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_week_count
+     */
+    omit?: user_week_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_week_count to fetch.
+     */
+    where?: user_week_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_week_counts to fetch.
+     */
+    orderBy?: user_week_countOrderByWithRelationInput | user_week_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for user_week_counts.
+     */
+    cursor?: user_week_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_week_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_week_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of user_week_counts.
+     */
+    distinct?: User_week_countScalarFieldEnum | User_week_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_week_count findMany
+   */
+  export type user_week_countFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_week_count
+     */
+    select?: user_week_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_week_count
+     */
+    omit?: user_week_countOmit<ExtArgs> | null
+    /**
+     * Filter, which user_week_counts to fetch.
+     */
+    where?: user_week_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of user_week_counts to fetch.
+     */
+    orderBy?: user_week_countOrderByWithRelationInput | user_week_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing user_week_counts.
+     */
+    cursor?: user_week_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` user_week_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` user_week_counts.
+     */
+    skip?: number
+    distinct?: User_week_countScalarFieldEnum | User_week_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_week_count create
+   */
+  export type user_week_countCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_week_count
+     */
+    select?: user_week_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_week_count
+     */
+    omit?: user_week_countOmit<ExtArgs> | null
+    /**
+     * The data needed to create a user_week_count.
+     */
+    data: XOR<user_week_countCreateInput, user_week_countUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_week_count createMany
+   */
+  export type user_week_countCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many user_week_counts.
+     */
+    data: user_week_countCreateManyInput | user_week_countCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * user_week_count update
+   */
+  export type user_week_countUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_week_count
+     */
+    select?: user_week_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_week_count
+     */
+    omit?: user_week_countOmit<ExtArgs> | null
+    /**
+     * The data needed to update a user_week_count.
+     */
+    data: XOR<user_week_countUpdateInput, user_week_countUncheckedUpdateInput>
+    /**
+     * Choose, which user_week_count to update.
+     */
+    where: user_week_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_week_count updateMany
+   */
+  export type user_week_countUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update user_week_counts.
+     */
+    data: XOR<user_week_countUpdateManyMutationInput, user_week_countUncheckedUpdateManyInput>
+    /**
+     * Filter which user_week_counts to update
+     */
+    where?: user_week_countWhereInput
+    /**
+     * Limit how many user_week_counts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_week_count upsert
+   */
+  export type user_week_countUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_week_count
+     */
+    select?: user_week_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_week_count
+     */
+    omit?: user_week_countOmit<ExtArgs> | null
+    /**
+     * The filter to search for the user_week_count to update in case it exists.
+     */
+    where: user_week_countWhereUniqueInput
+    /**
+     * In case the user_week_count found by the `where` argument doesn't exist, create a new user_week_count with this data.
+     */
+    create: XOR<user_week_countCreateInput, user_week_countUncheckedCreateInput>
+    /**
+     * In case the user_week_count was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<user_week_countUpdateInput, user_week_countUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_week_count delete
+   */
+  export type user_week_countDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_week_count
+     */
+    select?: user_week_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_week_count
+     */
+    omit?: user_week_countOmit<ExtArgs> | null
+    /**
+     * Filter which user_week_count to delete.
+     */
+    where: user_week_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * user_week_count deleteMany
+   */
+  export type user_week_countDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which user_week_counts to delete
+     */
+    where?: user_week_countWhereInput
+    /**
+     * Limit how many user_week_counts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * user_week_count without action
+   */
+  export type user_week_countDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the user_week_count
+     */
+    select?: user_week_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the user_week_count
+     */
+    omit?: user_week_countOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model transfer_day_count
+   */
+
+  export type AggregateTransfer_day_count = {
+    _count: Transfer_day_countCountAggregateOutputType | null
+    _avg: Transfer_day_countAvgAggregateOutputType | null
+    _sum: Transfer_day_countSumAggregateOutputType | null
+    _min: Transfer_day_countMinAggregateOutputType | null
+    _max: Transfer_day_countMaxAggregateOutputType | null
+  }
+
+  export type Transfer_day_countAvgAggregateOutputType = {
+    sum: number | null
+  }
+
+  export type Transfer_day_countSumAggregateOutputType = {
+    sum: number | null
+  }
+
+  export type Transfer_day_countMinAggregateOutputType = {
+    t_day: string | null
+    sum: number | null
+  }
+
+  export type Transfer_day_countMaxAggregateOutputType = {
+    t_day: string | null
+    sum: number | null
+  }
+
+  export type Transfer_day_countCountAggregateOutputType = {
+    t_day: number
+    sum: number
+    _all: number
+  }
+
+
+  export type Transfer_day_countAvgAggregateInputType = {
+    sum?: true
+  }
+
+  export type Transfer_day_countSumAggregateInputType = {
+    sum?: true
+  }
+
+  export type Transfer_day_countMinAggregateInputType = {
+    t_day?: true
+    sum?: true
+  }
+
+  export type Transfer_day_countMaxAggregateInputType = {
+    t_day?: true
+    sum?: true
+  }
+
+  export type Transfer_day_countCountAggregateInputType = {
+    t_day?: true
+    sum?: true
+    _all?: true
+  }
+
+  export type Transfer_day_countAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which transfer_day_count to aggregate.
+     */
+    where?: transfer_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transfer_day_counts to fetch.
+     */
+    orderBy?: transfer_day_countOrderByWithRelationInput | transfer_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: transfer_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transfer_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transfer_day_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned transfer_day_counts
+    **/
+    _count?: true | Transfer_day_countCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Transfer_day_countAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Transfer_day_countSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Transfer_day_countMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Transfer_day_countMaxAggregateInputType
+  }
+
+  export type GetTransfer_day_countAggregateType<T extends Transfer_day_countAggregateArgs> = {
+        [P in keyof T & keyof AggregateTransfer_day_count]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTransfer_day_count[P]>
+      : GetScalarType<T[P], AggregateTransfer_day_count[P]>
+  }
+
+
+
+
+  export type transfer_day_countGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: transfer_day_countWhereInput
+    orderBy?: transfer_day_countOrderByWithAggregationInput | transfer_day_countOrderByWithAggregationInput[]
+    by: Transfer_day_countScalarFieldEnum[] | Transfer_day_countScalarFieldEnum
+    having?: transfer_day_countScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Transfer_day_countCountAggregateInputType | true
+    _avg?: Transfer_day_countAvgAggregateInputType
+    _sum?: Transfer_day_countSumAggregateInputType
+    _min?: Transfer_day_countMinAggregateInputType
+    _max?: Transfer_day_countMaxAggregateInputType
+  }
+
+  export type Transfer_day_countGroupByOutputType = {
+    t_day: string
+    sum: number
+    _count: Transfer_day_countCountAggregateOutputType | null
+    _avg: Transfer_day_countAvgAggregateOutputType | null
+    _sum: Transfer_day_countSumAggregateOutputType | null
+    _min: Transfer_day_countMinAggregateOutputType | null
+    _max: Transfer_day_countMaxAggregateOutputType | null
+  }
+
+  type GetTransfer_day_countGroupByPayload<T extends transfer_day_countGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Transfer_day_countGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Transfer_day_countGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Transfer_day_countGroupByOutputType[P]>
+            : GetScalarType<T[P], Transfer_day_countGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type transfer_day_countSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    t_day?: boolean
+    sum?: boolean
+  }, ExtArgs["result"]["transfer_day_count"]>
+
+
+
+  export type transfer_day_countSelectScalar = {
+    t_day?: boolean
+    sum?: boolean
+  }
+
+  export type transfer_day_countOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"t_day" | "sum", ExtArgs["result"]["transfer_day_count"]>
+
+  export type $transfer_day_countPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "transfer_day_count"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      t_day: string
+      sum: number
+    }, ExtArgs["result"]["transfer_day_count"]>
+    composites: {}
+  }
+
+  type transfer_day_countGetPayload<S extends boolean | null | undefined | transfer_day_countDefaultArgs> = $Result.GetResult<Prisma.$transfer_day_countPayload, S>
+
+  type transfer_day_countCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<transfer_day_countFindManyArgs, 'select' | 'include' | 'distinct' | 'omit' | 'relationLoadStrategy'> & {
+      select?: Transfer_day_countCountAggregateInputType | true
+    }
+
+  export interface transfer_day_countDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['transfer_day_count'], meta: { name: 'transfer_day_count' } }
+    /**
+     * Find zero or one Transfer_day_count that matches the filter.
+     * @param {transfer_day_countFindUniqueArgs} args - Arguments to find a Transfer_day_count
+     * @example
+     * // Get one Transfer_day_count
+     * const transfer_day_count = await prisma.transfer_day_count.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends transfer_day_countFindUniqueArgs>(args: SelectSubset<T, transfer_day_countFindUniqueArgs<ExtArgs>>): Prisma__transfer_day_countClient<$Result.GetResult<Prisma.$transfer_day_countPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Transfer_day_count that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {transfer_day_countFindUniqueOrThrowArgs} args - Arguments to find a Transfer_day_count
+     * @example
+     * // Get one Transfer_day_count
+     * const transfer_day_count = await prisma.transfer_day_count.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends transfer_day_countFindUniqueOrThrowArgs>(args: SelectSubset<T, transfer_day_countFindUniqueOrThrowArgs<ExtArgs>>): Prisma__transfer_day_countClient<$Result.GetResult<Prisma.$transfer_day_countPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transfer_day_count that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_countFindFirstArgs} args - Arguments to find a Transfer_day_count
+     * @example
+     * // Get one Transfer_day_count
+     * const transfer_day_count = await prisma.transfer_day_count.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends transfer_day_countFindFirstArgs>(args?: SelectSubset<T, transfer_day_countFindFirstArgs<ExtArgs>>): Prisma__transfer_day_countClient<$Result.GetResult<Prisma.$transfer_day_countPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transfer_day_count that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_countFindFirstOrThrowArgs} args - Arguments to find a Transfer_day_count
+     * @example
+     * // Get one Transfer_day_count
+     * const transfer_day_count = await prisma.transfer_day_count.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends transfer_day_countFindFirstOrThrowArgs>(args?: SelectSubset<T, transfer_day_countFindFirstOrThrowArgs<ExtArgs>>): Prisma__transfer_day_countClient<$Result.GetResult<Prisma.$transfer_day_countPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Transfer_day_counts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_countFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Transfer_day_counts
+     * const transfer_day_counts = await prisma.transfer_day_count.findMany()
+     * 
+     * // Get first 10 Transfer_day_counts
+     * const transfer_day_counts = await prisma.transfer_day_count.findMany({ take: 10 })
+     * 
+     * // Only select the `t_day`
+     * const transfer_day_countWithT_dayOnly = await prisma.transfer_day_count.findMany({ select: { t_day: true } })
+     * 
+     */
+    findMany<T extends transfer_day_countFindManyArgs>(args?: SelectSubset<T, transfer_day_countFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transfer_day_countPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Transfer_day_count.
+     * @param {transfer_day_countCreateArgs} args - Arguments to create a Transfer_day_count.
+     * @example
+     * // Create one Transfer_day_count
+     * const Transfer_day_count = await prisma.transfer_day_count.create({
+     *   data: {
+     *     // ... data to create a Transfer_day_count
+     *   }
+     * })
+     * 
+     */
+    create<T extends transfer_day_countCreateArgs>(args: SelectSubset<T, transfer_day_countCreateArgs<ExtArgs>>): Prisma__transfer_day_countClient<$Result.GetResult<Prisma.$transfer_day_countPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Transfer_day_counts.
+     * @param {transfer_day_countCreateManyArgs} args - Arguments to create many Transfer_day_counts.
+     * @example
+     * // Create many Transfer_day_counts
+     * const transfer_day_count = await prisma.transfer_day_count.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends transfer_day_countCreateManyArgs>(args?: SelectSubset<T, transfer_day_countCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Transfer_day_count.
+     * @param {transfer_day_countDeleteArgs} args - Arguments to delete one Transfer_day_count.
+     * @example
+     * // Delete one Transfer_day_count
+     * const Transfer_day_count = await prisma.transfer_day_count.delete({
+     *   where: {
+     *     // ... filter to delete one Transfer_day_count
+     *   }
+     * })
+     * 
+     */
+    delete<T extends transfer_day_countDeleteArgs>(args: SelectSubset<T, transfer_day_countDeleteArgs<ExtArgs>>): Prisma__transfer_day_countClient<$Result.GetResult<Prisma.$transfer_day_countPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Transfer_day_count.
+     * @param {transfer_day_countUpdateArgs} args - Arguments to update one Transfer_day_count.
+     * @example
+     * // Update one Transfer_day_count
+     * const transfer_day_count = await prisma.transfer_day_count.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends transfer_day_countUpdateArgs>(args: SelectSubset<T, transfer_day_countUpdateArgs<ExtArgs>>): Prisma__transfer_day_countClient<$Result.GetResult<Prisma.$transfer_day_countPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Transfer_day_counts.
+     * @param {transfer_day_countDeleteManyArgs} args - Arguments to filter Transfer_day_counts to delete.
+     * @example
+     * // Delete a few Transfer_day_counts
+     * const { count } = await prisma.transfer_day_count.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends transfer_day_countDeleteManyArgs>(args?: SelectSubset<T, transfer_day_countDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Transfer_day_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_countUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Transfer_day_counts
+     * const transfer_day_count = await prisma.transfer_day_count.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends transfer_day_countUpdateManyArgs>(args: SelectSubset<T, transfer_day_countUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Transfer_day_count.
+     * @param {transfer_day_countUpsertArgs} args - Arguments to update or create a Transfer_day_count.
+     * @example
+     * // Update or create a Transfer_day_count
+     * const transfer_day_count = await prisma.transfer_day_count.upsert({
+     *   create: {
+     *     // ... data to create a Transfer_day_count
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Transfer_day_count we want to update
+     *   }
+     * })
+     */
+    upsert<T extends transfer_day_countUpsertArgs>(args: SelectSubset<T, transfer_day_countUpsertArgs<ExtArgs>>): Prisma__transfer_day_countClient<$Result.GetResult<Prisma.$transfer_day_countPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Transfer_day_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_countCountArgs} args - Arguments to filter Transfer_day_counts to count.
+     * @example
+     * // Count the number of Transfer_day_counts
+     * const count = await prisma.transfer_day_count.count({
+     *   where: {
+     *     // ... the filter for the Transfer_day_counts we want to count
+     *   }
+     * })
+    **/
+    count<T extends transfer_day_countCountArgs>(
+      args?: Subset<T, transfer_day_countCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Transfer_day_countCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Transfer_day_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Transfer_day_countAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Transfer_day_countAggregateArgs>(args: Subset<T, Transfer_day_countAggregateArgs>): Prisma.PrismaPromise<GetTransfer_day_countAggregateType<T>>
+
+    /**
+     * Group by Transfer_day_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_countGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends transfer_day_countGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: transfer_day_countGroupByArgs['orderBy'] }
+        : { orderBy?: transfer_day_countGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, transfer_day_countGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransfer_day_countGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the transfer_day_count model
+   */
+  readonly fields: transfer_day_countFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for transfer_day_count.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__transfer_day_countClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the transfer_day_count model
+   */ 
+  interface transfer_day_countFieldRefs {
+    readonly t_day: FieldRef<"transfer_day_count", 'String'>
+    readonly sum: FieldRef<"transfer_day_count", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * transfer_day_count findUnique
+   */
+  export type transfer_day_countFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_count
+     */
+    select?: transfer_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_count
+     */
+    omit?: transfer_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which transfer_day_count to fetch.
+     */
+    where: transfer_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_count findUniqueOrThrow
+   */
+  export type transfer_day_countFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_count
+     */
+    select?: transfer_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_count
+     */
+    omit?: transfer_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which transfer_day_count to fetch.
+     */
+    where: transfer_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_count findFirst
+   */
+  export type transfer_day_countFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_count
+     */
+    select?: transfer_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_count
+     */
+    omit?: transfer_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which transfer_day_count to fetch.
+     */
+    where?: transfer_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transfer_day_counts to fetch.
+     */
+    orderBy?: transfer_day_countOrderByWithRelationInput | transfer_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for transfer_day_counts.
+     */
+    cursor?: transfer_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transfer_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transfer_day_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of transfer_day_counts.
+     */
+    distinct?: Transfer_day_countScalarFieldEnum | Transfer_day_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_count findFirstOrThrow
+   */
+  export type transfer_day_countFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_count
+     */
+    select?: transfer_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_count
+     */
+    omit?: transfer_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which transfer_day_count to fetch.
+     */
+    where?: transfer_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transfer_day_counts to fetch.
+     */
+    orderBy?: transfer_day_countOrderByWithRelationInput | transfer_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for transfer_day_counts.
+     */
+    cursor?: transfer_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transfer_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transfer_day_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of transfer_day_counts.
+     */
+    distinct?: Transfer_day_countScalarFieldEnum | Transfer_day_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_count findMany
+   */
+  export type transfer_day_countFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_count
+     */
+    select?: transfer_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_count
+     */
+    omit?: transfer_day_countOmit<ExtArgs> | null
+    /**
+     * Filter, which transfer_day_counts to fetch.
+     */
+    where?: transfer_day_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transfer_day_counts to fetch.
+     */
+    orderBy?: transfer_day_countOrderByWithRelationInput | transfer_day_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing transfer_day_counts.
+     */
+    cursor?: transfer_day_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transfer_day_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transfer_day_counts.
+     */
+    skip?: number
+    distinct?: Transfer_day_countScalarFieldEnum | Transfer_day_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_count create
+   */
+  export type transfer_day_countCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_count
+     */
+    select?: transfer_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_count
+     */
+    omit?: transfer_day_countOmit<ExtArgs> | null
+    /**
+     * The data needed to create a transfer_day_count.
+     */
+    data: XOR<transfer_day_countCreateInput, transfer_day_countUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_count createMany
+   */
+  export type transfer_day_countCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many transfer_day_counts.
+     */
+    data: transfer_day_countCreateManyInput | transfer_day_countCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * transfer_day_count update
+   */
+  export type transfer_day_countUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_count
+     */
+    select?: transfer_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_count
+     */
+    omit?: transfer_day_countOmit<ExtArgs> | null
+    /**
+     * The data needed to update a transfer_day_count.
+     */
+    data: XOR<transfer_day_countUpdateInput, transfer_day_countUncheckedUpdateInput>
+    /**
+     * Choose, which transfer_day_count to update.
+     */
+    where: transfer_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_count updateMany
+   */
+  export type transfer_day_countUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update transfer_day_counts.
+     */
+    data: XOR<transfer_day_countUpdateManyMutationInput, transfer_day_countUncheckedUpdateManyInput>
+    /**
+     * Filter which transfer_day_counts to update
+     */
+    where?: transfer_day_countWhereInput
+    /**
+     * Limit how many transfer_day_counts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * transfer_day_count upsert
+   */
+  export type transfer_day_countUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_count
+     */
+    select?: transfer_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_count
+     */
+    omit?: transfer_day_countOmit<ExtArgs> | null
+    /**
+     * The filter to search for the transfer_day_count to update in case it exists.
+     */
+    where: transfer_day_countWhereUniqueInput
+    /**
+     * In case the transfer_day_count found by the `where` argument doesn't exist, create a new transfer_day_count with this data.
+     */
+    create: XOR<transfer_day_countCreateInput, transfer_day_countUncheckedCreateInput>
+    /**
+     * In case the transfer_day_count was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<transfer_day_countUpdateInput, transfer_day_countUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_count delete
+   */
+  export type transfer_day_countDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_count
+     */
+    select?: transfer_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_count
+     */
+    omit?: transfer_day_countOmit<ExtArgs> | null
+    /**
+     * Filter which transfer_day_count to delete.
+     */
+    where: transfer_day_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_count deleteMany
+   */
+  export type transfer_day_countDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which transfer_day_counts to delete
+     */
+    where?: transfer_day_countWhereInput
+    /**
+     * Limit how many transfer_day_counts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * transfer_day_count without action
+   */
+  export type transfer_day_countDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_count
+     */
+    select?: transfer_day_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_count
+     */
+    omit?: transfer_day_countOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model transfer_day_ticket_count
+   */
+
+  export type AggregateTransfer_day_ticket_count = {
+    _count: Transfer_day_ticket_countCountAggregateOutputType | null
+    _avg: Transfer_day_ticket_countAvgAggregateOutputType | null
+    _sum: Transfer_day_ticket_countSumAggregateOutputType | null
+    _min: Transfer_day_ticket_countMinAggregateOutputType | null
+    _max: Transfer_day_ticket_countMaxAggregateOutputType | null
+  }
+
+  export type Transfer_day_ticket_countAvgAggregateOutputType = {
+    ticket_id: number | null
+    sum: number | null
+  }
+
+  export type Transfer_day_ticket_countSumAggregateOutputType = {
+    ticket_id: number | null
+    sum: number | null
+  }
+
+  export type Transfer_day_ticket_countMinAggregateOutputType = {
+    id: string | null
+    ticket_id: number | null
+    t_day: string | null
+    sum: number | null
+  }
+
+  export type Transfer_day_ticket_countMaxAggregateOutputType = {
+    id: string | null
+    ticket_id: number | null
+    t_day: string | null
+    sum: number | null
+  }
+
+  export type Transfer_day_ticket_countCountAggregateOutputType = {
+    id: number
+    ticket_id: number
+    t_day: number
+    sum: number
+    _all: number
+  }
+
+
+  export type Transfer_day_ticket_countAvgAggregateInputType = {
+    ticket_id?: true
+    sum?: true
+  }
+
+  export type Transfer_day_ticket_countSumAggregateInputType = {
+    ticket_id?: true
+    sum?: true
+  }
+
+  export type Transfer_day_ticket_countMinAggregateInputType = {
+    id?: true
+    ticket_id?: true
+    t_day?: true
+    sum?: true
+  }
+
+  export type Transfer_day_ticket_countMaxAggregateInputType = {
+    id?: true
+    ticket_id?: true
+    t_day?: true
+    sum?: true
+  }
+
+  export type Transfer_day_ticket_countCountAggregateInputType = {
+    id?: true
+    ticket_id?: true
+    t_day?: true
+    sum?: true
+    _all?: true
+  }
+
+  export type Transfer_day_ticket_countAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which transfer_day_ticket_count to aggregate.
+     */
+    where?: transfer_day_ticket_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transfer_day_ticket_counts to fetch.
+     */
+    orderBy?: transfer_day_ticket_countOrderByWithRelationInput | transfer_day_ticket_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: transfer_day_ticket_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transfer_day_ticket_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transfer_day_ticket_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned transfer_day_ticket_counts
+    **/
+    _count?: true | Transfer_day_ticket_countCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Transfer_day_ticket_countAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Transfer_day_ticket_countSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Transfer_day_ticket_countMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Transfer_day_ticket_countMaxAggregateInputType
+  }
+
+  export type GetTransfer_day_ticket_countAggregateType<T extends Transfer_day_ticket_countAggregateArgs> = {
+        [P in keyof T & keyof AggregateTransfer_day_ticket_count]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTransfer_day_ticket_count[P]>
+      : GetScalarType<T[P], AggregateTransfer_day_ticket_count[P]>
+  }
+
+
+
+
+  export type transfer_day_ticket_countGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: transfer_day_ticket_countWhereInput
+    orderBy?: transfer_day_ticket_countOrderByWithAggregationInput | transfer_day_ticket_countOrderByWithAggregationInput[]
+    by: Transfer_day_ticket_countScalarFieldEnum[] | Transfer_day_ticket_countScalarFieldEnum
+    having?: transfer_day_ticket_countScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Transfer_day_ticket_countCountAggregateInputType | true
+    _avg?: Transfer_day_ticket_countAvgAggregateInputType
+    _sum?: Transfer_day_ticket_countSumAggregateInputType
+    _min?: Transfer_day_ticket_countMinAggregateInputType
+    _max?: Transfer_day_ticket_countMaxAggregateInputType
+  }
+
+  export type Transfer_day_ticket_countGroupByOutputType = {
+    id: string
+    ticket_id: number | null
+    t_day: string | null
+    sum: number
+    _count: Transfer_day_ticket_countCountAggregateOutputType | null
+    _avg: Transfer_day_ticket_countAvgAggregateOutputType | null
+    _sum: Transfer_day_ticket_countSumAggregateOutputType | null
+    _min: Transfer_day_ticket_countMinAggregateOutputType | null
+    _max: Transfer_day_ticket_countMaxAggregateOutputType | null
+  }
+
+  type GetTransfer_day_ticket_countGroupByPayload<T extends transfer_day_ticket_countGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Transfer_day_ticket_countGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Transfer_day_ticket_countGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Transfer_day_ticket_countGroupByOutputType[P]>
+            : GetScalarType<T[P], Transfer_day_ticket_countGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type transfer_day_ticket_countSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    ticket_id?: boolean
+    t_day?: boolean
+    sum?: boolean
+  }, ExtArgs["result"]["transfer_day_ticket_count"]>
+
+
+
+  export type transfer_day_ticket_countSelectScalar = {
+    id?: boolean
+    ticket_id?: boolean
+    t_day?: boolean
+    sum?: boolean
+  }
+
+  export type transfer_day_ticket_countOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ticket_id" | "t_day" | "sum", ExtArgs["result"]["transfer_day_ticket_count"]>
+
+  export type $transfer_day_ticket_countPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "transfer_day_ticket_count"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      ticket_id: number | null
+      t_day: string | null
+      sum: number
+    }, ExtArgs["result"]["transfer_day_ticket_count"]>
+    composites: {}
+  }
+
+  type transfer_day_ticket_countGetPayload<S extends boolean | null | undefined | transfer_day_ticket_countDefaultArgs> = $Result.GetResult<Prisma.$transfer_day_ticket_countPayload, S>
+
+  type transfer_day_ticket_countCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<transfer_day_ticket_countFindManyArgs, 'select' | 'include' | 'distinct' | 'omit' | 'relationLoadStrategy'> & {
+      select?: Transfer_day_ticket_countCountAggregateInputType | true
+    }
+
+  export interface transfer_day_ticket_countDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['transfer_day_ticket_count'], meta: { name: 'transfer_day_ticket_count' } }
+    /**
+     * Find zero or one Transfer_day_ticket_count that matches the filter.
+     * @param {transfer_day_ticket_countFindUniqueArgs} args - Arguments to find a Transfer_day_ticket_count
+     * @example
+     * // Get one Transfer_day_ticket_count
+     * const transfer_day_ticket_count = await prisma.transfer_day_ticket_count.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends transfer_day_ticket_countFindUniqueArgs>(args: SelectSubset<T, transfer_day_ticket_countFindUniqueArgs<ExtArgs>>): Prisma__transfer_day_ticket_countClient<$Result.GetResult<Prisma.$transfer_day_ticket_countPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Transfer_day_ticket_count that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {transfer_day_ticket_countFindUniqueOrThrowArgs} args - Arguments to find a Transfer_day_ticket_count
+     * @example
+     * // Get one Transfer_day_ticket_count
+     * const transfer_day_ticket_count = await prisma.transfer_day_ticket_count.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends transfer_day_ticket_countFindUniqueOrThrowArgs>(args: SelectSubset<T, transfer_day_ticket_countFindUniqueOrThrowArgs<ExtArgs>>): Prisma__transfer_day_ticket_countClient<$Result.GetResult<Prisma.$transfer_day_ticket_countPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transfer_day_ticket_count that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_ticket_countFindFirstArgs} args - Arguments to find a Transfer_day_ticket_count
+     * @example
+     * // Get one Transfer_day_ticket_count
+     * const transfer_day_ticket_count = await prisma.transfer_day_ticket_count.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends transfer_day_ticket_countFindFirstArgs>(args?: SelectSubset<T, transfer_day_ticket_countFindFirstArgs<ExtArgs>>): Prisma__transfer_day_ticket_countClient<$Result.GetResult<Prisma.$transfer_day_ticket_countPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Transfer_day_ticket_count that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_ticket_countFindFirstOrThrowArgs} args - Arguments to find a Transfer_day_ticket_count
+     * @example
+     * // Get one Transfer_day_ticket_count
+     * const transfer_day_ticket_count = await prisma.transfer_day_ticket_count.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends transfer_day_ticket_countFindFirstOrThrowArgs>(args?: SelectSubset<T, transfer_day_ticket_countFindFirstOrThrowArgs<ExtArgs>>): Prisma__transfer_day_ticket_countClient<$Result.GetResult<Prisma.$transfer_day_ticket_countPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Transfer_day_ticket_counts that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_ticket_countFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Transfer_day_ticket_counts
+     * const transfer_day_ticket_counts = await prisma.transfer_day_ticket_count.findMany()
+     * 
+     * // Get first 10 Transfer_day_ticket_counts
+     * const transfer_day_ticket_counts = await prisma.transfer_day_ticket_count.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const transfer_day_ticket_countWithIdOnly = await prisma.transfer_day_ticket_count.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends transfer_day_ticket_countFindManyArgs>(args?: SelectSubset<T, transfer_day_ticket_countFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$transfer_day_ticket_countPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Transfer_day_ticket_count.
+     * @param {transfer_day_ticket_countCreateArgs} args - Arguments to create a Transfer_day_ticket_count.
+     * @example
+     * // Create one Transfer_day_ticket_count
+     * const Transfer_day_ticket_count = await prisma.transfer_day_ticket_count.create({
+     *   data: {
+     *     // ... data to create a Transfer_day_ticket_count
+     *   }
+     * })
+     * 
+     */
+    create<T extends transfer_day_ticket_countCreateArgs>(args: SelectSubset<T, transfer_day_ticket_countCreateArgs<ExtArgs>>): Prisma__transfer_day_ticket_countClient<$Result.GetResult<Prisma.$transfer_day_ticket_countPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Transfer_day_ticket_counts.
+     * @param {transfer_day_ticket_countCreateManyArgs} args - Arguments to create many Transfer_day_ticket_counts.
+     * @example
+     * // Create many Transfer_day_ticket_counts
+     * const transfer_day_ticket_count = await prisma.transfer_day_ticket_count.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends transfer_day_ticket_countCreateManyArgs>(args?: SelectSubset<T, transfer_day_ticket_countCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Transfer_day_ticket_count.
+     * @param {transfer_day_ticket_countDeleteArgs} args - Arguments to delete one Transfer_day_ticket_count.
+     * @example
+     * // Delete one Transfer_day_ticket_count
+     * const Transfer_day_ticket_count = await prisma.transfer_day_ticket_count.delete({
+     *   where: {
+     *     // ... filter to delete one Transfer_day_ticket_count
+     *   }
+     * })
+     * 
+     */
+    delete<T extends transfer_day_ticket_countDeleteArgs>(args: SelectSubset<T, transfer_day_ticket_countDeleteArgs<ExtArgs>>): Prisma__transfer_day_ticket_countClient<$Result.GetResult<Prisma.$transfer_day_ticket_countPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Transfer_day_ticket_count.
+     * @param {transfer_day_ticket_countUpdateArgs} args - Arguments to update one Transfer_day_ticket_count.
+     * @example
+     * // Update one Transfer_day_ticket_count
+     * const transfer_day_ticket_count = await prisma.transfer_day_ticket_count.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends transfer_day_ticket_countUpdateArgs>(args: SelectSubset<T, transfer_day_ticket_countUpdateArgs<ExtArgs>>): Prisma__transfer_day_ticket_countClient<$Result.GetResult<Prisma.$transfer_day_ticket_countPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Transfer_day_ticket_counts.
+     * @param {transfer_day_ticket_countDeleteManyArgs} args - Arguments to filter Transfer_day_ticket_counts to delete.
+     * @example
+     * // Delete a few Transfer_day_ticket_counts
+     * const { count } = await prisma.transfer_day_ticket_count.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends transfer_day_ticket_countDeleteManyArgs>(args?: SelectSubset<T, transfer_day_ticket_countDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Transfer_day_ticket_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_ticket_countUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Transfer_day_ticket_counts
+     * const transfer_day_ticket_count = await prisma.transfer_day_ticket_count.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends transfer_day_ticket_countUpdateManyArgs>(args: SelectSubset<T, transfer_day_ticket_countUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Transfer_day_ticket_count.
+     * @param {transfer_day_ticket_countUpsertArgs} args - Arguments to update or create a Transfer_day_ticket_count.
+     * @example
+     * // Update or create a Transfer_day_ticket_count
+     * const transfer_day_ticket_count = await prisma.transfer_day_ticket_count.upsert({
+     *   create: {
+     *     // ... data to create a Transfer_day_ticket_count
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Transfer_day_ticket_count we want to update
+     *   }
+     * })
+     */
+    upsert<T extends transfer_day_ticket_countUpsertArgs>(args: SelectSubset<T, transfer_day_ticket_countUpsertArgs<ExtArgs>>): Prisma__transfer_day_ticket_countClient<$Result.GetResult<Prisma.$transfer_day_ticket_countPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Transfer_day_ticket_counts.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_ticket_countCountArgs} args - Arguments to filter Transfer_day_ticket_counts to count.
+     * @example
+     * // Count the number of Transfer_day_ticket_counts
+     * const count = await prisma.transfer_day_ticket_count.count({
+     *   where: {
+     *     // ... the filter for the Transfer_day_ticket_counts we want to count
+     *   }
+     * })
+    **/
+    count<T extends transfer_day_ticket_countCountArgs>(
+      args?: Subset<T, transfer_day_ticket_countCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Transfer_day_ticket_countCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Transfer_day_ticket_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Transfer_day_ticket_countAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Transfer_day_ticket_countAggregateArgs>(args: Subset<T, Transfer_day_ticket_countAggregateArgs>): Prisma.PrismaPromise<GetTransfer_day_ticket_countAggregateType<T>>
+
+    /**
+     * Group by Transfer_day_ticket_count.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {transfer_day_ticket_countGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends transfer_day_ticket_countGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: transfer_day_ticket_countGroupByArgs['orderBy'] }
+        : { orderBy?: transfer_day_ticket_countGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, transfer_day_ticket_countGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTransfer_day_ticket_countGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the transfer_day_ticket_count model
+   */
+  readonly fields: transfer_day_ticket_countFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for transfer_day_ticket_count.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__transfer_day_ticket_countClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the transfer_day_ticket_count model
+   */ 
+  interface transfer_day_ticket_countFieldRefs {
+    readonly id: FieldRef<"transfer_day_ticket_count", 'String'>
+    readonly ticket_id: FieldRef<"transfer_day_ticket_count", 'Int'>
+    readonly t_day: FieldRef<"transfer_day_ticket_count", 'String'>
+    readonly sum: FieldRef<"transfer_day_ticket_count", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * transfer_day_ticket_count findUnique
+   */
+  export type transfer_day_ticket_countFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_ticket_count
+     */
+    select?: transfer_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_ticket_count
+     */
+    omit?: transfer_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter, which transfer_day_ticket_count to fetch.
+     */
+    where: transfer_day_ticket_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_ticket_count findUniqueOrThrow
+   */
+  export type transfer_day_ticket_countFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_ticket_count
+     */
+    select?: transfer_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_ticket_count
+     */
+    omit?: transfer_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter, which transfer_day_ticket_count to fetch.
+     */
+    where: transfer_day_ticket_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_ticket_count findFirst
+   */
+  export type transfer_day_ticket_countFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_ticket_count
+     */
+    select?: transfer_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_ticket_count
+     */
+    omit?: transfer_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter, which transfer_day_ticket_count to fetch.
+     */
+    where?: transfer_day_ticket_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transfer_day_ticket_counts to fetch.
+     */
+    orderBy?: transfer_day_ticket_countOrderByWithRelationInput | transfer_day_ticket_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for transfer_day_ticket_counts.
+     */
+    cursor?: transfer_day_ticket_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transfer_day_ticket_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transfer_day_ticket_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of transfer_day_ticket_counts.
+     */
+    distinct?: Transfer_day_ticket_countScalarFieldEnum | Transfer_day_ticket_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_ticket_count findFirstOrThrow
+   */
+  export type transfer_day_ticket_countFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_ticket_count
+     */
+    select?: transfer_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_ticket_count
+     */
+    omit?: transfer_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter, which transfer_day_ticket_count to fetch.
+     */
+    where?: transfer_day_ticket_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transfer_day_ticket_counts to fetch.
+     */
+    orderBy?: transfer_day_ticket_countOrderByWithRelationInput | transfer_day_ticket_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for transfer_day_ticket_counts.
+     */
+    cursor?: transfer_day_ticket_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transfer_day_ticket_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transfer_day_ticket_counts.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of transfer_day_ticket_counts.
+     */
+    distinct?: Transfer_day_ticket_countScalarFieldEnum | Transfer_day_ticket_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_ticket_count findMany
+   */
+  export type transfer_day_ticket_countFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_ticket_count
+     */
+    select?: transfer_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_ticket_count
+     */
+    omit?: transfer_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter, which transfer_day_ticket_counts to fetch.
+     */
+    where?: transfer_day_ticket_countWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of transfer_day_ticket_counts to fetch.
+     */
+    orderBy?: transfer_day_ticket_countOrderByWithRelationInput | transfer_day_ticket_countOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing transfer_day_ticket_counts.
+     */
+    cursor?: transfer_day_ticket_countWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` transfer_day_ticket_counts from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` transfer_day_ticket_counts.
+     */
+    skip?: number
+    distinct?: Transfer_day_ticket_countScalarFieldEnum | Transfer_day_ticket_countScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_ticket_count create
+   */
+  export type transfer_day_ticket_countCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_ticket_count
+     */
+    select?: transfer_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_ticket_count
+     */
+    omit?: transfer_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * The data needed to create a transfer_day_ticket_count.
+     */
+    data: XOR<transfer_day_ticket_countCreateInput, transfer_day_ticket_countUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_ticket_count createMany
+   */
+  export type transfer_day_ticket_countCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many transfer_day_ticket_counts.
+     */
+    data: transfer_day_ticket_countCreateManyInput | transfer_day_ticket_countCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * transfer_day_ticket_count update
+   */
+  export type transfer_day_ticket_countUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_ticket_count
+     */
+    select?: transfer_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_ticket_count
+     */
+    omit?: transfer_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * The data needed to update a transfer_day_ticket_count.
+     */
+    data: XOR<transfer_day_ticket_countUpdateInput, transfer_day_ticket_countUncheckedUpdateInput>
+    /**
+     * Choose, which transfer_day_ticket_count to update.
+     */
+    where: transfer_day_ticket_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_ticket_count updateMany
+   */
+  export type transfer_day_ticket_countUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update transfer_day_ticket_counts.
+     */
+    data: XOR<transfer_day_ticket_countUpdateManyMutationInput, transfer_day_ticket_countUncheckedUpdateManyInput>
+    /**
+     * Filter which transfer_day_ticket_counts to update
+     */
+    where?: transfer_day_ticket_countWhereInput
+    /**
+     * Limit how many transfer_day_ticket_counts to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * transfer_day_ticket_count upsert
+   */
+  export type transfer_day_ticket_countUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_ticket_count
+     */
+    select?: transfer_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_ticket_count
+     */
+    omit?: transfer_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * The filter to search for the transfer_day_ticket_count to update in case it exists.
+     */
+    where: transfer_day_ticket_countWhereUniqueInput
+    /**
+     * In case the transfer_day_ticket_count found by the `where` argument doesn't exist, create a new transfer_day_ticket_count with this data.
+     */
+    create: XOR<transfer_day_ticket_countCreateInput, transfer_day_ticket_countUncheckedCreateInput>
+    /**
+     * In case the transfer_day_ticket_count was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<transfer_day_ticket_countUpdateInput, transfer_day_ticket_countUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_ticket_count delete
+   */
+  export type transfer_day_ticket_countDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_ticket_count
+     */
+    select?: transfer_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_ticket_count
+     */
+    omit?: transfer_day_ticket_countOmit<ExtArgs> | null
+    /**
+     * Filter which transfer_day_ticket_count to delete.
+     */
+    where: transfer_day_ticket_countWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * transfer_day_ticket_count deleteMany
+   */
+  export type transfer_day_ticket_countDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which transfer_day_ticket_counts to delete
+     */
+    where?: transfer_day_ticket_countWhereInput
+    /**
+     * Limit how many transfer_day_ticket_counts to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * transfer_day_ticket_count without action
+   */
+  export type transfer_day_ticket_countDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the transfer_day_ticket_count
+     */
+    select?: transfer_day_ticket_countSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the transfer_day_ticket_count
+     */
+    omit?: transfer_day_ticket_countOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -33674,6 +40587,68 @@ export namespace Prisma {
   export type ResourceScalarFieldEnum = (typeof ResourceScalarFieldEnum)[keyof typeof ResourceScalarFieldEnum]
 
 
+  export const Collection_day_countScalarFieldEnum: {
+    t_day: 't_day',
+    sum: 'sum'
+  };
+
+  export type Collection_day_countScalarFieldEnum = (typeof Collection_day_countScalarFieldEnum)[keyof typeof Collection_day_countScalarFieldEnum]
+
+
+  export const Collection_day_ticket_countScalarFieldEnum: {
+    id: 'id',
+    ticket_id: 'ticket_id',
+    t_day: 't_day',
+    sum: 'sum'
+  };
+
+  export type Collection_day_ticket_countScalarFieldEnum = (typeof Collection_day_ticket_countScalarFieldEnum)[keyof typeof Collection_day_ticket_countScalarFieldEnum]
+
+
+  export const User_day_countScalarFieldEnum: {
+    c_day: 'c_day',
+    sum: 'sum'
+  };
+
+  export type User_day_countScalarFieldEnum = (typeof User_day_countScalarFieldEnum)[keyof typeof User_day_countScalarFieldEnum]
+
+
+  export const User_month_countScalarFieldEnum: {
+    id: 'id',
+    c_year: 'c_year',
+    c_month: 'c_month',
+    sum: 'sum'
+  };
+
+  export type User_month_countScalarFieldEnum = (typeof User_month_countScalarFieldEnum)[keyof typeof User_month_countScalarFieldEnum]
+
+
+  export const User_week_countScalarFieldEnum: {
+    c_week: 'c_week',
+    sum: 'sum'
+  };
+
+  export type User_week_countScalarFieldEnum = (typeof User_week_countScalarFieldEnum)[keyof typeof User_week_countScalarFieldEnum]
+
+
+  export const Transfer_day_countScalarFieldEnum: {
+    t_day: 't_day',
+    sum: 'sum'
+  };
+
+  export type Transfer_day_countScalarFieldEnum = (typeof Transfer_day_countScalarFieldEnum)[keyof typeof Transfer_day_countScalarFieldEnum]
+
+
+  export const Transfer_day_ticket_countScalarFieldEnum: {
+    id: 'id',
+    ticket_id: 'ticket_id',
+    t_day: 't_day',
+    sum: 'sum'
+  };
+
+  export type Transfer_day_ticket_countScalarFieldEnum = (typeof Transfer_day_ticket_countScalarFieldEnum)[keyof typeof Transfer_day_ticket_countScalarFieldEnum]
+
+
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -34088,6 +41063,50 @@ export namespace Prisma {
   };
 
   export type resourceOrderByRelevanceFieldEnum = (typeof resourceOrderByRelevanceFieldEnum)[keyof typeof resourceOrderByRelevanceFieldEnum]
+
+
+  export const collection_day_countOrderByRelevanceFieldEnum: {
+    t_day: 't_day'
+  };
+
+  export type collection_day_countOrderByRelevanceFieldEnum = (typeof collection_day_countOrderByRelevanceFieldEnum)[keyof typeof collection_day_countOrderByRelevanceFieldEnum]
+
+
+  export const collection_day_ticket_countOrderByRelevanceFieldEnum: {
+    id: 'id',
+    t_day: 't_day'
+  };
+
+  export type collection_day_ticket_countOrderByRelevanceFieldEnum = (typeof collection_day_ticket_countOrderByRelevanceFieldEnum)[keyof typeof collection_day_ticket_countOrderByRelevanceFieldEnum]
+
+
+  export const user_day_countOrderByRelevanceFieldEnum: {
+    c_day: 'c_day'
+  };
+
+  export type user_day_countOrderByRelevanceFieldEnum = (typeof user_day_countOrderByRelevanceFieldEnum)[keyof typeof user_day_countOrderByRelevanceFieldEnum]
+
+
+  export const user_month_countOrderByRelevanceFieldEnum: {
+    id: 'id'
+  };
+
+  export type user_month_countOrderByRelevanceFieldEnum = (typeof user_month_countOrderByRelevanceFieldEnum)[keyof typeof user_month_countOrderByRelevanceFieldEnum]
+
+
+  export const transfer_day_countOrderByRelevanceFieldEnum: {
+    t_day: 't_day'
+  };
+
+  export type transfer_day_countOrderByRelevanceFieldEnum = (typeof transfer_day_countOrderByRelevanceFieldEnum)[keyof typeof transfer_day_countOrderByRelevanceFieldEnum]
+
+
+  export const transfer_day_ticket_countOrderByRelevanceFieldEnum: {
+    id: 'id',
+    t_day: 't_day'
+  };
+
+  export type transfer_day_ticket_countOrderByRelevanceFieldEnum = (typeof transfer_day_ticket_countOrderByRelevanceFieldEnum)[keyof typeof transfer_day_ticket_countOrderByRelevanceFieldEnum]
 
 
   /**
@@ -37019,6 +44038,315 @@ export namespace Prisma {
     update_time?: StringNullableWithAggregatesFilter<"resource"> | string | null
     status?: IntNullableWithAggregatesFilter<"resource"> | number | null
     remark?: StringNullableWithAggregatesFilter<"resource"> | string | null
+  }
+
+  export type collection_day_countWhereInput = {
+    AND?: collection_day_countWhereInput | collection_day_countWhereInput[]
+    OR?: collection_day_countWhereInput[]
+    NOT?: collection_day_countWhereInput | collection_day_countWhereInput[]
+    t_day?: StringFilter<"collection_day_count"> | string
+    sum?: IntFilter<"collection_day_count"> | number
+  }
+
+  export type collection_day_countOrderByWithRelationInput = {
+    t_day?: SortOrder
+    sum?: SortOrder
+    _relevance?: collection_day_countOrderByRelevanceInput
+  }
+
+  export type collection_day_countWhereUniqueInput = Prisma.AtLeast<{
+    t_day?: string
+    AND?: collection_day_countWhereInput | collection_day_countWhereInput[]
+    OR?: collection_day_countWhereInput[]
+    NOT?: collection_day_countWhereInput | collection_day_countWhereInput[]
+    sum?: IntFilter<"collection_day_count"> | number
+  }, "t_day">
+
+  export type collection_day_countOrderByWithAggregationInput = {
+    t_day?: SortOrder
+    sum?: SortOrder
+    _count?: collection_day_countCountOrderByAggregateInput
+    _avg?: collection_day_countAvgOrderByAggregateInput
+    _max?: collection_day_countMaxOrderByAggregateInput
+    _min?: collection_day_countMinOrderByAggregateInput
+    _sum?: collection_day_countSumOrderByAggregateInput
+  }
+
+  export type collection_day_countScalarWhereWithAggregatesInput = {
+    AND?: collection_day_countScalarWhereWithAggregatesInput | collection_day_countScalarWhereWithAggregatesInput[]
+    OR?: collection_day_countScalarWhereWithAggregatesInput[]
+    NOT?: collection_day_countScalarWhereWithAggregatesInput | collection_day_countScalarWhereWithAggregatesInput[]
+    t_day?: StringWithAggregatesFilter<"collection_day_count"> | string
+    sum?: IntWithAggregatesFilter<"collection_day_count"> | number
+  }
+
+  export type collection_day_ticket_countWhereInput = {
+    AND?: collection_day_ticket_countWhereInput | collection_day_ticket_countWhereInput[]
+    OR?: collection_day_ticket_countWhereInput[]
+    NOT?: collection_day_ticket_countWhereInput | collection_day_ticket_countWhereInput[]
+    id?: StringFilter<"collection_day_ticket_count"> | string
+    ticket_id?: IntNullableFilter<"collection_day_ticket_count"> | number | null
+    t_day?: StringNullableFilter<"collection_day_ticket_count"> | string | null
+    sum?: IntFilter<"collection_day_ticket_count"> | number
+  }
+
+  export type collection_day_ticket_countOrderByWithRelationInput = {
+    id?: SortOrder
+    ticket_id?: SortOrderInput | SortOrder
+    t_day?: SortOrderInput | SortOrder
+    sum?: SortOrder
+    _relevance?: collection_day_ticket_countOrderByRelevanceInput
+  }
+
+  export type collection_day_ticket_countWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: collection_day_ticket_countWhereInput | collection_day_ticket_countWhereInput[]
+    OR?: collection_day_ticket_countWhereInput[]
+    NOT?: collection_day_ticket_countWhereInput | collection_day_ticket_countWhereInput[]
+    ticket_id?: IntNullableFilter<"collection_day_ticket_count"> | number | null
+    t_day?: StringNullableFilter<"collection_day_ticket_count"> | string | null
+    sum?: IntFilter<"collection_day_ticket_count"> | number
+  }, "id">
+
+  export type collection_day_ticket_countOrderByWithAggregationInput = {
+    id?: SortOrder
+    ticket_id?: SortOrderInput | SortOrder
+    t_day?: SortOrderInput | SortOrder
+    sum?: SortOrder
+    _count?: collection_day_ticket_countCountOrderByAggregateInput
+    _avg?: collection_day_ticket_countAvgOrderByAggregateInput
+    _max?: collection_day_ticket_countMaxOrderByAggregateInput
+    _min?: collection_day_ticket_countMinOrderByAggregateInput
+    _sum?: collection_day_ticket_countSumOrderByAggregateInput
+  }
+
+  export type collection_day_ticket_countScalarWhereWithAggregatesInput = {
+    AND?: collection_day_ticket_countScalarWhereWithAggregatesInput | collection_day_ticket_countScalarWhereWithAggregatesInput[]
+    OR?: collection_day_ticket_countScalarWhereWithAggregatesInput[]
+    NOT?: collection_day_ticket_countScalarWhereWithAggregatesInput | collection_day_ticket_countScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"collection_day_ticket_count"> | string
+    ticket_id?: IntNullableWithAggregatesFilter<"collection_day_ticket_count"> | number | null
+    t_day?: StringNullableWithAggregatesFilter<"collection_day_ticket_count"> | string | null
+    sum?: IntWithAggregatesFilter<"collection_day_ticket_count"> | number
+  }
+
+  export type user_day_countWhereInput = {
+    AND?: user_day_countWhereInput | user_day_countWhereInput[]
+    OR?: user_day_countWhereInput[]
+    NOT?: user_day_countWhereInput | user_day_countWhereInput[]
+    c_day?: StringFilter<"user_day_count"> | string
+    sum?: IntFilter<"user_day_count"> | number
+  }
+
+  export type user_day_countOrderByWithRelationInput = {
+    c_day?: SortOrder
+    sum?: SortOrder
+    _relevance?: user_day_countOrderByRelevanceInput
+  }
+
+  export type user_day_countWhereUniqueInput = Prisma.AtLeast<{
+    c_day?: string
+    AND?: user_day_countWhereInput | user_day_countWhereInput[]
+    OR?: user_day_countWhereInput[]
+    NOT?: user_day_countWhereInput | user_day_countWhereInput[]
+    sum?: IntFilter<"user_day_count"> | number
+  }, "c_day">
+
+  export type user_day_countOrderByWithAggregationInput = {
+    c_day?: SortOrder
+    sum?: SortOrder
+    _count?: user_day_countCountOrderByAggregateInput
+    _avg?: user_day_countAvgOrderByAggregateInput
+    _max?: user_day_countMaxOrderByAggregateInput
+    _min?: user_day_countMinOrderByAggregateInput
+    _sum?: user_day_countSumOrderByAggregateInput
+  }
+
+  export type user_day_countScalarWhereWithAggregatesInput = {
+    AND?: user_day_countScalarWhereWithAggregatesInput | user_day_countScalarWhereWithAggregatesInput[]
+    OR?: user_day_countScalarWhereWithAggregatesInput[]
+    NOT?: user_day_countScalarWhereWithAggregatesInput | user_day_countScalarWhereWithAggregatesInput[]
+    c_day?: StringWithAggregatesFilter<"user_day_count"> | string
+    sum?: IntWithAggregatesFilter<"user_day_count"> | number
+  }
+
+  export type user_month_countWhereInput = {
+    AND?: user_month_countWhereInput | user_month_countWhereInput[]
+    OR?: user_month_countWhereInput[]
+    NOT?: user_month_countWhereInput | user_month_countWhereInput[]
+    id?: StringFilter<"user_month_count"> | string
+    c_year?: IntNullableFilter<"user_month_count"> | number | null
+    c_month?: IntNullableFilter<"user_month_count"> | number | null
+    sum?: IntFilter<"user_month_count"> | number
+  }
+
+  export type user_month_countOrderByWithRelationInput = {
+    id?: SortOrder
+    c_year?: SortOrderInput | SortOrder
+    c_month?: SortOrderInput | SortOrder
+    sum?: SortOrder
+    _relevance?: user_month_countOrderByRelevanceInput
+  }
+
+  export type user_month_countWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: user_month_countWhereInput | user_month_countWhereInput[]
+    OR?: user_month_countWhereInput[]
+    NOT?: user_month_countWhereInput | user_month_countWhereInput[]
+    c_year?: IntNullableFilter<"user_month_count"> | number | null
+    c_month?: IntNullableFilter<"user_month_count"> | number | null
+    sum?: IntFilter<"user_month_count"> | number
+  }, "id">
+
+  export type user_month_countOrderByWithAggregationInput = {
+    id?: SortOrder
+    c_year?: SortOrderInput | SortOrder
+    c_month?: SortOrderInput | SortOrder
+    sum?: SortOrder
+    _count?: user_month_countCountOrderByAggregateInput
+    _avg?: user_month_countAvgOrderByAggregateInput
+    _max?: user_month_countMaxOrderByAggregateInput
+    _min?: user_month_countMinOrderByAggregateInput
+    _sum?: user_month_countSumOrderByAggregateInput
+  }
+
+  export type user_month_countScalarWhereWithAggregatesInput = {
+    AND?: user_month_countScalarWhereWithAggregatesInput | user_month_countScalarWhereWithAggregatesInput[]
+    OR?: user_month_countScalarWhereWithAggregatesInput[]
+    NOT?: user_month_countScalarWhereWithAggregatesInput | user_month_countScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"user_month_count"> | string
+    c_year?: IntNullableWithAggregatesFilter<"user_month_count"> | number | null
+    c_month?: IntNullableWithAggregatesFilter<"user_month_count"> | number | null
+    sum?: IntWithAggregatesFilter<"user_month_count"> | number
+  }
+
+  export type user_week_countWhereInput = {
+    AND?: user_week_countWhereInput | user_week_countWhereInput[]
+    OR?: user_week_countWhereInput[]
+    NOT?: user_week_countWhereInput | user_week_countWhereInput[]
+    c_week?: IntFilter<"user_week_count"> | number
+    sum?: IntFilter<"user_week_count"> | number
+  }
+
+  export type user_week_countOrderByWithRelationInput = {
+    c_week?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_week_countWhereUniqueInput = Prisma.AtLeast<{
+    c_week?: number
+    AND?: user_week_countWhereInput | user_week_countWhereInput[]
+    OR?: user_week_countWhereInput[]
+    NOT?: user_week_countWhereInput | user_week_countWhereInput[]
+    sum?: IntFilter<"user_week_count"> | number
+  }, "c_week">
+
+  export type user_week_countOrderByWithAggregationInput = {
+    c_week?: SortOrder
+    sum?: SortOrder
+    _count?: user_week_countCountOrderByAggregateInput
+    _avg?: user_week_countAvgOrderByAggregateInput
+    _max?: user_week_countMaxOrderByAggregateInput
+    _min?: user_week_countMinOrderByAggregateInput
+    _sum?: user_week_countSumOrderByAggregateInput
+  }
+
+  export type user_week_countScalarWhereWithAggregatesInput = {
+    AND?: user_week_countScalarWhereWithAggregatesInput | user_week_countScalarWhereWithAggregatesInput[]
+    OR?: user_week_countScalarWhereWithAggregatesInput[]
+    NOT?: user_week_countScalarWhereWithAggregatesInput | user_week_countScalarWhereWithAggregatesInput[]
+    c_week?: IntWithAggregatesFilter<"user_week_count"> | number
+    sum?: IntWithAggregatesFilter<"user_week_count"> | number
+  }
+
+  export type transfer_day_countWhereInput = {
+    AND?: transfer_day_countWhereInput | transfer_day_countWhereInput[]
+    OR?: transfer_day_countWhereInput[]
+    NOT?: transfer_day_countWhereInput | transfer_day_countWhereInput[]
+    t_day?: StringFilter<"transfer_day_count"> | string
+    sum?: IntFilter<"transfer_day_count"> | number
+  }
+
+  export type transfer_day_countOrderByWithRelationInput = {
+    t_day?: SortOrder
+    sum?: SortOrder
+    _relevance?: transfer_day_countOrderByRelevanceInput
+  }
+
+  export type transfer_day_countWhereUniqueInput = Prisma.AtLeast<{
+    t_day?: string
+    AND?: transfer_day_countWhereInput | transfer_day_countWhereInput[]
+    OR?: transfer_day_countWhereInput[]
+    NOT?: transfer_day_countWhereInput | transfer_day_countWhereInput[]
+    sum?: IntFilter<"transfer_day_count"> | number
+  }, "t_day">
+
+  export type transfer_day_countOrderByWithAggregationInput = {
+    t_day?: SortOrder
+    sum?: SortOrder
+    _count?: transfer_day_countCountOrderByAggregateInput
+    _avg?: transfer_day_countAvgOrderByAggregateInput
+    _max?: transfer_day_countMaxOrderByAggregateInput
+    _min?: transfer_day_countMinOrderByAggregateInput
+    _sum?: transfer_day_countSumOrderByAggregateInput
+  }
+
+  export type transfer_day_countScalarWhereWithAggregatesInput = {
+    AND?: transfer_day_countScalarWhereWithAggregatesInput | transfer_day_countScalarWhereWithAggregatesInput[]
+    OR?: transfer_day_countScalarWhereWithAggregatesInput[]
+    NOT?: transfer_day_countScalarWhereWithAggregatesInput | transfer_day_countScalarWhereWithAggregatesInput[]
+    t_day?: StringWithAggregatesFilter<"transfer_day_count"> | string
+    sum?: IntWithAggregatesFilter<"transfer_day_count"> | number
+  }
+
+  export type transfer_day_ticket_countWhereInput = {
+    AND?: transfer_day_ticket_countWhereInput | transfer_day_ticket_countWhereInput[]
+    OR?: transfer_day_ticket_countWhereInput[]
+    NOT?: transfer_day_ticket_countWhereInput | transfer_day_ticket_countWhereInput[]
+    id?: StringFilter<"transfer_day_ticket_count"> | string
+    ticket_id?: IntNullableFilter<"transfer_day_ticket_count"> | number | null
+    t_day?: StringNullableFilter<"transfer_day_ticket_count"> | string | null
+    sum?: IntFilter<"transfer_day_ticket_count"> | number
+  }
+
+  export type transfer_day_ticket_countOrderByWithRelationInput = {
+    id?: SortOrder
+    ticket_id?: SortOrderInput | SortOrder
+    t_day?: SortOrderInput | SortOrder
+    sum?: SortOrder
+    _relevance?: transfer_day_ticket_countOrderByRelevanceInput
+  }
+
+  export type transfer_day_ticket_countWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: transfer_day_ticket_countWhereInput | transfer_day_ticket_countWhereInput[]
+    OR?: transfer_day_ticket_countWhereInput[]
+    NOT?: transfer_day_ticket_countWhereInput | transfer_day_ticket_countWhereInput[]
+    ticket_id?: IntNullableFilter<"transfer_day_ticket_count"> | number | null
+    t_day?: StringNullableFilter<"transfer_day_ticket_count"> | string | null
+    sum?: IntFilter<"transfer_day_ticket_count"> | number
+  }, "id">
+
+  export type transfer_day_ticket_countOrderByWithAggregationInput = {
+    id?: SortOrder
+    ticket_id?: SortOrderInput | SortOrder
+    t_day?: SortOrderInput | SortOrder
+    sum?: SortOrder
+    _count?: transfer_day_ticket_countCountOrderByAggregateInput
+    _avg?: transfer_day_ticket_countAvgOrderByAggregateInput
+    _max?: transfer_day_ticket_countMaxOrderByAggregateInput
+    _min?: transfer_day_ticket_countMinOrderByAggregateInput
+    _sum?: transfer_day_ticket_countSumOrderByAggregateInput
+  }
+
+  export type transfer_day_ticket_countScalarWhereWithAggregatesInput = {
+    AND?: transfer_day_ticket_countScalarWhereWithAggregatesInput | transfer_day_ticket_countScalarWhereWithAggregatesInput[]
+    OR?: transfer_day_ticket_countScalarWhereWithAggregatesInput[]
+    NOT?: transfer_day_ticket_countScalarWhereWithAggregatesInput | transfer_day_ticket_countScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"transfer_day_ticket_count"> | string
+    ticket_id?: IntNullableWithAggregatesFilter<"transfer_day_ticket_count"> | number | null
+    t_day?: StringNullableWithAggregatesFilter<"transfer_day_ticket_count"> | string | null
+    sum?: IntWithAggregatesFilter<"transfer_day_ticket_count"> | number
   }
 
   export type GenTableCreateInput = {
@@ -40314,6 +47642,293 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type collection_day_countCreateInput = {
+    t_day: string
+    sum?: number
+  }
+
+  export type collection_day_countUncheckedCreateInput = {
+    t_day: string
+    sum?: number
+  }
+
+  export type collection_day_countUpdateInput = {
+    t_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type collection_day_countUncheckedUpdateInput = {
+    t_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type collection_day_countCreateManyInput = {
+    t_day: string
+    sum?: number
+  }
+
+  export type collection_day_countUpdateManyMutationInput = {
+    t_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type collection_day_countUncheckedUpdateManyInput = {
+    t_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type collection_day_ticket_countCreateInput = {
+    id: string
+    ticket_id?: number | null
+    t_day?: string | null
+    sum?: number
+  }
+
+  export type collection_day_ticket_countUncheckedCreateInput = {
+    id: string
+    ticket_id?: number | null
+    t_day?: string | null
+    sum?: number
+  }
+
+  export type collection_day_ticket_countUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
+    t_day?: NullableStringFieldUpdateOperationsInput | string | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type collection_day_ticket_countUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
+    t_day?: NullableStringFieldUpdateOperationsInput | string | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type collection_day_ticket_countCreateManyInput = {
+    id: string
+    ticket_id?: number | null
+    t_day?: string | null
+    sum?: number
+  }
+
+  export type collection_day_ticket_countUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
+    t_day?: NullableStringFieldUpdateOperationsInput | string | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type collection_day_ticket_countUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
+    t_day?: NullableStringFieldUpdateOperationsInput | string | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_day_countCreateInput = {
+    c_day: string
+    sum?: number
+  }
+
+  export type user_day_countUncheckedCreateInput = {
+    c_day: string
+    sum?: number
+  }
+
+  export type user_day_countUpdateInput = {
+    c_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_day_countUncheckedUpdateInput = {
+    c_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_day_countCreateManyInput = {
+    c_day: string
+    sum?: number
+  }
+
+  export type user_day_countUpdateManyMutationInput = {
+    c_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_day_countUncheckedUpdateManyInput = {
+    c_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_month_countCreateInput = {
+    id: string
+    c_year?: number | null
+    c_month?: number | null
+    sum?: number
+  }
+
+  export type user_month_countUncheckedCreateInput = {
+    id: string
+    c_year?: number | null
+    c_month?: number | null
+    sum?: number
+  }
+
+  export type user_month_countUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    c_year?: NullableIntFieldUpdateOperationsInput | number | null
+    c_month?: NullableIntFieldUpdateOperationsInput | number | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_month_countUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    c_year?: NullableIntFieldUpdateOperationsInput | number | null
+    c_month?: NullableIntFieldUpdateOperationsInput | number | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_month_countCreateManyInput = {
+    id: string
+    c_year?: number | null
+    c_month?: number | null
+    sum?: number
+  }
+
+  export type user_month_countUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    c_year?: NullableIntFieldUpdateOperationsInput | number | null
+    c_month?: NullableIntFieldUpdateOperationsInput | number | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_month_countUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    c_year?: NullableIntFieldUpdateOperationsInput | number | null
+    c_month?: NullableIntFieldUpdateOperationsInput | number | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_week_countCreateInput = {
+    c_week: number
+    sum?: number
+  }
+
+  export type user_week_countUncheckedCreateInput = {
+    c_week: number
+    sum?: number
+  }
+
+  export type user_week_countUpdateInput = {
+    c_week?: IntFieldUpdateOperationsInput | number
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_week_countUncheckedUpdateInput = {
+    c_week?: IntFieldUpdateOperationsInput | number
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_week_countCreateManyInput = {
+    c_week: number
+    sum?: number
+  }
+
+  export type user_week_countUpdateManyMutationInput = {
+    c_week?: IntFieldUpdateOperationsInput | number
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type user_week_countUncheckedUpdateManyInput = {
+    c_week?: IntFieldUpdateOperationsInput | number
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type transfer_day_countCreateInput = {
+    t_day: string
+    sum?: number
+  }
+
+  export type transfer_day_countUncheckedCreateInput = {
+    t_day: string
+    sum?: number
+  }
+
+  export type transfer_day_countUpdateInput = {
+    t_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type transfer_day_countUncheckedUpdateInput = {
+    t_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type transfer_day_countCreateManyInput = {
+    t_day: string
+    sum?: number
+  }
+
+  export type transfer_day_countUpdateManyMutationInput = {
+    t_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type transfer_day_countUncheckedUpdateManyInput = {
+    t_day?: StringFieldUpdateOperationsInput | string
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type transfer_day_ticket_countCreateInput = {
+    id: string
+    ticket_id?: number | null
+    t_day?: string | null
+    sum?: number
+  }
+
+  export type transfer_day_ticket_countUncheckedCreateInput = {
+    id: string
+    ticket_id?: number | null
+    t_day?: string | null
+    sum?: number
+  }
+
+  export type transfer_day_ticket_countUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
+    t_day?: NullableStringFieldUpdateOperationsInput | string | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type transfer_day_ticket_countUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
+    t_day?: NullableStringFieldUpdateOperationsInput | string | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type transfer_day_ticket_countCreateManyInput = {
+    id: string
+    ticket_id?: number | null
+    t_day?: string | null
+    sum?: number
+  }
+
+  export type transfer_day_ticket_countUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
+    t_day?: NullableStringFieldUpdateOperationsInput | string | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type transfer_day_ticket_countUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    ticket_id?: NullableIntFieldUpdateOperationsInput | number | null
+    t_day?: NullableStringFieldUpdateOperationsInput | string | null
+    sum?: IntFieldUpdateOperationsInput | number
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -42721,6 +50336,231 @@ export namespace Prisma {
     ticket_id?: SortOrder
     order?: SortOrder
     status?: SortOrder
+  }
+
+  export type collection_day_countOrderByRelevanceInput = {
+    fields: collection_day_countOrderByRelevanceFieldEnum | collection_day_countOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type collection_day_countCountOrderByAggregateInput = {
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type collection_day_countAvgOrderByAggregateInput = {
+    sum?: SortOrder
+  }
+
+  export type collection_day_countMaxOrderByAggregateInput = {
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type collection_day_countMinOrderByAggregateInput = {
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type collection_day_countSumOrderByAggregateInput = {
+    sum?: SortOrder
+  }
+
+  export type collection_day_ticket_countOrderByRelevanceInput = {
+    fields: collection_day_ticket_countOrderByRelevanceFieldEnum | collection_day_ticket_countOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type collection_day_ticket_countCountOrderByAggregateInput = {
+    id?: SortOrder
+    ticket_id?: SortOrder
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type collection_day_ticket_countAvgOrderByAggregateInput = {
+    ticket_id?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type collection_day_ticket_countMaxOrderByAggregateInput = {
+    id?: SortOrder
+    ticket_id?: SortOrder
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type collection_day_ticket_countMinOrderByAggregateInput = {
+    id?: SortOrder
+    ticket_id?: SortOrder
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type collection_day_ticket_countSumOrderByAggregateInput = {
+    ticket_id?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_day_countOrderByRelevanceInput = {
+    fields: user_day_countOrderByRelevanceFieldEnum | user_day_countOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type user_day_countCountOrderByAggregateInput = {
+    c_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_day_countAvgOrderByAggregateInput = {
+    sum?: SortOrder
+  }
+
+  export type user_day_countMaxOrderByAggregateInput = {
+    c_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_day_countMinOrderByAggregateInput = {
+    c_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_day_countSumOrderByAggregateInput = {
+    sum?: SortOrder
+  }
+
+  export type user_month_countOrderByRelevanceInput = {
+    fields: user_month_countOrderByRelevanceFieldEnum | user_month_countOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type user_month_countCountOrderByAggregateInput = {
+    id?: SortOrder
+    c_year?: SortOrder
+    c_month?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_month_countAvgOrderByAggregateInput = {
+    c_year?: SortOrder
+    c_month?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_month_countMaxOrderByAggregateInput = {
+    id?: SortOrder
+    c_year?: SortOrder
+    c_month?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_month_countMinOrderByAggregateInput = {
+    id?: SortOrder
+    c_year?: SortOrder
+    c_month?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_month_countSumOrderByAggregateInput = {
+    c_year?: SortOrder
+    c_month?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_week_countCountOrderByAggregateInput = {
+    c_week?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_week_countAvgOrderByAggregateInput = {
+    c_week?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_week_countMaxOrderByAggregateInput = {
+    c_week?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_week_countMinOrderByAggregateInput = {
+    c_week?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type user_week_countSumOrderByAggregateInput = {
+    c_week?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type transfer_day_countOrderByRelevanceInput = {
+    fields: transfer_day_countOrderByRelevanceFieldEnum | transfer_day_countOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type transfer_day_countCountOrderByAggregateInput = {
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type transfer_day_countAvgOrderByAggregateInput = {
+    sum?: SortOrder
+  }
+
+  export type transfer_day_countMaxOrderByAggregateInput = {
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type transfer_day_countMinOrderByAggregateInput = {
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type transfer_day_countSumOrderByAggregateInput = {
+    sum?: SortOrder
+  }
+
+  export type transfer_day_ticket_countOrderByRelevanceInput = {
+    fields: transfer_day_ticket_countOrderByRelevanceFieldEnum | transfer_day_ticket_countOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type transfer_day_ticket_countCountOrderByAggregateInput = {
+    id?: SortOrder
+    ticket_id?: SortOrder
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type transfer_day_ticket_countAvgOrderByAggregateInput = {
+    ticket_id?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type transfer_day_ticket_countMaxOrderByAggregateInput = {
+    id?: SortOrder
+    ticket_id?: SortOrder
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type transfer_day_ticket_countMinOrderByAggregateInput = {
+    id?: SortOrder
+    ticket_id?: SortOrder
+    t_day?: SortOrder
+    sum?: SortOrder
+  }
+
+  export type transfer_day_ticket_countSumOrderByAggregateInput = {
+    ticket_id?: SortOrder
+    sum?: SortOrder
   }
 
   export type GenTableColumnCreateNestedManyWithoutTableInput = {

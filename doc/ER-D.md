@@ -26,6 +26,22 @@
 - [user](#user)
 - [declarex](#declarex)
 - [resource](#resource)
+- [collection_day_count](#collection_day_count)
+  - The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+- [collection_day_ticket_count](#collection_day_ticket_count)
+  - The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+- [user_day_count](#user_day_count)
+  - The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+- [user_month_count](#user_month_count)
+  - The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+- [user_week_count](#user_week_count)
+  - The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+- [transfer_day_count](#transfer_day_count)
+  - The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+- [transfer_day_ticket_count](#transfer_day_ticket_count)
+  - The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 
 # ER diagram
 ```plantuml
@@ -528,6 +544,56 @@ entity "resource" as resource {
   update_time : String
   status : Int
   remark : String
+}
+
+entity "collection_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as collection_day_count {
+--
+  * t_day : [UK] String
+  * sum : Int
+}
+
+entity "collection_day_ticket_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as collection_day_ticket_count {
+--
+  * id : [UK] String
+  ticket_id : Int
+  t_day : String
+  * sum : Int
+}
+
+entity "user_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_day_count {
+--
+  * c_day : [UK] String
+  * sum : Int
+}
+
+entity "user_month_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_month_count {
+--
+  * id : [UK] String
+  c_year : Int
+  c_month : Int
+  * sum : Int
+}
+
+entity "user_week_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_week_count {
+--
+  * c_week : [UK] Int
+  * sum : Int
+}
+
+entity "transfer_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as transfer_day_count {
+--
+  * t_day : [UK] String
+  * sum : Int
+}
+
+entity "transfer_day_ticket_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as transfer_day_ticket_count {
+--
+  * id : [UK] String
+  ticket_id : Int
+  t_day : String
+  * sum : Int
 }
 
 ' Relations
@@ -2922,6 +2988,218 @@ entity "resource" as resource {
 
 ' Relations
 resource }o--|| ticket: ticket_id
+' ManyToMany Relations
+' enum relations
+@enduml
+```
+# collection_day_count
+
+## Description
+The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+
+## Columns
+
+|Name | Type | Default | Nullable | Unique | Children | Parent | Comment|
+|--- | --- | --- | --- | --- | --- | --- | ---|
+|t_day | String |  | false | true |  |  | |
+|sum | Int |  | false | false |  |  | |
+
+## ER diagram
+
+```plantuml
+@startuml collection_day_count
+skinparam linetype ortho
+entity "collection_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as collection_day_count {
+--
+  * t_day : [UK] String
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+```
+# collection_day_ticket_count
+
+## Description
+The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+
+## Columns
+
+|Name | Type | Default | Nullable | Unique | Children | Parent | Comment|
+|--- | --- | --- | --- | --- | --- | --- | ---|
+|id | String |  | false | true |  |  | |
+|ticket_id | Int |  | true | false |  |  | |
+|t_day | String |  | true | false |  |  | |
+|sum | Int |  | false | false |  |  | |
+
+## ER diagram
+
+```plantuml
+@startuml collection_day_ticket_count
+skinparam linetype ortho
+entity "collection_day_ticket_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as collection_day_ticket_count {
+--
+  * id : [UK] String
+  ticket_id : Int
+  t_day : String
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+```
+# user_day_count
+
+## Description
+The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+
+## Columns
+
+|Name | Type | Default | Nullable | Unique | Children | Parent | Comment|
+|--- | --- | --- | --- | --- | --- | --- | ---|
+|c_day | String |  | false | true |  |  | |
+|sum | Int |  | false | false |  |  | |
+
+## ER diagram
+
+```plantuml
+@startuml user_day_count
+skinparam linetype ortho
+entity "user_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_day_count {
+--
+  * c_day : [UK] String
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+```
+# user_month_count
+
+## Description
+The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+
+## Columns
+
+|Name | Type | Default | Nullable | Unique | Children | Parent | Comment|
+|--- | --- | --- | --- | --- | --- | --- | ---|
+|id | String |  | false | true |  |  | |
+|c_year | Int |  | true | false |  |  | |
+|c_month | Int |  | true | false |  |  | |
+|sum | Int |  | false | false |  |  | |
+
+## ER diagram
+
+```plantuml
+@startuml user_month_count
+skinparam linetype ortho
+entity "user_month_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_month_count {
+--
+  * id : [UK] String
+  c_year : Int
+  c_month : Int
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+```
+# user_week_count
+
+## Description
+The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+
+## Columns
+
+|Name | Type | Default | Nullable | Unique | Children | Parent | Comment|
+|--- | --- | --- | --- | --- | --- | --- | ---|
+|c_week | Int |  | false | true |  |  | |
+|sum | Int |  | false | false |  |  | |
+
+## ER diagram
+
+```plantuml
+@startuml user_week_count
+skinparam linetype ortho
+entity "user_week_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_week_count {
+--
+  * c_week : [UK] Int
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+```
+# transfer_day_count
+
+## Description
+The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+
+## Columns
+
+|Name | Type | Default | Nullable | Unique | Children | Parent | Comment|
+|--- | --- | --- | --- | --- | --- | --- | ---|
+|t_day | String |  | false | true |  |  | |
+|sum | Int |  | false | false |  |  | |
+
+## ER diagram
+
+```plantuml
+@startuml transfer_day_count
+skinparam linetype ortho
+entity "transfer_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as transfer_day_count {
+--
+  * t_day : [UK] String
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+```
+# transfer_day_ticket_count
+
+## Description
+The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+
+## Columns
+
+|Name | Type | Default | Nullable | Unique | Children | Parent | Comment|
+|--- | --- | --- | --- | --- | --- | --- | ---|
+|id | String |  | false | true |  |  | |
+|ticket_id | Int |  | true | false |  |  | |
+|t_day | String |  | true | false |  |  | |
+|sum | Int |  | false | false |  |  | |
+
+## ER diagram
+
+```plantuml
+@startuml transfer_day_ticket_count
+skinparam linetype ortho
+entity "transfer_day_ticket_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as transfer_day_ticket_count {
+--
+  * id : [UK] String
+  ticket_id : Int
+  t_day : String
+  * sum : Int
+}
+
+' Relations
 ' ManyToMany Relations
 ' enum relations
 @enduml

@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query, Req, Res } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query, Req, Request, Res, Logger } from '@nestjs/common';
 import { ParseIntArrayPipe } from '@/common/pipe/parse-int-array.pipe';
 import Result from '@/common/result/Result';
 import { ApiBearerAuth, ApiBody, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -7,13 +7,14 @@ import { nowDateTime } from '@/common/utils';
 import { FCUserService } from './service/user.service';
 import { QueryFCUserDto, CreateFCUserDto, UpdateFCUserDto } from './dto/index';
 import { Response } from 'express';
-import { user } from '@/common/prisma-client';
+import { user, user_day_count, user_month_count, user_week_count } from '@/common/prisma-client';
 import { TableDataInfo } from '@/common/domain/TableDataInfo';
 
 @ApiBearerAuth()
 @ApiTags('User 管理')
 @Controller('fangcunjiyi/user')
 export class FCUserController {
+  private readonly logger = new Logger(FCUserController.name);
   constructor(private userService: FCUserService) {}
 
   @ApiOperation({ summary: '查询 user 列表' })
@@ -74,5 +75,31 @@ export class FCUserController {
   async delUser(@Param('ids', ParseIntArrayPipe) userIds: number[]): Promise<Result<any>> {
     const { count } = await this.userService.deleteUserByIds(userIds);
     return Result.toAjax(count);
+  }
+
+  @ApiOperation({ summary: '按照 天 统计用户数量' })
+  @ApiResponse({ type: Result<user_day_count[]> })
+  @RequirePermission('fangcunjiyi:user:query')
+  @Get('/daycount/:userId')
+  async queryUserDayCount(@Param('userId', ParseIntPipe) userId: number, @Req() req): Promise<Result<user_day_count[]>> {
+    Logger.log(req);
+    let rst = await this.userService.queryUserDayCount();
+    return Result.Ok(rst);
+  }
+
+  @ApiOperation({ summary: '按照 周 统计用户数量' })
+  @ApiResponse({ type: Result<user_week_count> })
+  @RequirePermission('fangcunjiyi:user:query')
+  @Get('/weekcount/:userId')
+  async queryUserWeekCount(@Param('userId', ParseIntPipe) userId: number, @Req() req): Promise<Result<user_week_count[]>> {
+    return Result.Ok(await this.userService.queryUserWeekCount());
+  }
+
+  @ApiOperation({ summary: '按照 月 统计用户数量' })
+  @ApiResponse({ type: Result<user_month_count[]> })
+  @RequirePermission('fangcunjiyi:user:query')
+  @Get('/monthcount/:userId')
+  async queryMonthDayCount(@Param('userId', ParseIntPipe) userId: number, @Req() req): Promise<Result<user_month_count[]>> {
+    return Result.Ok(await this.userService.queryUserMonthCount());
   }
 }

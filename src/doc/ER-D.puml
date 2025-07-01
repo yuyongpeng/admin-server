@@ -499,6 +499,56 @@ entity "resource" as resource {
   remark : String
 }
 
+entity "collection_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as collection_day_count {
+--
+  * t_day : [UK] String
+  * sum : Int
+}
+
+entity "collection_day_ticket_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as collection_day_ticket_count {
+--
+  * id : [UK] String
+  ticket_id : Int
+  t_day : String
+  * sum : Int
+}
+
+entity "user_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_day_count {
+--
+  * c_day : [UK] String
+  * sum : Int
+}
+
+entity "user_month_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_month_count {
+--
+  * id : [UK] String
+  c_year : Int
+  c_month : Int
+  * sum : Int
+}
+
+entity "user_week_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_week_count {
+--
+  * c_week : [UK] Int
+  * sum : Int
+}
+
+entity "transfer_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as transfer_day_count {
+--
+  * t_day : [UK] String
+  * sum : Int
+}
+
+entity "transfer_day_ticket_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as transfer_day_ticket_count {
+--
+  * id : [UK] String
+  ticket_id : Int
+  t_day : String
+  * sum : Int
+}
+
 ' Relations
 GenTableColumn }o--o| GenTable: tableId
 SysDictData }o--o| SysDictType: dictType
@@ -2116,6 +2166,98 @@ entity "resource" as resource {
 
 ' Relations
 resource }o--|| ticket: ticket_id
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml collection_day_count
+skinparam linetype ortho
+entity "collection_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as collection_day_count {
+--
+  * t_day : [UK] String
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml collection_day_ticket_count
+skinparam linetype ortho
+entity "collection_day_ticket_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as collection_day_ticket_count {
+--
+  * id : [UK] String
+  ticket_id : Int
+  t_day : String
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml user_day_count
+skinparam linetype ortho
+entity "user_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_day_count {
+--
+  * c_day : [UK] String
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml user_month_count
+skinparam linetype ortho
+entity "user_month_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_month_count {
+--
+  * id : [UK] String
+  c_year : Int
+  c_month : Int
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml user_week_count
+skinparam linetype ortho
+entity "user_week_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as user_week_count {
+--
+  * c_week : [UK] Int
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml transfer_day_count
+skinparam linetype ortho
+entity "transfer_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as transfer_day_count {
+--
+  * t_day : [UK] String
+  * sum : Int
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml transfer_day_ticket_count
+skinparam linetype ortho
+entity "transfer_day_ticket_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments" as transfer_day_ticket_count {
+--
+  * id : [UK] String
+  ticket_id : Int
+  t_day : String
+  * sum : Int
+}
+
+' Relations
 ' ManyToMany Relations
 ' enum relations
 @enduml

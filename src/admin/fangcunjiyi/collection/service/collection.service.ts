@@ -184,4 +184,20 @@ export class CollectionService {
     data.unshift(title);
     exportTable(data, res);
   }
+
+  /**@description 查询所有 藏品 的领取情况 */
+  async queryCollectionDayCount() {
+    return this.prisma.collection_day_count.findMany({
+      where: {},
+    });
+  }
+
+  /**@description 查询 指定 藏品 的领取情况 */
+  async queryCollectionDayTicketCount(ticketId: number) {
+    return this.prisma.collection_day_ticket_count.findMany({
+      where: {
+        ticket_id: ticketId,
+      },
+    });
+  }
 }

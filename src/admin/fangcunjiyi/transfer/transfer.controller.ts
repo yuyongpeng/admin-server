@@ -7,7 +7,7 @@ import { nowDateTime } from '@/common/utils';
 import { TransferService } from './service/transfer.service';
 import { QueryTransferDto, CreateTransferDto, UpdateTransferDto } from './dto/index';
 import { Response } from 'express';
-import { tr_transfer } from '@/common/prisma-client';
+import { tr_transfer, transfer_day_count, transfer_day_ticket_count } from '@/common/prisma-client';
 import { TableDataInfo } from '@/common/domain/TableDataInfo';
 
 @ApiBearerAuth()
@@ -77,5 +77,21 @@ export class TransferController {
   async delTransfer(@Param('ids', ParseIntArrayPipe) transferIds: number[]): Promise<Result<any>> {
     const { count } = await this.transferService.deleteTransferByIds(transferIds);
     return Result.toAjax(count);
+  }
+
+  @ApiOperation({ summary: '查询 转增 按照 天 统计的数量' })
+  @ApiResponse({ type: Result<transfer_day_count[]> })
+  @RequirePermission('fangcunjiyi:transfer:query')
+  @Get('/daycount/:ticketid')
+  async queryCollectionDayCount(@Param('ticketid', ParseIntPipe) ticketId: number): Promise<Result<transfer_day_count[]>> {
+    return Result.Ok(await this.transferService.queryTransferDayCount());
+  }
+
+  @ApiOperation({ summary: '查询藏品按照 天 统计的数量' })
+  @ApiResponse({ type: Result<transfer_day_ticket_count[]> })
+  @RequirePermission('fangcunjiyi:transfer:query')
+  @Get('/daycountticket/:ticketid')
+  async queryTransferDayTicketCount(@Param('ticketid', ParseIntPipe) ticketId: number): Promise<Result<transfer_day_ticket_count[]>> {
+    return Result.Ok(await this.transferService.queryTransferDayTicketCount(ticketId));
   }
 }

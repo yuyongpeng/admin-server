@@ -594,6 +594,47 @@ exports.Prisma.ResourceScalarFieldEnum = {
   remark: 'remark'
 };
 
+exports.Prisma.Collection_day_countScalarFieldEnum = {
+  t_day: 't_day',
+  sum: 'sum'
+};
+
+exports.Prisma.Collection_day_ticket_countScalarFieldEnum = {
+  id: 'id',
+  ticket_id: 'ticket_id',
+  t_day: 't_day',
+  sum: 'sum'
+};
+
+exports.Prisma.User_day_countScalarFieldEnum = {
+  c_day: 'c_day',
+  sum: 'sum'
+};
+
+exports.Prisma.User_month_countScalarFieldEnum = {
+  id: 'id',
+  c_year: 'c_year',
+  c_month: 'c_month',
+  sum: 'sum'
+};
+
+exports.Prisma.User_week_countScalarFieldEnum = {
+  c_week: 'c_week',
+  sum: 'sum'
+};
+
+exports.Prisma.Transfer_day_countScalarFieldEnum = {
+  t_day: 't_day',
+  sum: 'sum'
+};
+
+exports.Prisma.Transfer_day_ticket_countScalarFieldEnum = {
+  id: 'id',
+  ticket_id: 'ticket_id',
+  t_day: 't_day',
+  sum: 'sum'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -926,6 +967,32 @@ exports.Prisma.resourceOrderByRelevanceFieldEnum = {
   remark: 'remark'
 };
 
+exports.Prisma.collection_day_countOrderByRelevanceFieldEnum = {
+  t_day: 't_day'
+};
+
+exports.Prisma.collection_day_ticket_countOrderByRelevanceFieldEnum = {
+  id: 'id',
+  t_day: 't_day'
+};
+
+exports.Prisma.user_day_countOrderByRelevanceFieldEnum = {
+  c_day: 'c_day'
+};
+
+exports.Prisma.user_month_countOrderByRelevanceFieldEnum = {
+  id: 'id'
+};
+
+exports.Prisma.transfer_day_countOrderByRelevanceFieldEnum = {
+  t_day: 't_day'
+};
+
+exports.Prisma.transfer_day_ticket_countOrderByRelevanceFieldEnum = {
+  id: 'id',
+  t_day: 't_day'
+};
+
 
 exports.Prisma.ModelName = {
   GenTable: 'GenTable',
@@ -954,7 +1021,14 @@ exports.Prisma.ModelName = {
   tr_transfer: 'tr_transfer',
   user: 'user',
   declarex: 'declarex',
-  resource: 'resource'
+  resource: 'resource',
+  collection_day_count: 'collection_day_count',
+  collection_day_ticket_count: 'collection_day_ticket_count',
+  user_day_count: 'user_day_count',
+  user_month_count: 'user_month_count',
+  user_week_count: 'user_week_count',
+  transfer_day_count: 'transfer_day_count',
+  transfer_day_ticket_count: 'transfer_day_ticket_count'
 };
 
 /**

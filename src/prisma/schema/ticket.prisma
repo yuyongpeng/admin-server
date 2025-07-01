@@ -292,3 +292,52 @@ model resource {
   status       Int?    @default(0) @db.TinyInt
   remark       String? @db.VarChar(255)
 }
+
+/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+view collection_day_count {
+  t_day String @db.VarChar(10)  @unique
+  sum   Int  @default(0)
+}
+
+/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+/// This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+view collection_day_ticket_count {
+  id        String @db.VarChar(20) @unique
+  ticket_id Int?    @default(0) @db.UnsignedInt
+  t_day     String? @db.VarChar(10)
+  sum       Int  @default(0)
+}
+
+/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+view user_day_count {
+  c_day String @db.VarChar(10)  @unique
+  sum   Int  @default(0)
+}
+
+/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+view user_month_count {
+  id      String @db.VarChar(6)  @unique
+  c_year  Int?
+  c_month Int?
+  sum     Int  @default(0)
+}
+/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+view user_week_count {
+  c_week Int @unique
+  sum    Int @default(0)
+}
+/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+view transfer_day_count {
+  t_day    String @db.VarChar(10)  @unique
+  sum       Int  @default(0)
+
+}
+
+/// The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+/// This view or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+view transfer_day_ticket_count {
+  id        String @db.VarChar(20)  @unique
+  ticket_id Int?    @default(0) @db.UnsignedInt
+  t_day     String? @db.VarChar(10)
+  sum       Int  @default(0)
+}

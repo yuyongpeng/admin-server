@@ -158,4 +158,20 @@ export class TransferService {
     data.unshift(title);
     exportTable(data, res);
   }
+
+  /**@description 查询所有 转增 的领取情况 */
+  async queryTransferDayCount() {
+    return this.prisma.transfer_day_count.findMany({
+      where: {},
+    });
+  }
+
+  /**@description 查询 指定 转增 的领取情况 */
+  async queryTransferDayTicketCount(ticketId: number) {
+    return this.prisma.transfer_day_ticket_count.findMany({
+      where: {
+        ticket_id: ticketId,
+      },
+    });
+  }
 }
