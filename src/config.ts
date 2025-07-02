@@ -73,7 +73,7 @@ export const Config: config = {
   },
   upload: {
     //上传文件存储基目录 请设置一个绝对路径
-    path: 'C:\\Users\\yuyongpeng\\Documents\\',
+    path: process.env.uploadPath,
     // path: 'd:/uploads',
     config: {
       img: {

@@ -1,40 +1,11 @@
-import {
-  BadRequestException,
-  Body,
-  Controller,
-  Delete,
-  Get,
-  Param,
-  ParseIntPipe,
-  Post,
-  Put,
-  Query,
-  Req,
-  Res,
-  UploadedFile,
-  UseInterceptors,
-} from '@nestjs/common';
+import { Logger, BadRequestException, Body, Controller, Delete, Get, Param, ParseIntPipe, Post, Put, Query, Req, Res, UploadedFile, UseInterceptors } from '@nestjs/common';
 import { ParseIntArrayPipe } from '@/common/pipe/parse-int-array.pipe';
 import Result from '@/common/result/Result';
-import {
-  ApiBearerAuth,
-  ApiBody,
-  ApiOperation,
-  ApiQuery,
-  ApiResponse,
-  ApiTags,
-} from '@nestjs/swagger';
+import { ApiBearerAuth, ApiBody, ApiOperation, ApiQuery, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { RequirePermission } from '@/common/decorator/require-premission.decorator';
 import { nowDateTime, tree } from '@/common/utils';
 import { UserService } from './service/sys-user.service';
-import {
-  QuerySysUserDto,
-  CreateSysUserDto,
-  UpdateSysUserDto,
-  resetPasswordDto,
-  UpdateSysUserStatusDto,
-  updateProfileDto,
-} from './dto/index';
+import { QuerySysUserDto, CreateSysUserDto, UpdateSysUserDto, resetPasswordDto, UpdateSysUserStatusDto, updateProfileDto } from './dto/index';
 import { Response } from 'express';
 import { SysDept, SysUser } from '@prismaClient';
 import { TableDataInfo } from '@/common/domain/TableDataInfo';
@@ -42,15 +13,19 @@ import { QuerySysDeptDto } from '../dept/dto';
 import { DeptService } from '../dept/service/sys-dept.service';
 import { RequireRole } from '@/common/decorator/require-role.decorator';
 import { PrismaService } from '@/common/service/prisma/prisma.service';
-import {
-  getFilePath,
-  uploadAvatarConfig,
-} from '@/admin/common/upload/config/uploadConfig';
+import { getFilePath, uploadAvatarConfig } from '@/admin/common/upload/config/uploadConfig';
 import { FileInterceptor } from '@nestjs/platform-express';
+import { Config } from '@/config';
+import * as qiniu from 'qiniu';
+import * as path from 'path';
+import { randomString } from '@/common/utils';
+import { readFileSync } from 'fs';
+
 @ApiTags('用户管理')
 @ApiBearerAuth()
 @Controller('system/user')
 export class SysUserController {
+  private readonly logger = new Logger(SysUserController.name);
   constructor(
     private userService: UserService,
     private deptService: DeptService,
@@ -102,9 +77,7 @@ export class SysUserController {
   @ApiOperation({ summary: '查询授权角色' })
   @RequireRole('admin')
   @Get('/authRole/:userId')
-  async getAuthRole(
-    @Param('userId', ParseIntPipe) userId: number,
-  ): Promise<any> {
+  async getAuthRole(@Param('userId', ParseIntPipe) userId: number): Promise<any> {
     const userInfo = await this.userService.getAuthRole(userId);
     const roles = (
       await this.prisma.sysRole.findMany({
@@ -134,10 +107,7 @@ export class SysUserController {
   @RequireRole('admin')
   @ApiResponse({ type: Result<null> })
   @Put('/authRole')
-  async updateAuthRole(
-    @Query('userId', ParseIntPipe) userId: number,
-    @Query('roleIds', ParseIntArrayPipe) roleIds: number[],
-  ): Promise<Result<null>> {
+  async updateAuthRole(@Query('userId', ParseIntPipe) userId: number, @Query('roleIds', ParseIntArrayPipe) roleIds: number[]): Promise<Result<null>> {
     await this.userService.updateAuthRole(userId, roleIds);
     return Result.ok();
   }
@@ -155,21 +125,14 @@ export class SysUserController {
 
   @ApiOperation({ summary: '修改用户个人基础信息' })
   @Put('/profile')
-  async updateUserProfile(
-    @Req() req,
-    @Body() user: updateProfileDto,
-  ): Promise<Result<null>> {
+  async updateUserProfile(@Req() req, @Body() user: updateProfileDto): Promise<Result<null>> {
     await this.userService.updateUserProfile(req.userId, user);
     return Result.ok();
   }
 
   @ApiOperation({ summary: '修改个人密码' })
   @Put('/profile/updatePwd')
-  async updateUserPwd(
-    @Req() req,
-    @Query('oldPassword') oldPassword: string,
-    @Query('newPassword') newPassword: string,
-  ): Promise<Result<null>> {
+  async updateUserPwd(@Req() req, @Query('oldPassword') oldPassword: string, @Query('newPassword') newPassword: string): Promise<Result<null>> {
     await this.userService.updateUserPwd(req.userId, oldPassword, newPassword);
     return Result.ok();
   }
@@ -179,18 +142,82 @@ export class SysUserController {
    */
 
   @UseInterceptors(FileInterceptor('avatarfile', uploadAvatarConfig))
+  // @UseInterceptors(FileInterceptor('file'))
   @Post('/profile/avatar')
   async updateAvatar(@UploadedFile() file: Express.Multer.File, @Req() req) {
     const userId = req.userId;
     if (!file) {
       return Result.BadRequest('请选择上传图片！');
     }
-    const avatar = getFilePath(file);
-    await this.userService.updateAvatar(userId, avatar);
-    return {
-      ...Result.ok(),
-      imgUrl: avatar,
+
+    const accessKey = Config.qiniu.accessKey;
+    const secretKey = Config.qiniu.secretKey;
+    const bucket = Config.qiniu.bucket;
+    const domain = Config.qiniu.domain;
+    // const accessKey = 'oTzKv609ytvA-h9A4eyDx-n9ygb_UvtUFPhgm6ok';
+    // const secretKey = 'xge3PKlU00jzoABohV5994UeAWX6ZAixcE9UwL6l';
+    // const bucket = 'dasset';
+    // const domain = 'https://daop-img.stars-mine.com/';
+    const mac = new qiniu.auth.digest.Mac(accessKey, secretKey);
+    const options = {
+      scope: bucket,
     };
+    const putPolicy = new qiniu.rs.PutPolicy(options);
+    const uploadToken = putPolicy.uploadToken(mac);
+
+    // upoload
+    const formUploader = new qiniu.form_up.FormUploader(
+      new qiniu.conf.Config({
+        zone: qiniu.zone.Zone_z2,
+      }),
+    );
+    let pathMiddle = 'other';
+    // 根据扩展名调整 URL path
+    let fileExt = path.extname(file.originalname).replace(/./i, '');
+    if (['jpg', 'png', 'jpeg', 'gif'].includes(fileExt)) pathMiddle = 'img';
+    if (['mp4'].includes(fileExt)) pathMiddle = 'video';
+    if (['mp3'].includes(fileExt)) pathMiddle = 'audio';
+
+    // 上传图片到七牛
+    const uploadResult = await formUploader.put(
+      uploadToken,
+      `dstamp/${pathMiddle}/${randomString(2)}/${randomString(2)}/${Date.now()}-${randomString(8)}` + (path.extname(file.originalname) || '.jpg'),
+      readFileSync(file.path),
+      new qiniu.form_up.PutExtra(),
+    );
+    const uploadResultResp = uploadResult.resp;
+    if (uploadResultResp['status'] == 200) {
+      // 老版本上传到本地，，现在改为上传到七牛了。
+      // const data = {
+      //   fileName: file.filename,
+      //   newFileName: file.filename,
+      //   originalFilename: file.originalname,
+      //   // url: domain + `${Date.now()}-${file.originalname}.` + (path.extname(file.originalname) || '.jpg'),
+      //   url: domain + uploadResult.data['key'],
+      //   size: file.size,
+      // };
+      // return { ...Result.ok(), ...data };
+
+      const avatar = domain + uploadResult.data['key'];
+      await this.userService.updateAvatar(userId, avatar);
+      return {
+        ...Result.ok(),
+        imgUrl: avatar,
+      };
+    } else {
+      const errMsg = 'qiniu status:' + uploadResultResp['status'] + ' ,qiniu statusmessage:' + uploadResultResp['statusMessage'];
+      this.logger.error(errMsg);
+      return Result.Error(errMsg);
+    }
+
+    // this.logger.log(uploadResult);
+
+    // const avatar = getFilePath(file);
+    // await this.userService.updateAvatar(userId, avatar);
+    // return {
+    //   ...Result.ok(),
+    //   imgUrl: avatar,
+    // };
   }
 
   @ApiOperation({ summary: '查询用户管理详细' })
@@ -215,10 +242,7 @@ export class SysUserController {
   @ApiBody({ type: CreateSysUserDto })
   @RequirePermission('system:user:add')
   @Post('/')
-  async addUser(
-    @Body() sysUser: CreateSysUserDto,
-    @Req() req,
-  ): Promise<Result<SysUser>> {
+  async addUser(@Body() sysUser: CreateSysUserDto, @Req() req): Promise<Result<SysUser>> {
     sysUser = {
       ...sysUser,
       createTime: nowDateTime(),
@@ -235,10 +259,7 @@ export class SysUserController {
   @ApiBody({ type: UpdateSysUserDto })
   @RequirePermission('system:user:edit')
   @Put('/')
-  async updateUser(
-    @Body() sysUser: UpdateSysUserDto,
-    @Req() req,
-  ): Promise<Result<any>> {
+  async updateUser(@Body() sysUser: UpdateSysUserDto, @Req() req): Promise<Result<any>> {
     //不能修改超级管理员
     if (sysUser.userId === 1) throw new BadRequestException('非法操作！');
     //过滤掉设置超级管理员角色
@@ -259,10 +280,7 @@ export class SysUserController {
   @ApiResponse({ type: Result<any> })
   @RequirePermission('system:user:remove')
   @Delete('/:ids')
-  async delUser(
-    @Req() req,
-    @Param('ids', ParseIntArrayPipe) userIds: number[],
-  ): Promise<Result<any>> {
+  async delUser(@Req() req, @Param('ids', ParseIntArrayPipe) userIds: number[]): Promise<Result<any>> {
     //不能删除自己或者超级管理员的账号
     userIds = userIds.filter((v) => v !== 1 && v != req.userId);
     const { count } = await this.userService.deleteUserByUserIds(userIds);
@@ -284,9 +302,7 @@ export class SysUserController {
   @ApiBody({ type: UpdateSysUserStatusDto })
   @RequireRole('admin')
   @Put('/changeStatus')
-  async updateUserStatus(
-    @Body() sysUser: UpdateSysUserStatusDto,
-  ): Promise<Result<any>> {
+  async updateUserStatus(@Body() sysUser: UpdateSysUserStatusDto): Promise<Result<any>> {
     await this.userService.updateStatus(sysUser);
     return Result.ok('修改成功！');
   }
