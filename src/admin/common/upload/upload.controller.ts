@@ -100,7 +100,7 @@ export class UploadController {
     // uoload
     const formUploader = new qiniu.form_up.FormUploader(
       new qiniu.conf.Config({
-        zone: qiniu.zone.Zone_z2,
+        zone: qiniu.zone.Zone_z1,
       }),
     );
     let pathMiddle = 'other';
