@@ -566,6 +566,21 @@ model declarex {
   remark      String? @db.VarChar(255)
 }
 
+model recommend_img {
+  id          Int     @id @default(autoincrement())
+  name        String? @db.VarChar(255)
+  img         String? @db.VarChar(255)
+  link        String? @db.VarChar(255)
+  order       Int?
+  recommend   Int?    @default(1) @db.TinyInt
+  create_by   String? @db.VarChar(255)
+  create_time String? @db.VarChar(255)
+  update_by   String? @db.VarChar(255)
+  update_time String? @db.VarChar(255)
+  status      Int?    @default(0) @db.TinyInt
+  remark      String? @db.VarChar(255)
+}
+
 model resource {
   id           Int     @id @default(autoincrement()) @db.UnsignedInt
   ticket_id    Int
@@ -644,7 +659,7 @@ generator client {
 datasource db {
   provider     = "mysql"
   // url          = env("DATABASE_URL")
-  url          = "mysql://root:123456@172.22.135.106:3306/carole-admin?charset=utf8mb4"
+  url          = "mysql://root:123456@172.22.135.106:3306/dstamp?charset=utf8mb4"
   relationMode = "foreignKeys" // 从数据库中提取表关联关系并生成到prisma文件
   // relationMode = "prisma"  // 不会从数据库中提取表关联关系，需要自己在prisma文件中编写
 }

@@ -9,7 +9,7 @@ import { ParseIntPipe, Query } from '@nestjs/common';
 export class QueryResourceDto extends queryDomain {
   @ApiProperty({ description: 'resource表id', required: false })
   @IsOptional()
-  @IsInt({ message: 'status 必须是 int 数据' })
+  @IsInt({ message: 'id 必须是 int 数据' })
   id: number | null;
 
   @ApiProperty({ description: 'ticket id', required: false })
@@ -20,32 +20,32 @@ export class QueryResourceDto extends queryDomain {
 
   @ApiProperty({ description: '名称', required: false })
   @IsOptional()
-  @IsString({ message: 'status 必须是 string 数据' })
+  @IsString({ message: 'name 必须是 string 数据' })
   name?: string | null;
 
   @ApiProperty({ description: '资源的URL', required: false })
   @IsOptional()
-  @IsString({ message: 'status 必须是 string 数据' })
+  @IsString({ message: 'resource_url 必须是 string 数据' })
   resource_url?: string | null;
 
   @ApiProperty({ description: '排序', required: false })
   @IsOptional()
-  @IsString({ message: 'status 必须是 string 数据' })
+  @IsString({ message: 'remark 必须是 string 数据' })
   remark?: string | null;
 
   @ApiProperty({ description: '备注', required: false })
   @IsOptional()
-  @IsInt({ message: 'status 必须是 int 数据' })
+  @IsInt({ message: 'order 必须是 int 数据' })
   order?: number | null;
 
   @ApiProperty({ description: '创建时间', required: false })
   @IsOptional()
-  @IsString({ message: 'status 必须是 string 数据' })
+  @IsString({ message: 'createTime 必须是 string 数据' })
   createTime: string | null;
 
   @ApiProperty({ description: '修改时间', required: false })
   @IsOptional()
-  @IsString({ message: 'status 必须是 string 数据' })
+  @IsString({ message: 'updateTime 必须是 string 数据' })
   updateTime: string | null;
 
   @ApiProperty({ description: '状态。0-正常，1-删除', required: false })
@@ -56,12 +56,12 @@ export class QueryResourceDto extends queryDomain {
 
   @ApiProperty({ description: '创建者', required: false })
   @IsOptional()
-  @IsString({ message: 'status 必须是 string 数据' })
+  @IsString({ message: 'createBy 必须是 string 数据' })
   createBy: string | null;
 
   @ApiProperty({ description: '更新者', required: false })
   @IsOptional()
-  @IsString({ message: 'status 必须是 string 数据' })
+  @IsString({ message: 'updateBy 必须是 string 数据' })
   updateBy: string | null;
 }
 

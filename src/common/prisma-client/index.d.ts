@@ -144,6 +144,11 @@ export type user = $Result.DefaultSelection<Prisma.$userPayload>
  */
 export type declarex = $Result.DefaultSelection<Prisma.$declarexPayload>
 /**
+ * Model recommend_img
+ * 
+ */
+export type recommend_img = $Result.DefaultSelection<Prisma.$recommend_imgPayload>
+/**
  * Model resource
  * 
  */
@@ -570,6 +575,16 @@ export class PrismaClient<
     * ```
     */
   get declarex(): Prisma.declarexDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.recommend_img`: Exposes CRUD operations for the **recommend_img** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Recommend_imgs
+    * const recommend_imgs = await prisma.recommend_img.findMany()
+    * ```
+    */
+  get recommend_img(): Prisma.recommend_imgDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.resource`: Exposes CRUD operations for the **resource** model.
@@ -1116,6 +1131,7 @@ export namespace Prisma {
     tr_transfer: 'tr_transfer',
     user: 'user',
     declarex: 'declarex',
+    recommend_img: 'recommend_img',
     resource: 'resource',
     collection_day_count: 'collection_day_count',
     collection_day_ticket_count: 'collection_day_ticket_count',
@@ -1142,7 +1158,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "genTable" | "genTableColumn" | "sysConfig" | "sysDept" | "sysDictData" | "sysDictType" | "sysLogininfor" | "sysMenu" | "sysNotice" | "sysPost" | "sysUserPost" | "sysRoleDept" | "sysRoleMenu" | "sysUser" | "sysRole" | "sysUserRole" | "collection" | "init_mobile" | "platform_token" | "publisher" | "ticket" | "tr_order" | "tr_pay_notification" | "tr_transfer" | "user" | "declarex" | "resource" | "collection_day_count" | "collection_day_ticket_count" | "user_day_count" | "user_month_count" | "user_week_count" | "transfer_day_count" | "transfer_day_ticket_count"
+      modelProps: "genTable" | "genTableColumn" | "sysConfig" | "sysDept" | "sysDictData" | "sysDictType" | "sysLogininfor" | "sysMenu" | "sysNotice" | "sysPost" | "sysUserPost" | "sysRoleDept" | "sysRoleMenu" | "sysUser" | "sysRole" | "sysUserRole" | "collection" | "init_mobile" | "platform_token" | "publisher" | "ticket" | "tr_order" | "tr_pay_notification" | "tr_transfer" | "user" | "declarex" | "recommend_img" | "resource" | "collection_day_count" | "collection_day_ticket_count" | "user_day_count" | "user_month_count" | "user_week_count" | "transfer_day_count" | "transfer_day_ticket_count"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2862,6 +2878,72 @@ export namespace Prisma {
           }
         }
       }
+      recommend_img: {
+        payload: Prisma.$recommend_imgPayload<ExtArgs>
+        fields: Prisma.recommend_imgFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.recommend_imgFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$recommend_imgPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.recommend_imgFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$recommend_imgPayload>
+          }
+          findFirst: {
+            args: Prisma.recommend_imgFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$recommend_imgPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.recommend_imgFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$recommend_imgPayload>
+          }
+          findMany: {
+            args: Prisma.recommend_imgFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$recommend_imgPayload>[]
+          }
+          create: {
+            args: Prisma.recommend_imgCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$recommend_imgPayload>
+          }
+          createMany: {
+            args: Prisma.recommend_imgCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.recommend_imgDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$recommend_imgPayload>
+          }
+          update: {
+            args: Prisma.recommend_imgUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$recommend_imgPayload>
+          }
+          deleteMany: {
+            args: Prisma.recommend_imgDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.recommend_imgUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.recommend_imgUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$recommend_imgPayload>
+          }
+          aggregate: {
+            args: Prisma.Recommend_imgAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateRecommend_img>
+          }
+          groupBy: {
+            args: Prisma.recommend_imgGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Recommend_imgGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.recommend_imgCountArgs<ExtArgs>
+            result: $Utils.Optional<Recommend_imgCountAggregateOutputType> | number
+          }
+        }
+      }
       resource: {
         payload: Prisma.$resourcePayload<ExtArgs>
         fields: Prisma.resourceFieldRefs
@@ -3500,6 +3582,7 @@ export namespace Prisma {
     tr_transfer?: tr_transferOmit
     user?: userOmit
     declarex?: declarexOmit
+    recommend_img?: recommend_imgOmit
     resource?: resourceOmit
     collection_day_count?: collection_day_countOmit
     collection_day_ticket_count?: collection_day_ticket_countOmit
@@ -32614,6 +32697,1020 @@ export namespace Prisma {
 
 
   /**
+   * Model recommend_img
+   */
+
+  export type AggregateRecommend_img = {
+    _count: Recommend_imgCountAggregateOutputType | null
+    _avg: Recommend_imgAvgAggregateOutputType | null
+    _sum: Recommend_imgSumAggregateOutputType | null
+    _min: Recommend_imgMinAggregateOutputType | null
+    _max: Recommend_imgMaxAggregateOutputType | null
+  }
+
+  export type Recommend_imgAvgAggregateOutputType = {
+    id: number | null
+    order: number | null
+    recommend: number | null
+    status: number | null
+  }
+
+  export type Recommend_imgSumAggregateOutputType = {
+    id: number | null
+    order: number | null
+    recommend: number | null
+    status: number | null
+  }
+
+  export type Recommend_imgMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    img: string | null
+    link: string | null
+    order: number | null
+    recommend: number | null
+    create_by: string | null
+    create_time: string | null
+    update_by: string | null
+    update_time: string | null
+    status: number | null
+    remark: string | null
+  }
+
+  export type Recommend_imgMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    img: string | null
+    link: string | null
+    order: number | null
+    recommend: number | null
+    create_by: string | null
+    create_time: string | null
+    update_by: string | null
+    update_time: string | null
+    status: number | null
+    remark: string | null
+  }
+
+  export type Recommend_imgCountAggregateOutputType = {
+    id: number
+    name: number
+    img: number
+    link: number
+    order: number
+    recommend: number
+    create_by: number
+    create_time: number
+    update_by: number
+    update_time: number
+    status: number
+    remark: number
+    _all: number
+  }
+
+
+  export type Recommend_imgAvgAggregateInputType = {
+    id?: true
+    order?: true
+    recommend?: true
+    status?: true
+  }
+
+  export type Recommend_imgSumAggregateInputType = {
+    id?: true
+    order?: true
+    recommend?: true
+    status?: true
+  }
+
+  export type Recommend_imgMinAggregateInputType = {
+    id?: true
+    name?: true
+    img?: true
+    link?: true
+    order?: true
+    recommend?: true
+    create_by?: true
+    create_time?: true
+    update_by?: true
+    update_time?: true
+    status?: true
+    remark?: true
+  }
+
+  export type Recommend_imgMaxAggregateInputType = {
+    id?: true
+    name?: true
+    img?: true
+    link?: true
+    order?: true
+    recommend?: true
+    create_by?: true
+    create_time?: true
+    update_by?: true
+    update_time?: true
+    status?: true
+    remark?: true
+  }
+
+  export type Recommend_imgCountAggregateInputType = {
+    id?: true
+    name?: true
+    img?: true
+    link?: true
+    order?: true
+    recommend?: true
+    create_by?: true
+    create_time?: true
+    update_by?: true
+    update_time?: true
+    status?: true
+    remark?: true
+    _all?: true
+  }
+
+  export type Recommend_imgAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which recommend_img to aggregate.
+     */
+    where?: recommend_imgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recommend_imgs to fetch.
+     */
+    orderBy?: recommend_imgOrderByWithRelationInput | recommend_imgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: recommend_imgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recommend_imgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recommend_imgs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned recommend_imgs
+    **/
+    _count?: true | Recommend_imgCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Recommend_imgAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Recommend_imgSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Recommend_imgMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Recommend_imgMaxAggregateInputType
+  }
+
+  export type GetRecommend_imgAggregateType<T extends Recommend_imgAggregateArgs> = {
+        [P in keyof T & keyof AggregateRecommend_img]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateRecommend_img[P]>
+      : GetScalarType<T[P], AggregateRecommend_img[P]>
+  }
+
+
+
+
+  export type recommend_imgGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: recommend_imgWhereInput
+    orderBy?: recommend_imgOrderByWithAggregationInput | recommend_imgOrderByWithAggregationInput[]
+    by: Recommend_imgScalarFieldEnum[] | Recommend_imgScalarFieldEnum
+    having?: recommend_imgScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Recommend_imgCountAggregateInputType | true
+    _avg?: Recommend_imgAvgAggregateInputType
+    _sum?: Recommend_imgSumAggregateInputType
+    _min?: Recommend_imgMinAggregateInputType
+    _max?: Recommend_imgMaxAggregateInputType
+  }
+
+  export type Recommend_imgGroupByOutputType = {
+    id: number
+    name: string | null
+    img: string | null
+    link: string | null
+    order: number | null
+    recommend: number | null
+    create_by: string | null
+    create_time: string | null
+    update_by: string | null
+    update_time: string | null
+    status: number | null
+    remark: string | null
+    _count: Recommend_imgCountAggregateOutputType | null
+    _avg: Recommend_imgAvgAggregateOutputType | null
+    _sum: Recommend_imgSumAggregateOutputType | null
+    _min: Recommend_imgMinAggregateOutputType | null
+    _max: Recommend_imgMaxAggregateOutputType | null
+  }
+
+  type GetRecommend_imgGroupByPayload<T extends recommend_imgGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Recommend_imgGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Recommend_imgGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Recommend_imgGroupByOutputType[P]>
+            : GetScalarType<T[P], Recommend_imgGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type recommend_imgSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    img?: boolean
+    link?: boolean
+    order?: boolean
+    recommend?: boolean
+    create_by?: boolean
+    create_time?: boolean
+    update_by?: boolean
+    update_time?: boolean
+    status?: boolean
+    remark?: boolean
+  }, ExtArgs["result"]["recommend_img"]>
+
+
+
+  export type recommend_imgSelectScalar = {
+    id?: boolean
+    name?: boolean
+    img?: boolean
+    link?: boolean
+    order?: boolean
+    recommend?: boolean
+    create_by?: boolean
+    create_time?: boolean
+    update_by?: boolean
+    update_time?: boolean
+    status?: boolean
+    remark?: boolean
+  }
+
+  export type recommend_imgOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "img" | "link" | "order" | "recommend" | "create_by" | "create_time" | "update_by" | "update_time" | "status" | "remark", ExtArgs["result"]["recommend_img"]>
+
+  export type $recommend_imgPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "recommend_img"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string | null
+      img: string | null
+      link: string | null
+      order: number | null
+      recommend: number | null
+      create_by: string | null
+      create_time: string | null
+      update_by: string | null
+      update_time: string | null
+      status: number | null
+      remark: string | null
+    }, ExtArgs["result"]["recommend_img"]>
+    composites: {}
+  }
+
+  type recommend_imgGetPayload<S extends boolean | null | undefined | recommend_imgDefaultArgs> = $Result.GetResult<Prisma.$recommend_imgPayload, S>
+
+  type recommend_imgCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<recommend_imgFindManyArgs, 'select' | 'include' | 'distinct' | 'omit' | 'relationLoadStrategy'> & {
+      select?: Recommend_imgCountAggregateInputType | true
+    }
+
+  export interface recommend_imgDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['recommend_img'], meta: { name: 'recommend_img' } }
+    /**
+     * Find zero or one Recommend_img that matches the filter.
+     * @param {recommend_imgFindUniqueArgs} args - Arguments to find a Recommend_img
+     * @example
+     * // Get one Recommend_img
+     * const recommend_img = await prisma.recommend_img.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends recommend_imgFindUniqueArgs>(args: SelectSubset<T, recommend_imgFindUniqueArgs<ExtArgs>>): Prisma__recommend_imgClient<$Result.GetResult<Prisma.$recommend_imgPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Recommend_img that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {recommend_imgFindUniqueOrThrowArgs} args - Arguments to find a Recommend_img
+     * @example
+     * // Get one Recommend_img
+     * const recommend_img = await prisma.recommend_img.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends recommend_imgFindUniqueOrThrowArgs>(args: SelectSubset<T, recommend_imgFindUniqueOrThrowArgs<ExtArgs>>): Prisma__recommend_imgClient<$Result.GetResult<Prisma.$recommend_imgPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Recommend_img that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recommend_imgFindFirstArgs} args - Arguments to find a Recommend_img
+     * @example
+     * // Get one Recommend_img
+     * const recommend_img = await prisma.recommend_img.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends recommend_imgFindFirstArgs>(args?: SelectSubset<T, recommend_imgFindFirstArgs<ExtArgs>>): Prisma__recommend_imgClient<$Result.GetResult<Prisma.$recommend_imgPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Recommend_img that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recommend_imgFindFirstOrThrowArgs} args - Arguments to find a Recommend_img
+     * @example
+     * // Get one Recommend_img
+     * const recommend_img = await prisma.recommend_img.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends recommend_imgFindFirstOrThrowArgs>(args?: SelectSubset<T, recommend_imgFindFirstOrThrowArgs<ExtArgs>>): Prisma__recommend_imgClient<$Result.GetResult<Prisma.$recommend_imgPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Recommend_imgs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recommend_imgFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Recommend_imgs
+     * const recommend_imgs = await prisma.recommend_img.findMany()
+     * 
+     * // Get first 10 Recommend_imgs
+     * const recommend_imgs = await prisma.recommend_img.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const recommend_imgWithIdOnly = await prisma.recommend_img.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends recommend_imgFindManyArgs>(args?: SelectSubset<T, recommend_imgFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$recommend_imgPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Recommend_img.
+     * @param {recommend_imgCreateArgs} args - Arguments to create a Recommend_img.
+     * @example
+     * // Create one Recommend_img
+     * const Recommend_img = await prisma.recommend_img.create({
+     *   data: {
+     *     // ... data to create a Recommend_img
+     *   }
+     * })
+     * 
+     */
+    create<T extends recommend_imgCreateArgs>(args: SelectSubset<T, recommend_imgCreateArgs<ExtArgs>>): Prisma__recommend_imgClient<$Result.GetResult<Prisma.$recommend_imgPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Recommend_imgs.
+     * @param {recommend_imgCreateManyArgs} args - Arguments to create many Recommend_imgs.
+     * @example
+     * // Create many Recommend_imgs
+     * const recommend_img = await prisma.recommend_img.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends recommend_imgCreateManyArgs>(args?: SelectSubset<T, recommend_imgCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Recommend_img.
+     * @param {recommend_imgDeleteArgs} args - Arguments to delete one Recommend_img.
+     * @example
+     * // Delete one Recommend_img
+     * const Recommend_img = await prisma.recommend_img.delete({
+     *   where: {
+     *     // ... filter to delete one Recommend_img
+     *   }
+     * })
+     * 
+     */
+    delete<T extends recommend_imgDeleteArgs>(args: SelectSubset<T, recommend_imgDeleteArgs<ExtArgs>>): Prisma__recommend_imgClient<$Result.GetResult<Prisma.$recommend_imgPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Recommend_img.
+     * @param {recommend_imgUpdateArgs} args - Arguments to update one Recommend_img.
+     * @example
+     * // Update one Recommend_img
+     * const recommend_img = await prisma.recommend_img.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends recommend_imgUpdateArgs>(args: SelectSubset<T, recommend_imgUpdateArgs<ExtArgs>>): Prisma__recommend_imgClient<$Result.GetResult<Prisma.$recommend_imgPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Recommend_imgs.
+     * @param {recommend_imgDeleteManyArgs} args - Arguments to filter Recommend_imgs to delete.
+     * @example
+     * // Delete a few Recommend_imgs
+     * const { count } = await prisma.recommend_img.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends recommend_imgDeleteManyArgs>(args?: SelectSubset<T, recommend_imgDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Recommend_imgs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recommend_imgUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Recommend_imgs
+     * const recommend_img = await prisma.recommend_img.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends recommend_imgUpdateManyArgs>(args: SelectSubset<T, recommend_imgUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Recommend_img.
+     * @param {recommend_imgUpsertArgs} args - Arguments to update or create a Recommend_img.
+     * @example
+     * // Update or create a Recommend_img
+     * const recommend_img = await prisma.recommend_img.upsert({
+     *   create: {
+     *     // ... data to create a Recommend_img
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Recommend_img we want to update
+     *   }
+     * })
+     */
+    upsert<T extends recommend_imgUpsertArgs>(args: SelectSubset<T, recommend_imgUpsertArgs<ExtArgs>>): Prisma__recommend_imgClient<$Result.GetResult<Prisma.$recommend_imgPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Recommend_imgs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recommend_imgCountArgs} args - Arguments to filter Recommend_imgs to count.
+     * @example
+     * // Count the number of Recommend_imgs
+     * const count = await prisma.recommend_img.count({
+     *   where: {
+     *     // ... the filter for the Recommend_imgs we want to count
+     *   }
+     * })
+    **/
+    count<T extends recommend_imgCountArgs>(
+      args?: Subset<T, recommend_imgCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Recommend_imgCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Recommend_img.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Recommend_imgAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Recommend_imgAggregateArgs>(args: Subset<T, Recommend_imgAggregateArgs>): Prisma.PrismaPromise<GetRecommend_imgAggregateType<T>>
+
+    /**
+     * Group by Recommend_img.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {recommend_imgGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends recommend_imgGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: recommend_imgGroupByArgs['orderBy'] }
+        : { orderBy?: recommend_imgGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, recommend_imgGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetRecommend_imgGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the recommend_img model
+   */
+  readonly fields: recommend_imgFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for recommend_img.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__recommend_imgClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the recommend_img model
+   */ 
+  interface recommend_imgFieldRefs {
+    readonly id: FieldRef<"recommend_img", 'Int'>
+    readonly name: FieldRef<"recommend_img", 'String'>
+    readonly img: FieldRef<"recommend_img", 'String'>
+    readonly link: FieldRef<"recommend_img", 'String'>
+    readonly order: FieldRef<"recommend_img", 'Int'>
+    readonly recommend: FieldRef<"recommend_img", 'Int'>
+    readonly create_by: FieldRef<"recommend_img", 'String'>
+    readonly create_time: FieldRef<"recommend_img", 'String'>
+    readonly update_by: FieldRef<"recommend_img", 'String'>
+    readonly update_time: FieldRef<"recommend_img", 'String'>
+    readonly status: FieldRef<"recommend_img", 'Int'>
+    readonly remark: FieldRef<"recommend_img", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * recommend_img findUnique
+   */
+  export type recommend_imgFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recommend_img
+     */
+    select?: recommend_imgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the recommend_img
+     */
+    omit?: recommend_imgOmit<ExtArgs> | null
+    /**
+     * Filter, which recommend_img to fetch.
+     */
+    where: recommend_imgWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * recommend_img findUniqueOrThrow
+   */
+  export type recommend_imgFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recommend_img
+     */
+    select?: recommend_imgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the recommend_img
+     */
+    omit?: recommend_imgOmit<ExtArgs> | null
+    /**
+     * Filter, which recommend_img to fetch.
+     */
+    where: recommend_imgWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * recommend_img findFirst
+   */
+  export type recommend_imgFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recommend_img
+     */
+    select?: recommend_imgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the recommend_img
+     */
+    omit?: recommend_imgOmit<ExtArgs> | null
+    /**
+     * Filter, which recommend_img to fetch.
+     */
+    where?: recommend_imgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recommend_imgs to fetch.
+     */
+    orderBy?: recommend_imgOrderByWithRelationInput | recommend_imgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for recommend_imgs.
+     */
+    cursor?: recommend_imgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recommend_imgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recommend_imgs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of recommend_imgs.
+     */
+    distinct?: Recommend_imgScalarFieldEnum | Recommend_imgScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * recommend_img findFirstOrThrow
+   */
+  export type recommend_imgFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recommend_img
+     */
+    select?: recommend_imgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the recommend_img
+     */
+    omit?: recommend_imgOmit<ExtArgs> | null
+    /**
+     * Filter, which recommend_img to fetch.
+     */
+    where?: recommend_imgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recommend_imgs to fetch.
+     */
+    orderBy?: recommend_imgOrderByWithRelationInput | recommend_imgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for recommend_imgs.
+     */
+    cursor?: recommend_imgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recommend_imgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recommend_imgs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of recommend_imgs.
+     */
+    distinct?: Recommend_imgScalarFieldEnum | Recommend_imgScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * recommend_img findMany
+   */
+  export type recommend_imgFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recommend_img
+     */
+    select?: recommend_imgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the recommend_img
+     */
+    omit?: recommend_imgOmit<ExtArgs> | null
+    /**
+     * Filter, which recommend_imgs to fetch.
+     */
+    where?: recommend_imgWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of recommend_imgs to fetch.
+     */
+    orderBy?: recommend_imgOrderByWithRelationInput | recommend_imgOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing recommend_imgs.
+     */
+    cursor?: recommend_imgWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` recommend_imgs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` recommend_imgs.
+     */
+    skip?: number
+    distinct?: Recommend_imgScalarFieldEnum | Recommend_imgScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * recommend_img create
+   */
+  export type recommend_imgCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recommend_img
+     */
+    select?: recommend_imgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the recommend_img
+     */
+    omit?: recommend_imgOmit<ExtArgs> | null
+    /**
+     * The data needed to create a recommend_img.
+     */
+    data?: XOR<recommend_imgCreateInput, recommend_imgUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * recommend_img createMany
+   */
+  export type recommend_imgCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many recommend_imgs.
+     */
+    data: recommend_imgCreateManyInput | recommend_imgCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * recommend_img update
+   */
+  export type recommend_imgUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recommend_img
+     */
+    select?: recommend_imgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the recommend_img
+     */
+    omit?: recommend_imgOmit<ExtArgs> | null
+    /**
+     * The data needed to update a recommend_img.
+     */
+    data: XOR<recommend_imgUpdateInput, recommend_imgUncheckedUpdateInput>
+    /**
+     * Choose, which recommend_img to update.
+     */
+    where: recommend_imgWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * recommend_img updateMany
+   */
+  export type recommend_imgUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update recommend_imgs.
+     */
+    data: XOR<recommend_imgUpdateManyMutationInput, recommend_imgUncheckedUpdateManyInput>
+    /**
+     * Filter which recommend_imgs to update
+     */
+    where?: recommend_imgWhereInput
+    /**
+     * Limit how many recommend_imgs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * recommend_img upsert
+   */
+  export type recommend_imgUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recommend_img
+     */
+    select?: recommend_imgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the recommend_img
+     */
+    omit?: recommend_imgOmit<ExtArgs> | null
+    /**
+     * The filter to search for the recommend_img to update in case it exists.
+     */
+    where: recommend_imgWhereUniqueInput
+    /**
+     * In case the recommend_img found by the `where` argument doesn't exist, create a new recommend_img with this data.
+     */
+    create: XOR<recommend_imgCreateInput, recommend_imgUncheckedCreateInput>
+    /**
+     * In case the recommend_img was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<recommend_imgUpdateInput, recommend_imgUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * recommend_img delete
+   */
+  export type recommend_imgDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recommend_img
+     */
+    select?: recommend_imgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the recommend_img
+     */
+    omit?: recommend_imgOmit<ExtArgs> | null
+    /**
+     * Filter which recommend_img to delete.
+     */
+    where: recommend_imgWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * recommend_img deleteMany
+   */
+  export type recommend_imgDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which recommend_imgs to delete
+     */
+    where?: recommend_imgWhereInput
+    /**
+     * Limit how many recommend_imgs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * recommend_img without action
+   */
+  export type recommend_imgDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the recommend_img
+     */
+    select?: recommend_imgSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the recommend_img
+     */
+    omit?: recommend_imgOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Model resource
    */
 
@@ -40592,6 +41689,24 @@ export namespace Prisma {
   export type DeclarexScalarFieldEnum = (typeof DeclarexScalarFieldEnum)[keyof typeof DeclarexScalarFieldEnum]
 
 
+  export const Recommend_imgScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    img: 'img',
+    link: 'link',
+    order: 'order',
+    recommend: 'recommend',
+    create_by: 'create_by',
+    create_time: 'create_time',
+    update_by: 'update_by',
+    update_time: 'update_time',
+    status: 'status',
+    remark: 'remark'
+  };
+
+  export type Recommend_imgScalarFieldEnum = (typeof Recommend_imgScalarFieldEnum)[keyof typeof Recommend_imgScalarFieldEnum]
+
+
   export const ResourceScalarFieldEnum: {
     id: 'id',
     ticket_id: 'ticket_id',
@@ -41074,6 +42189,20 @@ export namespace Prisma {
   };
 
   export type declarexOrderByRelevanceFieldEnum = (typeof declarexOrderByRelevanceFieldEnum)[keyof typeof declarexOrderByRelevanceFieldEnum]
+
+
+  export const recommend_imgOrderByRelevanceFieldEnum: {
+    name: 'name',
+    img: 'img',
+    link: 'link',
+    create_by: 'create_by',
+    create_time: 'create_time',
+    update_by: 'update_by',
+    update_time: 'update_time',
+    remark: 'remark'
+  };
+
+  export type recommend_imgOrderByRelevanceFieldEnum = (typeof recommend_imgOrderByRelevanceFieldEnum)[keyof typeof recommend_imgOrderByRelevanceFieldEnum]
 
 
   export const resourceOrderByRelevanceFieldEnum: {
@@ -43976,6 +45105,96 @@ export namespace Prisma {
     update_time?: StringNullableWithAggregatesFilter<"declarex"> | string | null
     status?: IntNullableWithAggregatesFilter<"declarex"> | number | null
     remark?: StringNullableWithAggregatesFilter<"declarex"> | string | null
+  }
+
+  export type recommend_imgWhereInput = {
+    AND?: recommend_imgWhereInput | recommend_imgWhereInput[]
+    OR?: recommend_imgWhereInput[]
+    NOT?: recommend_imgWhereInput | recommend_imgWhereInput[]
+    id?: IntFilter<"recommend_img"> | number
+    name?: StringNullableFilter<"recommend_img"> | string | null
+    img?: StringNullableFilter<"recommend_img"> | string | null
+    link?: StringNullableFilter<"recommend_img"> | string | null
+    order?: IntNullableFilter<"recommend_img"> | number | null
+    recommend?: IntNullableFilter<"recommend_img"> | number | null
+    create_by?: StringNullableFilter<"recommend_img"> | string | null
+    create_time?: StringNullableFilter<"recommend_img"> | string | null
+    update_by?: StringNullableFilter<"recommend_img"> | string | null
+    update_time?: StringNullableFilter<"recommend_img"> | string | null
+    status?: IntNullableFilter<"recommend_img"> | number | null
+    remark?: StringNullableFilter<"recommend_img"> | string | null
+  }
+
+  export type recommend_imgOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrderInput | SortOrder
+    img?: SortOrderInput | SortOrder
+    link?: SortOrderInput | SortOrder
+    order?: SortOrderInput | SortOrder
+    recommend?: SortOrderInput | SortOrder
+    create_by?: SortOrderInput | SortOrder
+    create_time?: SortOrderInput | SortOrder
+    update_by?: SortOrderInput | SortOrder
+    update_time?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    remark?: SortOrderInput | SortOrder
+    _relevance?: recommend_imgOrderByRelevanceInput
+  }
+
+  export type recommend_imgWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: recommend_imgWhereInput | recommend_imgWhereInput[]
+    OR?: recommend_imgWhereInput[]
+    NOT?: recommend_imgWhereInput | recommend_imgWhereInput[]
+    name?: StringNullableFilter<"recommend_img"> | string | null
+    img?: StringNullableFilter<"recommend_img"> | string | null
+    link?: StringNullableFilter<"recommend_img"> | string | null
+    order?: IntNullableFilter<"recommend_img"> | number | null
+    recommend?: IntNullableFilter<"recommend_img"> | number | null
+    create_by?: StringNullableFilter<"recommend_img"> | string | null
+    create_time?: StringNullableFilter<"recommend_img"> | string | null
+    update_by?: StringNullableFilter<"recommend_img"> | string | null
+    update_time?: StringNullableFilter<"recommend_img"> | string | null
+    status?: IntNullableFilter<"recommend_img"> | number | null
+    remark?: StringNullableFilter<"recommend_img"> | string | null
+  }, "id">
+
+  export type recommend_imgOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrderInput | SortOrder
+    img?: SortOrderInput | SortOrder
+    link?: SortOrderInput | SortOrder
+    order?: SortOrderInput | SortOrder
+    recommend?: SortOrderInput | SortOrder
+    create_by?: SortOrderInput | SortOrder
+    create_time?: SortOrderInput | SortOrder
+    update_by?: SortOrderInput | SortOrder
+    update_time?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    remark?: SortOrderInput | SortOrder
+    _count?: recommend_imgCountOrderByAggregateInput
+    _avg?: recommend_imgAvgOrderByAggregateInput
+    _max?: recommend_imgMaxOrderByAggregateInput
+    _min?: recommend_imgMinOrderByAggregateInput
+    _sum?: recommend_imgSumOrderByAggregateInput
+  }
+
+  export type recommend_imgScalarWhereWithAggregatesInput = {
+    AND?: recommend_imgScalarWhereWithAggregatesInput | recommend_imgScalarWhereWithAggregatesInput[]
+    OR?: recommend_imgScalarWhereWithAggregatesInput[]
+    NOT?: recommend_imgScalarWhereWithAggregatesInput | recommend_imgScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"recommend_img"> | number
+    name?: StringNullableWithAggregatesFilter<"recommend_img"> | string | null
+    img?: StringNullableWithAggregatesFilter<"recommend_img"> | string | null
+    link?: StringNullableWithAggregatesFilter<"recommend_img"> | string | null
+    order?: IntNullableWithAggregatesFilter<"recommend_img"> | number | null
+    recommend?: IntNullableWithAggregatesFilter<"recommend_img"> | number | null
+    create_by?: StringNullableWithAggregatesFilter<"recommend_img"> | string | null
+    create_time?: StringNullableWithAggregatesFilter<"recommend_img"> | string | null
+    update_by?: StringNullableWithAggregatesFilter<"recommend_img"> | string | null
+    update_time?: StringNullableWithAggregatesFilter<"recommend_img"> | string | null
+    status?: IntNullableWithAggregatesFilter<"recommend_img"> | number | null
+    remark?: StringNullableWithAggregatesFilter<"recommend_img"> | string | null
   }
 
   export type resourceWhereInput = {
@@ -47584,6 +48803,108 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type recommend_imgCreateInput = {
+    name?: string | null
+    img?: string | null
+    link?: string | null
+    order?: number | null
+    recommend?: number | null
+    create_by?: string | null
+    create_time?: string | null
+    update_by?: string | null
+    update_time?: string | null
+    status?: number | null
+    remark?: string | null
+  }
+
+  export type recommend_imgUncheckedCreateInput = {
+    id?: number
+    name?: string | null
+    img?: string | null
+    link?: string | null
+    order?: number | null
+    recommend?: number | null
+    create_by?: string | null
+    create_time?: string | null
+    update_by?: string | null
+    update_time?: string | null
+    status?: number | null
+    remark?: string | null
+  }
+
+  export type recommend_imgUpdateInput = {
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    recommend?: NullableIntFieldUpdateOperationsInput | number | null
+    create_by?: NullableStringFieldUpdateOperationsInput | string | null
+    create_time?: NullableStringFieldUpdateOperationsInput | string | null
+    update_by?: NullableStringFieldUpdateOperationsInput | string | null
+    update_time?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type recommend_imgUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    recommend?: NullableIntFieldUpdateOperationsInput | number | null
+    create_by?: NullableStringFieldUpdateOperationsInput | string | null
+    create_time?: NullableStringFieldUpdateOperationsInput | string | null
+    update_by?: NullableStringFieldUpdateOperationsInput | string | null
+    update_time?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type recommend_imgCreateManyInput = {
+    id?: number
+    name?: string | null
+    img?: string | null
+    link?: string | null
+    order?: number | null
+    recommend?: number | null
+    create_by?: string | null
+    create_time?: string | null
+    update_by?: string | null
+    update_time?: string | null
+    status?: number | null
+    remark?: string | null
+  }
+
+  export type recommend_imgUpdateManyMutationInput = {
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    recommend?: NullableIntFieldUpdateOperationsInput | number | null
+    create_by?: NullableStringFieldUpdateOperationsInput | string | null
+    create_time?: NullableStringFieldUpdateOperationsInput | string | null
+    update_by?: NullableStringFieldUpdateOperationsInput | string | null
+    update_time?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type recommend_imgUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: NullableStringFieldUpdateOperationsInput | string | null
+    img?: NullableStringFieldUpdateOperationsInput | string | null
+    link?: NullableStringFieldUpdateOperationsInput | string | null
+    order?: NullableIntFieldUpdateOperationsInput | number | null
+    recommend?: NullableIntFieldUpdateOperationsInput | number | null
+    create_by?: NullableStringFieldUpdateOperationsInput | string | null
+    create_time?: NullableStringFieldUpdateOperationsInput | string | null
+    update_by?: NullableStringFieldUpdateOperationsInput | string | null
+    update_time?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
   export type resourceCreateInput = {
     name?: string | null
     resource_url?: string | null
@@ -50323,6 +51644,71 @@ export namespace Prisma {
   export type declarexSumOrderByAggregateInput = {
     id?: SortOrder
     types?: SortOrder
+    status?: SortOrder
+  }
+
+  export type recommend_imgOrderByRelevanceInput = {
+    fields: recommend_imgOrderByRelevanceFieldEnum | recommend_imgOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type recommend_imgCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    order?: SortOrder
+    recommend?: SortOrder
+    create_by?: SortOrder
+    create_time?: SortOrder
+    update_by?: SortOrder
+    update_time?: SortOrder
+    status?: SortOrder
+    remark?: SortOrder
+  }
+
+  export type recommend_imgAvgOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+    recommend?: SortOrder
+    status?: SortOrder
+  }
+
+  export type recommend_imgMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    order?: SortOrder
+    recommend?: SortOrder
+    create_by?: SortOrder
+    create_time?: SortOrder
+    update_by?: SortOrder
+    update_time?: SortOrder
+    status?: SortOrder
+    remark?: SortOrder
+  }
+
+  export type recommend_imgMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    img?: SortOrder
+    link?: SortOrder
+    order?: SortOrder
+    recommend?: SortOrder
+    create_by?: SortOrder
+    create_time?: SortOrder
+    update_by?: SortOrder
+    update_time?: SortOrder
+    status?: SortOrder
+    remark?: SortOrder
+  }
+
+  export type recommend_imgSumOrderByAggregateInput = {
+    id?: SortOrder
+    order?: SortOrder
+    recommend?: SortOrder
     status?: SortOrder
   }
 

@@ -25,6 +25,7 @@
 - [tr_transfer](#tr_transfer)
 - [user](#user)
 - [declarex](#declarex)
+- [recommend_img](#recommend_img)
 - [resource](#resource)
 - [collection_day_count](#collection_day_count)
   - The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
@@ -523,6 +524,22 @@ entity "declarex" as declarex {
   name : String
   content : String
   types : Int
+  create_by : String
+  create_time : String
+  update_by : String
+  update_time : String
+  status : Int
+  remark : String
+}
+
+entity "recommend_img" as recommend_img {
++ id [PK] : Int 
+--
+  name : String
+  img : String
+  link : String
+  order : Int
+  recommend : Int
   create_by : String
   create_time : String
   update_by : String
@@ -2884,6 +2901,54 @@ entity "declarex" as declarex {
   name : String
   content : String
   types : Int
+  create_by : String
+  create_time : String
+  update_by : String
+  update_time : String
+  status : Int
+  remark : String
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+```
+# recommend_img
+
+## Description
+
+
+## Columns
+
+|Name | Type | Default | Nullable | Unique | Children | Parent | Comment|
+|--- | --- | --- | --- | --- | --- | --- | ---|
+|id | Int | autoincrement | false | true |  |  | |
+|name | String |  | true | false |  |  | |
+|img | String |  | true | false |  |  | |
+|link | String |  | true | false |  |  | |
+|order | Int |  | true | false |  |  | |
+|recommend | Int | 1 | true | false |  |  | |
+|create_by | String |  | true | false |  |  | |
+|create_time | String |  | true | false |  |  | |
+|update_by | String |  | true | false |  |  | |
+|update_time | String |  | true | false |  |  | |
+|status | Int |  | true | false |  |  | |
+|remark | String |  | true | false |  |  | |
+
+## ER diagram
+
+```plantuml
+@startuml recommend_img
+skinparam linetype ortho
+entity "recommend_img" as recommend_img {
++ id [PK] : Int 
+--
+  name : String
+  img : String
+  link : String
+  order : Int
+  recommend : Int
   create_by : String
   create_time : String
   update_by : String

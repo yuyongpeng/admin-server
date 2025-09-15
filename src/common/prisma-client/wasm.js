@@ -580,6 +580,21 @@ exports.Prisma.DeclarexScalarFieldEnum = {
   remark: 'remark'
 };
 
+exports.Prisma.Recommend_imgScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  img: 'img',
+  link: 'link',
+  order: 'order',
+  recommend: 'recommend',
+  create_by: 'create_by',
+  create_time: 'create_time',
+  update_by: 'update_by',
+  update_time: 'update_time',
+  status: 'status',
+  remark: 'remark'
+};
+
 exports.Prisma.ResourceScalarFieldEnum = {
   id: 'id',
   ticket_id: 'ticket_id',
@@ -959,6 +974,17 @@ exports.Prisma.declarexOrderByRelevanceFieldEnum = {
   remark: 'remark'
 };
 
+exports.Prisma.recommend_imgOrderByRelevanceFieldEnum = {
+  name: 'name',
+  img: 'img',
+  link: 'link',
+  create_by: 'create_by',
+  create_time: 'create_time',
+  update_by: 'update_by',
+  update_time: 'update_time',
+  remark: 'remark'
+};
+
 exports.Prisma.resourceOrderByRelevanceFieldEnum = {
   name: 'name',
   resource_url: 'resource_url',
@@ -1025,6 +1051,7 @@ exports.Prisma.ModelName = {
   tr_transfer: 'tr_transfer',
   user: 'user',
   declarex: 'declarex',
+  recommend_img: 'recommend_img',
   resource: 'resource',
   collection_day_count: 'collection_day_count',
   collection_day_ticket_count: 'collection_day_ticket_count',

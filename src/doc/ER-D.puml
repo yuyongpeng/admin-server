@@ -484,6 +484,22 @@ entity "declarex" as declarex {
   remark : String
 }
 
+entity "recommend_img" as recommend_img {
++ id [PK] : Int 
+--
+  name : String
+  img : String
+  link : String
+  order : Int
+  recommend : Int
+  create_by : String
+  create_time : String
+  update_by : String
+  update_time : String
+  status : Int
+  remark : String
+}
+
 entity "resource" as resource {
 + id [PK] : Int 
 --
@@ -2087,6 +2103,28 @@ entity "declarex" as declarex {
   name : String
   content : String
   types : Int
+  create_by : String
+  create_time : String
+  update_by : String
+  update_time : String
+  status : Int
+  remark : String
+}
+
+' Relations
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml recommend_img
+skinparam linetype ortho
+entity "recommend_img" as recommend_img {
++ id [PK] : Int 
+--
+  name : String
+  img : String
+  link : String
+  order : Int
+  recommend : Int
   create_by : String
   create_time : String
   update_by : String

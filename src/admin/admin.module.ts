@@ -40,6 +40,8 @@ import { TransferService } from '@/admin/fangcunjiyi/transfer/service/transfer.s
 import { TransferController } from '@/admin/fangcunjiyi/transfer/transfer.controller';
 import { FCUserController } from './fangcunjiyi/user/user.controller';
 import { FCUserService } from './fangcunjiyi/user/service/user.service';
+import { RecommendImgController } from './fangcunjiyi/recommendimg/recommendimg.controller';
+import { RecommendImgService } from './fangcunjiyi/recommendimg/service/recommendimg.service';
 
 @Module({
   imports: [],
@@ -65,6 +67,7 @@ import { FCUserService } from './fangcunjiyi/user/service/user.service';
     CollectionController,
     TransferController,
     FCUserController,
+    RecommendImgController,
   ],
   providers: [
     DeptService,
@@ -86,6 +89,7 @@ import { FCUserService } from './fangcunjiyi/user/service/user.service';
     CollectionService,
     TransferService,
     FCUserService,
+    RecommendImgService,
   ],
 })
 export class AdminModule {}
