@@ -14,7 +14,7 @@ switch (process.env.NODE_ENV) {
     break;
 }
 console.log('envFile === ' + envFile);
-let envFilePath = join(__dirname, '../', envFile);
+let envFilePath = join(__dirname, envFile);
 console.log('envFilePath === ' + envFilePath);
 dotenv.config({ path: envFilePath });
 export const Config: config = {
