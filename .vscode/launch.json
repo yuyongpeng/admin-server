@@ -9,7 +9,7 @@
       "request": "launch",
       "name": "debug admin-server",
       "runtimeExecutable": "npm", // 使用npm来启动程序
-      "args": ["run", "start:dev"], // 传递给npm的参数
+      "args": ["run", "start:debug"], // 传递给npm的参数
 
       //   "args": ["${workspaceFolder}/src/main.ts"], // 传递给程序的参数，这里我们传递了 main.ts 的路径，这是 NestJS 应用程序的入口文件。
       //   "runtimeArgs": ["--nolazy", "-r", "ts-node/register", "-r", "tsconfig-paths/register"], // 传递给 Node.js 的运行时参数，这里我们使用了 ts-node/register 和 tsconfig-paths/register 来支持 TypeScript 和路径别名。

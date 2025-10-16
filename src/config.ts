@@ -13,9 +13,10 @@ switch (process.env.NODE_ENV) {
     envFile = '.env.test';
     break;
 }
-console.log('envFile===' + envFile);
-console.log(join(__dirname, envFile));
-dotenv.config({ path: join(__dirname, envFile) });
+console.log('envFile === ' + envFile);
+let envFilePath = join(__dirname, '../', envFile);
+console.log('envFilePath === ' + envFilePath);
+dotenv.config({ path: envFilePath });
 export const Config: config = {
   //服务器的HTTP端口，默认为3000
   port: Number(process.env.port),
@@ -73,7 +74,7 @@ export const Config: config = {
   },
   upload: {
     //上传文件存储基目录 请设置一个绝对路径
-    path: process.env.uploadPath,
+    path: process.env.uploadPath ?? 'C:\\Users\\yuyongpeng\\Documents\\',
     // path: 'd:/uploads',
     config: {
       img: {
@@ -142,6 +143,15 @@ export const Config: config = {
   },
   dstamp: {
     baseUrl: process.env.dstampBaseUrl,
+  },
+  makerip: {
+    baseUrl: process.env.makeripBaseUrl,
+    clientId: process.env.makeripClientId,
+    clientSecret: process.env.makeripClientSecret,
+    appName: process.env.makeripAppName,
+    redirectURI: process.env.makeripRedirectURI,
+    systemCode: process.env.makeripSystemCode,
+    systemKey: process.env.makeripSytemKey,
   },
   aes: {
     key: process.env.aesKey,

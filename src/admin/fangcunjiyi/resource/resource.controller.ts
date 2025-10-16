@@ -78,4 +78,17 @@ export class ResourceController {
     const { count } = await this.resourceService.deleteResourceByIds(deptIds);
     return Result.toAjax(count);
   }
+
+  @ApiOperation({ summary: '苏结通 删除NFT' })
+  @ApiResponse({ type: Result<any> })
+  @RequirePermission('system:resource:remove')
+  @Delete('/sjtHide/:assetNumber')
+  async sjtHide(@Param('assetNumber') assetNumber: string): Promise<Result<any>> {
+    const ret = await this.resourceService.sjtHide(assetNumber);
+    if (ret.success == true) {
+      return Result.ok('删除成功');
+    } else {
+      return Result.Error('删除失败');
+    }
+  }
 }

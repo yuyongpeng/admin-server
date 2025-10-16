@@ -43,8 +43,10 @@ import { FCUserService } from './fangcunjiyi/user/service/user.service';
 import { RecommendImgController } from './fangcunjiyi/recommendimg/recommendimg.controller';
 import { RecommendImgService } from './fangcunjiyi/recommendimg/service/recommendimg.service';
 
+import { HttpModule } from '@nestjs/axios';
+
 @Module({
-  imports: [],
+  imports: [HttpModule],
   controllers: [
     CaptchaController,
     UploadController,

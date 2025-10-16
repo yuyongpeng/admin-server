@@ -82,6 +82,15 @@ interface config {
   dstamp: {
     baseUrl: string;
   };
+  makerip: {
+    baseUrl: string;
+    clientId: string;
+    clientSecret: string;
+    appName: string;
+    redirectURI: string;
+    systemCode: string;
+    systemKey: string;
+  };
   aes: {
     key: string;
     iv: string;
