@@ -159,6 +159,7 @@ export class ResourceService {
       },
     });
     let data = response.data;
+    this.logger.log(data);
     data.cost;
     let success = false;
     if (data.code == 0) {
