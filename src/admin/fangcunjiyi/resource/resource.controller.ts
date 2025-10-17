@@ -82,9 +82,9 @@ export class ResourceController {
   @ApiOperation({ summary: '苏结通 删除NFT' })
   @ApiResponse({ type: Result<any> })
   @RequirePermission('system:resource:remove')
-  @Delete('/sjtHide/:regCode')
-  async sjtHide(@Param('regCode') regCode: string): Promise<Result<any>> {
-    const ret = await this.resourceService.sjtHide(regCode);
+  @Delete('/sjtHide/:assetNumber')
+  async sjtHide(@Param('assetNumber') assetNumber: string): Promise<Result<any>> {
+    const ret = await this.resourceService.sjtHide(assetNumber);
     if (ret.success == true) {
       return Result.ok('删除成功');
     } else {
