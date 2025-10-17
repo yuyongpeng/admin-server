@@ -84,10 +84,6 @@ export class ResourceController {
   @RequirePermission('system:resource:remove')
   @Delete('/sjtHide/:assetNumber')
   async sjtHide(@Param('assetNumber') assetNumber: string): Promise<Result<any>> {
-    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-    console.log(assetNumber);
-    console.log('xxxxxxxxxxxxxxxxxxxxxxxxxxxx');
-    console.log(assetNumber);
     const ret = await this.resourceService.sjtHide(assetNumber);
     if (ret.success == true) {
       return Result.ok('删除成功');

@@ -149,6 +149,7 @@ export class ResourceService {
   async sjtHide(assetNumber: string) {
     let url = new URL('/sjt/hidden', Config.dstamp.baseUrl);
     url.searchParams.append('assetNumber', assetNumber);
+    this.logger.log(url);
     this.logger.log('assetNumber=' + assetNumber);
     let response = await axios.get(url.href, {
       // params: {
