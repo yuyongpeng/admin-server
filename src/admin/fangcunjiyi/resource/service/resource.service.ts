@@ -151,15 +151,25 @@ export class ResourceService {
     // url.searchParams.append('assetNumber', assetNumber);
     // this.logger.log(url);
     // this.logger.log('assetNumber=' + assetNumber);
-    let response = await axios.post(Config.dstamp.baseUrl + 'sjt/hidden', {
-      params: {
-        assetNumber: assetNumber,
-      },
-      headers: {
-        user: 'dstampxy',
-        pass: 'eyJ1c2VyX2lkIjoiZiIsIm',
-      },
-    });
+
+    let instance = axios.create();
+    instance.defaults.headers.common['user'] = 'dstampxy';
+    instance.defaults.headers.common['pass'] = 'eyJ1c2VyX2lkIjoiZiIsIm';
+
+    let response = await instance.post(Config.dstamp.baseUrl + 'sjt/hidden', { assetNumber: assetNumber });
+
+    // let response = await axios.post(
+    //   Config.dstamp.baseUrl + 'sjt/hidden',
+    //   {
+    //     assetNumber: assetNumber,
+    //   },
+    //   {
+    //     headers: {
+    //       user: 'dstampxy',
+    //       pass: 'eyJ1c2VyX2lkIjoiZiIsIm',
+    //     },
+    //   },
+    // );
     let data = response.data;
     this.logger.log(data);
     data.cost;
