@@ -147,10 +147,17 @@ export class ResourceService {
 
   // 调用苏结通的删除NFT的接口
   async sjtHide(assetNumber: String) {
-    let url = new URL('/sjt/hidden', Config.dstamp.baseUrl);
-    url.searchParams.append('assetNumber', assetNumber.toString());
-    // const url = Config.dstamp.baseUrl + '/sjt/hidden' + '?' + assetNumber;
-    let response = await axios.get(url.href);
+    // let url = new URL('/sjt/hidden', Config.dstamp.baseUrl);
+    // url.searchParams.append('assetNumber', assetNumber.toString());
+    let response = await axios.get(Config.dstamp.baseUrl + '/sjt/hidden', {
+      params: {
+        assetNumber: assetNumber,
+      },
+      headers: {
+        user: 'dstampxy',
+        pass: 'eyJ1c2VyX2lkIjoiZiIsIm',
+      },
+    });
     let data = response.data;
     data.cost;
     let success = false;
