@@ -151,10 +151,10 @@ export class ResourceService {
     url.searchParams.append('assetNumber', assetNumber);
     this.logger.log(url);
     this.logger.log('assetNumber=' + assetNumber);
-    let response = await axios.get(url.href, {
-      // params: {
-      //   assetNumber: assetNumber,
-      // },
+    let response = await axios.post(Config.dstamp.baseUrl + '/sjt/hidden', {
+      params: {
+        assetNumber: assetNumber,
+      },
       headers: {
         user: 'dstampxy',
         pass: 'eyJ1c2VyX2lkIjoiZiIsIm',
