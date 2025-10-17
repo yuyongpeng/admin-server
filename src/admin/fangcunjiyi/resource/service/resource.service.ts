@@ -151,7 +151,7 @@ export class ResourceService {
     // url.searchParams.append('assetNumber', assetNumber);
     // this.logger.log(url);
     // this.logger.log('assetNumber=' + assetNumber);
-    let response = await axios.post(Config.dstamp.baseUrl + '/sjt/hidden', {
+    let response = await axios.post(Config.dstamp.baseUrl + 'sjt/hidden', {
       params: {
         assetNumber: '',
         regCode: regCode,
