@@ -1,11 +1,11 @@
-import { Injectable, Logger, Res } from '@nestjs/common';
-import { PrismaService } from '@/common/service/prisma/prisma.service';
-import { Response } from 'express';
-import { exportTable, tree } from '@/common/utils';
-import { QueryRecommendImgDto, CreateRecommendImgDto, UpdateRecommendImgDto } from '../dto/index';
-import { Prisma } from '@/common/prisma-client';
-import { equals, isNotEmpty } from 'class-validator';
-import * as assert from 'assert';
+import { Injectable, Logger, Res } from "@nestjs/common";
+import { PrismaService } from "@/common/service/prisma/prisma.service";
+import { Response } from "express";
+import { exportTable, tree } from "@/common/utils";
+import { QueryTrorderDto, CreateTrorderDto, UpdateTrorderDto } from "../dto/index";
+import { Prisma } from "@/common/prisma-client";
+import { equals, isNotEmpty } from "class-validator";
+import * as assert from "assert";
 
 @Injectable()
 export class RecommendImgService {
@@ -13,36 +13,36 @@ export class RecommendImgService {
   constructor(private prisma: PrismaService) {}
 
   /**@description 分页查询 recommendImg 列表 */
-  async selectRecommendImgList(q: QueryRecommendImgDto) {
+  async selectRecommendImgList(q: QueryTrorderDto) {
     const queryCondition: Prisma.recommend_imgWhereInput = {};
-    if (isNotEmpty(q['id'])) {
+    if (isNotEmpty(q["id"])) {
       queryCondition.id = {
         equals: q.id,
       };
     }
-    if (isNotEmpty(q['name'])) {
+    if (isNotEmpty(q["name"])) {
       queryCondition.name = {
         contains: q.name,
       };
     }
-    if (isNotEmpty(q['status'])) {
+    if (isNotEmpty(q["status"])) {
       queryCondition.status = {
         equals: q.status,
       };
     }
-    if (isNotEmpty(q['recommend'])) {
+    if (isNotEmpty(q["recommend"])) {
       queryCondition.recommend = {
         equals: q.recommend,
       };
     }
     return {
       rows: await this.prisma.recommend_img.findMany({
-        relationLoadStrategy: 'query',
+        relationLoadStrategy: "query",
         skip: (q.pageNum - 1) * q.pageSize,
         take: q.pageSize,
         where: queryCondition,
         orderBy: {
-          create_time: 'desc',
+          create_time: "desc",
         },
         // include: {},
       }),
@@ -62,7 +62,7 @@ export class RecommendImgService {
   }
 
   /**@description 新增 recommendImg */
-  async addRecommendImg(recommendImg: CreateRecommendImgDto) {
+  async addSuit(recommendImg: CreateTrorderDto) {
     //删除掉空值
     for (const key in recommendImg) {
       !isNotEmpty(recommendImg[key]) && delete recommendImg[key];
@@ -73,7 +73,7 @@ export class RecommendImgService {
   }
 
   /**@description 修改 recommendImg */
-  async updateDept(recommendImg: UpdateRecommendImgDto) {
+  async updateDept(recommendImg: UpdateTrorderDto) {
     //删除掉空值
     for (const key in recommendImg) {
       !isNotEmpty(recommendImg[key]) && delete recommendImg[key];
@@ -107,8 +107,8 @@ export class RecommendImgService {
   }
 
   /**@description 导出所有数据为xlsx */
-  async exportRecommendImg(res: Response) {
-    const title = ['id', 'name', '图片', '链接', '排序', '创建者', '创建时间', '更新者', '更新时间', '状态（0-正常，1-删除）', '备注'];
+  async exportSuit(res: Response) {
+    const title = ["id", "name", "图片", "链接", "排序", "创建者", "创建时间", "更新者", "更新时间", "状态（0-正常，1-删除）", "备注"];
     const data = (
       await this.prisma.recommend_img.findMany({
         select: {

@@ -154,6 +154,11 @@ export type recommend_img = $Result.DefaultSelection<Prisma.$recommend_imgPayloa
  */
 export type resource = $Result.DefaultSelection<Prisma.$resourcePayload>
 /**
+ * Model suit
+ * 
+ */
+export type suit = $Result.DefaultSelection<Prisma.$suitPayload>
+/**
  * Model collection_day_count
  * The underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
  */
@@ -595,6 +600,16 @@ export class PrismaClient<
     * ```
     */
   get resource(): Prisma.resourceDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.suit`: Exposes CRUD operations for the **suit** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Suits
+    * const suits = await prisma.suit.findMany()
+    * ```
+    */
+  get suit(): Prisma.suitDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.collection_day_count`: Exposes CRUD operations for the **collection_day_count** model.
@@ -1133,6 +1148,7 @@ export namespace Prisma {
     declarex: 'declarex',
     recommend_img: 'recommend_img',
     resource: 'resource',
+    suit: 'suit',
     collection_day_count: 'collection_day_count',
     collection_day_ticket_count: 'collection_day_ticket_count',
     user_day_count: 'user_day_count',
@@ -1158,7 +1174,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "genTable" | "genTableColumn" | "sysConfig" | "sysDept" | "sysDictData" | "sysDictType" | "sysLogininfor" | "sysMenu" | "sysNotice" | "sysPost" | "sysUserPost" | "sysRoleDept" | "sysRoleMenu" | "sysUser" | "sysRole" | "sysUserRole" | "collection" | "init_mobile" | "platform_token" | "publisher" | "ticket" | "tr_order" | "tr_pay_notification" | "tr_transfer" | "user" | "declarex" | "recommend_img" | "resource" | "collection_day_count" | "collection_day_ticket_count" | "user_day_count" | "user_month_count" | "user_week_count" | "transfer_day_count" | "transfer_day_ticket_count"
+      modelProps: "genTable" | "genTableColumn" | "sysConfig" | "sysDept" | "sysDictData" | "sysDictType" | "sysLogininfor" | "sysMenu" | "sysNotice" | "sysPost" | "sysUserPost" | "sysRoleDept" | "sysRoleMenu" | "sysUser" | "sysRole" | "sysUserRole" | "collection" | "init_mobile" | "platform_token" | "publisher" | "ticket" | "tr_order" | "tr_pay_notification" | "tr_transfer" | "user" | "declarex" | "recommend_img" | "resource" | "suit" | "collection_day_count" | "collection_day_ticket_count" | "user_day_count" | "user_month_count" | "user_week_count" | "transfer_day_count" | "transfer_day_ticket_count"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3010,6 +3026,72 @@ export namespace Prisma {
           }
         }
       }
+      suit: {
+        payload: Prisma.$suitPayload<ExtArgs>
+        fields: Prisma.suitFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.suitFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$suitPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.suitFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$suitPayload>
+          }
+          findFirst: {
+            args: Prisma.suitFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$suitPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.suitFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$suitPayload>
+          }
+          findMany: {
+            args: Prisma.suitFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$suitPayload>[]
+          }
+          create: {
+            args: Prisma.suitCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$suitPayload>
+          }
+          createMany: {
+            args: Prisma.suitCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.suitDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$suitPayload>
+          }
+          update: {
+            args: Prisma.suitUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$suitPayload>
+          }
+          deleteMany: {
+            args: Prisma.suitDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.suitUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.suitUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$suitPayload>
+          }
+          aggregate: {
+            args: Prisma.SuitAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateSuit>
+          }
+          groupBy: {
+            args: Prisma.suitGroupByArgs<ExtArgs>
+            result: $Utils.Optional<SuitGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.suitCountArgs<ExtArgs>
+            result: $Utils.Optional<SuitCountAggregateOutputType> | number
+          }
+        }
+      }
       collection_day_count: {
         payload: Prisma.$collection_day_countPayload<ExtArgs>
         fields: Prisma.collection_day_countFieldRefs
@@ -3584,6 +3666,7 @@ export namespace Prisma {
     declarex?: declarexOmit
     recommend_img?: recommend_imgOmit
     resource?: resourceOmit
+    suit?: suitOmit
     collection_day_count?: collection_day_countOmit
     collection_day_ticket_count?: collection_day_ticket_countOmit
     user_day_count?: user_day_countOmit
@@ -21034,6 +21117,9 @@ export namespace Prisma {
     old_status: number | null
     block_number: number | null
     sjt_status: number | null
+    give_count: number | null
+    certificate_validity_period: number | null
+    rights_status: number | null
   }
 
   export type CollectionSumAggregateOutputType = {
@@ -21060,6 +21146,9 @@ export namespace Prisma {
     old_status: number | null
     block_number: number | null
     sjt_status: number | null
+    give_count: number | null
+    certificate_validity_period: number | null
+    rights_status: number | null
   }
 
   export type CollectionMinAggregateOutputType = {
@@ -21111,6 +21200,12 @@ export namespace Prisma {
     sjt_status: number | null
     reg_code: string | null
     asset_number: string | null
+    apply_firsttime: Date | null
+    apply_lasttime: Date | null
+    exp_date: Date | null
+    give_count: number | null
+    certificate_validity_period: number | null
+    rights_status: number | null
   }
 
   export type CollectionMaxAggregateOutputType = {
@@ -21162,6 +21257,12 @@ export namespace Prisma {
     sjt_status: number | null
     reg_code: string | null
     asset_number: string | null
+    apply_firsttime: Date | null
+    apply_lasttime: Date | null
+    exp_date: Date | null
+    give_count: number | null
+    certificate_validity_period: number | null
+    rights_status: number | null
   }
 
   export type CollectionCountAggregateOutputType = {
@@ -21213,6 +21314,12 @@ export namespace Prisma {
     sjt_status: number
     reg_code: number
     asset_number: number
+    apply_firsttime: number
+    apply_lasttime: number
+    exp_date: number
+    give_count: number
+    certificate_validity_period: number
+    rights_status: number
     _all: number
   }
 
@@ -21241,6 +21348,9 @@ export namespace Prisma {
     old_status?: true
     block_number?: true
     sjt_status?: true
+    give_count?: true
+    certificate_validity_period?: true
+    rights_status?: true
   }
 
   export type CollectionSumAggregateInputType = {
@@ -21267,6 +21377,9 @@ export namespace Prisma {
     old_status?: true
     block_number?: true
     sjt_status?: true
+    give_count?: true
+    certificate_validity_period?: true
+    rights_status?: true
   }
 
   export type CollectionMinAggregateInputType = {
@@ -21318,6 +21431,12 @@ export namespace Prisma {
     sjt_status?: true
     reg_code?: true
     asset_number?: true
+    apply_firsttime?: true
+    apply_lasttime?: true
+    exp_date?: true
+    give_count?: true
+    certificate_validity_period?: true
+    rights_status?: true
   }
 
   export type CollectionMaxAggregateInputType = {
@@ -21369,6 +21488,12 @@ export namespace Prisma {
     sjt_status?: true
     reg_code?: true
     asset_number?: true
+    apply_firsttime?: true
+    apply_lasttime?: true
+    exp_date?: true
+    give_count?: true
+    certificate_validity_period?: true
+    rights_status?: true
   }
 
   export type CollectionCountAggregateInputType = {
@@ -21420,6 +21545,12 @@ export namespace Prisma {
     sjt_status?: true
     reg_code?: true
     asset_number?: true
+    apply_firsttime?: true
+    apply_lasttime?: true
+    exp_date?: true
+    give_count?: true
+    certificate_validity_period?: true
+    rights_status?: true
     _all?: true
   }
 
@@ -21558,6 +21689,12 @@ export namespace Prisma {
     sjt_status: number | null
     reg_code: string | null
     asset_number: string | null
+    apply_firsttime: Date | null
+    apply_lasttime: Date | null
+    exp_date: Date | null
+    give_count: number | null
+    certificate_validity_period: number | null
+    rights_status: number | null
     _count: CollectionCountAggregateOutputType | null
     _avg: CollectionAvgAggregateOutputType | null
     _sum: CollectionSumAggregateOutputType | null
@@ -21628,6 +21765,12 @@ export namespace Prisma {
     sjt_status?: boolean
     reg_code?: boolean
     asset_number?: boolean
+    apply_firsttime?: boolean
+    apply_lasttime?: boolean
+    exp_date?: boolean
+    give_count?: boolean
+    certificate_validity_period?: boolean
+    rights_status?: boolean
     ticket?: boolean | collection$ticketArgs<ExtArgs>
     user?: boolean | userDefaultArgs<ExtArgs>
     tr_order?: boolean | collection$tr_orderArgs<ExtArgs>
@@ -21686,9 +21829,15 @@ export namespace Prisma {
     sjt_status?: boolean
     reg_code?: boolean
     asset_number?: boolean
+    apply_firsttime?: boolean
+    apply_lasttime?: boolean
+    exp_date?: boolean
+    give_count?: boolean
+    certificate_validity_period?: boolean
+    rights_status?: boolean
   }
 
-  export type collectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "collection_name" | "ticket_id" | "ticket_type" | "chain_type" | "casting_uid" | "casting_name" | "daop_casting_id" | "daop_casting_address" | "owner_uid" | "owner_name" | "daop_user_id" | "daop_user_address" | "license_id" | "shared_uid" | "price" | "trade_time" | "daop_collection_id" | "out_ticket_id" | "token_id" | "collection_hash" | "mint_tx_id" | "mint_chain_status" | "mint_chain_time" | "transfer_tx_id" | "transfer_chain_status" | "transfer_chain_time" | "checkeIn_tx_id" | "checkIn_chain_status" | "checkIn_chain_time" | "credential" | "last_credential" | "sale_status" | "available_status" | "available_time" | "available_expire_time" | "check_code" | "authorization_id" | "authorization_code" | "modify_time" | "create_time" | "dar_status" | "old_status" | "certificate_url" | "block_number" | "sjt_status" | "reg_code" | "asset_number", ExtArgs["result"]["collection"]>
+  export type collectionOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "collection_name" | "ticket_id" | "ticket_type" | "chain_type" | "casting_uid" | "casting_name" | "daop_casting_id" | "daop_casting_address" | "owner_uid" | "owner_name" | "daop_user_id" | "daop_user_address" | "license_id" | "shared_uid" | "price" | "trade_time" | "daop_collection_id" | "out_ticket_id" | "token_id" | "collection_hash" | "mint_tx_id" | "mint_chain_status" | "mint_chain_time" | "transfer_tx_id" | "transfer_chain_status" | "transfer_chain_time" | "checkeIn_tx_id" | "checkIn_chain_status" | "checkIn_chain_time" | "credential" | "last_credential" | "sale_status" | "available_status" | "available_time" | "available_expire_time" | "check_code" | "authorization_id" | "authorization_code" | "modify_time" | "create_time" | "dar_status" | "old_status" | "certificate_url" | "block_number" | "sjt_status" | "reg_code" | "asset_number" | "apply_firsttime" | "apply_lasttime" | "exp_date" | "give_count" | "certificate_validity_period" | "rights_status", ExtArgs["result"]["collection"]>
   export type collectionInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ticket?: boolean | collection$ticketArgs<ExtArgs>
     user?: boolean | userDefaultArgs<ExtArgs>
@@ -21754,6 +21903,12 @@ export namespace Prisma {
       sjt_status: number | null
       reg_code: string | null
       asset_number: string | null
+      apply_firsttime: Date | null
+      apply_lasttime: Date | null
+      exp_date: Date | null
+      give_count: number | null
+      certificate_validity_period: number | null
+      rights_status: number | null
     }, ExtArgs["result"]["collection"]>
     composites: {}
   }
@@ -22175,6 +22330,12 @@ export namespace Prisma {
     readonly sjt_status: FieldRef<"collection", 'Int'>
     readonly reg_code: FieldRef<"collection", 'String'>
     readonly asset_number: FieldRef<"collection", 'String'>
+    readonly apply_firsttime: FieldRef<"collection", 'DateTime'>
+    readonly apply_lasttime: FieldRef<"collection", 'DateTime'>
+    readonly exp_date: FieldRef<"collection", 'DateTime'>
+    readonly give_count: FieldRef<"collection", 'Int'>
+    readonly certificate_validity_period: FieldRef<"collection", 'Int'>
+    readonly rights_status: FieldRef<"collection", 'Int'>
   }
     
 
@@ -25391,6 +25552,8 @@ export namespace Prisma {
     registration_id: number | null
     send_status: number | null
     download_status: number | null
+    regist_effective_duration: number | null
+    certi_price: number | null
   }
 
   export type TicketSumAggregateOutputType = {
@@ -25414,6 +25577,8 @@ export namespace Prisma {
     registration_id: number | null
     send_status: number | null
     download_status: number | null
+    regist_effective_duration: number | null
+    certi_price: number | null
   }
 
   export type TicketMinAggregateOutputType = {
@@ -25426,6 +25591,7 @@ export namespace Prisma {
     creator_uid: number | null
     creator_name: string | null
     creator_avatar: string | null
+    author: string | null
     daop_user_id: number | null
     daop_user_address: string | null
     publisher_id: number | null
@@ -25462,6 +25628,8 @@ export namespace Prisma {
     origin_uri: string | null
     creation_date: Date | null
     start_date: Date | null
+    regist_effective_duration: number | null
+    certi_price: number | null
   }
 
   export type TicketMaxAggregateOutputType = {
@@ -25474,6 +25642,7 @@ export namespace Prisma {
     creator_uid: number | null
     creator_name: string | null
     creator_avatar: string | null
+    author: string | null
     daop_user_id: number | null
     daop_user_address: string | null
     publisher_id: number | null
@@ -25510,6 +25679,8 @@ export namespace Prisma {
     origin_uri: string | null
     creation_date: Date | null
     start_date: Date | null
+    regist_effective_duration: number | null
+    certi_price: number | null
   }
 
   export type TicketCountAggregateOutputType = {
@@ -25523,6 +25694,7 @@ export namespace Prisma {
     creator_uid: number
     creator_name: number
     creator_avatar: number
+    author: number
     daop_user_id: number
     daop_user_address: number
     publisher_id: number
@@ -25559,6 +25731,8 @@ export namespace Prisma {
     origin_uri: number
     creation_date: number
     start_date: number
+    regist_effective_duration: number
+    certi_price: number
     _all: number
   }
 
@@ -25584,6 +25758,8 @@ export namespace Prisma {
     registration_id?: true
     send_status?: true
     download_status?: true
+    regist_effective_duration?: true
+    certi_price?: true
   }
 
   export type TicketSumAggregateInputType = {
@@ -25607,6 +25783,8 @@ export namespace Prisma {
     registration_id?: true
     send_status?: true
     download_status?: true
+    regist_effective_duration?: true
+    certi_price?: true
   }
 
   export type TicketMinAggregateInputType = {
@@ -25619,6 +25797,7 @@ export namespace Prisma {
     creator_uid?: true
     creator_name?: true
     creator_avatar?: true
+    author?: true
     daop_user_id?: true
     daop_user_address?: true
     publisher_id?: true
@@ -25655,6 +25834,8 @@ export namespace Prisma {
     origin_uri?: true
     creation_date?: true
     start_date?: true
+    regist_effective_duration?: true
+    certi_price?: true
   }
 
   export type TicketMaxAggregateInputType = {
@@ -25667,6 +25848,7 @@ export namespace Prisma {
     creator_uid?: true
     creator_name?: true
     creator_avatar?: true
+    author?: true
     daop_user_id?: true
     daop_user_address?: true
     publisher_id?: true
@@ -25703,6 +25885,8 @@ export namespace Prisma {
     origin_uri?: true
     creation_date?: true
     start_date?: true
+    regist_effective_duration?: true
+    certi_price?: true
   }
 
   export type TicketCountAggregateInputType = {
@@ -25716,6 +25900,7 @@ export namespace Prisma {
     creator_uid?: true
     creator_name?: true
     creator_avatar?: true
+    author?: true
     daop_user_id?: true
     daop_user_address?: true
     publisher_id?: true
@@ -25752,6 +25937,8 @@ export namespace Prisma {
     origin_uri?: true
     creation_date?: true
     start_date?: true
+    regist_effective_duration?: true
+    certi_price?: true
     _all?: true
   }
 
@@ -25852,6 +26039,7 @@ export namespace Prisma {
     creator_uid: number | null
     creator_name: string | null
     creator_avatar: string | null
+    author: string | null
     daop_user_id: number | null
     daop_user_address: string | null
     publisher_id: number | null
@@ -25888,6 +26076,8 @@ export namespace Prisma {
     origin_uri: string | null
     creation_date: Date | null
     start_date: Date | null
+    regist_effective_duration: number | null
+    certi_price: number | null
     _count: TicketCountAggregateOutputType | null
     _avg: TicketAvgAggregateOutputType | null
     _sum: TicketSumAggregateOutputType | null
@@ -25920,6 +26110,7 @@ export namespace Prisma {
     creator_uid?: boolean
     creator_name?: boolean
     creator_avatar?: boolean
+    author?: boolean
     daop_user_id?: boolean
     daop_user_address?: boolean
     publisher_id?: boolean
@@ -25956,6 +26147,8 @@ export namespace Prisma {
     origin_uri?: boolean
     creation_date?: boolean
     start_date?: boolean
+    regist_effective_duration?: boolean
+    certi_price?: boolean
     collection?: boolean | ticket$collectionArgs<ExtArgs>
     resource?: boolean | ticket$resourceArgs<ExtArgs>
     tr_order?: boolean | ticket$tr_orderArgs<ExtArgs>
@@ -25975,6 +26168,7 @@ export namespace Prisma {
     creator_uid?: boolean
     creator_name?: boolean
     creator_avatar?: boolean
+    author?: boolean
     daop_user_id?: boolean
     daop_user_address?: boolean
     publisher_id?: boolean
@@ -26011,9 +26205,11 @@ export namespace Prisma {
     origin_uri?: boolean
     creation_date?: boolean
     start_date?: boolean
+    regist_effective_duration?: boolean
+    certi_price?: boolean
   }
 
-  export type ticketOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ticket_name" | "ticket_type" | "chain_type" | "cover_uri" | "content_uri" | "td_files" | "creator_uid" | "creator_name" | "creator_avatar" | "daop_user_id" | "daop_user_address" | "publisher_id" | "publisher_name" | "publisher_logo" | "amount" | "sold_amount" | "sku_balance" | "price" | "available_time" | "expire_time" | "sale_begin_time" | "sale_end_time" | "description" | "usage" | "sale_status" | "available_status" | "authorization_id" | "authorization_code" | "did_credential" | "copyright_credential" | "authorization_credential" | "chain_txid" | "chain_block_number" | "chain_time" | "chain_status" | "is_sale" | "modify_time" | "create_time" | "registration_id" | "send_status" | "landing_uri" | "download_status" | "origin_uri" | "creation_date" | "start_date", ExtArgs["result"]["ticket"]>
+  export type ticketOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "ticket_name" | "ticket_type" | "chain_type" | "cover_uri" | "content_uri" | "td_files" | "creator_uid" | "creator_name" | "creator_avatar" | "author" | "daop_user_id" | "daop_user_address" | "publisher_id" | "publisher_name" | "publisher_logo" | "amount" | "sold_amount" | "sku_balance" | "price" | "available_time" | "expire_time" | "sale_begin_time" | "sale_end_time" | "description" | "usage" | "sale_status" | "available_status" | "authorization_id" | "authorization_code" | "did_credential" | "copyright_credential" | "authorization_credential" | "chain_txid" | "chain_block_number" | "chain_time" | "chain_status" | "is_sale" | "modify_time" | "create_time" | "registration_id" | "send_status" | "landing_uri" | "download_status" | "origin_uri" | "creation_date" | "start_date" | "regist_effective_duration" | "certi_price", ExtArgs["result"]["ticket"]>
   export type ticketInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     collection?: boolean | ticket$collectionArgs<ExtArgs>
     resource?: boolean | ticket$resourceArgs<ExtArgs>
@@ -26039,6 +26235,7 @@ export namespace Prisma {
       creator_uid: number | null
       creator_name: string | null
       creator_avatar: string | null
+      author: string | null
       daop_user_id: number | null
       daop_user_address: string | null
       publisher_id: number | null
@@ -26075,6 +26272,8 @@ export namespace Prisma {
       origin_uri: string | null
       creation_date: Date | null
       start_date: Date | null
+      regist_effective_duration: number | null
+      certi_price: number | null
     }, ExtArgs["result"]["ticket"]>
     composites: {}
   }
@@ -26457,6 +26656,7 @@ export namespace Prisma {
     readonly creator_uid: FieldRef<"ticket", 'Int'>
     readonly creator_name: FieldRef<"ticket", 'String'>
     readonly creator_avatar: FieldRef<"ticket", 'String'>
+    readonly author: FieldRef<"ticket", 'String'>
     readonly daop_user_id: FieldRef<"ticket", 'Int'>
     readonly daop_user_address: FieldRef<"ticket", 'String'>
     readonly publisher_id: FieldRef<"ticket", 'Int'>
@@ -26493,6 +26693,8 @@ export namespace Prisma {
     readonly origin_uri: FieldRef<"ticket", 'String'>
     readonly creation_date: FieldRef<"ticket", 'DateTime'>
     readonly start_date: FieldRef<"ticket", 'DateTime'>
+    readonly regist_effective_duration: FieldRef<"ticket", 'Int'>
+    readonly certi_price: FieldRef<"ticket", 'Int'>
   }
     
 
@@ -26959,10 +27161,12 @@ export namespace Prisma {
     shared_uid: number | null
     price: number | null
     amount: number | null
+    total_price: number | null
     check_in: number | null
     pay_status: number | null
     transfer_status: number | null
     expire_time_at: number | null
+    order_type: number | null
     status: number | null
     deleted_at: number | null
   }
@@ -26979,10 +27183,12 @@ export namespace Prisma {
     shared_uid: number | null
     price: number | null
     amount: number | null
+    total_price: number | null
     check_in: number | null
     pay_status: number | null
     transfer_status: number | null
     expire_time_at: bigint | null
+    order_type: number | null
     status: number | null
     deleted_at: number | null
   }
@@ -26991,6 +27197,8 @@ export namespace Prisma {
     order_id: number | null
     order_no: string | null
     ticket_id: number | null
+    ticket_name: string | null
+    ticket_coveruri: string | null
     ticket_did_credential: string | null
     ticket_copyright_credential: string | null
     ticket_authorization_credential: string | null
@@ -27014,6 +27222,7 @@ export namespace Prisma {
     shared_uid: number | null
     price: number | null
     amount: number | null
+    total_price: number | null
     check_in: number | null
     pay_channel: string | null
     pay_scene: string | null
@@ -27024,6 +27233,7 @@ export namespace Prisma {
     transfer_status: number | null
     expire_time: Date | null
     expire_time_at: bigint | null
+    order_type: number | null
     status: number | null
     deleted_at: number | null
     modify_time: Date | null
@@ -27034,6 +27244,8 @@ export namespace Prisma {
     order_id: number | null
     order_no: string | null
     ticket_id: number | null
+    ticket_name: string | null
+    ticket_coveruri: string | null
     ticket_did_credential: string | null
     ticket_copyright_credential: string | null
     ticket_authorization_credential: string | null
@@ -27057,6 +27269,7 @@ export namespace Prisma {
     shared_uid: number | null
     price: number | null
     amount: number | null
+    total_price: number | null
     check_in: number | null
     pay_channel: string | null
     pay_scene: string | null
@@ -27067,6 +27280,7 @@ export namespace Prisma {
     transfer_status: number | null
     expire_time: Date | null
     expire_time_at: bigint | null
+    order_type: number | null
     status: number | null
     deleted_at: number | null
     modify_time: Date | null
@@ -27077,6 +27291,8 @@ export namespace Prisma {
     order_id: number
     order_no: number
     ticket_id: number
+    ticket_name: number
+    ticket_coveruri: number
     ticket_did_credential: number
     ticket_copyright_credential: number
     ticket_authorization_credential: number
@@ -27100,6 +27316,7 @@ export namespace Prisma {
     shared_uid: number
     price: number
     amount: number
+    total_price: number
     check_in: number
     pay_channel: number
     pay_scene: number
@@ -27110,6 +27327,7 @@ export namespace Prisma {
     transfer_status: number
     expire_time: number
     expire_time_at: number
+    order_type: number
     status: number
     deleted_at: number
     modify_time: number
@@ -27130,10 +27348,12 @@ export namespace Prisma {
     shared_uid?: true
     price?: true
     amount?: true
+    total_price?: true
     check_in?: true
     pay_status?: true
     transfer_status?: true
     expire_time_at?: true
+    order_type?: true
     status?: true
     deleted_at?: true
   }
@@ -27150,10 +27370,12 @@ export namespace Prisma {
     shared_uid?: true
     price?: true
     amount?: true
+    total_price?: true
     check_in?: true
     pay_status?: true
     transfer_status?: true
     expire_time_at?: true
+    order_type?: true
     status?: true
     deleted_at?: true
   }
@@ -27162,6 +27384,8 @@ export namespace Prisma {
     order_id?: true
     order_no?: true
     ticket_id?: true
+    ticket_name?: true
+    ticket_coveruri?: true
     ticket_did_credential?: true
     ticket_copyright_credential?: true
     ticket_authorization_credential?: true
@@ -27185,6 +27409,7 @@ export namespace Prisma {
     shared_uid?: true
     price?: true
     amount?: true
+    total_price?: true
     check_in?: true
     pay_channel?: true
     pay_scene?: true
@@ -27195,6 +27420,7 @@ export namespace Prisma {
     transfer_status?: true
     expire_time?: true
     expire_time_at?: true
+    order_type?: true
     status?: true
     deleted_at?: true
     modify_time?: true
@@ -27205,6 +27431,8 @@ export namespace Prisma {
     order_id?: true
     order_no?: true
     ticket_id?: true
+    ticket_name?: true
+    ticket_coveruri?: true
     ticket_did_credential?: true
     ticket_copyright_credential?: true
     ticket_authorization_credential?: true
@@ -27228,6 +27456,7 @@ export namespace Prisma {
     shared_uid?: true
     price?: true
     amount?: true
+    total_price?: true
     check_in?: true
     pay_channel?: true
     pay_scene?: true
@@ -27238,6 +27467,7 @@ export namespace Prisma {
     transfer_status?: true
     expire_time?: true
     expire_time_at?: true
+    order_type?: true
     status?: true
     deleted_at?: true
     modify_time?: true
@@ -27248,6 +27478,8 @@ export namespace Prisma {
     order_id?: true
     order_no?: true
     ticket_id?: true
+    ticket_name?: true
+    ticket_coveruri?: true
     ticket_did_credential?: true
     ticket_copyright_credential?: true
     ticket_authorization_credential?: true
@@ -27271,6 +27503,7 @@ export namespace Prisma {
     shared_uid?: true
     price?: true
     amount?: true
+    total_price?: true
     check_in?: true
     pay_channel?: true
     pay_scene?: true
@@ -27281,6 +27514,7 @@ export namespace Prisma {
     transfer_status?: true
     expire_time?: true
     expire_time_at?: true
+    order_type?: true
     status?: true
     deleted_at?: true
     modify_time?: true
@@ -27378,6 +27612,8 @@ export namespace Prisma {
     order_id: number
     order_no: string
     ticket_id: number
+    ticket_name: string | null
+    ticket_coveruri: string | null
     ticket_did_credential: string | null
     ticket_copyright_credential: string | null
     ticket_authorization_credential: string | null
@@ -27401,6 +27637,7 @@ export namespace Prisma {
     shared_uid: number | null
     price: number
     amount: number | null
+    total_price: number | null
     check_in: number | null
     pay_channel: string | null
     pay_scene: string | null
@@ -27411,6 +27648,7 @@ export namespace Prisma {
     transfer_status: number
     expire_time: Date | null
     expire_time_at: bigint | null
+    order_type: number | null
     status: number
     deleted_at: number | null
     modify_time: Date
@@ -27440,6 +27678,8 @@ export namespace Prisma {
     order_id?: boolean
     order_no?: boolean
     ticket_id?: boolean
+    ticket_name?: boolean
+    ticket_coveruri?: boolean
     ticket_did_credential?: boolean
     ticket_copyright_credential?: boolean
     ticket_authorization_credential?: boolean
@@ -27463,6 +27703,7 @@ export namespace Prisma {
     shared_uid?: boolean
     price?: boolean
     amount?: boolean
+    total_price?: boolean
     check_in?: boolean
     pay_channel?: boolean
     pay_scene?: boolean
@@ -27473,6 +27714,7 @@ export namespace Prisma {
     transfer_status?: boolean
     expire_time?: boolean
     expire_time_at?: boolean
+    order_type?: boolean
     status?: boolean
     deleted_at?: boolean
     modify_time?: boolean
@@ -27489,6 +27731,8 @@ export namespace Prisma {
     order_id?: boolean
     order_no?: boolean
     ticket_id?: boolean
+    ticket_name?: boolean
+    ticket_coveruri?: boolean
     ticket_did_credential?: boolean
     ticket_copyright_credential?: boolean
     ticket_authorization_credential?: boolean
@@ -27512,6 +27756,7 @@ export namespace Prisma {
     shared_uid?: boolean
     price?: boolean
     amount?: boolean
+    total_price?: boolean
     check_in?: boolean
     pay_channel?: boolean
     pay_scene?: boolean
@@ -27522,13 +27767,14 @@ export namespace Prisma {
     transfer_status?: boolean
     expire_time?: boolean
     expire_time_at?: boolean
+    order_type?: boolean
     status?: boolean
     deleted_at?: boolean
     modify_time?: boolean
     create_time?: boolean
   }
 
-  export type tr_orderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"order_id" | "order_no" | "ticket_id" | "ticket_did_credential" | "ticket_copyright_credential" | "ticket_authorization_credential" | "collection_id" | "collection_name" | "collection_hash" | "collection_credential" | "collection_last_credential" | "collection_token_id" | "daop_collection_id" | "seller_uid" | "seller_daop_user_id" | "seller_daop_user_address" | "seller_mobile" | "buyer_uid" | "buyer_realname" | "buyer_mobile" | "buyer_nickname" | "buyer_daop_user_id" | "buyer_daop_user_address" | "shared_uid" | "price" | "amount" | "check_in" | "pay_channel" | "pay_scene" | "pay_trade_no" | "pay_time" | "pay_status" | "pay_failed_reason" | "transfer_status" | "expire_time" | "expire_time_at" | "status" | "deleted_at" | "modify_time" | "create_time", ExtArgs["result"]["tr_order"]>
+  export type tr_orderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"order_id" | "order_no" | "ticket_id" | "ticket_name" | "ticket_coveruri" | "ticket_did_credential" | "ticket_copyright_credential" | "ticket_authorization_credential" | "collection_id" | "collection_name" | "collection_hash" | "collection_credential" | "collection_last_credential" | "collection_token_id" | "daop_collection_id" | "seller_uid" | "seller_daop_user_id" | "seller_daop_user_address" | "seller_mobile" | "buyer_uid" | "buyer_realname" | "buyer_mobile" | "buyer_nickname" | "buyer_daop_user_id" | "buyer_daop_user_address" | "shared_uid" | "price" | "amount" | "total_price" | "check_in" | "pay_channel" | "pay_scene" | "pay_trade_no" | "pay_time" | "pay_status" | "pay_failed_reason" | "transfer_status" | "expire_time" | "expire_time_at" | "order_type" | "status" | "deleted_at" | "modify_time" | "create_time", ExtArgs["result"]["tr_order"]>
   export type tr_orderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     ticket?: boolean | ticketDefaultArgs<ExtArgs>
     collection?: boolean | collectionDefaultArgs<ExtArgs>
@@ -27547,6 +27793,8 @@ export namespace Prisma {
       order_id: number
       order_no: string
       ticket_id: number
+      ticket_name: string | null
+      ticket_coveruri: string | null
       ticket_did_credential: string | null
       ticket_copyright_credential: string | null
       ticket_authorization_credential: string | null
@@ -27570,6 +27818,7 @@ export namespace Prisma {
       shared_uid: number | null
       price: number
       amount: number | null
+      total_price: number | null
       check_in: number | null
       pay_channel: string | null
       pay_scene: string | null
@@ -27580,6 +27829,7 @@ export namespace Prisma {
       transfer_status: number
       expire_time: Date | null
       expire_time_at: bigint | null
+      order_type: number | null
       status: number
       deleted_at: number | null
       modify_time: Date
@@ -27959,6 +28209,8 @@ export namespace Prisma {
     readonly order_id: FieldRef<"tr_order", 'Int'>
     readonly order_no: FieldRef<"tr_order", 'String'>
     readonly ticket_id: FieldRef<"tr_order", 'Int'>
+    readonly ticket_name: FieldRef<"tr_order", 'String'>
+    readonly ticket_coveruri: FieldRef<"tr_order", 'String'>
     readonly ticket_did_credential: FieldRef<"tr_order", 'String'>
     readonly ticket_copyright_credential: FieldRef<"tr_order", 'String'>
     readonly ticket_authorization_credential: FieldRef<"tr_order", 'String'>
@@ -27982,6 +28234,7 @@ export namespace Prisma {
     readonly shared_uid: FieldRef<"tr_order", 'Int'>
     readonly price: FieldRef<"tr_order", 'Int'>
     readonly amount: FieldRef<"tr_order", 'Int'>
+    readonly total_price: FieldRef<"tr_order", 'Int'>
     readonly check_in: FieldRef<"tr_order", 'Int'>
     readonly pay_channel: FieldRef<"tr_order", 'String'>
     readonly pay_scene: FieldRef<"tr_order", 'String'>
@@ -27992,6 +28245,7 @@ export namespace Prisma {
     readonly transfer_status: FieldRef<"tr_order", 'Int'>
     readonly expire_time: FieldRef<"tr_order", 'DateTime'>
     readonly expire_time_at: FieldRef<"tr_order", 'BigInt'>
+    readonly order_type: FieldRef<"tr_order", 'Int'>
     readonly status: FieldRef<"tr_order", 'Int'>
     readonly deleted_at: FieldRef<"tr_order", 'Int'>
     readonly modify_time: FieldRef<"tr_order", 'DateTime'>
@@ -28414,6 +28668,7 @@ export namespace Prisma {
     id: number | null
     pay_channel: string | null
     order_no: string | null
+    pay_trade_no: string | null
     modify_time: Date | null
     create_time: Date | null
   }
@@ -28422,6 +28677,7 @@ export namespace Prisma {
     id: number | null
     pay_channel: string | null
     order_no: string | null
+    pay_trade_no: string | null
     modify_time: Date | null
     create_time: Date | null
   }
@@ -28430,6 +28686,7 @@ export namespace Prisma {
     id: number
     pay_channel: number
     order_no: number
+    pay_trade_no: number
     data: number
     modify_time: number
     create_time: number
@@ -28449,6 +28706,7 @@ export namespace Prisma {
     id?: true
     pay_channel?: true
     order_no?: true
+    pay_trade_no?: true
     modify_time?: true
     create_time?: true
   }
@@ -28457,6 +28715,7 @@ export namespace Prisma {
     id?: true
     pay_channel?: true
     order_no?: true
+    pay_trade_no?: true
     modify_time?: true
     create_time?: true
   }
@@ -28465,6 +28724,7 @@ export namespace Prisma {
     id?: true
     pay_channel?: true
     order_no?: true
+    pay_trade_no?: true
     data?: true
     modify_time?: true
     create_time?: true
@@ -28561,6 +28821,7 @@ export namespace Prisma {
     id: number
     pay_channel: string | null
     order_no: string | null
+    pay_trade_no: string | null
     data: JsonValue | null
     modify_time: Date | null
     create_time: Date | null
@@ -28589,6 +28850,7 @@ export namespace Prisma {
     id?: boolean
     pay_channel?: boolean
     order_no?: boolean
+    pay_trade_no?: boolean
     data?: boolean
     modify_time?: boolean
     create_time?: boolean
@@ -28600,12 +28862,13 @@ export namespace Prisma {
     id?: boolean
     pay_channel?: boolean
     order_no?: boolean
+    pay_trade_no?: boolean
     data?: boolean
     modify_time?: boolean
     create_time?: boolean
   }
 
-  export type tr_pay_notificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "pay_channel" | "order_no" | "data" | "modify_time" | "create_time", ExtArgs["result"]["tr_pay_notification"]>
+  export type tr_pay_notificationOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "pay_channel" | "order_no" | "pay_trade_no" | "data" | "modify_time" | "create_time", ExtArgs["result"]["tr_pay_notification"]>
 
   export type $tr_pay_notificationPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "tr_pay_notification"
@@ -28614,6 +28877,7 @@ export namespace Prisma {
       id: number
       pay_channel: string | null
       order_no: string | null
+      pay_trade_no: string | null
       data: Prisma.JsonValue | null
       modify_time: Date | null
       create_time: Date | null
@@ -28989,6 +29253,7 @@ export namespace Prisma {
     readonly id: FieldRef<"tr_pay_notification", 'Int'>
     readonly pay_channel: FieldRef<"tr_pay_notification", 'String'>
     readonly order_no: FieldRef<"tr_pay_notification", 'String'>
+    readonly pay_trade_no: FieldRef<"tr_pay_notification", 'String'>
     readonly data: FieldRef<"tr_pay_notification", 'Json'>
     readonly modify_time: FieldRef<"tr_pay_notification", 'DateTime'>
     readonly create_time: FieldRef<"tr_pay_notification", 'DateTime'>
@@ -34776,6 +35041,990 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: resourceInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model suit
+   */
+
+  export type AggregateSuit = {
+    _count: SuitCountAggregateOutputType | null
+    _avg: SuitAvgAggregateOutputType | null
+    _sum: SuitSumAggregateOutputType | null
+    _min: SuitMinAggregateOutputType | null
+    _max: SuitMaxAggregateOutputType | null
+  }
+
+  export type SuitAvgAggregateOutputType = {
+    id: number | null
+    suit_satus: number | null
+    status: number | null
+  }
+
+  export type SuitSumAggregateOutputType = {
+    id: number | null
+    suit_satus: number | null
+    status: number | null
+  }
+
+  export type SuitMinAggregateOutputType = {
+    id: number | null
+    suit_name: string | null
+    header_img: string | null
+    desc_img: string | null
+    suit_satus: number | null
+    desc: string | null
+    create_time: Date | null
+    modify_time: Date | null
+    status: number | null
+  }
+
+  export type SuitMaxAggregateOutputType = {
+    id: number | null
+    suit_name: string | null
+    header_img: string | null
+    desc_img: string | null
+    suit_satus: number | null
+    desc: string | null
+    create_time: Date | null
+    modify_time: Date | null
+    status: number | null
+  }
+
+  export type SuitCountAggregateOutputType = {
+    id: number
+    suit_name: number
+    header_img: number
+    desc_img: number
+    tickets: number
+    suit_satus: number
+    desc: number
+    create_time: number
+    modify_time: number
+    status: number
+    _all: number
+  }
+
+
+  export type SuitAvgAggregateInputType = {
+    id?: true
+    suit_satus?: true
+    status?: true
+  }
+
+  export type SuitSumAggregateInputType = {
+    id?: true
+    suit_satus?: true
+    status?: true
+  }
+
+  export type SuitMinAggregateInputType = {
+    id?: true
+    suit_name?: true
+    header_img?: true
+    desc_img?: true
+    suit_satus?: true
+    desc?: true
+    create_time?: true
+    modify_time?: true
+    status?: true
+  }
+
+  export type SuitMaxAggregateInputType = {
+    id?: true
+    suit_name?: true
+    header_img?: true
+    desc_img?: true
+    suit_satus?: true
+    desc?: true
+    create_time?: true
+    modify_time?: true
+    status?: true
+  }
+
+  export type SuitCountAggregateInputType = {
+    id?: true
+    suit_name?: true
+    header_img?: true
+    desc_img?: true
+    tickets?: true
+    suit_satus?: true
+    desc?: true
+    create_time?: true
+    modify_time?: true
+    status?: true
+    _all?: true
+  }
+
+  export type SuitAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which suit to aggregate.
+     */
+    where?: suitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of suits to fetch.
+     */
+    orderBy?: suitOrderByWithRelationInput | suitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: suitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` suits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` suits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned suits
+    **/
+    _count?: true | SuitCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: SuitAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: SuitSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: SuitMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: SuitMaxAggregateInputType
+  }
+
+  export type GetSuitAggregateType<T extends SuitAggregateArgs> = {
+        [P in keyof T & keyof AggregateSuit]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateSuit[P]>
+      : GetScalarType<T[P], AggregateSuit[P]>
+  }
+
+
+
+
+  export type suitGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: suitWhereInput
+    orderBy?: suitOrderByWithAggregationInput | suitOrderByWithAggregationInput[]
+    by: SuitScalarFieldEnum[] | SuitScalarFieldEnum
+    having?: suitScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: SuitCountAggregateInputType | true
+    _avg?: SuitAvgAggregateInputType
+    _sum?: SuitSumAggregateInputType
+    _min?: SuitMinAggregateInputType
+    _max?: SuitMaxAggregateInputType
+  }
+
+  export type SuitGroupByOutputType = {
+    id: number
+    suit_name: string | null
+    header_img: string | null
+    desc_img: string | null
+    tickets: JsonValue | null
+    suit_satus: number | null
+    desc: string | null
+    create_time: Date | null
+    modify_time: Date | null
+    status: number | null
+    _count: SuitCountAggregateOutputType | null
+    _avg: SuitAvgAggregateOutputType | null
+    _sum: SuitSumAggregateOutputType | null
+    _min: SuitMinAggregateOutputType | null
+    _max: SuitMaxAggregateOutputType | null
+  }
+
+  type GetSuitGroupByPayload<T extends suitGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<SuitGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof SuitGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], SuitGroupByOutputType[P]>
+            : GetScalarType<T[P], SuitGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type suitSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    suit_name?: boolean
+    header_img?: boolean
+    desc_img?: boolean
+    tickets?: boolean
+    suit_satus?: boolean
+    desc?: boolean
+    create_time?: boolean
+    modify_time?: boolean
+    status?: boolean
+  }, ExtArgs["result"]["suit"]>
+
+
+
+  export type suitSelectScalar = {
+    id?: boolean
+    suit_name?: boolean
+    header_img?: boolean
+    desc_img?: boolean
+    tickets?: boolean
+    suit_satus?: boolean
+    desc?: boolean
+    create_time?: boolean
+    modify_time?: boolean
+    status?: boolean
+  }
+
+  export type suitOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "suit_name" | "header_img" | "desc_img" | "tickets" | "suit_satus" | "desc" | "create_time" | "modify_time" | "status", ExtArgs["result"]["suit"]>
+
+  export type $suitPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "suit"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      suit_name: string | null
+      header_img: string | null
+      desc_img: string | null
+      tickets: Prisma.JsonValue | null
+      suit_satus: number | null
+      desc: string | null
+      create_time: Date | null
+      modify_time: Date | null
+      status: number | null
+    }, ExtArgs["result"]["suit"]>
+    composites: {}
+  }
+
+  type suitGetPayload<S extends boolean | null | undefined | suitDefaultArgs> = $Result.GetResult<Prisma.$suitPayload, S>
+
+  type suitCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<suitFindManyArgs, 'select' | 'include' | 'distinct' | 'omit' | 'relationLoadStrategy'> & {
+      select?: SuitCountAggregateInputType | true
+    }
+
+  export interface suitDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['suit'], meta: { name: 'suit' } }
+    /**
+     * Find zero or one Suit that matches the filter.
+     * @param {suitFindUniqueArgs} args - Arguments to find a Suit
+     * @example
+     * // Get one Suit
+     * const suit = await prisma.suit.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends suitFindUniqueArgs>(args: SelectSubset<T, suitFindUniqueArgs<ExtArgs>>): Prisma__suitClient<$Result.GetResult<Prisma.$suitPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Suit that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {suitFindUniqueOrThrowArgs} args - Arguments to find a Suit
+     * @example
+     * // Get one Suit
+     * const suit = await prisma.suit.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends suitFindUniqueOrThrowArgs>(args: SelectSubset<T, suitFindUniqueOrThrowArgs<ExtArgs>>): Prisma__suitClient<$Result.GetResult<Prisma.$suitPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Suit that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {suitFindFirstArgs} args - Arguments to find a Suit
+     * @example
+     * // Get one Suit
+     * const suit = await prisma.suit.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends suitFindFirstArgs>(args?: SelectSubset<T, suitFindFirstArgs<ExtArgs>>): Prisma__suitClient<$Result.GetResult<Prisma.$suitPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Suit that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {suitFindFirstOrThrowArgs} args - Arguments to find a Suit
+     * @example
+     * // Get one Suit
+     * const suit = await prisma.suit.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends suitFindFirstOrThrowArgs>(args?: SelectSubset<T, suitFindFirstOrThrowArgs<ExtArgs>>): Prisma__suitClient<$Result.GetResult<Prisma.$suitPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Suits that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {suitFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Suits
+     * const suits = await prisma.suit.findMany()
+     * 
+     * // Get first 10 Suits
+     * const suits = await prisma.suit.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const suitWithIdOnly = await prisma.suit.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends suitFindManyArgs>(args?: SelectSubset<T, suitFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$suitPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Suit.
+     * @param {suitCreateArgs} args - Arguments to create a Suit.
+     * @example
+     * // Create one Suit
+     * const Suit = await prisma.suit.create({
+     *   data: {
+     *     // ... data to create a Suit
+     *   }
+     * })
+     * 
+     */
+    create<T extends suitCreateArgs>(args: SelectSubset<T, suitCreateArgs<ExtArgs>>): Prisma__suitClient<$Result.GetResult<Prisma.$suitPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Suits.
+     * @param {suitCreateManyArgs} args - Arguments to create many Suits.
+     * @example
+     * // Create many Suits
+     * const suit = await prisma.suit.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends suitCreateManyArgs>(args?: SelectSubset<T, suitCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Suit.
+     * @param {suitDeleteArgs} args - Arguments to delete one Suit.
+     * @example
+     * // Delete one Suit
+     * const Suit = await prisma.suit.delete({
+     *   where: {
+     *     // ... filter to delete one Suit
+     *   }
+     * })
+     * 
+     */
+    delete<T extends suitDeleteArgs>(args: SelectSubset<T, suitDeleteArgs<ExtArgs>>): Prisma__suitClient<$Result.GetResult<Prisma.$suitPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Suit.
+     * @param {suitUpdateArgs} args - Arguments to update one Suit.
+     * @example
+     * // Update one Suit
+     * const suit = await prisma.suit.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends suitUpdateArgs>(args: SelectSubset<T, suitUpdateArgs<ExtArgs>>): Prisma__suitClient<$Result.GetResult<Prisma.$suitPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Suits.
+     * @param {suitDeleteManyArgs} args - Arguments to filter Suits to delete.
+     * @example
+     * // Delete a few Suits
+     * const { count } = await prisma.suit.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends suitDeleteManyArgs>(args?: SelectSubset<T, suitDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Suits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {suitUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Suits
+     * const suit = await prisma.suit.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends suitUpdateManyArgs>(args: SelectSubset<T, suitUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Suit.
+     * @param {suitUpsertArgs} args - Arguments to update or create a Suit.
+     * @example
+     * // Update or create a Suit
+     * const suit = await prisma.suit.upsert({
+     *   create: {
+     *     // ... data to create a Suit
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Suit we want to update
+     *   }
+     * })
+     */
+    upsert<T extends suitUpsertArgs>(args: SelectSubset<T, suitUpsertArgs<ExtArgs>>): Prisma__suitClient<$Result.GetResult<Prisma.$suitPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Suits.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {suitCountArgs} args - Arguments to filter Suits to count.
+     * @example
+     * // Count the number of Suits
+     * const count = await prisma.suit.count({
+     *   where: {
+     *     // ... the filter for the Suits we want to count
+     *   }
+     * })
+    **/
+    count<T extends suitCountArgs>(
+      args?: Subset<T, suitCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], SuitCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Suit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {SuitAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends SuitAggregateArgs>(args: Subset<T, SuitAggregateArgs>): Prisma.PrismaPromise<GetSuitAggregateType<T>>
+
+    /**
+     * Group by Suit.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {suitGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends suitGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: suitGroupByArgs['orderBy'] }
+        : { orderBy?: suitGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, suitGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSuitGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the suit model
+   */
+  readonly fields: suitFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for suit.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__suitClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the suit model
+   */ 
+  interface suitFieldRefs {
+    readonly id: FieldRef<"suit", 'Int'>
+    readonly suit_name: FieldRef<"suit", 'String'>
+    readonly header_img: FieldRef<"suit", 'String'>
+    readonly desc_img: FieldRef<"suit", 'String'>
+    readonly tickets: FieldRef<"suit", 'Json'>
+    readonly suit_satus: FieldRef<"suit", 'Int'>
+    readonly desc: FieldRef<"suit", 'String'>
+    readonly create_time: FieldRef<"suit", 'DateTime'>
+    readonly modify_time: FieldRef<"suit", 'DateTime'>
+    readonly status: FieldRef<"suit", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * suit findUnique
+   */
+  export type suitFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the suit
+     */
+    select?: suitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the suit
+     */
+    omit?: suitOmit<ExtArgs> | null
+    /**
+     * Filter, which suit to fetch.
+     */
+    where: suitWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * suit findUniqueOrThrow
+   */
+  export type suitFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the suit
+     */
+    select?: suitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the suit
+     */
+    omit?: suitOmit<ExtArgs> | null
+    /**
+     * Filter, which suit to fetch.
+     */
+    where: suitWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * suit findFirst
+   */
+  export type suitFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the suit
+     */
+    select?: suitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the suit
+     */
+    omit?: suitOmit<ExtArgs> | null
+    /**
+     * Filter, which suit to fetch.
+     */
+    where?: suitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of suits to fetch.
+     */
+    orderBy?: suitOrderByWithRelationInput | suitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for suits.
+     */
+    cursor?: suitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` suits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` suits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of suits.
+     */
+    distinct?: SuitScalarFieldEnum | SuitScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * suit findFirstOrThrow
+   */
+  export type suitFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the suit
+     */
+    select?: suitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the suit
+     */
+    omit?: suitOmit<ExtArgs> | null
+    /**
+     * Filter, which suit to fetch.
+     */
+    where?: suitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of suits to fetch.
+     */
+    orderBy?: suitOrderByWithRelationInput | suitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for suits.
+     */
+    cursor?: suitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` suits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` suits.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of suits.
+     */
+    distinct?: SuitScalarFieldEnum | SuitScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * suit findMany
+   */
+  export type suitFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the suit
+     */
+    select?: suitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the suit
+     */
+    omit?: suitOmit<ExtArgs> | null
+    /**
+     * Filter, which suits to fetch.
+     */
+    where?: suitWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of suits to fetch.
+     */
+    orderBy?: suitOrderByWithRelationInput | suitOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing suits.
+     */
+    cursor?: suitWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` suits from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` suits.
+     */
+    skip?: number
+    distinct?: SuitScalarFieldEnum | SuitScalarFieldEnum[]
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * suit create
+   */
+  export type suitCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the suit
+     */
+    select?: suitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the suit
+     */
+    omit?: suitOmit<ExtArgs> | null
+    /**
+     * The data needed to create a suit.
+     */
+    data?: XOR<suitCreateInput, suitUncheckedCreateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * suit createMany
+   */
+  export type suitCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many suits.
+     */
+    data: suitCreateManyInput | suitCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * suit update
+   */
+  export type suitUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the suit
+     */
+    select?: suitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the suit
+     */
+    omit?: suitOmit<ExtArgs> | null
+    /**
+     * The data needed to update a suit.
+     */
+    data: XOR<suitUpdateInput, suitUncheckedUpdateInput>
+    /**
+     * Choose, which suit to update.
+     */
+    where: suitWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * suit updateMany
+   */
+  export type suitUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update suits.
+     */
+    data: XOR<suitUpdateManyMutationInput, suitUncheckedUpdateManyInput>
+    /**
+     * Filter which suits to update
+     */
+    where?: suitWhereInput
+    /**
+     * Limit how many suits to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * suit upsert
+   */
+  export type suitUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the suit
+     */
+    select?: suitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the suit
+     */
+    omit?: suitOmit<ExtArgs> | null
+    /**
+     * The filter to search for the suit to update in case it exists.
+     */
+    where: suitWhereUniqueInput
+    /**
+     * In case the suit found by the `where` argument doesn't exist, create a new suit with this data.
+     */
+    create: XOR<suitCreateInput, suitUncheckedCreateInput>
+    /**
+     * In case the suit was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<suitUpdateInput, suitUncheckedUpdateInput>
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * suit delete
+   */
+  export type suitDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the suit
+     */
+    select?: suitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the suit
+     */
+    omit?: suitOmit<ExtArgs> | null
+    /**
+     * Filter which suit to delete.
+     */
+    where: suitWhereUniqueInput
+    relationLoadStrategy?: RelationLoadStrategy
+  }
+
+  /**
+   * suit deleteMany
+   */
+  export type suitDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which suits to delete
+     */
+    where?: suitWhereInput
+    /**
+     * Limit how many suits to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * suit without action
+   */
+  export type suitDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the suit
+     */
+    select?: suitSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the suit
+     */
+    omit?: suitOmit<ExtArgs> | null
   }
 
 
@@ -41473,7 +42722,13 @@ export namespace Prisma {
     block_number: 'block_number',
     sjt_status: 'sjt_status',
     reg_code: 'reg_code',
-    asset_number: 'asset_number'
+    asset_number: 'asset_number',
+    apply_firsttime: 'apply_firsttime',
+    apply_lasttime: 'apply_lasttime',
+    exp_date: 'exp_date',
+    give_count: 'give_count',
+    certificate_validity_period: 'certificate_validity_period',
+    rights_status: 'rights_status'
   };
 
   export type CollectionScalarFieldEnum = (typeof CollectionScalarFieldEnum)[keyof typeof CollectionScalarFieldEnum]
@@ -41520,6 +42775,7 @@ export namespace Prisma {
     creator_uid: 'creator_uid',
     creator_name: 'creator_name',
     creator_avatar: 'creator_avatar',
+    author: 'author',
     daop_user_id: 'daop_user_id',
     daop_user_address: 'daop_user_address',
     publisher_id: 'publisher_id',
@@ -41555,7 +42811,9 @@ export namespace Prisma {
     download_status: 'download_status',
     origin_uri: 'origin_uri',
     creation_date: 'creation_date',
-    start_date: 'start_date'
+    start_date: 'start_date',
+    regist_effective_duration: 'regist_effective_duration',
+    certi_price: 'certi_price'
   };
 
   export type TicketScalarFieldEnum = (typeof TicketScalarFieldEnum)[keyof typeof TicketScalarFieldEnum]
@@ -41565,6 +42823,8 @@ export namespace Prisma {
     order_id: 'order_id',
     order_no: 'order_no',
     ticket_id: 'ticket_id',
+    ticket_name: 'ticket_name',
+    ticket_coveruri: 'ticket_coveruri',
     ticket_did_credential: 'ticket_did_credential',
     ticket_copyright_credential: 'ticket_copyright_credential',
     ticket_authorization_credential: 'ticket_authorization_credential',
@@ -41588,6 +42848,7 @@ export namespace Prisma {
     shared_uid: 'shared_uid',
     price: 'price',
     amount: 'amount',
+    total_price: 'total_price',
     check_in: 'check_in',
     pay_channel: 'pay_channel',
     pay_scene: 'pay_scene',
@@ -41598,6 +42859,7 @@ export namespace Prisma {
     transfer_status: 'transfer_status',
     expire_time: 'expire_time',
     expire_time_at: 'expire_time_at',
+    order_type: 'order_type',
     status: 'status',
     deleted_at: 'deleted_at',
     modify_time: 'modify_time',
@@ -41611,6 +42873,7 @@ export namespace Prisma {
     id: 'id',
     pay_channel: 'pay_channel',
     order_no: 'order_no',
+    pay_trade_no: 'pay_trade_no',
     data: 'data',
     modify_time: 'modify_time',
     create_time: 'create_time'
@@ -41722,6 +42985,22 @@ export namespace Prisma {
   };
 
   export type ResourceScalarFieldEnum = (typeof ResourceScalarFieldEnum)[keyof typeof ResourceScalarFieldEnum]
+
+
+  export const SuitScalarFieldEnum: {
+    id: 'id',
+    suit_name: 'suit_name',
+    header_img: 'header_img',
+    desc_img: 'desc_img',
+    tickets: 'tickets',
+    suit_satus: 'suit_satus',
+    desc: 'desc',
+    create_time: 'create_time',
+    modify_time: 'modify_time',
+    status: 'status'
+  };
+
+  export type SuitScalarFieldEnum = (typeof SuitScalarFieldEnum)[keyof typeof SuitScalarFieldEnum]
 
 
   export const Collection_day_countScalarFieldEnum: {
@@ -42097,6 +43376,7 @@ export namespace Prisma {
     content_uri: 'content_uri',
     creator_name: 'creator_name',
     creator_avatar: 'creator_avatar',
+    author: 'author',
     daop_user_address: 'daop_user_address',
     publisher_name: 'publisher_name',
     publisher_logo: 'publisher_logo',
@@ -42116,6 +43396,8 @@ export namespace Prisma {
 
   export const tr_orderOrderByRelevanceFieldEnum: {
     order_no: 'order_no',
+    ticket_name: 'ticket_name',
+    ticket_coveruri: 'ticket_coveruri',
     ticket_did_credential: 'ticket_did_credential',
     ticket_copyright_credential: 'ticket_copyright_credential',
     ticket_authorization_credential: 'ticket_authorization_credential',
@@ -42141,7 +43423,8 @@ export namespace Prisma {
 
   export const tr_pay_notificationOrderByRelevanceFieldEnum: {
     pay_channel: 'pay_channel',
-    order_no: 'order_no'
+    order_no: 'order_no',
+    pay_trade_no: 'pay_trade_no'
   };
 
   export type tr_pay_notificationOrderByRelevanceFieldEnum = (typeof tr_pay_notificationOrderByRelevanceFieldEnum)[keyof typeof tr_pay_notificationOrderByRelevanceFieldEnum]
@@ -42216,6 +43499,16 @@ export namespace Prisma {
   };
 
   export type resourceOrderByRelevanceFieldEnum = (typeof resourceOrderByRelevanceFieldEnum)[keyof typeof resourceOrderByRelevanceFieldEnum]
+
+
+  export const suitOrderByRelevanceFieldEnum: {
+    suit_name: 'suit_name',
+    header_img: 'header_img',
+    desc_img: 'desc_img',
+    desc: 'desc'
+  };
+
+  export type suitOrderByRelevanceFieldEnum = (typeof suitOrderByRelevanceFieldEnum)[keyof typeof suitOrderByRelevanceFieldEnum]
 
 
   export const collection_day_countOrderByRelevanceFieldEnum: {
@@ -43799,6 +45092,12 @@ export namespace Prisma {
     sjt_status?: IntNullableFilter<"collection"> | number | null
     reg_code?: StringNullableFilter<"collection"> | string | null
     asset_number?: StringNullableFilter<"collection"> | string | null
+    apply_firsttime?: DateTimeNullableFilter<"collection"> | Date | string | null
+    apply_lasttime?: DateTimeNullableFilter<"collection"> | Date | string | null
+    exp_date?: DateTimeNullableFilter<"collection"> | Date | string | null
+    give_count?: IntNullableFilter<"collection"> | number | null
+    certificate_validity_period?: IntNullableFilter<"collection"> | number | null
+    rights_status?: IntNullableFilter<"collection"> | number | null
     ticket?: XOR<TicketNullableScalarRelationFilter, ticketWhereInput> | null
     user?: XOR<UserScalarRelationFilter, userWhereInput>
     tr_order?: Tr_orderListRelationFilter
@@ -43854,6 +45153,12 @@ export namespace Prisma {
     sjt_status?: SortOrderInput | SortOrder
     reg_code?: SortOrderInput | SortOrder
     asset_number?: SortOrderInput | SortOrder
+    apply_firsttime?: SortOrderInput | SortOrder
+    apply_lasttime?: SortOrderInput | SortOrder
+    exp_date?: SortOrderInput | SortOrder
+    give_count?: SortOrderInput | SortOrder
+    certificate_validity_period?: SortOrderInput | SortOrder
+    rights_status?: SortOrderInput | SortOrder
     ticket?: ticketOrderByWithRelationInput
     user?: userOrderByWithRelationInput
     tr_order?: tr_orderOrderByRelationAggregateInput
@@ -43913,6 +45218,12 @@ export namespace Prisma {
     sjt_status?: IntNullableFilter<"collection"> | number | null
     reg_code?: StringNullableFilter<"collection"> | string | null
     asset_number?: StringNullableFilter<"collection"> | string | null
+    apply_firsttime?: DateTimeNullableFilter<"collection"> | Date | string | null
+    apply_lasttime?: DateTimeNullableFilter<"collection"> | Date | string | null
+    exp_date?: DateTimeNullableFilter<"collection"> | Date | string | null
+    give_count?: IntNullableFilter<"collection"> | number | null
+    certificate_validity_period?: IntNullableFilter<"collection"> | number | null
+    rights_status?: IntNullableFilter<"collection"> | number | null
     ticket?: XOR<TicketNullableScalarRelationFilter, ticketWhereInput> | null
     user?: XOR<UserScalarRelationFilter, userWhereInput>
     tr_order?: Tr_orderListRelationFilter
@@ -43968,6 +45279,12 @@ export namespace Prisma {
     sjt_status?: SortOrderInput | SortOrder
     reg_code?: SortOrderInput | SortOrder
     asset_number?: SortOrderInput | SortOrder
+    apply_firsttime?: SortOrderInput | SortOrder
+    apply_lasttime?: SortOrderInput | SortOrder
+    exp_date?: SortOrderInput | SortOrder
+    give_count?: SortOrderInput | SortOrder
+    certificate_validity_period?: SortOrderInput | SortOrder
+    rights_status?: SortOrderInput | SortOrder
     _count?: collectionCountOrderByAggregateInput
     _avg?: collectionAvgOrderByAggregateInput
     _max?: collectionMaxOrderByAggregateInput
@@ -44027,6 +45344,12 @@ export namespace Prisma {
     sjt_status?: IntNullableWithAggregatesFilter<"collection"> | number | null
     reg_code?: StringNullableWithAggregatesFilter<"collection"> | string | null
     asset_number?: StringNullableWithAggregatesFilter<"collection"> | string | null
+    apply_firsttime?: DateTimeNullableWithAggregatesFilter<"collection"> | Date | string | null
+    apply_lasttime?: DateTimeNullableWithAggregatesFilter<"collection"> | Date | string | null
+    exp_date?: DateTimeNullableWithAggregatesFilter<"collection"> | Date | string | null
+    give_count?: IntNullableWithAggregatesFilter<"collection"> | number | null
+    certificate_validity_period?: IntNullableWithAggregatesFilter<"collection"> | number | null
+    rights_status?: IntNullableWithAggregatesFilter<"collection"> | number | null
   }
 
   export type init_mobileWhereInput = {
@@ -44193,6 +45516,7 @@ export namespace Prisma {
     creator_uid?: IntNullableFilter<"ticket"> | number | null
     creator_name?: StringNullableFilter<"ticket"> | string | null
     creator_avatar?: StringNullableFilter<"ticket"> | string | null
+    author?: StringNullableFilter<"ticket"> | string | null
     daop_user_id?: IntNullableFilter<"ticket"> | number | null
     daop_user_address?: StringNullableFilter<"ticket"> | string | null
     publisher_id?: IntNullableFilter<"ticket"> | number | null
@@ -44229,6 +45553,8 @@ export namespace Prisma {
     origin_uri?: StringNullableFilter<"ticket"> | string | null
     creation_date?: DateTimeNullableFilter<"ticket"> | Date | string | null
     start_date?: DateTimeNullableFilter<"ticket"> | Date | string | null
+    regist_effective_duration?: IntNullableFilter<"ticket"> | number | null
+    certi_price?: IntNullableFilter<"ticket"> | number | null
     collection?: CollectionListRelationFilter
     resource?: ResourceListRelationFilter
     tr_order?: Tr_orderListRelationFilter
@@ -44245,6 +45571,7 @@ export namespace Prisma {
     creator_uid?: SortOrderInput | SortOrder
     creator_name?: SortOrderInput | SortOrder
     creator_avatar?: SortOrderInput | SortOrder
+    author?: SortOrderInput | SortOrder
     daop_user_id?: SortOrderInput | SortOrder
     daop_user_address?: SortOrderInput | SortOrder
     publisher_id?: SortOrderInput | SortOrder
@@ -44281,6 +45608,8 @@ export namespace Prisma {
     origin_uri?: SortOrderInput | SortOrder
     creation_date?: SortOrderInput | SortOrder
     start_date?: SortOrderInput | SortOrder
+    regist_effective_duration?: SortOrderInput | SortOrder
+    certi_price?: SortOrderInput | SortOrder
     collection?: collectionOrderByRelationAggregateInput
     resource?: resourceOrderByRelationAggregateInput
     tr_order?: tr_orderOrderByRelationAggregateInput
@@ -44301,6 +45630,7 @@ export namespace Prisma {
     creator_uid?: IntNullableFilter<"ticket"> | number | null
     creator_name?: StringNullableFilter<"ticket"> | string | null
     creator_avatar?: StringNullableFilter<"ticket"> | string | null
+    author?: StringNullableFilter<"ticket"> | string | null
     daop_user_id?: IntNullableFilter<"ticket"> | number | null
     daop_user_address?: StringNullableFilter<"ticket"> | string | null
     publisher_id?: IntNullableFilter<"ticket"> | number | null
@@ -44337,6 +45667,8 @@ export namespace Prisma {
     origin_uri?: StringNullableFilter<"ticket"> | string | null
     creation_date?: DateTimeNullableFilter<"ticket"> | Date | string | null
     start_date?: DateTimeNullableFilter<"ticket"> | Date | string | null
+    regist_effective_duration?: IntNullableFilter<"ticket"> | number | null
+    certi_price?: IntNullableFilter<"ticket"> | number | null
     collection?: CollectionListRelationFilter
     resource?: ResourceListRelationFilter
     tr_order?: Tr_orderListRelationFilter
@@ -44353,6 +45685,7 @@ export namespace Prisma {
     creator_uid?: SortOrderInput | SortOrder
     creator_name?: SortOrderInput | SortOrder
     creator_avatar?: SortOrderInput | SortOrder
+    author?: SortOrderInput | SortOrder
     daop_user_id?: SortOrderInput | SortOrder
     daop_user_address?: SortOrderInput | SortOrder
     publisher_id?: SortOrderInput | SortOrder
@@ -44389,6 +45722,8 @@ export namespace Prisma {
     origin_uri?: SortOrderInput | SortOrder
     creation_date?: SortOrderInput | SortOrder
     start_date?: SortOrderInput | SortOrder
+    regist_effective_duration?: SortOrderInput | SortOrder
+    certi_price?: SortOrderInput | SortOrder
     _count?: ticketCountOrderByAggregateInput
     _avg?: ticketAvgOrderByAggregateInput
     _max?: ticketMaxOrderByAggregateInput
@@ -44410,6 +45745,7 @@ export namespace Prisma {
     creator_uid?: IntNullableWithAggregatesFilter<"ticket"> | number | null
     creator_name?: StringNullableWithAggregatesFilter<"ticket"> | string | null
     creator_avatar?: StringNullableWithAggregatesFilter<"ticket"> | string | null
+    author?: StringNullableWithAggregatesFilter<"ticket"> | string | null
     daop_user_id?: IntNullableWithAggregatesFilter<"ticket"> | number | null
     daop_user_address?: StringNullableWithAggregatesFilter<"ticket"> | string | null
     publisher_id?: IntNullableWithAggregatesFilter<"ticket"> | number | null
@@ -44446,6 +45782,8 @@ export namespace Prisma {
     origin_uri?: StringNullableWithAggregatesFilter<"ticket"> | string | null
     creation_date?: DateTimeNullableWithAggregatesFilter<"ticket"> | Date | string | null
     start_date?: DateTimeNullableWithAggregatesFilter<"ticket"> | Date | string | null
+    regist_effective_duration?: IntNullableWithAggregatesFilter<"ticket"> | number | null
+    certi_price?: IntNullableWithAggregatesFilter<"ticket"> | number | null
   }
 
   export type tr_orderWhereInput = {
@@ -44455,6 +45793,8 @@ export namespace Prisma {
     order_id?: IntFilter<"tr_order"> | number
     order_no?: StringFilter<"tr_order"> | string
     ticket_id?: IntFilter<"tr_order"> | number
+    ticket_name?: StringNullableFilter<"tr_order"> | string | null
+    ticket_coveruri?: StringNullableFilter<"tr_order"> | string | null
     ticket_did_credential?: StringNullableFilter<"tr_order"> | string | null
     ticket_copyright_credential?: StringNullableFilter<"tr_order"> | string | null
     ticket_authorization_credential?: StringNullableFilter<"tr_order"> | string | null
@@ -44478,6 +45818,7 @@ export namespace Prisma {
     shared_uid?: IntNullableFilter<"tr_order"> | number | null
     price?: IntFilter<"tr_order"> | number
     amount?: IntNullableFilter<"tr_order"> | number | null
+    total_price?: IntNullableFilter<"tr_order"> | number | null
     check_in?: IntNullableFilter<"tr_order"> | number | null
     pay_channel?: StringNullableFilter<"tr_order"> | string | null
     pay_scene?: StringNullableFilter<"tr_order"> | string | null
@@ -44488,6 +45829,7 @@ export namespace Prisma {
     transfer_status?: IntFilter<"tr_order"> | number
     expire_time?: DateTimeNullableFilter<"tr_order"> | Date | string | null
     expire_time_at?: BigIntNullableFilter<"tr_order"> | bigint | number | null
+    order_type?: IntNullableFilter<"tr_order"> | number | null
     status?: IntFilter<"tr_order"> | number
     deleted_at?: IntNullableFilter<"tr_order"> | number | null
     modify_time?: DateTimeFilter<"tr_order"> | Date | string
@@ -44501,6 +45843,8 @@ export namespace Prisma {
     order_id?: SortOrder
     order_no?: SortOrder
     ticket_id?: SortOrder
+    ticket_name?: SortOrderInput | SortOrder
+    ticket_coveruri?: SortOrderInput | SortOrder
     ticket_did_credential?: SortOrderInput | SortOrder
     ticket_copyright_credential?: SortOrderInput | SortOrder
     ticket_authorization_credential?: SortOrderInput | SortOrder
@@ -44524,6 +45868,7 @@ export namespace Prisma {
     shared_uid?: SortOrderInput | SortOrder
     price?: SortOrder
     amount?: SortOrderInput | SortOrder
+    total_price?: SortOrderInput | SortOrder
     check_in?: SortOrderInput | SortOrder
     pay_channel?: SortOrderInput | SortOrder
     pay_scene?: SortOrderInput | SortOrder
@@ -44534,6 +45879,7 @@ export namespace Prisma {
     transfer_status?: SortOrder
     expire_time?: SortOrderInput | SortOrder
     expire_time_at?: SortOrderInput | SortOrder
+    order_type?: SortOrderInput | SortOrder
     status?: SortOrder
     deleted_at?: SortOrderInput | SortOrder
     modify_time?: SortOrder
@@ -44551,6 +45897,8 @@ export namespace Prisma {
     OR?: tr_orderWhereInput[]
     NOT?: tr_orderWhereInput | tr_orderWhereInput[]
     ticket_id?: IntFilter<"tr_order"> | number
+    ticket_name?: StringNullableFilter<"tr_order"> | string | null
+    ticket_coveruri?: StringNullableFilter<"tr_order"> | string | null
     ticket_did_credential?: StringNullableFilter<"tr_order"> | string | null
     ticket_copyright_credential?: StringNullableFilter<"tr_order"> | string | null
     ticket_authorization_credential?: StringNullableFilter<"tr_order"> | string | null
@@ -44574,6 +45922,7 @@ export namespace Prisma {
     shared_uid?: IntNullableFilter<"tr_order"> | number | null
     price?: IntFilter<"tr_order"> | number
     amount?: IntNullableFilter<"tr_order"> | number | null
+    total_price?: IntNullableFilter<"tr_order"> | number | null
     check_in?: IntNullableFilter<"tr_order"> | number | null
     pay_channel?: StringNullableFilter<"tr_order"> | string | null
     pay_scene?: StringNullableFilter<"tr_order"> | string | null
@@ -44584,6 +45933,7 @@ export namespace Prisma {
     transfer_status?: IntFilter<"tr_order"> | number
     expire_time?: DateTimeNullableFilter<"tr_order"> | Date | string | null
     expire_time_at?: BigIntNullableFilter<"tr_order"> | bigint | number | null
+    order_type?: IntNullableFilter<"tr_order"> | number | null
     status?: IntFilter<"tr_order"> | number
     deleted_at?: IntNullableFilter<"tr_order"> | number | null
     modify_time?: DateTimeFilter<"tr_order"> | Date | string
@@ -44597,6 +45947,8 @@ export namespace Prisma {
     order_id?: SortOrder
     order_no?: SortOrder
     ticket_id?: SortOrder
+    ticket_name?: SortOrderInput | SortOrder
+    ticket_coveruri?: SortOrderInput | SortOrder
     ticket_did_credential?: SortOrderInput | SortOrder
     ticket_copyright_credential?: SortOrderInput | SortOrder
     ticket_authorization_credential?: SortOrderInput | SortOrder
@@ -44620,6 +45972,7 @@ export namespace Prisma {
     shared_uid?: SortOrderInput | SortOrder
     price?: SortOrder
     amount?: SortOrderInput | SortOrder
+    total_price?: SortOrderInput | SortOrder
     check_in?: SortOrderInput | SortOrder
     pay_channel?: SortOrderInput | SortOrder
     pay_scene?: SortOrderInput | SortOrder
@@ -44630,6 +45983,7 @@ export namespace Prisma {
     transfer_status?: SortOrder
     expire_time?: SortOrderInput | SortOrder
     expire_time_at?: SortOrderInput | SortOrder
+    order_type?: SortOrderInput | SortOrder
     status?: SortOrder
     deleted_at?: SortOrderInput | SortOrder
     modify_time?: SortOrder
@@ -44648,6 +46002,8 @@ export namespace Prisma {
     order_id?: IntWithAggregatesFilter<"tr_order"> | number
     order_no?: StringWithAggregatesFilter<"tr_order"> | string
     ticket_id?: IntWithAggregatesFilter<"tr_order"> | number
+    ticket_name?: StringNullableWithAggregatesFilter<"tr_order"> | string | null
+    ticket_coveruri?: StringNullableWithAggregatesFilter<"tr_order"> | string | null
     ticket_did_credential?: StringNullableWithAggregatesFilter<"tr_order"> | string | null
     ticket_copyright_credential?: StringNullableWithAggregatesFilter<"tr_order"> | string | null
     ticket_authorization_credential?: StringNullableWithAggregatesFilter<"tr_order"> | string | null
@@ -44671,6 +46027,7 @@ export namespace Prisma {
     shared_uid?: IntNullableWithAggregatesFilter<"tr_order"> | number | null
     price?: IntWithAggregatesFilter<"tr_order"> | number
     amount?: IntNullableWithAggregatesFilter<"tr_order"> | number | null
+    total_price?: IntNullableWithAggregatesFilter<"tr_order"> | number | null
     check_in?: IntNullableWithAggregatesFilter<"tr_order"> | number | null
     pay_channel?: StringNullableWithAggregatesFilter<"tr_order"> | string | null
     pay_scene?: StringNullableWithAggregatesFilter<"tr_order"> | string | null
@@ -44681,6 +46038,7 @@ export namespace Prisma {
     transfer_status?: IntWithAggregatesFilter<"tr_order"> | number
     expire_time?: DateTimeNullableWithAggregatesFilter<"tr_order"> | Date | string | null
     expire_time_at?: BigIntNullableWithAggregatesFilter<"tr_order"> | bigint | number | null
+    order_type?: IntNullableWithAggregatesFilter<"tr_order"> | number | null
     status?: IntWithAggregatesFilter<"tr_order"> | number
     deleted_at?: IntNullableWithAggregatesFilter<"tr_order"> | number | null
     modify_time?: DateTimeWithAggregatesFilter<"tr_order"> | Date | string
@@ -44694,6 +46052,7 @@ export namespace Prisma {
     id?: IntFilter<"tr_pay_notification"> | number
     pay_channel?: StringNullableFilter<"tr_pay_notification"> | string | null
     order_no?: StringNullableFilter<"tr_pay_notification"> | string | null
+    pay_trade_no?: StringNullableFilter<"tr_pay_notification"> | string | null
     data?: JsonNullableFilter<"tr_pay_notification">
     modify_time?: DateTimeNullableFilter<"tr_pay_notification"> | Date | string | null
     create_time?: DateTimeNullableFilter<"tr_pay_notification"> | Date | string | null
@@ -44703,6 +46062,7 @@ export namespace Prisma {
     id?: SortOrder
     pay_channel?: SortOrderInput | SortOrder
     order_no?: SortOrderInput | SortOrder
+    pay_trade_no?: SortOrderInput | SortOrder
     data?: SortOrderInput | SortOrder
     modify_time?: SortOrderInput | SortOrder
     create_time?: SortOrderInput | SortOrder
@@ -44716,6 +46076,7 @@ export namespace Prisma {
     NOT?: tr_pay_notificationWhereInput | tr_pay_notificationWhereInput[]
     pay_channel?: StringNullableFilter<"tr_pay_notification"> | string | null
     order_no?: StringNullableFilter<"tr_pay_notification"> | string | null
+    pay_trade_no?: StringNullableFilter<"tr_pay_notification"> | string | null
     data?: JsonNullableFilter<"tr_pay_notification">
     modify_time?: DateTimeNullableFilter<"tr_pay_notification"> | Date | string | null
     create_time?: DateTimeNullableFilter<"tr_pay_notification"> | Date | string | null
@@ -44725,6 +46086,7 @@ export namespace Prisma {
     id?: SortOrder
     pay_channel?: SortOrderInput | SortOrder
     order_no?: SortOrderInput | SortOrder
+    pay_trade_no?: SortOrderInput | SortOrder
     data?: SortOrderInput | SortOrder
     modify_time?: SortOrderInput | SortOrder
     create_time?: SortOrderInput | SortOrder
@@ -44742,6 +46104,7 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"tr_pay_notification"> | number
     pay_channel?: StringNullableWithAggregatesFilter<"tr_pay_notification"> | string | null
     order_no?: StringNullableWithAggregatesFilter<"tr_pay_notification"> | string | null
+    pay_trade_no?: StringNullableWithAggregatesFilter<"tr_pay_notification"> | string | null
     data?: JsonNullableWithAggregatesFilter<"tr_pay_notification">
     modify_time?: DateTimeNullableWithAggregatesFilter<"tr_pay_notification"> | Date | string | null
     create_time?: DateTimeNullableWithAggregatesFilter<"tr_pay_notification"> | Date | string | null
@@ -45283,6 +46646,86 @@ export namespace Prisma {
     update_time?: StringNullableWithAggregatesFilter<"resource"> | string | null
     status?: IntNullableWithAggregatesFilter<"resource"> | number | null
     remark?: StringNullableWithAggregatesFilter<"resource"> | string | null
+  }
+
+  export type suitWhereInput = {
+    AND?: suitWhereInput | suitWhereInput[]
+    OR?: suitWhereInput[]
+    NOT?: suitWhereInput | suitWhereInput[]
+    id?: IntFilter<"suit"> | number
+    suit_name?: StringNullableFilter<"suit"> | string | null
+    header_img?: StringNullableFilter<"suit"> | string | null
+    desc_img?: StringNullableFilter<"suit"> | string | null
+    tickets?: JsonNullableFilter<"suit">
+    suit_satus?: IntNullableFilter<"suit"> | number | null
+    desc?: StringNullableFilter<"suit"> | string | null
+    create_time?: DateTimeNullableFilter<"suit"> | Date | string | null
+    modify_time?: DateTimeNullableFilter<"suit"> | Date | string | null
+    status?: IntNullableFilter<"suit"> | number | null
+  }
+
+  export type suitOrderByWithRelationInput = {
+    id?: SortOrder
+    suit_name?: SortOrderInput | SortOrder
+    header_img?: SortOrderInput | SortOrder
+    desc_img?: SortOrderInput | SortOrder
+    tickets?: SortOrderInput | SortOrder
+    suit_satus?: SortOrderInput | SortOrder
+    desc?: SortOrderInput | SortOrder
+    create_time?: SortOrderInput | SortOrder
+    modify_time?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    _relevance?: suitOrderByRelevanceInput
+  }
+
+  export type suitWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: suitWhereInput | suitWhereInput[]
+    OR?: suitWhereInput[]
+    NOT?: suitWhereInput | suitWhereInput[]
+    suit_name?: StringNullableFilter<"suit"> | string | null
+    header_img?: StringNullableFilter<"suit"> | string | null
+    desc_img?: StringNullableFilter<"suit"> | string | null
+    tickets?: JsonNullableFilter<"suit">
+    suit_satus?: IntNullableFilter<"suit"> | number | null
+    desc?: StringNullableFilter<"suit"> | string | null
+    create_time?: DateTimeNullableFilter<"suit"> | Date | string | null
+    modify_time?: DateTimeNullableFilter<"suit"> | Date | string | null
+    status?: IntNullableFilter<"suit"> | number | null
+  }, "id">
+
+  export type suitOrderByWithAggregationInput = {
+    id?: SortOrder
+    suit_name?: SortOrderInput | SortOrder
+    header_img?: SortOrderInput | SortOrder
+    desc_img?: SortOrderInput | SortOrder
+    tickets?: SortOrderInput | SortOrder
+    suit_satus?: SortOrderInput | SortOrder
+    desc?: SortOrderInput | SortOrder
+    create_time?: SortOrderInput | SortOrder
+    modify_time?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    _count?: suitCountOrderByAggregateInput
+    _avg?: suitAvgOrderByAggregateInput
+    _max?: suitMaxOrderByAggregateInput
+    _min?: suitMinOrderByAggregateInput
+    _sum?: suitSumOrderByAggregateInput
+  }
+
+  export type suitScalarWhereWithAggregatesInput = {
+    AND?: suitScalarWhereWithAggregatesInput | suitScalarWhereWithAggregatesInput[]
+    OR?: suitScalarWhereWithAggregatesInput[]
+    NOT?: suitScalarWhereWithAggregatesInput | suitScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"suit"> | number
+    suit_name?: StringNullableWithAggregatesFilter<"suit"> | string | null
+    header_img?: StringNullableWithAggregatesFilter<"suit"> | string | null
+    desc_img?: StringNullableWithAggregatesFilter<"suit"> | string | null
+    tickets?: JsonNullableWithAggregatesFilter<"suit">
+    suit_satus?: IntNullableWithAggregatesFilter<"suit"> | number | null
+    desc?: StringNullableWithAggregatesFilter<"suit"> | string | null
+    create_time?: DateTimeNullableWithAggregatesFilter<"suit"> | Date | string | null
+    modify_time?: DateTimeNullableWithAggregatesFilter<"suit"> | Date | string | null
+    status?: IntNullableWithAggregatesFilter<"suit"> | number | null
   }
 
   export type collection_day_countWhereInput = {
@@ -47219,6 +48662,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
     ticket?: ticketCreateNestedOneWithoutCollectionInput
     user?: userCreateNestedOneWithoutCollectionInput
     tr_order?: tr_orderCreateNestedManyWithoutCollectionInput
@@ -47274,6 +48723,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutCollectionInput
     tr_transfer?: tr_transferUncheckedCreateNestedManyWithoutCollectionInput
   }
@@ -47324,6 +48779,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
     ticket?: ticketUpdateOneWithoutCollectionNestedInput
     user?: userUpdateOneRequiredWithoutCollectionNestedInput
     tr_order?: tr_orderUpdateManyWithoutCollectionNestedInput
@@ -47379,6 +48840,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
     tr_order?: tr_orderUncheckedUpdateManyWithoutCollectionNestedInput
     tr_transfer?: tr_transferUncheckedUpdateManyWithoutCollectionNestedInput
   }
@@ -47432,6 +48899,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
   }
 
   export type collectionUpdateManyMutationInput = {
@@ -47480,6 +48953,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type collectionUncheckedUpdateManyInput = {
@@ -47531,6 +49010,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type init_mobileCreateInput = {
@@ -47681,6 +49166,7 @@ export namespace Prisma {
     creator_uid?: number | null
     creator_name?: string | null
     creator_avatar?: string | null
+    author?: string | null
     daop_user_id?: number | null
     daop_user_address?: string | null
     publisher_id?: number | null
@@ -47717,6 +49203,8 @@ export namespace Prisma {
     origin_uri?: string | null
     creation_date?: Date | string | null
     start_date?: Date | string | null
+    regist_effective_duration?: number | null
+    certi_price?: number | null
     collection?: collectionCreateNestedManyWithoutTicketInput
     resource?: resourceCreateNestedManyWithoutTicketInput
     tr_order?: tr_orderCreateNestedManyWithoutTicketInput
@@ -47733,6 +49221,7 @@ export namespace Prisma {
     creator_uid?: number | null
     creator_name?: string | null
     creator_avatar?: string | null
+    author?: string | null
     daop_user_id?: number | null
     daop_user_address?: string | null
     publisher_id?: number | null
@@ -47769,6 +49258,8 @@ export namespace Prisma {
     origin_uri?: string | null
     creation_date?: Date | string | null
     start_date?: Date | string | null
+    regist_effective_duration?: number | null
+    certi_price?: number | null
     collection?: collectionUncheckedCreateNestedManyWithoutTicketInput
     resource?: resourceUncheckedCreateNestedManyWithoutTicketInput
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutTicketInput
@@ -47784,6 +49275,7 @@ export namespace Prisma {
     creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
     creator_name?: NullableStringFieldUpdateOperationsInput | string | null
     creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
     publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -47820,6 +49312,8 @@ export namespace Prisma {
     origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    regist_effective_duration?: NullableIntFieldUpdateOperationsInput | number | null
+    certi_price?: NullableIntFieldUpdateOperationsInput | number | null
     collection?: collectionUpdateManyWithoutTicketNestedInput
     resource?: resourceUpdateManyWithoutTicketNestedInput
     tr_order?: tr_orderUpdateManyWithoutTicketNestedInput
@@ -47836,6 +49330,7 @@ export namespace Prisma {
     creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
     creator_name?: NullableStringFieldUpdateOperationsInput | string | null
     creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
     publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -47872,6 +49367,8 @@ export namespace Prisma {
     origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    regist_effective_duration?: NullableIntFieldUpdateOperationsInput | number | null
+    certi_price?: NullableIntFieldUpdateOperationsInput | number | null
     collection?: collectionUncheckedUpdateManyWithoutTicketNestedInput
     resource?: resourceUncheckedUpdateManyWithoutTicketNestedInput
     tr_order?: tr_orderUncheckedUpdateManyWithoutTicketNestedInput
@@ -47888,6 +49385,7 @@ export namespace Prisma {
     creator_uid?: number | null
     creator_name?: string | null
     creator_avatar?: string | null
+    author?: string | null
     daop_user_id?: number | null
     daop_user_address?: string | null
     publisher_id?: number | null
@@ -47924,6 +49422,8 @@ export namespace Prisma {
     origin_uri?: string | null
     creation_date?: Date | string | null
     start_date?: Date | string | null
+    regist_effective_duration?: number | null
+    certi_price?: number | null
   }
 
   export type ticketUpdateManyMutationInput = {
@@ -47936,6 +49436,7 @@ export namespace Prisma {
     creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
     creator_name?: NullableStringFieldUpdateOperationsInput | string | null
     creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
     publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -47972,6 +49473,8 @@ export namespace Prisma {
     origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    regist_effective_duration?: NullableIntFieldUpdateOperationsInput | number | null
+    certi_price?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type ticketUncheckedUpdateManyInput = {
@@ -47985,6 +49488,7 @@ export namespace Prisma {
     creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
     creator_name?: NullableStringFieldUpdateOperationsInput | string | null
     creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
     publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -48021,10 +49525,14 @@ export namespace Prisma {
     origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    regist_effective_duration?: NullableIntFieldUpdateOperationsInput | number | null
+    certi_price?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type tr_orderCreateInput = {
     order_no?: string
+    ticket_name?: string | null
+    ticket_coveruri?: string | null
     ticket_did_credential?: string | null
     ticket_copyright_credential?: string | null
     ticket_authorization_credential?: string | null
@@ -48047,6 +49555,7 @@ export namespace Prisma {
     shared_uid?: number | null
     price?: number
     amount?: number | null
+    total_price?: number | null
     check_in?: number | null
     pay_channel?: string | null
     pay_scene?: string | null
@@ -48057,6 +49566,7 @@ export namespace Prisma {
     transfer_status?: number
     expire_time?: Date | string | null
     expire_time_at?: bigint | number | null
+    order_type?: number | null
     status?: number
     deleted_at?: number | null
     modify_time?: Date | string
@@ -48070,6 +49580,8 @@ export namespace Prisma {
     order_id?: number
     order_no?: string
     ticket_id: number
+    ticket_name?: string | null
+    ticket_coveruri?: string | null
     ticket_did_credential?: string | null
     ticket_copyright_credential?: string | null
     ticket_authorization_credential?: string | null
@@ -48093,6 +49605,7 @@ export namespace Prisma {
     shared_uid?: number | null
     price?: number
     amount?: number | null
+    total_price?: number | null
     check_in?: number | null
     pay_channel?: string | null
     pay_scene?: string | null
@@ -48103,6 +49616,7 @@ export namespace Prisma {
     transfer_status?: number
     expire_time?: Date | string | null
     expire_time_at?: bigint | number | null
+    order_type?: number | null
     status?: number
     deleted_at?: number | null
     modify_time?: Date | string
@@ -48112,6 +49626,8 @@ export namespace Prisma {
 
   export type tr_orderUpdateInput = {
     order_no?: StringFieldUpdateOperationsInput | string
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48134,6 +49650,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48144,6 +49661,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48157,6 +49675,8 @@ export namespace Prisma {
     order_id?: IntFieldUpdateOperationsInput | number
     order_no?: StringFieldUpdateOperationsInput | string
     ticket_id?: IntFieldUpdateOperationsInput | number
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48180,6 +49700,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48190,6 +49711,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48201,6 +49723,8 @@ export namespace Prisma {
     order_id?: number
     order_no?: string
     ticket_id: number
+    ticket_name?: string | null
+    ticket_coveruri?: string | null
     ticket_did_credential?: string | null
     ticket_copyright_credential?: string | null
     ticket_authorization_credential?: string | null
@@ -48224,6 +49748,7 @@ export namespace Prisma {
     shared_uid?: number | null
     price?: number
     amount?: number | null
+    total_price?: number | null
     check_in?: number | null
     pay_channel?: string | null
     pay_scene?: string | null
@@ -48234,6 +49759,7 @@ export namespace Prisma {
     transfer_status?: number
     expire_time?: Date | string | null
     expire_time_at?: bigint | number | null
+    order_type?: number | null
     status?: number
     deleted_at?: number | null
     modify_time?: Date | string
@@ -48242,6 +49768,8 @@ export namespace Prisma {
 
   export type tr_orderUpdateManyMutationInput = {
     order_no?: StringFieldUpdateOperationsInput | string
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48264,6 +49792,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48274,6 +49803,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48284,6 +49814,8 @@ export namespace Prisma {
     order_id?: IntFieldUpdateOperationsInput | number
     order_no?: StringFieldUpdateOperationsInput | string
     ticket_id?: IntFieldUpdateOperationsInput | number
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48307,6 +49839,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -48317,6 +49850,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -48326,6 +49860,7 @@ export namespace Prisma {
   export type tr_pay_notificationCreateInput = {
     pay_channel?: string | null
     order_no?: string | null
+    pay_trade_no?: string | null
     data?: NullableJsonNullValueInput | InputJsonValue
     modify_time?: Date | string | null
     create_time?: Date | string | null
@@ -48335,6 +49870,7 @@ export namespace Prisma {
     id?: number
     pay_channel?: string | null
     order_no?: string | null
+    pay_trade_no?: string | null
     data?: NullableJsonNullValueInput | InputJsonValue
     modify_time?: Date | string | null
     create_time?: Date | string | null
@@ -48343,6 +49879,7 @@ export namespace Prisma {
   export type tr_pay_notificationUpdateInput = {
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     order_no?: NullableStringFieldUpdateOperationsInput | string | null
+    pay_trade_no?: NullableStringFieldUpdateOperationsInput | string | null
     data?: NullableJsonNullValueInput | InputJsonValue
     modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48352,6 +49889,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     order_no?: NullableStringFieldUpdateOperationsInput | string | null
+    pay_trade_no?: NullableStringFieldUpdateOperationsInput | string | null
     data?: NullableJsonNullValueInput | InputJsonValue
     modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48361,6 +49899,7 @@ export namespace Prisma {
     id?: number
     pay_channel?: string | null
     order_no?: string | null
+    pay_trade_no?: string | null
     data?: NullableJsonNullValueInput | InputJsonValue
     modify_time?: Date | string | null
     create_time?: Date | string | null
@@ -48369,6 +49908,7 @@ export namespace Prisma {
   export type tr_pay_notificationUpdateManyMutationInput = {
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     order_no?: NullableStringFieldUpdateOperationsInput | string | null
+    pay_trade_no?: NullableStringFieldUpdateOperationsInput | string | null
     data?: NullableJsonNullValueInput | InputJsonValue
     modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48378,6 +49918,7 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     order_no?: NullableStringFieldUpdateOperationsInput | string | null
+    pay_trade_no?: NullableStringFieldUpdateOperationsInput | string | null
     data?: NullableJsonNullValueInput | InputJsonValue
     modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -48997,6 +50538,94 @@ export namespace Prisma {
     update_time?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableIntFieldUpdateOperationsInput | number | null
     remark?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type suitCreateInput = {
+    suit_name?: string | null
+    header_img?: string | null
+    desc_img?: string | null
+    tickets?: NullableJsonNullValueInput | InputJsonValue
+    suit_satus?: number | null
+    desc?: string | null
+    create_time?: Date | string | null
+    modify_time?: Date | string | null
+    status?: number | null
+  }
+
+  export type suitUncheckedCreateInput = {
+    id?: number
+    suit_name?: string | null
+    header_img?: string | null
+    desc_img?: string | null
+    tickets?: NullableJsonNullValueInput | InputJsonValue
+    suit_satus?: number | null
+    desc?: string | null
+    create_time?: Date | string | null
+    modify_time?: Date | string | null
+    status?: number | null
+  }
+
+  export type suitUpdateInput = {
+    suit_name?: NullableStringFieldUpdateOperationsInput | string | null
+    header_img?: NullableStringFieldUpdateOperationsInput | string | null
+    desc_img?: NullableStringFieldUpdateOperationsInput | string | null
+    tickets?: NullableJsonNullValueInput | InputJsonValue
+    suit_satus?: NullableIntFieldUpdateOperationsInput | number | null
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type suitUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    suit_name?: NullableStringFieldUpdateOperationsInput | string | null
+    header_img?: NullableStringFieldUpdateOperationsInput | string | null
+    desc_img?: NullableStringFieldUpdateOperationsInput | string | null
+    tickets?: NullableJsonNullValueInput | InputJsonValue
+    suit_satus?: NullableIntFieldUpdateOperationsInput | number | null
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type suitCreateManyInput = {
+    id?: number
+    suit_name?: string | null
+    header_img?: string | null
+    desc_img?: string | null
+    tickets?: NullableJsonNullValueInput | InputJsonValue
+    suit_satus?: number | null
+    desc?: string | null
+    create_time?: Date | string | null
+    modify_time?: Date | string | null
+    status?: number | null
+  }
+
+  export type suitUpdateManyMutationInput = {
+    suit_name?: NullableStringFieldUpdateOperationsInput | string | null
+    header_img?: NullableStringFieldUpdateOperationsInput | string | null
+    desc_img?: NullableStringFieldUpdateOperationsInput | string | null
+    tickets?: NullableJsonNullValueInput | InputJsonValue
+    suit_satus?: NullableIntFieldUpdateOperationsInput | number | null
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
+  }
+
+  export type suitUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    suit_name?: NullableStringFieldUpdateOperationsInput | string | null
+    header_img?: NullableStringFieldUpdateOperationsInput | string | null
+    desc_img?: NullableStringFieldUpdateOperationsInput | string | null
+    tickets?: NullableJsonNullValueInput | InputJsonValue
+    suit_satus?: NullableIntFieldUpdateOperationsInput | number | null
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    create_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    modify_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    status?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type collection_day_countCreateInput = {
@@ -50559,6 +52188,12 @@ export namespace Prisma {
     sjt_status?: SortOrder
     reg_code?: SortOrder
     asset_number?: SortOrder
+    apply_firsttime?: SortOrder
+    apply_lasttime?: SortOrder
+    exp_date?: SortOrder
+    give_count?: SortOrder
+    certificate_validity_period?: SortOrder
+    rights_status?: SortOrder
   }
 
   export type collectionAvgOrderByAggregateInput = {
@@ -50585,6 +52220,9 @@ export namespace Prisma {
     old_status?: SortOrder
     block_number?: SortOrder
     sjt_status?: SortOrder
+    give_count?: SortOrder
+    certificate_validity_period?: SortOrder
+    rights_status?: SortOrder
   }
 
   export type collectionMaxOrderByAggregateInput = {
@@ -50636,6 +52274,12 @@ export namespace Prisma {
     sjt_status?: SortOrder
     reg_code?: SortOrder
     asset_number?: SortOrder
+    apply_firsttime?: SortOrder
+    apply_lasttime?: SortOrder
+    exp_date?: SortOrder
+    give_count?: SortOrder
+    certificate_validity_period?: SortOrder
+    rights_status?: SortOrder
   }
 
   export type collectionMinOrderByAggregateInput = {
@@ -50687,6 +52331,12 @@ export namespace Prisma {
     sjt_status?: SortOrder
     reg_code?: SortOrder
     asset_number?: SortOrder
+    apply_firsttime?: SortOrder
+    apply_lasttime?: SortOrder
+    exp_date?: SortOrder
+    give_count?: SortOrder
+    certificate_validity_period?: SortOrder
+    rights_status?: SortOrder
   }
 
   export type collectionSumOrderByAggregateInput = {
@@ -50713,6 +52363,9 @@ export namespace Prisma {
     old_status?: SortOrder
     block_number?: SortOrder
     sjt_status?: SortOrder
+    give_count?: SortOrder
+    certificate_validity_period?: SortOrder
+    rights_status?: SortOrder
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -50923,6 +52576,7 @@ export namespace Prisma {
     creator_uid?: SortOrder
     creator_name?: SortOrder
     creator_avatar?: SortOrder
+    author?: SortOrder
     daop_user_id?: SortOrder
     daop_user_address?: SortOrder
     publisher_id?: SortOrder
@@ -50959,6 +52613,8 @@ export namespace Prisma {
     origin_uri?: SortOrder
     creation_date?: SortOrder
     start_date?: SortOrder
+    regist_effective_duration?: SortOrder
+    certi_price?: SortOrder
   }
 
   export type ticketAvgOrderByAggregateInput = {
@@ -50982,6 +52638,8 @@ export namespace Prisma {
     registration_id?: SortOrder
     send_status?: SortOrder
     download_status?: SortOrder
+    regist_effective_duration?: SortOrder
+    certi_price?: SortOrder
   }
 
   export type ticketMaxOrderByAggregateInput = {
@@ -50994,6 +52652,7 @@ export namespace Prisma {
     creator_uid?: SortOrder
     creator_name?: SortOrder
     creator_avatar?: SortOrder
+    author?: SortOrder
     daop_user_id?: SortOrder
     daop_user_address?: SortOrder
     publisher_id?: SortOrder
@@ -51030,6 +52689,8 @@ export namespace Prisma {
     origin_uri?: SortOrder
     creation_date?: SortOrder
     start_date?: SortOrder
+    regist_effective_duration?: SortOrder
+    certi_price?: SortOrder
   }
 
   export type ticketMinOrderByAggregateInput = {
@@ -51042,6 +52703,7 @@ export namespace Prisma {
     creator_uid?: SortOrder
     creator_name?: SortOrder
     creator_avatar?: SortOrder
+    author?: SortOrder
     daop_user_id?: SortOrder
     daop_user_address?: SortOrder
     publisher_id?: SortOrder
@@ -51078,6 +52740,8 @@ export namespace Prisma {
     origin_uri?: SortOrder
     creation_date?: SortOrder
     start_date?: SortOrder
+    regist_effective_duration?: SortOrder
+    certi_price?: SortOrder
   }
 
   export type ticketSumOrderByAggregateInput = {
@@ -51101,6 +52765,8 @@ export namespace Prisma {
     registration_id?: SortOrder
     send_status?: SortOrder
     download_status?: SortOrder
+    regist_effective_duration?: SortOrder
+    certi_price?: SortOrder
   }
   export type JsonNullableWithAggregatesFilter<$PrismaModel = never> = 
     | PatchUndefined<
@@ -51160,6 +52826,8 @@ export namespace Prisma {
     order_id?: SortOrder
     order_no?: SortOrder
     ticket_id?: SortOrder
+    ticket_name?: SortOrder
+    ticket_coveruri?: SortOrder
     ticket_did_credential?: SortOrder
     ticket_copyright_credential?: SortOrder
     ticket_authorization_credential?: SortOrder
@@ -51183,6 +52851,7 @@ export namespace Prisma {
     shared_uid?: SortOrder
     price?: SortOrder
     amount?: SortOrder
+    total_price?: SortOrder
     check_in?: SortOrder
     pay_channel?: SortOrder
     pay_scene?: SortOrder
@@ -51193,6 +52862,7 @@ export namespace Prisma {
     transfer_status?: SortOrder
     expire_time?: SortOrder
     expire_time_at?: SortOrder
+    order_type?: SortOrder
     status?: SortOrder
     deleted_at?: SortOrder
     modify_time?: SortOrder
@@ -51211,10 +52881,12 @@ export namespace Prisma {
     shared_uid?: SortOrder
     price?: SortOrder
     amount?: SortOrder
+    total_price?: SortOrder
     check_in?: SortOrder
     pay_status?: SortOrder
     transfer_status?: SortOrder
     expire_time_at?: SortOrder
+    order_type?: SortOrder
     status?: SortOrder
     deleted_at?: SortOrder
   }
@@ -51223,6 +52895,8 @@ export namespace Prisma {
     order_id?: SortOrder
     order_no?: SortOrder
     ticket_id?: SortOrder
+    ticket_name?: SortOrder
+    ticket_coveruri?: SortOrder
     ticket_did_credential?: SortOrder
     ticket_copyright_credential?: SortOrder
     ticket_authorization_credential?: SortOrder
@@ -51246,6 +52920,7 @@ export namespace Prisma {
     shared_uid?: SortOrder
     price?: SortOrder
     amount?: SortOrder
+    total_price?: SortOrder
     check_in?: SortOrder
     pay_channel?: SortOrder
     pay_scene?: SortOrder
@@ -51256,6 +52931,7 @@ export namespace Prisma {
     transfer_status?: SortOrder
     expire_time?: SortOrder
     expire_time_at?: SortOrder
+    order_type?: SortOrder
     status?: SortOrder
     deleted_at?: SortOrder
     modify_time?: SortOrder
@@ -51266,6 +52942,8 @@ export namespace Prisma {
     order_id?: SortOrder
     order_no?: SortOrder
     ticket_id?: SortOrder
+    ticket_name?: SortOrder
+    ticket_coveruri?: SortOrder
     ticket_did_credential?: SortOrder
     ticket_copyright_credential?: SortOrder
     ticket_authorization_credential?: SortOrder
@@ -51289,6 +52967,7 @@ export namespace Prisma {
     shared_uid?: SortOrder
     price?: SortOrder
     amount?: SortOrder
+    total_price?: SortOrder
     check_in?: SortOrder
     pay_channel?: SortOrder
     pay_scene?: SortOrder
@@ -51299,6 +52978,7 @@ export namespace Prisma {
     transfer_status?: SortOrder
     expire_time?: SortOrder
     expire_time_at?: SortOrder
+    order_type?: SortOrder
     status?: SortOrder
     deleted_at?: SortOrder
     modify_time?: SortOrder
@@ -51317,10 +52997,12 @@ export namespace Prisma {
     shared_uid?: SortOrder
     price?: SortOrder
     amount?: SortOrder
+    total_price?: SortOrder
     check_in?: SortOrder
     pay_status?: SortOrder
     transfer_status?: SortOrder
     expire_time_at?: SortOrder
+    order_type?: SortOrder
     status?: SortOrder
     deleted_at?: SortOrder
   }
@@ -51349,6 +53031,7 @@ export namespace Prisma {
     id?: SortOrder
     pay_channel?: SortOrder
     order_no?: SortOrder
+    pay_trade_no?: SortOrder
     data?: SortOrder
     modify_time?: SortOrder
     create_time?: SortOrder
@@ -51362,6 +53045,7 @@ export namespace Prisma {
     id?: SortOrder
     pay_channel?: SortOrder
     order_no?: SortOrder
+    pay_trade_no?: SortOrder
     modify_time?: SortOrder
     create_time?: SortOrder
   }
@@ -51370,6 +53054,7 @@ export namespace Prisma {
     id?: SortOrder
     pay_channel?: SortOrder
     order_no?: SortOrder
+    pay_trade_no?: SortOrder
     modify_time?: SortOrder
     create_time?: SortOrder
   }
@@ -51771,6 +53456,61 @@ export namespace Prisma {
     id?: SortOrder
     ticket_id?: SortOrder
     order?: SortOrder
+    status?: SortOrder
+  }
+
+  export type suitOrderByRelevanceInput = {
+    fields: suitOrderByRelevanceFieldEnum | suitOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type suitCountOrderByAggregateInput = {
+    id?: SortOrder
+    suit_name?: SortOrder
+    header_img?: SortOrder
+    desc_img?: SortOrder
+    tickets?: SortOrder
+    suit_satus?: SortOrder
+    desc?: SortOrder
+    create_time?: SortOrder
+    modify_time?: SortOrder
+    status?: SortOrder
+  }
+
+  export type suitAvgOrderByAggregateInput = {
+    id?: SortOrder
+    suit_satus?: SortOrder
+    status?: SortOrder
+  }
+
+  export type suitMaxOrderByAggregateInput = {
+    id?: SortOrder
+    suit_name?: SortOrder
+    header_img?: SortOrder
+    desc_img?: SortOrder
+    suit_satus?: SortOrder
+    desc?: SortOrder
+    create_time?: SortOrder
+    modify_time?: SortOrder
+    status?: SortOrder
+  }
+
+  export type suitMinOrderByAggregateInput = {
+    id?: SortOrder
+    suit_name?: SortOrder
+    header_img?: SortOrder
+    desc_img?: SortOrder
+    suit_satus?: SortOrder
+    desc?: SortOrder
+    create_time?: SortOrder
+    modify_time?: SortOrder
+    status?: SortOrder
+  }
+
+  export type suitSumOrderByAggregateInput = {
+    id?: SortOrder
+    suit_satus?: SortOrder
     status?: SortOrder
   }
 
@@ -54856,6 +56596,7 @@ export namespace Prisma {
     creator_uid?: number | null
     creator_name?: string | null
     creator_avatar?: string | null
+    author?: string | null
     daop_user_id?: number | null
     daop_user_address?: string | null
     publisher_id?: number | null
@@ -54892,6 +56633,8 @@ export namespace Prisma {
     origin_uri?: string | null
     creation_date?: Date | string | null
     start_date?: Date | string | null
+    regist_effective_duration?: number | null
+    certi_price?: number | null
     resource?: resourceCreateNestedManyWithoutTicketInput
     tr_order?: tr_orderCreateNestedManyWithoutTicketInput
   }
@@ -54907,6 +56650,7 @@ export namespace Prisma {
     creator_uid?: number | null
     creator_name?: string | null
     creator_avatar?: string | null
+    author?: string | null
     daop_user_id?: number | null
     daop_user_address?: string | null
     publisher_id?: number | null
@@ -54943,6 +56687,8 @@ export namespace Prisma {
     origin_uri?: string | null
     creation_date?: Date | string | null
     start_date?: Date | string | null
+    regist_effective_duration?: number | null
+    certi_price?: number | null
     resource?: resourceUncheckedCreateNestedManyWithoutTicketInput
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutTicketInput
   }
@@ -55012,6 +56758,8 @@ export namespace Prisma {
 
   export type tr_orderCreateWithoutCollectionInput = {
     order_no?: string
+    ticket_name?: string | null
+    ticket_coveruri?: string | null
     ticket_did_credential?: string | null
     ticket_copyright_credential?: string | null
     ticket_authorization_credential?: string | null
@@ -55034,6 +56782,7 @@ export namespace Prisma {
     shared_uid?: number | null
     price?: number
     amount?: number | null
+    total_price?: number | null
     check_in?: number | null
     pay_channel?: string | null
     pay_scene?: string | null
@@ -55044,6 +56793,7 @@ export namespace Prisma {
     transfer_status?: number
     expire_time?: Date | string | null
     expire_time_at?: bigint | number | null
+    order_type?: number | null
     status?: number
     deleted_at?: number | null
     modify_time?: Date | string
@@ -55056,6 +56806,8 @@ export namespace Prisma {
     order_id?: number
     order_no?: string
     ticket_id: number
+    ticket_name?: string | null
+    ticket_coveruri?: string | null
     ticket_did_credential?: string | null
     ticket_copyright_credential?: string | null
     ticket_authorization_credential?: string | null
@@ -55078,6 +56830,7 @@ export namespace Prisma {
     shared_uid?: number | null
     price?: number
     amount?: number | null
+    total_price?: number | null
     check_in?: number | null
     pay_channel?: string | null
     pay_scene?: string | null
@@ -55088,6 +56841,7 @@ export namespace Prisma {
     transfer_status?: number
     expire_time?: Date | string | null
     expire_time_at?: bigint | number | null
+    order_type?: number | null
     status?: number
     deleted_at?: number | null
     modify_time?: Date | string
@@ -55175,6 +56929,7 @@ export namespace Prisma {
     creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
     creator_name?: NullableStringFieldUpdateOperationsInput | string | null
     creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
     publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -55211,6 +56966,8 @@ export namespace Prisma {
     origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    regist_effective_duration?: NullableIntFieldUpdateOperationsInput | number | null
+    certi_price?: NullableIntFieldUpdateOperationsInput | number | null
     resource?: resourceUpdateManyWithoutTicketNestedInput
     tr_order?: tr_orderUpdateManyWithoutTicketNestedInput
   }
@@ -55226,6 +56983,7 @@ export namespace Prisma {
     creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
     creator_name?: NullableStringFieldUpdateOperationsInput | string | null
     creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
     publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -55262,6 +57020,8 @@ export namespace Prisma {
     origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    regist_effective_duration?: NullableIntFieldUpdateOperationsInput | number | null
+    certi_price?: NullableIntFieldUpdateOperationsInput | number | null
     resource?: resourceUncheckedUpdateManyWithoutTicketNestedInput
     tr_order?: tr_orderUncheckedUpdateManyWithoutTicketNestedInput
   }
@@ -55353,6 +57113,8 @@ export namespace Prisma {
     order_id?: IntFilter<"tr_order"> | number
     order_no?: StringFilter<"tr_order"> | string
     ticket_id?: IntFilter<"tr_order"> | number
+    ticket_name?: StringNullableFilter<"tr_order"> | string | null
+    ticket_coveruri?: StringNullableFilter<"tr_order"> | string | null
     ticket_did_credential?: StringNullableFilter<"tr_order"> | string | null
     ticket_copyright_credential?: StringNullableFilter<"tr_order"> | string | null
     ticket_authorization_credential?: StringNullableFilter<"tr_order"> | string | null
@@ -55376,6 +57138,7 @@ export namespace Prisma {
     shared_uid?: IntNullableFilter<"tr_order"> | number | null
     price?: IntFilter<"tr_order"> | number
     amount?: IntNullableFilter<"tr_order"> | number | null
+    total_price?: IntNullableFilter<"tr_order"> | number | null
     check_in?: IntNullableFilter<"tr_order"> | number | null
     pay_channel?: StringNullableFilter<"tr_order"> | string | null
     pay_scene?: StringNullableFilter<"tr_order"> | string | null
@@ -55386,6 +57149,7 @@ export namespace Prisma {
     transfer_status?: IntFilter<"tr_order"> | number
     expire_time?: DateTimeNullableFilter<"tr_order"> | Date | string | null
     expire_time_at?: BigIntNullableFilter<"tr_order"> | bigint | number | null
+    order_type?: IntNullableFilter<"tr_order"> | number | null
     status?: IntFilter<"tr_order"> | number
     deleted_at?: IntNullableFilter<"tr_order"> | number | null
     modify_time?: DateTimeFilter<"tr_order"> | Date | string
@@ -55478,6 +57242,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
     user?: userCreateNestedOneWithoutCollectionInput
     tr_order?: tr_orderCreateNestedManyWithoutCollectionInput
     tr_transfer?: tr_transferCreateNestedManyWithoutCollectionInput
@@ -55531,6 +57301,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutCollectionInput
     tr_transfer?: tr_transferUncheckedCreateNestedManyWithoutCollectionInput
   }
@@ -55582,6 +57358,8 @@ export namespace Prisma {
 
   export type tr_orderCreateWithoutTicketInput = {
     order_no?: string
+    ticket_name?: string | null
+    ticket_coveruri?: string | null
     ticket_did_credential?: string | null
     ticket_copyright_credential?: string | null
     ticket_authorization_credential?: string | null
@@ -55604,6 +57382,7 @@ export namespace Prisma {
     shared_uid?: number | null
     price?: number
     amount?: number | null
+    total_price?: number | null
     check_in?: number | null
     pay_channel?: string | null
     pay_scene?: string | null
@@ -55614,6 +57393,7 @@ export namespace Prisma {
     transfer_status?: number
     expire_time?: Date | string | null
     expire_time_at?: bigint | number | null
+    order_type?: number | null
     status?: number
     deleted_at?: number | null
     modify_time?: Date | string
@@ -55625,6 +57405,8 @@ export namespace Prisma {
   export type tr_orderUncheckedCreateWithoutTicketInput = {
     order_id?: number
     order_no?: string
+    ticket_name?: string | null
+    ticket_coveruri?: string | null
     ticket_did_credential?: string | null
     ticket_copyright_credential?: string | null
     ticket_authorization_credential?: string | null
@@ -55648,6 +57430,7 @@ export namespace Prisma {
     shared_uid?: number | null
     price?: number
     amount?: number | null
+    total_price?: number | null
     check_in?: number | null
     pay_channel?: string | null
     pay_scene?: string | null
@@ -55658,6 +57441,7 @@ export namespace Prisma {
     transfer_status?: number
     expire_time?: Date | string | null
     expire_time_at?: bigint | number | null
+    order_type?: number | null
     status?: number
     deleted_at?: number | null
     modify_time?: Date | string
@@ -55743,6 +57527,12 @@ export namespace Prisma {
     sjt_status?: IntNullableFilter<"collection"> | number | null
     reg_code?: StringNullableFilter<"collection"> | string | null
     asset_number?: StringNullableFilter<"collection"> | string | null
+    apply_firsttime?: DateTimeNullableFilter<"collection"> | Date | string | null
+    apply_lasttime?: DateTimeNullableFilter<"collection"> | Date | string | null
+    exp_date?: DateTimeNullableFilter<"collection"> | Date | string | null
+    give_count?: IntNullableFilter<"collection"> | number | null
+    certificate_validity_period?: IntNullableFilter<"collection"> | number | null
+    rights_status?: IntNullableFilter<"collection"> | number | null
   }
 
   export type resourceUpsertWithWhereUniqueWithoutTicketInput = {
@@ -55804,6 +57594,7 @@ export namespace Prisma {
     creator_uid?: number | null
     creator_name?: string | null
     creator_avatar?: string | null
+    author?: string | null
     daop_user_id?: number | null
     daop_user_address?: string | null
     publisher_id?: number | null
@@ -55840,6 +57631,8 @@ export namespace Prisma {
     origin_uri?: string | null
     creation_date?: Date | string | null
     start_date?: Date | string | null
+    regist_effective_duration?: number | null
+    certi_price?: number | null
     collection?: collectionCreateNestedManyWithoutTicketInput
     resource?: resourceCreateNestedManyWithoutTicketInput
   }
@@ -55855,6 +57648,7 @@ export namespace Prisma {
     creator_uid?: number | null
     creator_name?: string | null
     creator_avatar?: string | null
+    author?: string | null
     daop_user_id?: number | null
     daop_user_address?: string | null
     publisher_id?: number | null
@@ -55891,6 +57685,8 @@ export namespace Prisma {
     origin_uri?: string | null
     creation_date?: Date | string | null
     start_date?: Date | string | null
+    regist_effective_duration?: number | null
+    certi_price?: number | null
     collection?: collectionUncheckedCreateNestedManyWithoutTicketInput
     resource?: resourceUncheckedCreateNestedManyWithoutTicketInput
   }
@@ -55946,6 +57742,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
     ticket?: ticketCreateNestedOneWithoutCollectionInput
     user?: userCreateNestedOneWithoutCollectionInput
     tr_transfer?: tr_transferCreateNestedManyWithoutCollectionInput
@@ -56000,6 +57802,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
     tr_transfer?: tr_transferUncheckedCreateNestedManyWithoutCollectionInput
   }
 
@@ -56078,6 +57886,7 @@ export namespace Prisma {
     creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
     creator_name?: NullableStringFieldUpdateOperationsInput | string | null
     creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
     publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -56114,6 +57923,8 @@ export namespace Prisma {
     origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    regist_effective_duration?: NullableIntFieldUpdateOperationsInput | number | null
+    certi_price?: NullableIntFieldUpdateOperationsInput | number | null
     collection?: collectionUpdateManyWithoutTicketNestedInput
     resource?: resourceUpdateManyWithoutTicketNestedInput
   }
@@ -56129,6 +57940,7 @@ export namespace Prisma {
     creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
     creator_name?: NullableStringFieldUpdateOperationsInput | string | null
     creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
     publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -56165,6 +57977,8 @@ export namespace Prisma {
     origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    regist_effective_duration?: NullableIntFieldUpdateOperationsInput | number | null
+    certi_price?: NullableIntFieldUpdateOperationsInput | number | null
     collection?: collectionUncheckedUpdateManyWithoutTicketNestedInput
     resource?: resourceUncheckedUpdateManyWithoutTicketNestedInput
   }
@@ -56226,6 +58040,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
     ticket?: ticketUpdateOneWithoutCollectionNestedInput
     user?: userUpdateOneRequiredWithoutCollectionNestedInput
     tr_transfer?: tr_transferUpdateManyWithoutCollectionNestedInput
@@ -56280,6 +58100,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
     tr_transfer?: tr_transferUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
@@ -56345,6 +58171,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
     ticket?: ticketCreateNestedOneWithoutCollectionInput
     user?: userCreateNestedOneWithoutCollectionInput
     tr_order?: tr_orderCreateNestedManyWithoutCollectionInput
@@ -56399,6 +58231,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutCollectionInput
   }
 
@@ -56409,6 +58247,8 @@ export namespace Prisma {
 
   export type tr_orderCreateWithoutTr_transferInput = {
     order_no?: string
+    ticket_name?: string | null
+    ticket_coveruri?: string | null
     ticket_did_credential?: string | null
     ticket_copyright_credential?: string | null
     ticket_authorization_credential?: string | null
@@ -56431,6 +58271,7 @@ export namespace Prisma {
     shared_uid?: number | null
     price?: number
     amount?: number | null
+    total_price?: number | null
     check_in?: number | null
     pay_channel?: string | null
     pay_scene?: string | null
@@ -56441,6 +58282,7 @@ export namespace Prisma {
     transfer_status?: number
     expire_time?: Date | string | null
     expire_time_at?: bigint | number | null
+    order_type?: number | null
     status?: number
     deleted_at?: number | null
     modify_time?: Date | string
@@ -56453,6 +58295,8 @@ export namespace Prisma {
     order_id?: number
     order_no?: string
     ticket_id: number
+    ticket_name?: string | null
+    ticket_coveruri?: string | null
     ticket_did_credential?: string | null
     ticket_copyright_credential?: string | null
     ticket_authorization_credential?: string | null
@@ -56476,6 +58320,7 @@ export namespace Prisma {
     shared_uid?: number | null
     price?: number
     amount?: number | null
+    total_price?: number | null
     check_in?: number | null
     pay_channel?: string | null
     pay_scene?: string | null
@@ -56486,6 +58331,7 @@ export namespace Prisma {
     transfer_status?: number
     expire_time?: Date | string | null
     expire_time_at?: bigint | number | null
+    order_type?: number | null
     status?: number
     deleted_at?: number | null
     modify_time?: Date | string
@@ -56554,6 +58400,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
     ticket?: ticketUpdateOneWithoutCollectionNestedInput
     user?: userUpdateOneRequiredWithoutCollectionNestedInput
     tr_order?: tr_orderUpdateManyWithoutCollectionNestedInput
@@ -56608,6 +58460,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
     tr_order?: tr_orderUncheckedUpdateManyWithoutCollectionNestedInput
   }
 
@@ -56624,6 +58482,8 @@ export namespace Prisma {
 
   export type tr_orderUpdateWithoutTr_transferInput = {
     order_no?: StringFieldUpdateOperationsInput | string
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56646,6 +58506,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56656,6 +58517,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -56668,6 +58530,8 @@ export namespace Prisma {
     order_id?: IntFieldUpdateOperationsInput | number
     order_no?: StringFieldUpdateOperationsInput | string
     ticket_id?: IntFieldUpdateOperationsInput | number
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56691,6 +58555,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -56701,6 +58566,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -56753,6 +58619,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
     ticket?: ticketCreateNestedOneWithoutCollectionInput
     tr_order?: tr_orderCreateNestedManyWithoutCollectionInput
     tr_transfer?: tr_transferCreateNestedManyWithoutCollectionInput
@@ -56806,6 +58678,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutCollectionInput
     tr_transfer?: tr_transferUncheckedCreateNestedManyWithoutCollectionInput
   }
@@ -56846,6 +58724,7 @@ export namespace Prisma {
     creator_uid?: number | null
     creator_name?: string | null
     creator_avatar?: string | null
+    author?: string | null
     daop_user_id?: number | null
     daop_user_address?: string | null
     publisher_id?: number | null
@@ -56882,6 +58761,8 @@ export namespace Prisma {
     origin_uri?: string | null
     creation_date?: Date | string | null
     start_date?: Date | string | null
+    regist_effective_duration?: number | null
+    certi_price?: number | null
     collection?: collectionCreateNestedManyWithoutTicketInput
     tr_order?: tr_orderCreateNestedManyWithoutTicketInput
   }
@@ -56897,6 +58778,7 @@ export namespace Prisma {
     creator_uid?: number | null
     creator_name?: string | null
     creator_avatar?: string | null
+    author?: string | null
     daop_user_id?: number | null
     daop_user_address?: string | null
     publisher_id?: number | null
@@ -56933,6 +58815,8 @@ export namespace Prisma {
     origin_uri?: string | null
     creation_date?: Date | string | null
     start_date?: Date | string | null
+    regist_effective_duration?: number | null
+    certi_price?: number | null
     collection?: collectionUncheckedCreateNestedManyWithoutTicketInput
     tr_order?: tr_orderUncheckedCreateNestedManyWithoutTicketInput
   }
@@ -56963,6 +58847,7 @@ export namespace Prisma {
     creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
     creator_name?: NullableStringFieldUpdateOperationsInput | string | null
     creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
     publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -56999,6 +58884,8 @@ export namespace Prisma {
     origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    regist_effective_duration?: NullableIntFieldUpdateOperationsInput | number | null
+    certi_price?: NullableIntFieldUpdateOperationsInput | number | null
     collection?: collectionUpdateManyWithoutTicketNestedInput
     tr_order?: tr_orderUpdateManyWithoutTicketNestedInput
   }
@@ -57014,6 +58901,7 @@ export namespace Prisma {
     creator_uid?: NullableIntFieldUpdateOperationsInput | number | null
     creator_name?: NullableStringFieldUpdateOperationsInput | string | null
     creator_avatar?: NullableStringFieldUpdateOperationsInput | string | null
+    author?: NullableStringFieldUpdateOperationsInput | string | null
     daop_user_id?: NullableIntFieldUpdateOperationsInput | number | null
     daop_user_address?: NullableStringFieldUpdateOperationsInput | string | null
     publisher_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -57050,6 +58938,8 @@ export namespace Prisma {
     origin_uri?: NullableStringFieldUpdateOperationsInput | string | null
     creation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     start_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    regist_effective_duration?: NullableIntFieldUpdateOperationsInput | number | null
+    certi_price?: NullableIntFieldUpdateOperationsInput | number | null
     collection?: collectionUncheckedUpdateManyWithoutTicketNestedInput
     tr_order?: tr_orderUncheckedUpdateManyWithoutTicketNestedInput
   }
@@ -57427,6 +59317,8 @@ export namespace Prisma {
     order_id?: number
     order_no?: string
     ticket_id: number
+    ticket_name?: string | null
+    ticket_coveruri?: string | null
     ticket_did_credential?: string | null
     ticket_copyright_credential?: string | null
     ticket_authorization_credential?: string | null
@@ -57449,6 +59341,7 @@ export namespace Prisma {
     shared_uid?: number | null
     price?: number
     amount?: number | null
+    total_price?: number | null
     check_in?: number | null
     pay_channel?: string | null
     pay_scene?: string | null
@@ -57459,6 +59352,7 @@ export namespace Prisma {
     transfer_status?: number
     expire_time?: Date | string | null
     expire_time_at?: bigint | number | null
+    order_type?: number | null
     status?: number
     deleted_at?: number | null
     modify_time?: Date | string
@@ -57487,6 +59381,8 @@ export namespace Prisma {
 
   export type tr_orderUpdateWithoutCollectionInput = {
     order_no?: StringFieldUpdateOperationsInput | string
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57509,6 +59405,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57519,6 +59416,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57531,6 +59429,8 @@ export namespace Prisma {
     order_id?: IntFieldUpdateOperationsInput | number
     order_no?: StringFieldUpdateOperationsInput | string
     ticket_id?: IntFieldUpdateOperationsInput | number
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57553,6 +59453,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57563,6 +59464,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57574,6 +59476,8 @@ export namespace Prisma {
     order_id?: IntFieldUpdateOperationsInput | number
     order_no?: StringFieldUpdateOperationsInput | string
     ticket_id?: IntFieldUpdateOperationsInput | number
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57596,6 +59500,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57606,6 +59511,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -57719,6 +59625,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
   }
 
   export type resourceCreateManyTicketInput = {
@@ -57737,6 +59649,8 @@ export namespace Prisma {
   export type tr_orderCreateManyTicketInput = {
     order_id?: number
     order_no?: string
+    ticket_name?: string | null
+    ticket_coveruri?: string | null
     ticket_did_credential?: string | null
     ticket_copyright_credential?: string | null
     ticket_authorization_credential?: string | null
@@ -57760,6 +59674,7 @@ export namespace Prisma {
     shared_uid?: number | null
     price?: number
     amount?: number | null
+    total_price?: number | null
     check_in?: number | null
     pay_channel?: string | null
     pay_scene?: string | null
@@ -57770,6 +59685,7 @@ export namespace Prisma {
     transfer_status?: number
     expire_time?: Date | string | null
     expire_time_at?: bigint | number | null
+    order_type?: number | null
     status?: number
     deleted_at?: number | null
     modify_time?: Date | string
@@ -57822,6 +59738,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
     user?: userUpdateOneRequiredWithoutCollectionNestedInput
     tr_order?: tr_orderUpdateManyWithoutCollectionNestedInput
     tr_transfer?: tr_transferUpdateManyWithoutCollectionNestedInput
@@ -57875,6 +59797,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
     tr_order?: tr_orderUncheckedUpdateManyWithoutCollectionNestedInput
     tr_transfer?: tr_transferUncheckedUpdateManyWithoutCollectionNestedInput
   }
@@ -57927,6 +59855,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type resourceUpdateWithoutTicketInput = {
@@ -57969,6 +59903,8 @@ export namespace Prisma {
 
   export type tr_orderUpdateWithoutTicketInput = {
     order_no?: StringFieldUpdateOperationsInput | string
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -57991,6 +59927,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58001,6 +59938,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58012,6 +59950,8 @@ export namespace Prisma {
   export type tr_orderUncheckedUpdateWithoutTicketInput = {
     order_id?: IntFieldUpdateOperationsInput | number
     order_no?: StringFieldUpdateOperationsInput | string
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58035,6 +59975,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58045,6 +59986,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58055,6 +59997,8 @@ export namespace Prisma {
   export type tr_orderUncheckedUpdateManyWithoutTicketInput = {
     order_id?: IntFieldUpdateOperationsInput | number
     order_no?: StringFieldUpdateOperationsInput | string
+    ticket_name?: NullableStringFieldUpdateOperationsInput | string | null
+    ticket_coveruri?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_did_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_copyright_credential?: NullableStringFieldUpdateOperationsInput | string | null
     ticket_authorization_credential?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58078,6 +60022,7 @@ export namespace Prisma {
     shared_uid?: NullableIntFieldUpdateOperationsInput | number | null
     price?: IntFieldUpdateOperationsInput | number
     amount?: NullableIntFieldUpdateOperationsInput | number | null
+    total_price?: NullableIntFieldUpdateOperationsInput | number | null
     check_in?: NullableIntFieldUpdateOperationsInput | number | null
     pay_channel?: NullableStringFieldUpdateOperationsInput | string | null
     pay_scene?: NullableStringFieldUpdateOperationsInput | string | null
@@ -58088,6 +60033,7 @@ export namespace Prisma {
     transfer_status?: IntFieldUpdateOperationsInput | number
     expire_time?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     expire_time_at?: NullableBigIntFieldUpdateOperationsInput | bigint | number | null
+    order_type?: NullableIntFieldUpdateOperationsInput | number | null
     status?: IntFieldUpdateOperationsInput | number
     deleted_at?: NullableIntFieldUpdateOperationsInput | number | null
     modify_time?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -58221,6 +60167,12 @@ export namespace Prisma {
     sjt_status?: number | null
     reg_code?: string | null
     asset_number?: string | null
+    apply_firsttime?: Date | string | null
+    apply_lasttime?: Date | string | null
+    exp_date?: Date | string | null
+    give_count?: number | null
+    certificate_validity_period?: number | null
+    rights_status?: number | null
   }
 
   export type collectionUpdateWithoutUserInput = {
@@ -58269,6 +60221,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
     ticket?: ticketUpdateOneWithoutCollectionNestedInput
     tr_order?: tr_orderUpdateManyWithoutCollectionNestedInput
     tr_transfer?: tr_transferUpdateManyWithoutCollectionNestedInput
@@ -58322,6 +60280,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
     tr_order?: tr_orderUncheckedUpdateManyWithoutCollectionNestedInput
     tr_transfer?: tr_transferUncheckedUpdateManyWithoutCollectionNestedInput
   }
@@ -58374,6 +60338,12 @@ export namespace Prisma {
     sjt_status?: NullableIntFieldUpdateOperationsInput | number | null
     reg_code?: NullableStringFieldUpdateOperationsInput | string | null
     asset_number?: NullableStringFieldUpdateOperationsInput | string | null
+    apply_firsttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    apply_lasttime?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    exp_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    give_count?: NullableIntFieldUpdateOperationsInput | number | null
+    certificate_validity_period?: NullableIntFieldUpdateOperationsInput | number | null
+    rights_status?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
 

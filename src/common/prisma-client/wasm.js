@@ -394,7 +394,13 @@ exports.Prisma.CollectionScalarFieldEnum = {
   block_number: 'block_number',
   sjt_status: 'sjt_status',
   reg_code: 'reg_code',
-  asset_number: 'asset_number'
+  asset_number: 'asset_number',
+  apply_firsttime: 'apply_firsttime',
+  apply_lasttime: 'apply_lasttime',
+  exp_date: 'exp_date',
+  give_count: 'give_count',
+  certificate_validity_period: 'certificate_validity_period',
+  rights_status: 'rights_status'
 };
 
 exports.Prisma.Init_mobileScalarFieldEnum = {
@@ -429,6 +435,7 @@ exports.Prisma.TicketScalarFieldEnum = {
   creator_uid: 'creator_uid',
   creator_name: 'creator_name',
   creator_avatar: 'creator_avatar',
+  author: 'author',
   daop_user_id: 'daop_user_id',
   daop_user_address: 'daop_user_address',
   publisher_id: 'publisher_id',
@@ -464,13 +471,17 @@ exports.Prisma.TicketScalarFieldEnum = {
   download_status: 'download_status',
   origin_uri: 'origin_uri',
   creation_date: 'creation_date',
-  start_date: 'start_date'
+  start_date: 'start_date',
+  regist_effective_duration: 'regist_effective_duration',
+  certi_price: 'certi_price'
 };
 
 exports.Prisma.Tr_orderScalarFieldEnum = {
   order_id: 'order_id',
   order_no: 'order_no',
   ticket_id: 'ticket_id',
+  ticket_name: 'ticket_name',
+  ticket_coveruri: 'ticket_coveruri',
   ticket_did_credential: 'ticket_did_credential',
   ticket_copyright_credential: 'ticket_copyright_credential',
   ticket_authorization_credential: 'ticket_authorization_credential',
@@ -494,6 +505,7 @@ exports.Prisma.Tr_orderScalarFieldEnum = {
   shared_uid: 'shared_uid',
   price: 'price',
   amount: 'amount',
+  total_price: 'total_price',
   check_in: 'check_in',
   pay_channel: 'pay_channel',
   pay_scene: 'pay_scene',
@@ -504,6 +516,7 @@ exports.Prisma.Tr_orderScalarFieldEnum = {
   transfer_status: 'transfer_status',
   expire_time: 'expire_time',
   expire_time_at: 'expire_time_at',
+  order_type: 'order_type',
   status: 'status',
   deleted_at: 'deleted_at',
   modify_time: 'modify_time',
@@ -514,6 +527,7 @@ exports.Prisma.Tr_pay_notificationScalarFieldEnum = {
   id: 'id',
   pay_channel: 'pay_channel',
   order_no: 'order_no',
+  pay_trade_no: 'pay_trade_no',
   data: 'data',
   modify_time: 'modify_time',
   create_time: 'create_time'
@@ -607,6 +621,19 @@ exports.Prisma.ResourceScalarFieldEnum = {
   update_time: 'update_time',
   status: 'status',
   remark: 'remark'
+};
+
+exports.Prisma.SuitScalarFieldEnum = {
+  id: 'id',
+  suit_name: 'suit_name',
+  header_img: 'header_img',
+  desc_img: 'desc_img',
+  tickets: 'tickets',
+  suit_satus: 'suit_satus',
+  desc: 'desc',
+  create_time: 'create_time',
+  modify_time: 'modify_time',
+  status: 'status'
 };
 
 exports.Prisma.Collection_day_countScalarFieldEnum = {
@@ -898,6 +925,7 @@ exports.Prisma.ticketOrderByRelevanceFieldEnum = {
   content_uri: 'content_uri',
   creator_name: 'creator_name',
   creator_avatar: 'creator_avatar',
+  author: 'author',
   daop_user_address: 'daop_user_address',
   publisher_name: 'publisher_name',
   publisher_logo: 'publisher_logo',
@@ -914,6 +942,8 @@ exports.Prisma.ticketOrderByRelevanceFieldEnum = {
 
 exports.Prisma.tr_orderOrderByRelevanceFieldEnum = {
   order_no: 'order_no',
+  ticket_name: 'ticket_name',
+  ticket_coveruri: 'ticket_coveruri',
   ticket_did_credential: 'ticket_did_credential',
   ticket_copyright_credential: 'ticket_copyright_credential',
   ticket_authorization_credential: 'ticket_authorization_credential',
@@ -936,7 +966,8 @@ exports.Prisma.tr_orderOrderByRelevanceFieldEnum = {
 
 exports.Prisma.tr_pay_notificationOrderByRelevanceFieldEnum = {
   pay_channel: 'pay_channel',
-  order_no: 'order_no'
+  order_no: 'order_no',
+  pay_trade_no: 'pay_trade_no'
 };
 
 exports.Prisma.tr_transferOrderByRelevanceFieldEnum = {
@@ -993,6 +1024,13 @@ exports.Prisma.resourceOrderByRelevanceFieldEnum = {
   update_by: 'update_by',
   update_time: 'update_time',
   remark: 'remark'
+};
+
+exports.Prisma.suitOrderByRelevanceFieldEnum = {
+  suit_name: 'suit_name',
+  header_img: 'header_img',
+  desc_img: 'desc_img',
+  desc: 'desc'
 };
 
 exports.Prisma.collection_day_countOrderByRelevanceFieldEnum = {
@@ -1053,6 +1091,7 @@ exports.Prisma.ModelName = {
   declarex: 'declarex',
   recommend_img: 'recommend_img',
   resource: 'resource',
+  suit: 'suit',
   collection_day_count: 'collection_day_count',
   collection_day_ticket_count: 'collection_day_ticket_count',
   user_day_count: 'user_day_count',

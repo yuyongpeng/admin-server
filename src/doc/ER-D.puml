@@ -290,6 +290,12 @@ entity "collection" as collection {
   sjt_status : Int
   reg_code : String
   asset_number : String
+  apply_firsttime : DateTime
+  apply_lasttime : DateTime
+  exp_date : DateTime
+  give_count : Int
+  certificate_validity_period : Int
+  rights_status : Int
 }
 
 entity "init_mobile" as init_mobile {
@@ -328,6 +334,7 @@ entity "ticket" as ticket {
   creator_uid : Int
   creator_name : String
   creator_avatar : String
+  author : String
   daop_user_id : Int
   daop_user_address : String
   publisher_id : Int
@@ -364,6 +371,8 @@ entity "ticket" as ticket {
   origin_uri : String
   creation_date : DateTime
   start_date : DateTime
+  regist_effective_duration : Int
+  certi_price : Int
 }
 
 entity "tr_order" as tr_order {
@@ -371,6 +380,8 @@ entity "tr_order" as tr_order {
 --
   * order_no : [UK] String
   # ticket_id : [FK] ticket
+  ticket_name : String
+  ticket_coveruri : String
   ticket_did_credential : String
   ticket_copyright_credential : String
   ticket_authorization_credential : String
@@ -394,6 +405,7 @@ entity "tr_order" as tr_order {
   shared_uid : Int
   * price : Int
   amount : Int
+  total_price : Int
   check_in : Int
   pay_channel : String
   pay_scene : String
@@ -404,6 +416,7 @@ entity "tr_order" as tr_order {
   * transfer_status : Int
   expire_time : DateTime
   expire_time_at : BigInt
+  order_type : Int
   * status : Int
   deleted_at : Int
   * modify_time : DateTime
@@ -415,6 +428,7 @@ entity "tr_pay_notification" as tr_pay_notification {
 --
   pay_channel : String
   order_no : String
+  pay_trade_no : String
   data : Json
   modify_time : DateTime
   create_time : DateTime
@@ -513,6 +527,20 @@ entity "resource" as resource {
   update_time : String
   status : Int
   remark : String
+}
+
+entity "suit" as suit {
++ id [PK] : Int 
+--
+  suit_name : String
+  header_img : String
+  desc_img : String
+  tickets : Json
+  suit_satus : Int
+  desc : String
+  create_time : DateTime
+  modify_time : DateTime
+  status : Int
 }
 
 entity "collection_day_count\nThe underlying view does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client." as collection_day_count {
@@ -1317,6 +1345,12 @@ entity "collection" as collection {
   sjt_status : Int
   reg_code : String
   asset_number : String
+  apply_firsttime : DateTime
+  apply_lasttime : DateTime
+  exp_date : DateTime
+  give_count : Int
+  certificate_validity_period : Int
+  rights_status : Int
 }
 
 entity "ticket" as ticket {
@@ -1331,6 +1365,7 @@ entity "ticket" as ticket {
   creator_uid : Int
   creator_name : String
   creator_avatar : String
+  author : String
   daop_user_id : Int
   daop_user_address : String
   publisher_id : Int
@@ -1367,6 +1402,8 @@ entity "ticket" as ticket {
   origin_uri : String
   creation_date : DateTime
   start_date : DateTime
+  regist_effective_duration : Int
+  certi_price : Int
 }
 
 entity "tr_order" as tr_order {
@@ -1374,6 +1411,8 @@ entity "tr_order" as tr_order {
 --
   * order_no : [UK] String
   # ticket_id : [FK] ticket
+  ticket_name : String
+  ticket_coveruri : String
   ticket_did_credential : String
   ticket_copyright_credential : String
   ticket_authorization_credential : String
@@ -1397,6 +1436,7 @@ entity "tr_order" as tr_order {
   shared_uid : Int
   * price : Int
   amount : Int
+  total_price : Int
   check_in : Int
   pay_channel : String
   pay_scene : String
@@ -1407,6 +1447,7 @@ entity "tr_order" as tr_order {
   * transfer_status : Int
   expire_time : DateTime
   expire_time_at : BigInt
+  order_type : Int
   * status : Int
   deleted_at : Int
   * modify_time : DateTime
@@ -1567,6 +1608,12 @@ entity "collection" as collection {
   sjt_status : Int
   reg_code : String
   asset_number : String
+  apply_firsttime : DateTime
+  apply_lasttime : DateTime
+  exp_date : DateTime
+  give_count : Int
+  certificate_validity_period : Int
+  rights_status : Int
 }
 
 entity "ticket" as ticket {
@@ -1581,6 +1628,7 @@ entity "ticket" as ticket {
   creator_uid : Int
   creator_name : String
   creator_avatar : String
+  author : String
   daop_user_id : Int
   daop_user_address : String
   publisher_id : Int
@@ -1617,6 +1665,8 @@ entity "ticket" as ticket {
   origin_uri : String
   creation_date : DateTime
   start_date : DateTime
+  regist_effective_duration : Int
+  certi_price : Int
 }
 
 entity "tr_order" as tr_order {
@@ -1624,6 +1674,8 @@ entity "tr_order" as tr_order {
 --
   * order_no : [UK] String
   # ticket_id : [FK] ticket
+  ticket_name : String
+  ticket_coveruri : String
   ticket_did_credential : String
   ticket_copyright_credential : String
   ticket_authorization_credential : String
@@ -1647,6 +1699,7 @@ entity "tr_order" as tr_order {
   shared_uid : Int
   * price : Int
   amount : Int
+  total_price : Int
   check_in : Int
   pay_channel : String
   pay_scene : String
@@ -1657,6 +1710,7 @@ entity "tr_order" as tr_order {
   * transfer_status : Int
   expire_time : DateTime
   expire_time_at : BigInt
+  order_type : Int
   * status : Int
   deleted_at : Int
   * modify_time : DateTime
@@ -1738,6 +1792,12 @@ entity "collection" as collection {
   sjt_status : Int
   reg_code : String
   asset_number : String
+  apply_firsttime : DateTime
+  apply_lasttime : DateTime
+  exp_date : DateTime
+  give_count : Int
+  certificate_validity_period : Int
+  rights_status : Int
 }
 
 entity "ticket" as ticket {
@@ -1752,6 +1812,7 @@ entity "ticket" as ticket {
   creator_uid : Int
   creator_name : String
   creator_avatar : String
+  author : String
   daop_user_id : Int
   daop_user_address : String
   publisher_id : Int
@@ -1788,6 +1849,8 @@ entity "ticket" as ticket {
   origin_uri : String
   creation_date : DateTime
   start_date : DateTime
+  regist_effective_duration : Int
+  certi_price : Int
 }
 
 entity "tr_order" as tr_order {
@@ -1795,6 +1858,8 @@ entity "tr_order" as tr_order {
 --
   * order_no : [UK] String
   # ticket_id : [FK] ticket
+  ticket_name : String
+  ticket_coveruri : String
   ticket_did_credential : String
   ticket_copyright_credential : String
   ticket_authorization_credential : String
@@ -1818,6 +1883,7 @@ entity "tr_order" as tr_order {
   shared_uid : Int
   * price : Int
   amount : Int
+  total_price : Int
   check_in : Int
   pay_channel : String
   pay_scene : String
@@ -1828,6 +1894,7 @@ entity "tr_order" as tr_order {
   * transfer_status : Int
   expire_time : DateTime
   expire_time_at : BigInt
+  order_type : Int
   * status : Int
   deleted_at : Int
   * modify_time : DateTime
@@ -1872,6 +1939,7 @@ entity "tr_pay_notification" as tr_pay_notification {
 --
   pay_channel : String
   order_no : String
+  pay_trade_no : String
   data : Json
   modify_time : DateTime
   create_time : DateTime
@@ -1933,6 +2001,12 @@ entity "collection" as collection {
   sjt_status : Int
   reg_code : String
   asset_number : String
+  apply_firsttime : DateTime
+  apply_lasttime : DateTime
+  exp_date : DateTime
+  give_count : Int
+  certificate_validity_period : Int
+  rights_status : Int
 }
 
 entity "tr_order" as tr_order {
@@ -1940,6 +2014,8 @@ entity "tr_order" as tr_order {
 --
   * order_no : [UK] String
   # ticket_id : [FK] ticket
+  ticket_name : String
+  ticket_coveruri : String
   ticket_did_credential : String
   ticket_copyright_credential : String
   ticket_authorization_credential : String
@@ -1963,6 +2039,7 @@ entity "tr_order" as tr_order {
   shared_uid : Int
   * price : Int
   amount : Int
+  total_price : Int
   check_in : Int
   pay_channel : String
   pay_scene : String
@@ -1973,6 +2050,7 @@ entity "tr_order" as tr_order {
   * transfer_status : Int
   expire_time : DateTime
   expire_time_at : BigInt
+  order_type : Int
   * status : Int
   deleted_at : Int
   * modify_time : DateTime
@@ -2060,6 +2138,12 @@ entity "collection" as collection {
   sjt_status : Int
   reg_code : String
   asset_number : String
+  apply_firsttime : DateTime
+  apply_lasttime : DateTime
+  exp_date : DateTime
+  give_count : Int
+  certificate_validity_period : Int
+  rights_status : Int
 }
 
 entity "user" as user {
@@ -2151,6 +2235,7 @@ entity "ticket" as ticket {
   creator_uid : Int
   creator_name : String
   creator_avatar : String
+  author : String
   daop_user_id : Int
   daop_user_address : String
   publisher_id : Int
@@ -2187,6 +2272,8 @@ entity "ticket" as ticket {
   origin_uri : String
   creation_date : DateTime
   start_date : DateTime
+  regist_effective_duration : Int
+  certi_price : Int
 }
 
 entity "resource" as resource {
@@ -2206,6 +2293,26 @@ entity "resource" as resource {
 
 ' Relations
 resource }o--|| ticket: ticket_id
+' ManyToMany Relations
+' enum relations
+@enduml
+@startuml suit
+skinparam linetype ortho
+entity "suit" as suit {
++ id [PK] : Int 
+--
+  suit_name : String
+  header_img : String
+  desc_img : String
+  tickets : Json
+  suit_satus : Int
+  desc : String
+  create_time : DateTime
+  modify_time : DateTime
+  status : Int
+}
+
+' Relations
 ' ManyToMany Relations
 ' enum relations
 @enduml
