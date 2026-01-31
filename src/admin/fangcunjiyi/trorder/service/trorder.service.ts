@@ -7,13 +7,15 @@ import { Prisma } from "@/common/prisma-client";
 import { equals, isNotEmpty } from "class-validator";
 import * as assert from "assert";
 
+import { bigIntReplacer } from "@/common/utils";
+
 @Injectable()
 export class TrorderService {
   private readonly logger = new Logger(TrorderService.name);
   constructor(private prisma: PrismaService) {}
 
   /**@description 分页查询 suit 列表 */
-  async selectSuitList(q: QueryTrorderDto) {
+  async selectTrorderList(q: QueryTrorderDto) {
     const queryCondition: Prisma.tr_orderWhereInput = {};
     if (isNotEmpty(q["order_no"])) {
       queryCondition.order_no = {
@@ -25,21 +27,35 @@ export class TrorderService {
         contains: q.pay_trade_no,
       };
     }
-    if (isNotEmpty(q["createTimeStart"])) {
-      queryCondition.create_time = {
-        lte: q.createTimeStart,
-      };
-    }
-    if (isNotEmpty(q["createTimeEnd"])) {
-      queryCondition.create_time = {
-        gte: q.createTimeEnd,
-      };
-    }
-    if (isNotEmpty(q["status"])) {
+    // if (isNotEmpty(q["createTimeStart"])) {
+    //   queryCondition.create_time = {
+    //     lte: q.createTimeStart,
+    //   };
+    // }
+    // if (isNotEmpty(q["createTimeEnd"])) {
+    //   queryCondition.create_time = {
+    //     gte: q.createTimeEnd,
+    //   };
+    // }
+    if (isNotEmpty(q["pay_status"])) {
       queryCondition.pay_status = {
         equals: q.pay_status,
       };
     }
+    if (isNotEmpty(q["order_type"])) {
+      queryCondition.order_type = {
+        equals: q.order_type,
+      };
+    }
+    const starDate = new Date(q.params.beginCreateTime);
+    const endDate = new Date(q.params.endCreateTime);
+    if (isNotEmpty(q.params.beginCreateTime) && isNotEmpty(q.params.endCreateTime)) {
+      queryCondition.create_time = {
+        lte: endDate,
+        gte: starDate,
+      };
+    }
+
     return {
       rows: await this.prisma.tr_order.findMany({
         relationLoadStrategy: "query",
@@ -48,6 +64,31 @@ export class TrorderService {
         where: queryCondition,
         orderBy: {
           create_time: "desc",
+        },
+        select: {
+          order_id: true,
+          order_no: true,
+          ticket_id: true,
+          ticket_name: true,
+          ticket_coveruri: true,
+          collection_id: true,
+          collection_name: true,
+          seller_uid: true,
+          buyer_uid: true,
+          buyer_realname: true,
+          shared_uid: true,
+          price: true,
+          amount: true,
+          total_price: true,
+          pay_channel: true,
+          pay_scene: true,
+          pay_trade_no: true,
+          pay_time: true,
+          pay_status: true,
+          transfer_status: true,
+          expire_time: true,
+          order_type: true,
+          create_time: true,
         },
         // include: {},
       }),

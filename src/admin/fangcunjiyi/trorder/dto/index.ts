@@ -20,17 +20,24 @@ export class QueryTrorderDto extends queryDomain {
   @ApiProperty({ description: "支付状态,0-待支付;1-已支付;2-支付失败;3-已过期;4-支付中", required: false })
   @IsOptional()
   @IsInt({ message: "status 必须是 int 数据" })
+  @Transform(({ value }) => Number(value)) // 自动的转换为number
   pay_status?: number | null;
+
+  @ApiProperty({ description: "订单类型，0-default；1-证书续费；2-nft购买", required: false })
+  @IsOptional()
+  @IsInt({ message: "order_type 必须是 int 数据" })
+  @Transform(({ value }) => Number(value)) // 自动的转换为number
+  order_type?: number | null;
 
   @ApiProperty({ description: "订单创建时间_start", required: false })
   @IsOptional()
   @IsString({ message: "createTime 必须是 string 数据" })
-  createTimeStart: string | null;
+  createTimeStart?: string | null;
 
   @ApiProperty({ description: "订单创建时间_end", required: false })
   @IsOptional()
   @IsString({ message: "updateBy 必须是 string 数据" })
-  createTimeEnd: string | null;
+  createTimeEnd?: string | null;
 }
 
 /**@description 创建 suit Dto */

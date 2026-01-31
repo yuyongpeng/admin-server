@@ -1,9 +1,10 @@
 import { BaseDomain } from "@/common/domain/BaseDomain2";
 import { ApiProperty } from "@nestjs/swagger";
 import { Transform, Type } from "class-transformer";
-import { IsNotEmpty, IsNumber, IsString, IsOptional, IsInt } from "class-validator";
+import { IsNotEmpty, IsNumber, IsString, IsOptional, IsInt, IsJSON } from "class-validator";
 import { queryDomain } from "@/common/domain/queryDomain";
 import { ParseIntPipe, Query } from "@nestjs/common";
+import { JsonValue } from "@prisma/client/runtime/library";
 
 /**@description 查询 套装 Dto */
 export class QueryTrorderDto extends queryDomain {
@@ -98,8 +99,9 @@ export class UpdateTrorderDto {
 
   @ApiProperty({ description: "套装对应的邮折", required: false })
   @IsOptional()
-  @IsString()
-  tickets: string | null;
+  // @IsString()
+  // @IsJSON()
+  tickets: JsonValue | null;
 
   @ApiProperty({ description: "状态。0-正常，1-删除", required: false })
   @IsOptional()

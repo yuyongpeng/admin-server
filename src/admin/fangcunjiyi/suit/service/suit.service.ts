@@ -83,22 +83,40 @@ export class SuitService {
 
   /**@description 批量删除 suit */
   async deleteSuitByIds(ids: number[]) {
-    return this.prisma.suit.deleteMany({
+    return this.prisma.suit.updateMany({
       where: {
         id: {
           in: ids,
         },
       },
+      data: {
+        status: 1,
+      },
     });
+    // return this.prisma.suit.deleteMany({
+    //   where: {
+    //     id: {
+    //       in: ids,
+    //     },
+    //   },
+    // });
   }
 
   /**@description 单个删除 suit */
   async deleteSuitById(id: number) {
-    return this.prisma.suit.deleteMany({
+    return this.prisma.suit.update({
       where: {
         id: id,
       },
+      data: {
+        status: 1,
+      },
     });
+    // return this.prisma.suit.deleteMany({
+    //   where: {
+    //     id: id,
+    //   },
+    // });
   }
 
   /**@description 导出所有数据为xlsx */

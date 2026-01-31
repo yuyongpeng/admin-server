@@ -20,8 +20,34 @@ export class TrorderController {
   @ApiResponse({ type: TableDataInfo<tr_order> })
   @RequirePermission("system:tr_order:query")
   @Get("/list")
-  async listSuit(@Query() q: QueryTrorderDto): Promise<TableDataInfo<tr_order>> {
-    return Result.TableData(await this.trorderService.selectSuitList(q));
+  async listSuit(@Query() q: QueryTrorderDto): Promise<
+    TableDataInfo<{
+      order_id: number;
+      order_no: string;
+      ticket_id: number;
+      ticket_name: string;
+      ticket_coveruri: string;
+      collection_id: number;
+      collection_name: string;
+      seller_uid: number;
+      buyer_uid: number;
+      buyer_realname: string;
+      shared_uid: number;
+      price: number;
+      amount: number;
+      total_price: number;
+      pay_channel: string;
+      pay_scene: string;
+      pay_trade_no: string;
+      pay_time: Date;
+      pay_status: number;
+      transfer_status: number;
+      expire_time: Date;
+      order_type: number;
+      create_time: Date;
+    }>
+  > {
+    return Result.TableData(await this.trorderService.selectTrorderList(q));
   }
 
   @ApiOperation({ summary: "导出 tr_order xlsx文件" })

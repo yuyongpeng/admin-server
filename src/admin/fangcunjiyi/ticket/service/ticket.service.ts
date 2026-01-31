@@ -1,13 +1,13 @@
-import { PrismaService } from '@/common/service/prisma/prisma.service';
-import { QueryTicketDto, CreateTicketDto, CreateTicketDto4Golang, SaleStatusDto } from '../dto';
-import { Injectable, Logger } from '@nestjs/common';
-import { exportTable } from '@/common/utils';
-import { query, Response } from 'express';
-import { Prisma } from '@/common/prisma-client';
-import { isNotEmpty } from 'class-validator';
-import { weightSrvRecords } from 'ioredis/built/cluster/util';
-import axios from 'axios';
-import { Config } from '@/config';
+import { PrismaService } from "@/common/service/prisma/prisma.service";
+import { QueryTicketDto, CreateTicketDto, CreateTicketDto4Golang, SaleStatusDto } from "../dto";
+import { Injectable, Logger } from "@nestjs/common";
+import { exportTable } from "@/common/utils";
+import { query, Response } from "express";
+import { Prisma } from "@/common/prisma-client";
+import { isNotEmpty } from "class-validator";
+import { weightSrvRecords } from "ioredis/built/cluster/util";
+import axios from "axios";
+import { Config } from "@/config";
 
 @Injectable()
 export class TicketService {
@@ -20,22 +20,22 @@ export class TicketService {
     queryCondition.available_status = {
       equals: 1,
     };
-    if (isNotEmpty(q['ticket_name'])) {
+    if (isNotEmpty(q["ticket_name"])) {
       queryCondition.ticket_name = {
         equals: q.ticket_name,
       };
     }
-    if (isNotEmpty(q['ticket_type'])) {
+    if (isNotEmpty(q["ticket_type"])) {
       queryCondition.ticket_type = {
         equals: q.ticket_type,
       };
     }
-    if (isNotEmpty(q['sale_status'])) {
+    if (isNotEmpty(q["sale_status"])) {
       queryCondition.sale_status = {
         equals: q.sale_status,
       };
     }
-    if (isNotEmpty(q['available_status'])) {
+    if (isNotEmpty(q["available_status"])) {
       queryCondition.available_status = {
         equals: q.available_status,
       };
@@ -45,12 +45,12 @@ export class TicketService {
     // });
     return {
       rows: await this.prisma.ticket.findMany({
-        relationLoadStrategy: 'query',
+        relationLoadStrategy: "query",
         skip: (q.pageNum - 1) * q.pageSize,
         take: q.pageSize,
         where: queryCondition,
         orderBy: {
-          create_time: 'desc',
+          create_time: "desc",
         },
         include: {
           // ticket: {
@@ -88,8 +88,19 @@ export class TicketService {
     });
   }
 
+  async selectTicketByIds(ids: number[]) {
+    return this.prisma.ticket.findMany({
+      where: {
+        id: {
+          in: ids,
+        },
+        available_status: 1,
+      },
+    });
+  }
+
   async addTicket(ticket: CreateTicketDto4Golang): Promise<any> {
-    let url: string = Config.dstamp.baseUrl + '/ticket/create';
+    let url: string = Config.dstamp.baseUrl + "/ticket/create";
     let postData = ticket;
     // let postData = {
     //   ticket_type: 2,
@@ -105,11 +116,11 @@ export class TicketService {
     //   publisher_name: 'xxxx',
     // };
     let headers = {
-      'Content-Type': 'application/json',
-      'user-id': 15,
+      "Content-Type": "application/json",
+      "user-id": 15,
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZiIsIm9wZW5faWQiOiJvRGdpODRuV0szSUVOQ0RTR1ZvOWZXVUpCMnJrIiwidW5pb25faWQiOiJvdndSVDV4XzFOUGQxRGJndVA3ME40bFZKdlpzIiwidGtfdXVpZCI6Ijk2NjZkM2U4LTA1MWUtNDhlZi04YzNkLTMyMmY2MzFmM2U1NiIsImV4cCI6MTc1MDQzMzE1M30.--bJEmYdzhnmtGmvfn4EYhiTWq78RMK4AJaYeqspbNU',
-      'open-id': 'oDgi84nWK3IENCDSGVo9fWUJB2rk',
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZiIsIm9wZW5faWQiOiJvRGdpODRuV0szSUVOQ0RTR1ZvOWZXVUpCMnJrIiwidW5pb25faWQiOiJvdndSVDV4XzFOUGQxRGJndVA3ME40bFZKdlpzIiwidGtfdXVpZCI6Ijk2NjZkM2U4LTA1MWUtNDhlZi04YzNkLTMyMmY2MzFmM2U1NiIsImV4cCI6MTc1MDQzMzE1M30.--bJEmYdzhnmtGmvfn4EYhiTWq78RMK4AJaYeqspbNU",
+      "open-id": "oDgi84nWK3IENCDSGVo9fWUJB2rk",
     };
     let response = await axios.post(url, postData, { headers: headers, timeout: 50000 });
     this.logger.log(response.data);
@@ -119,14 +130,14 @@ export class TicketService {
 
   /**@description 发售 */
   async saleStatus(sale: SaleStatusDto): Promise<any> {
-    let url = Config.dstamp.baseUrl + 'ticket/creator/saleStatus';
+    let url = Config.dstamp.baseUrl + "ticket/creator/saleStatus";
     let postData = sale;
     let headers = {
-      'Content-Type': 'application/json',
-      'user-id': 15,
+      "Content-Type": "application/json",
+      "user-id": 15,
       Authorization:
-        'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZiIsIm9wZW5faWQiOiJvRGdpODRuV0szSUVOQ0RTR1ZvOWZXVUpCMnJrIiwidW5pb25faWQiOiJvdndSVDV4XzFOUGQxRGJndVA3ME40bFZKdlpzIiwidGtfdXVpZCI6Ijk2NjZkM2U4LTA1MWUtNDhlZi04YzNkLTMyMmY2MzFmM2U1NiIsImV4cCI6MTc1MDQzMzE1M30.--bJEmYdzhnmtGmvfn4EYhiTWq78RMK4AJaYeqspbNU',
-      'open-id': 'oDgi84nWK3IENCDSGVo9fWUJB2rk',
+        "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZiIsIm9wZW5faWQiOiJvRGdpODRuV0szSUVOQ0RTR1ZvOWZXVUpCMnJrIiwidW5pb25faWQiOiJvdndSVDV4XzFOUGQxRGJndVA3ME40bFZKdlpzIiwidGtfdXVpZCI6Ijk2NjZkM2U4LTA1MWUtNDhlZi04YzNkLTMyMmY2MzFmM2U1NiIsImV4cCI6MTc1MDQzMzE1M30.--bJEmYdzhnmtGmvfn4EYhiTWq78RMK4AJaYeqspbNU",
+      "open-id": "oDgi84nWK3IENCDSGVo9fWUJB2rk",
     };
     let response = await axios.post(url, postData, { headers: headers, timeout: 50000 });
     this.logger.log(response.data);
@@ -163,7 +174,7 @@ export class TicketService {
   }
 
   async exportTicket(res: Response) {
-    const title = ['部门id', '父部门', '祖级列表', '部门名称', '显示顺序', '负责人', '联系电话', '邮箱', '部门状态（0停用,1正常）', '删除标志（0删除,1存在 ）', '创建者', '创建时间', '更新者', '更新时间'];
+    const title = ["部门id", "父部门", "祖级列表", "部门名称", "显示顺序", "负责人", "联系电话", "邮箱", "部门状态（0停用,1正常）", "删除标志（0删除,1存在 ）", "创建者", "创建时间", "更新者", "更新时间"];
     const data = (await this.prisma.ticket.findMany()).map((v) => Object.values(v));
     data.unshift(title);
     exportTable(data, res);
