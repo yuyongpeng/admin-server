@@ -34,12 +34,14 @@ git:
 pm2-test:
 	@ git stash
 	@ git pull
+	@ npm run build
 	@ pm2 delete admin-server 
 	@ pm2 restart ecosystem.config.yml --env test
 
 pm2-prod:
 	@ git stash
 	@ git pull
+	@ npm run build
 	@ pm2 delete admin-server
 	@ pm2 restart ecosystem.config.yml --env production
 
