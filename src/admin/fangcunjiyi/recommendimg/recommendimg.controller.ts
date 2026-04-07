@@ -18,7 +18,7 @@ export class RecommendImgController {
 
   @ApiOperation({ summary: "查询 recommendImg 列表" })
   @ApiResponse({ type: TableDataInfo<recommend_img> })
-  @RequirePermission("system:recommendimg:query")
+  @RequirePermission("fangcunjiyi:recommendimg:query")
   @Get("/list")
   async listSuit(@Query() q: QueryTrorderDto): Promise<TableDataInfo<recommend_img>> {
     console.log("xxxxxxxxxxx");
@@ -26,7 +26,7 @@ export class RecommendImgController {
   }
 
   @ApiOperation({ summary: "导出 recommendImg xlsx文件" })
-  @RequirePermission("system:recommendimg:export")
+  @RequirePermission("fangcunjiyi:recommendimg:export")
   @Get("/export")
   async export(@Res() res: Response): Promise<void> {
     return this.recommendImgService.exportSuit(res);
@@ -34,7 +34,7 @@ export class RecommendImgController {
 
   @ApiOperation({ summary: "查询 recommendImg 详细信息" })
   @ApiResponse({ type: Result<recommend_img> })
-  @RequirePermission("system:recommendimg:query")
+  @RequirePermission("fangcunjiyi:recommendimg:query")
   @Get("/:id")
   async getSuit(@Param("id", ParseIntPipe) id: number): Promise<Result<recommend_img>> {
     return Result.ok(await this.recommendImgService.selectRecommendImgById(id));
@@ -43,7 +43,7 @@ export class RecommendImgController {
   @ApiOperation({ summary: "新增 recommendImg" })
   @ApiResponse({ type: Result<recommend_img> })
   @ApiBody({ type: CreateTrorderDto })
-  @RequirePermission("system:recommendimg:add")
+  @RequirePermission("fangcunjiyi:recommendimg:add")
   @Post("/")
   async addSuit(@Body() recommendImg: CreateTrorderDto, @Req() req): Promise<Result<recommend_img>> {
     recommendImg = {
@@ -59,7 +59,7 @@ export class RecommendImgController {
   @ApiOperation({ summary: "修改 recommendImg 管理" })
   @ApiResponse({ type: Result<any> })
   @ApiBody({ type: UpdateTrorderDto })
-  @RequirePermission("system:recommendimg:edit")
+  @RequirePermission("fangcunjiyi:recommendimg:edit")
   @Put("/")
   async updateSuit(@Body() recommendImg: UpdateTrorderDto, @Req() req): Promise<Result<any>> {
     recommendImg = {
@@ -73,7 +73,7 @@ export class RecommendImgController {
 
   @ApiOperation({ summary: "删除 recommendImg " })
   @ApiResponse({ type: Result<any> })
-  @RequirePermission("system:recommendimg:remove")
+  @RequirePermission("fangcunjiyi:recommendimg:remove")
   @Delete("/:ids")
   async delSuit(@Param("ids", ParseIntArrayPipe) ids: number[]): Promise<Result<any>> {
     const { count } = await this.recommendImgService.deleteRecommendImgByIds(ids);

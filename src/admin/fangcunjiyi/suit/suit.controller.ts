@@ -18,14 +18,14 @@ export class SuitController {
 
   @ApiOperation({ summary: "查询 suit 列表" })
   @ApiResponse({ type: TableDataInfo<suit> })
-  @RequirePermission("system:suit:query")
+  @RequirePermission("fangcunjiyi:suit:query")
   @Get("/list")
   async listSuit(@Query() q: QueryTrorderDto): Promise<TableDataInfo<suit>> {
     return Result.TableData(await this.suitService.selectSuitList(q));
   }
 
   @ApiOperation({ summary: "导出 suit xlsx文件" })
-  @RequirePermission("system:suit:export")
+  @RequirePermission("fangcunjiyi:suit:export")
   @Get("/export")
   async export(@Res() res: Response): Promise<void> {
     return this.suitService.exportSuit(res);
@@ -33,7 +33,7 @@ export class SuitController {
 
   @ApiOperation({ summary: "查询 suit 详细信息" })
   @ApiResponse({ type: Result<suit> })
-  @RequirePermission("system:suit:query")
+  @RequirePermission("fangcunjiyi:suit:query")
   @Get("/:id")
   async getSuit(@Param("id", ParseIntPipe) id: number): Promise<Result<suit>> {
     return Result.ok(await this.suitService.selectSuitById(id));
@@ -42,7 +42,7 @@ export class SuitController {
   @ApiOperation({ summary: "新增 suit " })
   @ApiResponse({ type: Result<suit> })
   @ApiBody({ type: CreateTrorderDto })
-  @RequirePermission("system:suit:add")
+  @RequirePermission("fangcunjiyi:suit:add")
   @Post("/")
   async addSuit(@Body() suit: CreateTrorderDto, @Req() req): Promise<Result<suit>> {
     suit = {
@@ -54,7 +54,7 @@ export class SuitController {
   @ApiOperation({ summary: "修改 suit 管理" })
   @ApiResponse({ type: Result<any> })
   @ApiBody({ type: UpdateTrorderDto })
-  @RequirePermission("system:suit:edit")
+  @RequirePermission("fangcunjiyi:suit:edit")
   @Put("/")
   async updateSuit(@Body() suit: UpdateTrorderDto, @Req() req): Promise<Result<any>> {
     suit = {
@@ -66,7 +66,7 @@ export class SuitController {
 
   @ApiOperation({ summary: "删除 suit " })
   @ApiResponse({ type: Result<any> })
-  @RequirePermission("system:suit:remove")
+  @RequirePermission("fangcunjiyi:suit:remove")
   @Delete("/:ids")
   async delSuit(@Param("ids", ParseIntArrayPipe) ids: number[]): Promise<Result<any>> {
     const { count } = await this.suitService.deleteSuitByIds(ids);
