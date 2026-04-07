@@ -18,7 +18,7 @@ export class TrorderController {
 
   @ApiOperation({ summary: "查询 tr_order 列表" })
   @ApiResponse({ type: TableDataInfo<tr_order> })
-  @RequirePermission("system:tr_order:query")
+  @RequirePermission("fangcunjiyi:tr_order:query")
   @Get("/list")
   async listSuit(@Query() q: QueryTrorderDto): Promise<
     TableDataInfo<{
@@ -51,7 +51,7 @@ export class TrorderController {
   }
 
   @ApiOperation({ summary: "导出 tr_order xlsx文件" })
-  @RequirePermission("system:tr_order:export")
+  @RequirePermission("fangcunjiyi:tr_order:export")
   @Get("/export")
   async export(@Query() q: QueryTrorderDto, @Res() res: Response): Promise<void> {
     return this.trorderService.exportSuit(q, res);
@@ -59,7 +59,7 @@ export class TrorderController {
 
   @ApiOperation({ summary: "查询 tr_order 详细信息" })
   @ApiResponse({ type: Result<tr_order> })
-  @RequirePermission("system:tr_order:query")
+  @RequirePermission("fangcunjiyi:tr_order:query")
   @Get("/:id")
   async getSuit(@Param("id", ParseIntPipe) id: number): Promise<Result<tr_order>> {
     return Result.ok(await this.trorderService.selectTrorderById(id));
@@ -68,7 +68,7 @@ export class TrorderController {
   // @ApiOperation({ summary: "新增 tr_order " })
   // @ApiResponse({ type: Result<tr_order> })
   // @ApiBody({ type: CreateTrorderDto })
-  // @RequirePermission("system:tr_order:add")
+  // @RequirePermission("fangcunjiyi:tr_order:add")
   // @Post("/")
   // async addSuit(@Body() tr_order: CreateTrorderDto, @Req() req): Promise<Result<tr_order>> {
   //   tr_order = {
@@ -80,7 +80,7 @@ export class TrorderController {
   // @ApiOperation({ summary: "修改 tr_order 管理" })
   // @ApiResponse({ type: Result<any> })
   // @ApiBody({ type: UpdateTrorderDto })
-  // @RequirePermission("system:tr_order:edit")
+  // @RequirePermission("fangcunjiyi:tr_order:edit")
   // @Put("/")
   // async updateSuit(@Body() tr_order: UpdateTrorderDto, @Req() req): Promise<Result<any>> {
   //   tr_order = {
@@ -92,7 +92,7 @@ export class TrorderController {
 
   // @ApiOperation({ summary: "删除 tr_order " })
   // @ApiResponse({ type: Result<any> })
-  // @RequirePermission("system:tr_order:remove")
+  // @RequirePermission("fangcunjiyi:tr_order:remove")
   // @Delete("/:ids")
   // async delSuit(@Param("ids", ParseIntArrayPipe) ids: number[]): Promise<Result<any>> {
   //   const { count } = await this.trorderService.deleteTrorderByIds(ids);
